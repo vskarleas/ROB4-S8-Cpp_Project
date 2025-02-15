@@ -1,3 +1,9 @@
+// #############################################################################
+// # File pause_menu.hpp
+// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
+// # Authors: EYanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
+// #############################################################################
+
 #ifndef PAUSE_MENU_HPP
 #define PAUSE_MENU_HPP
 

@@ -1,5 +1,12 @@
+// #############################################################################
+// # File square_ball.hpp
+// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
+// # Authors: EYanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
+// #############################################################################
+
 #ifndef SQUARE_BALL_HPP
 #define SQUARE_BALL_HPP
+
 #include "ball_base.hpp"
 
 class SquareBall : public BallBase

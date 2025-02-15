@@ -1,3 +1,9 @@
+// #############################################################################
+// # File ball_base.cpp
+// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
+// # Authors: EYanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
+// #############################################################################
+
 #include <cstdlib>
 #include <ctime>
 #include <cmath>

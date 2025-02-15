@@ -1,5 +1,12 @@
+// #############################################################################
+// # File ball_base.hpp
+// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
+// # Authors: EYanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
+// #############################################################################
+
 #ifndef BALL_BASE_HPP
 #define BALL_BASE_HPP
+
 #include <SDL.h>
 
 class BallBase

@@ -1,3 +1,9 @@
+// #############################################################################
+// # File classic_base.cpp
+// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
+// # Authors: EYanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
+// #############################################################################
+
 #include "classic_ball.hpp"
 
 // Helper function to draw filled circle
