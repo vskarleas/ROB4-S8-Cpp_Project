@@ -1,27 +1,152 @@
 #include "game.hpp"
-#include <SDL_ttf.h>
+#include "classic_ball.hpp"
+#include "square_ball.hpp"
+#include "triangle_ball.hpp"
+#include "game_save.hpp"
+#include "menu.hpp"
+
 #include <string>
 
 Game::Game()
-    : mWindow(nullptr), mRenderer(nullptr), mIsRunning(true), mTicksCount(0), mScore1(0), mScore2(0), mFont(nullptr)
+    : mWindow(nullptr), mRenderer(nullptr), mIsRunning(true), mTicksCount(0), mPaddle1(nullptr), mPaddle2(nullptr), mBall(nullptr), mScore1(0), mScore2(0), mFont(nullptr), mMenu(nullptr), mGameState(GameState::Menu), mPauseMenu(nullptr) // Initialize pause menu pointer
 {
+    mBackgroundColor1.r = 0;
+    mBackgroundColor1.g = 0;
+    mBackgroundColor1.b = 0;
+    mBackgroundColor1.a = 255;
+
+    mBackgroundColor2.r = 0;
+    mBackgroundColor2.g = 0;
+    mBackgroundColor2.b = 0;
+    mBackgroundColor2.a = 255;
+
+    mSaveButtonRect = {700, 550, 100, 30}; // x, y, width, height
 }
 
 Game::~Game()
 {
-    delete mPaddle1;
-    delete mPaddle2;
-    delete mBall;
+    // Delete menu first since it might use renderer
+    if (mMenu)
+    {
+        delete mMenu;
+        mMenu = nullptr;
+    }
+
+    if (mPauseMenu)
+    {
+        delete mPauseMenu;
+        mPauseMenu = nullptr;
+    }
+
+    // Delete game objects
+    if (mPaddle1)
+    {
+        delete mPaddle1;
+        mPaddle1 = nullptr;
+    }
+    if (mPaddle2)
+    {
+        delete mPaddle2;
+        mPaddle2 = nullptr;
+    }
+    if (mBall)
+    {
+        delete mBall;
+        mBall = nullptr;
+    }
+
+    // Clean up audio resources
+    if (mBackgroundMusic)
+    {
+        Mix_HaltMusic();
+        Mix_FreeMusic(mBackgroundMusic);
+        mBackgroundMusic = nullptr;
+    }
+    if (mPaddleHitSound)
+    {
+        Mix_FreeChunk(mPaddleHitSound);
+        mPaddleHitSound = nullptr;
+    }
+    if (mWallHitSound)
+    {
+        Mix_FreeChunk(mWallHitSound);
+        mWallHitSound = nullptr;
+    }
+    if (mScoreSound)
+    {
+        Mix_FreeChunk(mScoreSound);
+        mScoreSound = nullptr;
+    }
+
+    // Clean up font
+    if (mFont)
+    {
+        TTF_CloseFont(mFont);
+        mFont = nullptr;
+    }
+
+    // Clean up SDL resources
+    if (mRenderer)
+    {
+        SDL_DestroyRenderer(mRenderer);
+        mRenderer = nullptr;
+    }
+    if (mWindow)
+    {
+        SDL_DestroyWindow(mWindow);
+        mWindow = nullptr;
+    }
+
+    // Quit SDL subsystems
+    Mix_CloseAudio();
+    TTF_Quit();
+    SDL_Quit();
+}
+
+bool Game::DrawSaveButton()
+{
+    // Draw save button with white text
+    SDL_Color white = {255, 255, 255, 255};
+    TTF_SetFontStyle(mFont, TTF_STYLE_NORMAL);
+    TTF_SetFontSize(mFont, 24);
+
+    SDL_Surface *saveText = TTF_RenderText_Solid(mFont, "Save", white);
+    if (!saveText)
+        return false;
+
+    SDL_Texture *saveTexture = SDL_CreateTextureFromSurface(mRenderer, saveText);
+    if (!saveTexture)
+    {
+        SDL_FreeSurface(saveText);
+        return false;
+    }
+
+    SDL_Rect textRect = {
+        mSaveButtonRect.x + (mSaveButtonRect.w - saveText->w) / 2,
+        mSaveButtonRect.y + (mSaveButtonRect.h - saveText->h) / 2,
+        saveText->w,
+        saveText->h};
+
+    SDL_RenderCopy(mRenderer, saveTexture, nullptr, &textRect);
+
+    SDL_FreeSurface(saveText);
+    SDL_DestroyTexture(saveTexture);
+    return true;
 }
 
 bool Game::Initialize()
 {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0)
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
     {
         return false;
     }
 
     if (TTF_Init() != 0)
+    {
+        return false;
+    }
+
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
     {
         return false;
     }
@@ -49,15 +174,40 @@ bool Game::Initialize()
         return false;
     }
 
-    mFont = TTF_OpenFont("/System/Library/Fonts/Helvetica.ttc", 24);
+    mFont = TTF_OpenFont("assets/Helvetica.ttc", 24);
     if (!mFont)
     {
+        SDL_Log("Failed to load font: %s", TTF_GetError());
         return false;
     }
 
+    mMenu = new Menu(mRenderer, mFont);
     mPaddle1 = new Paddle(30, true);
     mPaddle2 = new Paddle(770, false);
-    mBall = new Ball();
+    CreateBall(0); // Start with classic ball
+
+    // Load audio files (make sure these files exist in your project directory)
+    mBackgroundMusic = Mix_LoadMUS("assets/background.wav");
+    mPaddleHitSound = Mix_LoadWAV("assets/paddle_hit.wav");
+    mWallHitSound = Mix_LoadWAV("assets/wall_hit.wav");
+    mScoreSound = Mix_LoadWAV("assets/score.wav");
+
+    if (!mBackgroundMusic)
+    {
+        SDL_Log("Failed to load background music: %s", Mix_GetError());
+    }
+    if (!mPaddleHitSound)
+    {
+        SDL_Log("Failed to load paddle hit sound: %s", Mix_GetError());
+    }
+
+    // Start playing background music on loop
+    if (mBackgroundMusic)
+    {
+        Mix_PlayMusic(mBackgroundMusic, -1); // -1 means loop indefinitely
+    }
+
+    mPauseMenu = new PauseMenu(mRenderer, mFont);
 
     return true;
 }
@@ -79,21 +229,101 @@ void Game::ProcessInput()
     {
         switch (event.type)
         {
-        case SDL_QUIT:
+        case SDL_QUIT:  // Handle window close (X button)
             mIsRunning = false;
+            break;
+
+        case SDL_MOUSEBUTTONDOWN:
+            if (mGameState == GameState::Menu)
+            {
+                if (mMenu->HandleEvent(event))
+                {
+                    if (mMenu->IsStarted())
+                    {
+                        if (mMenu->IsContinueGame())
+                        {
+                            // Load saved game state
+                            SaveState savedState;
+                            if (GameSave::LoadGame(savedState, ""))
+                            {
+                                mScore1 = savedState.score1;
+                                mScore2 = savedState.score2;
+                                mPaddle1->set_pos_y(savedState.paddle1Y);
+                                mPaddle2->set_pos_y(savedState.paddle2Y);
+                                CreateBall(savedState.ballType);
+                                mBall->SetPosition(savedState.ballX, savedState.ballY);
+                                mBall->SetVelocity(savedState.ballVelX, savedState.ballVelY);
+                                UpdateBackground();
+                                // Delete save file after loading
+                                GameSave::DeleteSave();
+                                mGameState = GameState::Playing;
+                            }
+                        }
+                        else
+                        {
+                            // New game - delete any existing save
+                            GameSave::DeleteSave();
+                            CreateBall(mMenu->GetSelectedBallType());
+                            mScore1 = mScore2 = 0;
+                            UpdateBackground();
+                            mGameState = GameState::Playing;
+                        }
+                    }
+                    else if (mMenu->ShouldExit())
+                    {
+                        mIsRunning = false;
+                    }
+                }
+            }
+            else if (mGameState == GameState::Playing)
+            {
+                SDL_Point clickPoint = {event.button.x, event.button.y};
+                if (SDL_PointInRect(&clickPoint, &mSaveButtonRect))
+                {
+                    SaveState saveState;
+                    saveState.score1 = mScore1;
+                    saveState.score2 = mScore2;
+                    saveState.paddle1Y = mPaddle1->get_pos_y();
+                    saveState.paddle2Y = mPaddle2->get_pos_y();
+                    saveState.ballX = mBall->GetPosX();
+                    saveState.ballY = mBall->GetPosY();
+                    saveState.ballVelX = mBall->GetVelX();
+                    saveState.ballVelY = mBall->GetVelY();
+                    saveState.ballType = mMenu->GetSelectedBallType();
+            
+                    if (GameSave::SaveGame(saveState, ""))
+                    {
+                        SDL_Log("Game saved successfully");
+                        mGameState = GameState::Menu;
+                        mMenu->UpdateContinueButton(); // Add this method to Menu class
+                    }
+                }
+            }
             break;
         }
     }
 
-    const Uint8 *state = SDL_GetKeyboardState(NULL);
+    const Uint8* state = SDL_GetKeyboardState(NULL);
     if (state[SDL_SCANCODE_ESCAPE])
     {
-        mIsRunning = false;
+        if (mGameState == GameState::Playing)
+        {
+            mGameState = GameState::Paused;
+        }
+        else if (mGameState == GameState::Paused)
+        {
+            mGameState = GameState::Playing;
+        }
     }
 }
 
 void Game::UpdateGame()
 {
+    if (mGameState != GameState::Playing)
+    {
+        return;
+    }
+
     while (!SDL_TICKS_PASSED(SDL_GetTicks(), mTicksCount + 16))
         ;
 
@@ -107,12 +337,108 @@ void Game::UpdateGame()
     mPaddle1->Update(deltaTime);
     mPaddle2->Update(deltaTime);
     mBall->Update(deltaTime, mPaddle1, mPaddle2, mScore1, mScore2);
+
+    // Check for victory condition
+    if (mScore1 >= 10 || mScore2 >= 10)
+    {
+        mGameState = GameState::Menu;
+        return;
+    }
+
+    // Update background colors based on scores
+    UpdateBackground();
+}
+
+void Game::UpdateBackground()
+{
+    // Player 1 background color
+    if (mScore1 >= 7)
+    {
+        mBackgroundColor1.r = 0;
+        mBackgroundColor1.g = 255;
+        mBackgroundColor1.b = 0;
+        mBackgroundColor1.a = 255;
+    }
+    else if (mScore1 >= 5)
+    {
+        mBackgroundColor1.r = 255;
+        mBackgroundColor1.g = 0;
+        mBackgroundColor1.b = 0;
+        mBackgroundColor1.a = 255;
+    }
+    else if (mScore1 >= 3)
+    {
+        mBackgroundColor1.r = 0;
+        mBackgroundColor1.g = 0;
+        mBackgroundColor1.b = 255;
+        mBackgroundColor1.a = 255;
+    }
+    else
+    {
+        mBackgroundColor1.r = 0;
+        mBackgroundColor1.g = 0;
+        mBackgroundColor1.b = 0;
+        mBackgroundColor1.a = 255;
+    }
+
+    // Player 2 background color
+    if (mScore2 >= 7)
+    {
+        mBackgroundColor2.r = 0;
+        mBackgroundColor2.g = 255;
+        mBackgroundColor2.b = 0;
+        mBackgroundColor2.a = 255;
+    }
+    else if (mScore2 >= 5)
+    {
+        mBackgroundColor2.r = 255;
+        mBackgroundColor2.g = 0;
+        mBackgroundColor2.b = 0;
+        mBackgroundColor2.a = 255;
+    }
+    else if (mScore2 >= 3)
+    {
+        mBackgroundColor2.r = 0;
+        mBackgroundColor2.g = 0;
+        mBackgroundColor2.b = 255;
+        mBackgroundColor2.a = 255;
+    }
+    else
+    {
+        mBackgroundColor2.r = 0;
+        mBackgroundColor2.g = 0;
+        mBackgroundColor2.b = 0;
+        mBackgroundColor2.a = 255;
+    }
 }
 
 void Game::GenerateOutput()
 {
-    SDL_SetRenderDrawColor(mRenderer, 0, 0, 0, 255);
-    SDL_RenderClear(mRenderer);
+    if (mGameState == GameState::Paused)
+    {
+        mPauseMenu->Draw();
+        return;
+    }
+
+    if (mGameState == GameState::Menu)
+    {
+        mMenu->Draw();
+        return;
+    }
+
+    // Draw split background
+    SDL_Rect leftHalf = {0, 0, 400, 600};
+    SDL_Rect rightHalf = {400, 0, 400, 600};
+
+    SDL_SetRenderDrawColor(mRenderer,
+                           mBackgroundColor1.r, mBackgroundColor1.g,
+                           mBackgroundColor1.b, mBackgroundColor1.a);
+    SDL_RenderFillRect(mRenderer, &leftHalf);
+
+    SDL_SetRenderDrawColor(mRenderer,
+                           mBackgroundColor2.r, mBackgroundColor2.g,
+                           mBackgroundColor2.b, mBackgroundColor2.a);
+    SDL_RenderFillRect(mRenderer, &rightHalf);
 
     SDL_SetRenderDrawColor(mRenderer, 255, 255, 255, 255);
 
@@ -127,10 +453,13 @@ void Game::GenerateOutput()
     mPaddle2->Draw(mRenderer);
     mBall->Draw(mRenderer);
 
-    // Draw scores
+    // Print scores
     SDL_Color white = {255, 255, 255, 255};
     std::string score1Text = std::to_string(mScore1);
     std::string score2Text = std::to_string(mScore2);
+
+    TTF_SetFontStyle(mFont, TTF_STYLE_BOLD);
+    TTF_SetFontSize(mFont, 48);
 
     SDL_Surface *surf1 = TTF_RenderText_Solid(mFont, score1Text.c_str(), white);
     SDL_Surface *surf2 = TTF_RenderText_Solid(mFont, score2Text.c_str(), white);
@@ -149,14 +478,53 @@ void Game::GenerateOutput()
     SDL_DestroyTexture(tex1);
     SDL_DestroyTexture(tex2);
 
+    // Draw save button at the bottom
+    DrawSaveButton();
+
     SDL_RenderPresent(mRenderer);
+}
+
+void Game::CreateBall(int type)
+{
+    delete mBall;
+    switch (type)
+    {
+    case 0:
+        mBall = new ClassicBall();
+        break;
+    case 1:
+        mBall = new SquareBall();
+        break;
+    case 2:
+        mBall = new TriangleBall();
+        break;
+    default:
+        mBall = new ClassicBall();
+        break;
+    }
 }
 
 void Game::Shutdown()
 {
-    TTF_CloseFont(mFont);
-    SDL_DestroyRenderer(mRenderer);
-    SDL_DestroyWindow(mWindow);
+    if (mFont)
+    {
+        TTF_CloseFont(mFont);
+        mFont = nullptr;
+    }
+
+    if (mRenderer)
+    {
+        SDL_DestroyRenderer(mRenderer);
+        mRenderer = nullptr;
+    }
+
+    if (mWindow)
+    {
+        SDL_DestroyWindow(mWindow);
+        mWindow = nullptr;
+    }
+
+    Mix_CloseAudio();
     TTF_Quit();
     SDL_Quit();
 }

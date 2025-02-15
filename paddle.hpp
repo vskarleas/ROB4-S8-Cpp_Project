@@ -5,18 +5,33 @@
 class Paddle
 {
 public:
-    Paddle(int x, bool isLeft);
-    void Update(float deltaTime);
+    // Constructor
+    Paddle(int x, bool on_the_left_side);
+
+    // Methods
+    void Update(float travel_time);
     void Draw(SDL_Renderer *renderer);
-    float GetPosY() const { return mPosY; }
     SDL_Rect GetRect() const;
 
+    // Giving access to the private variables [getters]
+    bool get_is_left() const { return is_left; }
+    float get_pos_x() const { return pos_x; }
+    float get_pos_y() const { return pos_y; }
+    float get_racket_speed() const { return racket_speed; }
+    float get_racket_height() const { return racket_height; }
+    float get_racket_width() const { return racket_width; }
+
+    // Updating the private variables [setters]
+    void set_pos_x(float x) { pos_x = x; }
+    void set_pos_y(float y) { pos_y = y; }
+    
+
 private:
-    float mPosY;
-    float mPosX;
-    const float mPaddleH;     
-    const float mPaddleW;    
-    const float mPaddleSpeed; 
-    bool mIsLeft;
+    float pos_y;
+    float pos_x;
+    const float racket_height;     
+    const float racket_width;    
+    const float racket_speed; 
+    bool is_left;
 };
 #endif
