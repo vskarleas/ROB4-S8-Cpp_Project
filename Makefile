@@ -8,7 +8,7 @@ DIR = .
 LIBS = .
 INCLUDEOPTS = -I$(DIR) -I/opt/homebrew/include/SDL2
 LDOPTS = -L$(LIBS) -L/opt/homebrew/lib -fsanitize=address -lm -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer -lpthread
-COMPILOPTSplus = -Wall -std=c++17 -g -fsanitize=address -fno-omit-frame-pointer -O2 $(INCLUDEOPTS)
+COMPILOPTSplus = -Wall -std=c++20 -g $(INCLUDEOPTS)
 
 SRCS = main.cpp \
     game.cpp \
@@ -61,7 +61,7 @@ triangle_ball.o: triangle_ball.cpp triangle_ball.hpp ball_base.hpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-menu.o: menu.cpp menu.hpp game_save.hpp
+menu.o: menu.cpp menu.hpp game_save.hpp macros.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
@@ -82,7 +82,7 @@ game_save.o: game_save.cpp game_save.hpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-game.o: game.cpp game.hpp paddle.hpp ball_base.hpp menu.hpp pause_menu.hpp game_save.hpp
+game.o: game.cpp game.hpp paddle.hpp ball_base.hpp menu.hpp pause_menu.hpp game_save.hpp macros.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*

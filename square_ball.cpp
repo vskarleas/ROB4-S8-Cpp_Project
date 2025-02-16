@@ -8,16 +8,19 @@
 
 #include "square_ball.hpp"
 
-void SquareBall::Draw(SDL_Renderer *renderer)
+// Rendering the white square ball
+void SquareBall::render_object(SDL_Renderer *renderer)
 {
     SDL_Rect ball = {
-        static_cast<int>(mPosX - mBallSize / 2.0f),
-        static_cast<int>(mPosY - mBallSize / 2.0f),
-        static_cast<int>(mBallSize),
-        static_cast<int>(mBallSize)
+        static_cast<int>(pos_x - ball_size / 2.0f), // setting the size
+        static_cast<int>(pos_y - ball_size / 2.0f),
+        static_cast<int>(ball_size),
+        static_cast<int>(ball_size)
     };
+
     // Set color to white (R=255, G=255, B=255, A=255)
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    // Fill the rectangle
+
+    // Filling the rectangle
     SDL_RenderFillRect(renderer, &ball);
 }

@@ -12,8 +12,9 @@
 class SquareBall : public BallBase
 {
 public:
+    // Constructor with default size of 20.0f for a square object this time (check render_object method in square_ball.cpp)
     SquareBall() : BallBase(20.0f) {}
-    void Draw(SDL_Renderer *renderer) override;
+    void render_object(SDL_Renderer *renderer) override;
 };
 
 #endif

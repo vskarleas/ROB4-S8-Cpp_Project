@@ -27,9 +27,9 @@ class Game {
 public:
     Game();
     ~Game();
-    bool Initialize();
-    void RunLoop();
-    void Shutdown();
+    bool initialise();
+    void loop();
+    void close();
 
 private:
     void ProcessInput();
@@ -39,7 +39,7 @@ private:
     void UpdateBackground();
     
     SDL_Window* mWindow;
-    SDL_Renderer* mRenderer;
+    SDL_Renderer* renderer;
     bool mIsRunning;
     Uint32 mTicksCount;
     
@@ -49,7 +49,7 @@ private:
     
     int mScore1;
     int mScore2;
-    TTF_Font* mFont;
+    TTF_Font* police;
     Menu* mMenu;
     GameState mGameState;
 

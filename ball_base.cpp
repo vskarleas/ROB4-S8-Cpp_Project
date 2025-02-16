@@ -12,77 +12,83 @@
 #include "ball_base.hpp"
 
 BallBase::BallBase(float size)
-    : mPosX(400.0f), mPosY(300.0f), mVelX(0.0f), mVelY(0.0f), mBallSize(size)
+    : pos_x(400.0f), pos_y(300.0f), vel_x(0.0f), vel_y(0.0f), ball_size(size)
 {
     std::srand(static_cast<unsigned>(std::time(nullptr)));
-    RandomizeDirection();
+    random_direction_angle();
 }
 
-void BallBase::RandomizeDirection()
+// Select a random direction for the ball on a fresh start
+void BallBase::random_direction_angle()
 {
-    // Generate random angle between -45 and 45 degrees
+    // Random angle between -45 and 45 degrees
     float angle = (std::rand() % 90 - 45) * 3.14159f / 180.0f;
     float speed = 300.0f;
 
-    // Randomly choose left or right direction
-    float baseAngle = (std::rand() % 2) ? 0.0f : 3.14159f;
-    angle += baseAngle;
+    // Randomly choose left or right direction with a base angle
+    float direction_angle = (std::rand() % 2) ? 0.0f : 3.14159f;
+    angle += direction_angle;
 
-    mVelX = speed * std::cos(angle);
-    mVelY = speed * std::sin(angle);
+    vel_x = speed * std::cos(angle);
+    vel_y = speed * std::sin(angle);
 }
 
-void BallBase::Update(float deltaTime, Paddle *paddle1, Paddle *paddle2, int &score1, int &score2)
+// Update the ball's position
+void BallBase::update(float travel_time, Paddle *paddle1, Paddle *paddle2, int &score1, int &score2)
 {
-    mPosX += mVelX * deltaTime;
-    mPosY += mVelY * deltaTime;
+    pos_x += vel_x * travel_time; // velocity = position / time => position = velocity * time
+    pos_y += vel_y * travel_time;
 
-    if (mPosY <= 0.0f)
+    // Check if the ball hit the top or bottom of the screen so that we reverse the velocity direction
+    if (pos_y <= 0.0f)
     {
-        mPosY = 0.0f;
-        mVelY *= -1;
+        pos_y = 0.0f;
+        vel_y *= -1;
     }
-    else if (mPosY >= 600.0f)
+    else if (pos_y >= 600.0f)
     {
-        mPosY = 600.0f;
-        mVelY *= -1;
+        pos_y = 600.0f;
+        vel_y *= -1;
     }
 
-    if (mPosX <= 0.0f)
+    // Check if the ball hit the left or right side of the screen and we update the score
+    if (pos_x <= 0.0f)
     {
         score2++;
-        Reset();
+        reset(); // starting the new round 
     }
-    else if (mPosX >= 800.0f)
+    else if (pos_x >= 800.0f)
     {
         score1++;
-        Reset();
+        reset();
     }
 
     SDL_Rect ballRect = {
-        static_cast<int>(mPosX - mBallSize / 2.0f),
-        static_cast<int>(mPosY - mBallSize / 2.0f),
-        static_cast<int>(mBallSize),
-        static_cast<int>(mBallSize)};
+        static_cast<int>(pos_x - ball_size / 2.0f),
+        static_cast<int>(pos_y - ball_size / 2.0f),
+        static_cast<int>(ball_size),
+        static_cast<int>(ball_size)};
 
     SDL_Rect paddle1Rect = paddle1->GetRect();
     SDL_Rect paddle2Rect = paddle2->GetRect();
 
     if (SDL_HasIntersection(&ballRect, &paddle1Rect))
     {
-        mPosX = paddle1Rect.x + paddle1Rect.w + mBallSize / 2.0f;
-        mVelX *= -1.1f;
+        pos_x = paddle1Rect.x + paddle1Rect.w + ball_size / 2.0f;
+        vel_x *= -1.1f;
     }
     else if (SDL_HasIntersection(&ballRect, &paddle2Rect))
     {
-        mPosX = paddle2Rect.x - mBallSize / 2.0f;
-        mVelX *= -1.1f;
+        pos_x = paddle2Rect.x - ball_size / 2.0f;
+        vel_x *= -1.1f;
     }
 }
 
-void BallBase::Reset()
+
+// Reset the ball's position to the center of the screen and randomize its direction
+void BallBase::reset()
 {
-    mPosX = 400.0f;
-    mPosY = 300.0f;
-    RandomizeDirection();
+    pos_x = 400.0f;
+    pos_y = 300.0f;
+    random_direction_angle();
 }

@@ -23,7 +23,7 @@ Paddle::Paddle(int x, bool on_the_left_side):
 }
 
 /* Updating the paddle's position on the screen */
-void Paddle::Update(float travel_time)
+void Paddle::update(float travel_time)
 {
     const Uint8 *state = SDL_GetKeyboardState(NULL);
 
@@ -61,7 +61,7 @@ void Paddle::Update(float travel_time)
 }
 
 /* Drawing the paddle on the screen */
-void Paddle::Draw(SDL_Renderer *renderer)
+void Paddle::render_object(SDL_Renderer *renderer)
 {
     SDL_Rect paddle = {
         static_cast<int>(Paddle::get_pos_x() - Paddle::get_racket_width() / 2.0f),

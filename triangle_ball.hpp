@@ -12,8 +12,9 @@
 class TriangleBall : public BallBase
 {
 public:
-    TriangleBall() : BallBase(25.0f) {}
-    void Draw(SDL_Renderer *renderer) override;
+    // Constructor with default size of 20.0f for a triangle object this time (check render_object method in triangle_ball.cpp)
+    TriangleBall() : BallBase(20.0f) {}
+    void render_object(SDL_Renderer *renderer) override; // overriding the render_object method from BallBase
 };
 
 #endif

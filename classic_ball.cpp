@@ -40,14 +40,14 @@ void DrawFilledCircle(SDL_Renderer* renderer, int32_t centerX, int32_t centerY, 
     }
 }
 
-void ClassicBall::Draw(SDL_Renderer* renderer)
+void ClassicBall::render_object(SDL_Renderer* renderer)
 {
     // Set color to white
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     
     // Draw filled circle
     DrawFilledCircle(renderer, 
-        static_cast<int32_t>(mPosX),
-        static_cast<int32_t>(mPosY),
-        static_cast<int32_t>(mBallSize / 2.0f));
+        static_cast<int32_t>(pos_x),
+        static_cast<int32_t>(pos_y),
+        static_cast<int32_t>(ball_size / 2.0f));
 }

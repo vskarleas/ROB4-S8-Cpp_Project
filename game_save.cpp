@@ -4,99 +4,125 @@
 // # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
 // #############################################################################
 
-#include "game_save.hpp"
 #include <fstream>
 #include <ctime>
 #include <sstream>
 #include <iomanip>
 
-namespace {
-    const unsigned char KEY = 0x83;
-    const char* SAVE_FILENAME = "game_pong-save_849374.txt";
+#include "game_save.hpp"
 
-    unsigned char CodecByte(unsigned char byte) {
-        return byte ^ KEY;
+/* SAVE_FILENAME and KEY are acceesible only in this specific source file
+    where the namespace is included for security purposes*/
+namespace
+{
+    const unsigned char KEY = 0x83;
+    const char *SAVE_FILENAME = "game_pong-save_849374.txt"; // we always save the gam'es state on this prticular file
+
+    /* Encrypting a byte (unsigned 8 bits) - Inspired from https://www.101computing.net/xor-encryption-algorithm/
+       It allows fusing the same operation to retrieve the encrypted data */
+    unsigned char codec_byte(unsigned char byte)
+    {
+        return byte ^ KEY; // XOR operation
     }
 
-    void CodecFloat(float& value) {
-        unsigned char* bytes = reinterpret_cast<unsigned char*>(&value);
-        for (size_t i = 0; i < sizeof(float); ++i) {
-            bytes[i] = CodecByte(bytes[i]);
+    void codec_float(float &value)
+    {
+        unsigned char *bytes = reinterpret_cast<unsigned char *>(&value); // casting to return a float value to byte representation (interprentation)
+        for (size_t i = 0; i < sizeof(float); ++i)
+        {
+            bytes[i] = codec_byte(bytes[i]);
         }
     }
 
-    void CodecInt(int& value) {
-        unsigned char* bytes = reinterpret_cast<unsigned char*>(&value);
-        for (size_t i = 0; i < sizeof(int); ++i) {
-            bytes[i] = CodecByte(bytes[i]);
+    void codec_int(int &value) // same approche as seen for float values above
+    {
+        unsigned char *bytes = reinterpret_cast<unsigned char *>(&value);
+        for (size_t i = 0; i < sizeof(int); ++i)
+        {
+            bytes[i] = codec_byte(bytes[i]);
         }
     }
 }
 
-void GameSave::DeleteSave() {
+/* Deleting the save file */
+void GameSave::delete_save()
+{
     std::remove(SAVE_FILENAME);
 }
 
-bool GameSave::SaveGame(const SaveState& state, const std::string& /*filename*/) {
+/* Creates or rewrites a save file with encrypted informations using the XOR algorithm */
+bool GameSave::save_game(const SaveState &state, const std::string & /*filename*/)
+{
     std::ofstream file(SAVE_FILENAME, std::ios::binary);
-    
-    if (!file) {
+
+    if (!file)
+    {
         return false;
     }
 
-    // Create a copy of the state to encode
-    SaveState encodedState = state;
+    // Create a copy of the state to encode. The state can be
+    SaveState encode_state = state;
 
-    // Encode all values
-    CodecInt(encodedState.score1);
-    CodecInt(encodedState.score2);
-    CodecFloat(encodedState.paddle1Y);
-    CodecFloat(encodedState.paddle2Y);
-    CodecFloat(encodedState.ballX);
-    CodecFloat(encodedState.ballY);
-    CodecFloat(encodedState.ballVelX);
-    CodecFloat(encodedState.ballVelY);
-    CodecInt(encodedState.ballType);
+    // Encrypting the ints and floats of the SaveState structure
+    codec_int(encode_state.score1);
+    codec_int(encode_state.score2);
+    codec_float(encode_state.paddle1_y);
+    codec_float(encode_state.paddle2_y);
+    codec_float(encode_state.ball_x);
+    codec_float(encode_state.ball_y);
+    codec_float(encode_state.ball_vel_x);
+    codec_float(encode_state.ball_vel_y);
+    codec_int(encode_state.ball_type);
 
-    // Write encoded state to file
-    file.write(reinterpret_cast<const char*>(&encodedState), sizeof(SaveState));
-    
-    return file.good();
+    // Creating the file
+    file.write(reinterpret_cast<const char *>(&encode_state), sizeof(SaveState));
+
+    return file.good(); // returns true if write operation was successful
 }
 
-bool GameSave::LoadGame(SaveState& state, const std::string& /*filename*/) {
-    std::ifstream file(SAVE_FILENAME, std::ios::binary);
-    
-    if (!file) {
+/*  */
+bool GameSave::load_game(SaveState &state, const std::string &)
+{
+    std::ifstream file(SAVE_FILENAME, std::ios::binary); // opening the file in binary mode
+
+    // TEST 1 (file existence)
+    if (!file) // if the file does not exist returns false
+    {
         return false;
     }
+    else
+    {
+        // Read encrypted content
+        SaveState encode_state;
+        file.read(reinterpret_cast<char *>(&encode_state), sizeof(SaveState));
 
-    // Read encoded state from file
-    SaveState encodedState;
-    file.read(reinterpret_cast<char*>(&encodedState), sizeof(SaveState));
-    
-    if (!file.good()) {
-        return false;
+        // TEST 2 (file reading rights)
+        if (!file.good())
+        {
+            return false; // if the file is not readable returns false
+        }
+
+        // Decode all values
+        codec_int(encode_state.score1);
+        codec_int(encode_state.score2);
+        codec_float(encode_state.paddle1_y);
+        codec_float(encode_state.paddle2_y);
+        codec_float(encode_state.ball_x);
+        codec_float(encode_state.ball_y);
+        codec_float(encode_state.ball_vel_x);
+        codec_float(encode_state.ball_vel_y);
+        codec_int(encode_state.ball_type);
+
+        
+        state = encode_state; // Copy decoded state back
+
+        return true;
     }
-
-    // Decode all values
-    CodecInt(encodedState.score1);
-    CodecInt(encodedState.score2);
-    CodecFloat(encodedState.paddle1Y);
-    CodecFloat(encodedState.paddle2Y);
-    CodecFloat(encodedState.ballX);
-    CodecFloat(encodedState.ballY);
-    CodecFloat(encodedState.ballVelX);
-    CodecFloat(encodedState.ballVelY);
-    CodecInt(encodedState.ballType);
-
-    // Copy decoded state back
-    state = encodedState;
-    
-    return true;
 }
 
-bool GameSave::SaveExists() {
+/* Check if a save file exists or not */
+bool GameSave::save_exists()
+{
     std::ifstream file(SAVE_FILENAME);
     return file.good();
 }

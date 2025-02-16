@@ -7,26 +7,26 @@
 #include "triangle_ball.hpp"
 #include <algorithm>
 
-void TriangleBall::Draw(SDL_Renderer *renderer)
+void TriangleBall::render_object(SDL_Renderer *renderer)
 {
-    // Define the three points of the triangle
+    // Three corners definition
     SDL_Point points[3] = {
-        {static_cast<int>(mPosX), static_cast<int>(mPosY - mBallSize / 2)},                  // Top
-        {static_cast<int>(mPosX - mBallSize / 2), static_cast<int>(mPosY + mBallSize / 2)}, // Bottom left
-        {static_cast<int>(mPosX + mBallSize / 2), static_cast<int>(mPosY + mBallSize / 2)}  // Bottom right
+        {static_cast<int>(pos_x), static_cast<int>(pos_y - ball_size / 2)},                  // Top
+        {static_cast<int>(pos_x - ball_size / 2), static_cast<int>(pos_y + ball_size / 2)}, // Bottom left
+        {static_cast<int>(pos_x + ball_size / 2), static_cast<int>(pos_y + ball_size / 2)}  // Bottom right
     };
 
-    // Set color to white
+    // White color
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
-    // Fill the triangle by drawing horizontal lines
-    int minY = points[0].y;  // Top point
-    int maxY = points[1].y;  // Bottom points have same y
+    // Fill the triangle shape
+    int minimum_y = points[0].y;  // Top point
+    int maximum_y = points[1].y;  // Bottom points have same y
 
-    for (int y = minY; y <= maxY; y++)
+    for (int y = minimum_y; y <= maximum_y; y++)
     {
-        // Calculate x coordinates where this horizontal line intersects the triangle edges
-        float alpha = static_cast<float>(y - minY) / (maxY - minY);
+        // Calculate x coordinates where this horizontal line collides with the triangle lines
+        float alpha = static_cast<float>(y - minimum_y) / (maximum_y - minimum_y);
         
         int x1 = static_cast<int>(points[0].x + alpha * (points[1].x - points[0].x));
         int x2 = static_cast<int>(points[0].x + alpha * (points[2].x - points[0].x));

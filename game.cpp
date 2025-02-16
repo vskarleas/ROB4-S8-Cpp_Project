@@ -10,11 +10,12 @@
 #include "triangle_ball.hpp"
 #include "game_save.hpp"
 #include "menu.hpp"
+#include "macros.hpp"
 
 #include <string>
 
 Game::Game()
-    : mWindow(nullptr), mRenderer(nullptr), mIsRunning(true), mTicksCount(0), mPaddle1(nullptr), mPaddle2(nullptr), mBall(nullptr), mScore1(0), mScore2(0), mFont(nullptr), mMenu(nullptr), mGameState(GameState::Menu), mPauseMenu(nullptr) // Initialize pause menu pointer
+    : mWindow(nullptr), renderer(nullptr), mIsRunning(true), mTicksCount(0), mPaddle1(nullptr), mPaddle2(nullptr), mBall(nullptr), mScore1(0), mScore2(0), police(nullptr), mMenu(nullptr), mGameState(GameState::Menu), mPauseMenu(nullptr) // Initialize pause menu pointer
 {
     mBackgroundColor1.r = 0;
     mBackgroundColor1.g = 0;
@@ -85,17 +86,17 @@ Game::~Game()
     }
 
     // Clean up font
-    if (mFont)
+    if (police)
     {
-        TTF_CloseFont(mFont);
-        mFont = nullptr;
+        TTF_CloseFont(police);
+        police = nullptr;
     }
 
     // Clean up SDL resources
-    if (mRenderer)
+    if (renderer)
     {
-        SDL_DestroyRenderer(mRenderer);
-        mRenderer = nullptr;
+        SDL_DestroyRenderer(renderer);
+        renderer = nullptr;
     }
     if (mWindow)
     {
@@ -113,14 +114,14 @@ bool Game::DrawSaveButton()
 {
     // Draw save button with white text
     SDL_Color white = {255, 255, 255, 255};
-    TTF_SetFontStyle(mFont, TTF_STYLE_NORMAL);
-    TTF_SetFontSize(mFont, 24);
+    TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
+    TTF_SetFontSize(police, 24);
 
-    SDL_Surface *saveText = TTF_RenderText_Solid(mFont, "Save", white);
+    SDL_Surface *saveText = TTF_RenderText_Solid(police, "Save", white);
     if (!saveText)
         return false;
 
-    SDL_Texture *saveTexture = SDL_CreateTextureFromSurface(mRenderer, saveText);
+    SDL_Texture *saveTexture = SDL_CreateTextureFromSurface(renderer, saveText);
     if (!saveTexture)
     {
         SDL_FreeSurface(saveText);
@@ -133,14 +134,14 @@ bool Game::DrawSaveButton()
         saveText->w,
         saveText->h};
 
-    SDL_RenderCopy(mRenderer, saveTexture, nullptr, &textRect);
+    SDL_RenderCopy(renderer, saveTexture, nullptr, &textRect);
 
     SDL_FreeSurface(saveText);
     SDL_DestroyTexture(saveTexture);
     return true;
 }
 
-bool Game::Initialize()
+bool Game::initialise()
 {
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
     {
@@ -158,11 +159,11 @@ bool Game::Initialize()
     }
 
     mWindow = SDL_CreateWindow(
-        "Multiplayer Pong",
+        GAME_NAME,
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        800,
-        600,
+        WINDOW_WIDTH,
+        WINDOW_HEIGHT,
         0);
 
     if (!mWindow)
@@ -170,24 +171,24 @@ bool Game::Initialize()
         return false;
     }
 
-    mRenderer = SDL_CreateRenderer(
+    renderer = SDL_CreateRenderer(
         mWindow,
         -1,
         SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
-    if (!mRenderer)
+    if (!renderer)
     {
         return false;
     }
 
-    mFont = TTF_OpenFont("assets/Helvetica.ttc", 24);
-    if (!mFont)
+    police = TTF_OpenFont("assets/Helvetica.ttc", 24);
+    if (!police)
     {
         SDL_Log("Failed to load font: %s", TTF_GetError());
         return false;
     }
 
-    mMenu = new Menu(mRenderer, mFont);
+    mMenu = new Menu(renderer, police);
     mPaddle1 = new Paddle(30, true);
     mPaddle2 = new Paddle(770, false);
     CreateBall(0); // Start with classic ball
@@ -213,12 +214,12 @@ bool Game::Initialize()
         Mix_PlayMusic(mBackgroundMusic, -1); // -1 means loop indefinitely
     }
 
-    mPauseMenu = new PauseMenu(mRenderer, mFont);
+    mPauseMenu = new PauseMenu(renderer, police);
 
     return true;
 }
 
-void Game::RunLoop()
+void Game::loop()
 {
     while (mIsRunning)
     {
@@ -242,40 +243,40 @@ void Game::ProcessInput()
         case SDL_MOUSEBUTTONDOWN:
             if (mGameState == GameState::Menu)
             {
-                if (mMenu->HandleEvent(event))
+                if (mMenu->action_handler(event))
                 {
-                    if (mMenu->IsStarted())
+                    if (mMenu->get_started())
                     {
-                        if (mMenu->IsContinueGame())
+                        if (mMenu->get_continue_game())
                         {
                             // Load saved game state
                             SaveState savedState;
-                            if (GameSave::LoadGame(savedState, ""))
+                            if (GameSave::load_game(savedState, ""))
                             {
                                 mScore1 = savedState.score1;
                                 mScore2 = savedState.score2;
-                                mPaddle1->set_pos_y(savedState.paddle1Y);
-                                mPaddle2->set_pos_y(savedState.paddle2Y);
-                                CreateBall(savedState.ballType);
-                                mBall->SetPosition(savedState.ballX, savedState.ballY);
-                                mBall->SetVelocity(savedState.ballVelX, savedState.ballVelY);
+                                mPaddle1->set_pos_y(savedState.paddle1_y);
+                                mPaddle2->set_pos_y(savedState.paddle2_y);
+                                CreateBall(savedState.ball_type);
+                                mBall->set_position(savedState.ball_x, savedState.ball_y);
+                                mBall->set_velocity(savedState.ball_vel_x, savedState.ball_vel_y);
                                 UpdateBackground();
                                 // Delete save file after loading
-                                GameSave::DeleteSave();
+                                GameSave::delete_save();
                                 mGameState = GameState::Playing;
                             }
                         }
                         else
                         {
                             // New game - delete any existing save
-                            GameSave::DeleteSave();
-                            CreateBall(mMenu->GetSelectedBallType());
+                            GameSave::delete_save();
+                            CreateBall(mMenu->get_selected_ball());
                             mScore1 = mScore2 = 0;
                             UpdateBackground();
                             mGameState = GameState::Playing;
                         }
                     }
-                    else if (mMenu->ShouldExit())
+                    else if (mMenu->get_exit_game())
                     {
                         mIsRunning = false;
                     }
@@ -289,19 +290,19 @@ void Game::ProcessInput()
                     SaveState saveState;
                     saveState.score1 = mScore1;
                     saveState.score2 = mScore2;
-                    saveState.paddle1Y = mPaddle1->get_pos_y();
-                    saveState.paddle2Y = mPaddle2->get_pos_y();
-                    saveState.ballX = mBall->GetPosX();
-                    saveState.ballY = mBall->GetPosY();
-                    saveState.ballVelX = mBall->GetVelX();
-                    saveState.ballVelY = mBall->GetVelY();
-                    saveState.ballType = mMenu->GetSelectedBallType();
+                    saveState.paddle1_y = mPaddle1->get_pos_y();
+                    saveState.paddle2_y = mPaddle2->get_pos_y();
+                    saveState.ball_x = mBall->get_pos_x();
+                    saveState.ball_y = mBall->get_pos_y();
+                    saveState.ball_vel_x = mBall->get_vel_x();
+                    saveState.ball_vel_y = mBall->get_vel_y();
+                    saveState.ball_type = mMenu->get_selected_ball();
             
-                    if (GameSave::SaveGame(saveState, ""))
+                    if (GameSave::save_game(saveState, ""))
                     {
                         SDL_Log("Game saved successfully");
                         mGameState = GameState::Menu;
-                        mMenu->UpdateContinueButton(); // Add this method to Menu class
+                        mMenu->set_saved_file_exists(); // Add this method to Menu class
                     }
                 }
             }
@@ -333,16 +334,16 @@ void Game::UpdateGame()
     while (!SDL_TICKS_PASSED(SDL_GetTicks(), mTicksCount + 16))
         ;
 
-    float deltaTime = (SDL_GetTicks() - mTicksCount) / 1000.0f;
-    if (deltaTime > 0.05f)
+    float travel_time = (SDL_GetTicks() - mTicksCount) / 1000.0f;
+    if (travel_time > 0.05f)
     {
-        deltaTime = 0.05f;
+        travel_time = 0.05f;
     }
     mTicksCount = SDL_GetTicks();
 
-    mPaddle1->Update(deltaTime);
-    mPaddle2->Update(deltaTime);
-    mBall->Update(deltaTime, mPaddle1, mPaddle2, mScore1, mScore2);
+    mPaddle1->update(travel_time);
+    mPaddle2->update(travel_time);
+    mBall->update(travel_time, mPaddle1, mPaddle2, mScore1, mScore2);
 
     // Check for victory condition
     if (mScore1 >= 10 || mScore2 >= 10)
@@ -422,13 +423,13 @@ void Game::GenerateOutput()
 {
     if (mGameState == GameState::Paused)
     {
-        mPauseMenu->Draw();
+        mPauseMenu->render_object();
         return;
     }
 
     if (mGameState == GameState::Menu)
     {
-        mMenu->Draw();
+        mMenu->render_object();
         return;
     }
 
@@ -436,48 +437,48 @@ void Game::GenerateOutput()
     SDL_Rect leftHalf = {0, 0, 400, 600};
     SDL_Rect rightHalf = {400, 0, 400, 600};
 
-    SDL_SetRenderDrawColor(mRenderer,
+    SDL_SetRenderDrawColor(renderer,
                            mBackgroundColor1.r, mBackgroundColor1.g,
                            mBackgroundColor1.b, mBackgroundColor1.a);
-    SDL_RenderFillRect(mRenderer, &leftHalf);
+    SDL_RenderFillRect(renderer, &leftHalf);
 
-    SDL_SetRenderDrawColor(mRenderer,
+    SDL_SetRenderDrawColor(renderer,
                            mBackgroundColor2.r, mBackgroundColor2.g,
                            mBackgroundColor2.b, mBackgroundColor2.a);
-    SDL_RenderFillRect(mRenderer, &rightHalf);
+    SDL_RenderFillRect(renderer, &rightHalf);
 
-    SDL_SetRenderDrawColor(mRenderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
     // Draw middle line
     for (int y = 0; y < 600; y += 10)
     {
         SDL_Rect dash = {398, y, 4, 5};
-        SDL_RenderFillRect(mRenderer, &dash);
+        SDL_RenderFillRect(renderer, &dash);
     }
 
-    mPaddle1->Draw(mRenderer);
-    mPaddle2->Draw(mRenderer);
-    mBall->Draw(mRenderer);
+    mPaddle1->render_object(renderer);
+    mPaddle2->render_object(renderer);
+    mBall->render_object(renderer);
 
     // Print scores
     SDL_Color white = {255, 255, 255, 255};
     std::string score1Text = std::to_string(mScore1);
     std::string score2Text = std::to_string(mScore2);
 
-    TTF_SetFontStyle(mFont, TTF_STYLE_BOLD);
-    TTF_SetFontSize(mFont, 48);
+    TTF_SetFontStyle(police, TTF_STYLE_BOLD);
+    TTF_SetFontSize(police, 48);
 
-    SDL_Surface *surf1 = TTF_RenderText_Solid(mFont, score1Text.c_str(), white);
-    SDL_Surface *surf2 = TTF_RenderText_Solid(mFont, score2Text.c_str(), white);
+    SDL_Surface *surf1 = TTF_RenderText_Solid(police, score1Text.c_str(), white);
+    SDL_Surface *surf2 = TTF_RenderText_Solid(police, score2Text.c_str(), white);
 
-    SDL_Texture *tex1 = SDL_CreateTextureFromSurface(mRenderer, surf1);
-    SDL_Texture *tex2 = SDL_CreateTextureFromSurface(mRenderer, surf2);
+    SDL_Texture *tex1 = SDL_CreateTextureFromSurface(renderer, surf1);
+    SDL_Texture *tex2 = SDL_CreateTextureFromSurface(renderer, surf2);
 
     SDL_Rect score1Rect = {200, 20, surf1->w, surf1->h};
     SDL_Rect score2Rect = {600, 20, surf2->w, surf2->h};
 
-    SDL_RenderCopy(mRenderer, tex1, nullptr, &score1Rect);
-    SDL_RenderCopy(mRenderer, tex2, nullptr, &score2Rect);
+    SDL_RenderCopy(renderer, tex1, nullptr, &score1Rect);
+    SDL_RenderCopy(renderer, tex2, nullptr, &score2Rect);
 
     SDL_FreeSurface(surf1);
     SDL_FreeSurface(surf2);
@@ -487,7 +488,7 @@ void Game::GenerateOutput()
     // Draw save button at the bottom
     DrawSaveButton();
 
-    SDL_RenderPresent(mRenderer);
+    SDL_RenderPresent(renderer);
 }
 
 void Game::CreateBall(int type)
@@ -510,18 +511,18 @@ void Game::CreateBall(int type)
     }
 }
 
-void Game::Shutdown()
+void Game::close()
 {
-    if (mFont)
+    if (police)
     {
-        TTF_CloseFont(mFont);
-        mFont = nullptr;
+        TTF_CloseFont(police);
+        police = nullptr;
     }
 
-    if (mRenderer)
+    if (renderer)
     {
-        SDL_DestroyRenderer(mRenderer);
-        mRenderer = nullptr;
+        SDL_DestroyRenderer(renderer);
+        renderer = nullptr;
     }
 
     if (mWindow)

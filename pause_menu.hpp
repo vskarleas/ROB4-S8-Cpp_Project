@@ -15,25 +15,25 @@ public:
     PauseMenu(SDL_Renderer* renderer, TTF_Font* font);
     ~PauseMenu();
     
-    void Draw();
-    bool HandleEvent(const SDL_Event& event);
+    void render_object();
+    bool action_handler(const SDL_Event& event);
     bool ShouldResume() const { return mResume; }
     bool ShouldSave() const { return mSave; }
-    bool ShouldExit() const { return mExit; }
+    bool get_exit_game() const { return mExit; }
 
 private:
-    void DrawButton(const char* text, const SDL_Rect& button, const SDL_Color& color);
+    void render_button(const char* text, const SDL_Rect& button, const SDL_Color& color);
 
-    SDL_Renderer* mRenderer;
-    TTF_Font* mFont;
+    SDL_Renderer* renderer;
+    TTF_Font* police;
     bool mResume;
     bool mSave;
     bool mExit;
-    int mSelectedButton;
+    int selected_button;
 
     SDL_Rect mResumeButton;
     SDL_Rect mSaveButton;
-    SDL_Rect mExitButton;
+    SDL_Rect button_exit;
 };
 
 #endif

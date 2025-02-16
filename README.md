@@ -1,5 +1,16 @@
 # Projet Pong Multijoueur C++
 
+###### Auters: Dounia Bakalem, Yanis Sadoun, Vasileios Filippos Skarleas
+
+## TO-DO list
+
+* [ ] Find a way to prpose an initial SDL window that show cases the instructionsof the game. Then when teh user taps on a button "Let's go", then this SDL windows closes and a new one Appears where a user chooses between the modes of the game that exist. The "Simple" one which is the current version of the game, the "Storytime" one where is the game without the saving functionality, but with the user class and the hisgh score board, and the third one which is "Hardcore" which is the same with the "Storytime" but now there is a single user that plays against an AI on the opposite Paddle. There is also the exit game button that terminates the game. When a mode is slected this SDL window closes and we are presented with the menu window of the different game modes. (definitely there are modification son the main.cpp for this functionaity to take place)
+* [ ] Create a user class and use this to attribute the scores
+* [ ] Add a lifes functionality. Every user on the game starts with 6 lifes. The first one that runs out lifes in a round loses
+* [ ] Remove the end of game logic when score is greater than 10 for a user. Instead use the logic of the two previous points (not actually remove, but instead develop the new game mode like game_storytime.cpp). This new mode comes with its new menu_storytime.cpp that doesn't include the continue game functionality (as expected) but there is button that allows to see the high scores table (it opens on a new SDL window). The exit game button is transfored to exit mode button allowing to go back to the SDL window where we can choose the game mode.
+* [ ] Have a high scores table where if any time in the future a user has a score greater than the last maximum one, then he is added on top of the Leaderboard. The leaderboard is a file that is always present on the directory of the game and it is also encrypted.
+* [ ] Add the AI player
+
 ## Guide de Démarrage
 
 ### Prérequis
@@ -192,16 +203,16 @@ class AIPlayer {
 public:
     float DecideMovement(const Ball* ball, const Paddle* paddle) {
         // Prédiction de la position future de la balle
-        float predictedY = PredictBallY(ball);
-        float currentY = paddle->GetPosY();
-      
+        float predictedY = Predictball_y(ball);
+        float currentY = paddle->get_pos_y();
+    
         // Décision de mouvement avec une marge d'erreur pour simulation humaine
         return (predictedY > currentY + ERROR_MARGIN) ? 1.0f : 
                (predictedY < currentY - ERROR_MARGIN) ? -1.0f : 0.0f;
     }
 private:
     const float ERROR_MARGIN = 10.0f;
-    float PredictBallY(const Ball* ball);
+    float Predictball_y(const Ball* ball);
 };
 ```
 
@@ -226,7 +237,7 @@ Voici queques implementations pour ceux cas spécifiques:
 3. Callbacks du Menu
    mMenu->SetStartCallback(this {
    mGameState = GameState::Playing;
-   ResetGame();
+   resetGame();
    });
 
 Les lambda functions permettent une syntaxe plus claire pour les callbacks et une maintenance simplifiée. En plus, l'utilisation des lambda functions est particulièrement pertinente pour le mode IA où elles permettent de définir différentes stratégies de jeu de manière concise et modulaire.

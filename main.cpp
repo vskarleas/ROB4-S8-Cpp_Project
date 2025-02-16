@@ -6,16 +6,16 @@
 
 #include "game.hpp"
 
+/* It creates a game object and runs the game's loop  */
 int main(int argc, char *argv[])
 {
     Game game;
-    bool success = game.Initialize();
 
-    if (success)
+    if (game.initialise())
     {
-        game.RunLoop();
+        game.loop();
     }
 
-    game.Shutdown();
+    game.close();
     return 0;
 }

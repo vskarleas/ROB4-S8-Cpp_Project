@@ -15,8 +15,8 @@ public:
     Paddle(int x, bool on_the_left_side);
 
     // Methods
-    void Update(float travel_time);
-    void Draw(SDL_Renderer *renderer);
+    void update(float travel_time);
+    void render_object(SDL_Renderer *renderer);
     SDL_Rect GetRect() const;
 
     // Giving access to the private variables [getters]

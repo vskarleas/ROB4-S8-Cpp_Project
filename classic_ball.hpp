@@ -9,11 +9,15 @@
 
 #include "ball_base.hpp"
 
+
 class ClassicBall : public BallBase
 {
 public:
+    // Constructor with default size of 15.0f for a circle object (specified)
     ClassicBall() : BallBase(15.0f) {}
-    void Draw(SDL_Renderer *renderer) override;
+
+    // Rendering the square ball
+    void render_object(SDL_Renderer *renderer) override;
 };
 
 #endif
