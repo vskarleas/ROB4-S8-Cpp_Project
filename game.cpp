@@ -262,18 +262,20 @@ void Game::ProcessInput()
                                 mBall->set_velocity(savedState.ball_vel_x, savedState.ball_vel_y);
                                 UpdateBackground();
 
-                                GameSave::delete_save();
+                                // GameSave::delete_save();
 
                                 mGameState = GameState::Playing;
                             }
                         }
                         else
                         {
+                            GameSave::delete_save(); // delete only in the case that we start a new game
                             CreateBall(mMenu->get_selected_ball());
                             mScore1 = 0;
                             mScore2 = 0;
                             UpdateBackground();
                             mGameState = GameState::Playing;
+                            SDL_Log("Game saved successfully");
                         }
                     }
                     else if (mMenu->get_exit_game())
@@ -322,6 +324,7 @@ void Game::ProcessInput()
                             SDL_Log("Game saved successfully");
                             mMenu->set_saved_file_exists();
                             mGameState = GameState::Menu;
+                            mMenu->reset_selection(); // essential otherwise we are stuck on the inner menu
                         }
                         else
                         {
@@ -332,6 +335,7 @@ void Game::ProcessInput()
                     else if (mPauseMenu->get_exit_game())
                     {
                         mGameState = GameState::Menu;
+                        mMenu->reset_selection();
                         // mIsRunning = false;
                     }
                     else
