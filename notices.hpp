@@ -1,5 +1,5 @@
 // #############################################################################
-// # File notice_menu.hpp
+// # File notices.hpp
 // # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
 // # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
 // #############################################################################
@@ -20,7 +20,7 @@ private:
 
     bool notice_displayed;
 
-    void render_button(const char* text, const SDL_Rect& button, const SDL_Color& color);
+    int notice_id;
 
 public:
 

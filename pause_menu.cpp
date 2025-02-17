@@ -5,6 +5,7 @@
 // #############################################################################
 
 #include "pause_menu.hpp"
+#include "render.hpp"
 
 PauseMenu::PauseMenu(SDL_Renderer *renderer, TTF_Font *font)
     : renderer(renderer), police(font), mResume(false), mSave(false), mExit(false), selected_button(-1)
@@ -33,11 +34,11 @@ void PauseMenu::render_object()
     SDL_Color text_color_selected = {0, 255, 255, 255};
 
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    render_button("Resume", mResumeButton, selected_button == 0 ? text_color_selected : normalColor);
+    Utilities::render_button(renderer, police,"Resume", mResumeButton, selected_button == 0 ? text_color_selected : normalColor);
     TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
 
-    render_button("Save", mSaveButton, selected_button == 1 ? text_color_selected : normalColor);
-    render_button("Back to menu", button_exit, selected_button == 2 ? text_color_selected : normalColor);
+    Utilities::render_button(renderer, police,"Save", mSaveButton, selected_button == 1 ? text_color_selected : normalColor);
+    Utilities::render_button(renderer, police,"Back to menu", button_exit, selected_button == 2 ? text_color_selected : normalColor);
 
     SDL_RenderPresent(renderer);
 }
@@ -82,29 +83,4 @@ bool PauseMenu::action_handler(const SDL_Event &event)
         }
     }
     return false;
-}
-
-void PauseMenu::render_button(const char *text, const SDL_Rect &button, const SDL_Color &color)
-{
-    // Draw button background
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderFillRect(renderer, &button);
-
-    // Render text
-    SDL_Surface *text_surface = TTF_RenderText_Solid(police, text, color);
-    if (text_surface)
-    {
-        SDL_Texture *text_texture = SDL_CreateTextureFromSurface(renderer, text_surface);
-        if (text_texture)
-        {
-            SDL_Rect textRect = {
-                button.x + (button.w - text_surface->w) / 2,
-                button.y + (button.h - text_surface->h) / 2,
-                text_surface->w,
-                text_surface->h};
-            SDL_RenderCopy(renderer, text_texture, nullptr, &textRect);
-            SDL_DestroyTexture(text_texture);
-        }
-        SDL_FreeSurface(text_surface);
-    }
 }

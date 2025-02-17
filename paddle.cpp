@@ -8,58 +8,108 @@
 #include "macros.hpp"
 
 /* Constructing the Racket object for the game */
-Paddle::Paddle(int x, bool on_the_left_side): 
-    // Paddle's position on the screen initially
-    pos_y(static_cast<float>(WINDOW_HEIGHT/2)), 
-    pos_x(static_cast<float>(x)),
+Paddle::Paddle(int x, bool on_the_left_side) : // Paddle's position on the screen initially
+                                               pos_y(static_cast<float>(WINDOW_HEIGHT / 2)),
+                                               pos_x(static_cast<float>(x)),
 
-    // Paddle's caracteristics that compose the object height x width
-    racket_height(100.0f), 
-    racket_width(15.0f),
+                                               // Paddle's caracteristics that compose the object height x width
+                                               racket_height(100.0f),
+                                               racket_width(15.0f),
 
-    // Paddle's speed for mouvement
-    racket_speed(300.0f), 
-    is_left(on_the_left_side) 
+                                               // Paddle's speed for mouvement
+                                               racket_speed(300.0f),
+                                               is_left(on_the_left_side)
 {
 }
 
 /* Updating the paddle's position on the screen */
+// void Paddle::update(float travel_time)
+// {
+//     const Uint8 *state = SDL_GetKeyboardState(NULL);
+
+//     if (Paddle::get_is_left())
+//     {
+//         if (state[SDL_SCANCODE_W])
+//         {
+//             Paddle::set_pos_y(Paddle::get_pos_y() - Paddle::get_racket_speed() * travel_time);
+//         }
+//         if (state[SDL_SCANCODE_S])
+//         {
+//             Paddle::set_pos_y(Paddle::get_pos_y() + Paddle::get_racket_speed() * travel_time);
+//         }
+//     }
+//     else
+//     {
+//         if (state[SDL_SCANCODE_UP])
+//         {
+//             Paddle::set_pos_y(Paddle::get_pos_y() - Paddle::get_racket_speed() * travel_time);
+//         }
+//         if (state[SDL_SCANCODE_DOWN])
+//         {
+//             Paddle::set_pos_y(Paddle::get_pos_y() + Paddle::get_racket_speed() * travel_time);
+//         }
+//     }
+
+//     if (Paddle::get_pos_y() < Paddle::get_racket_height() / 2.0f)
+//     {
+//         Paddle::set_pos_y(Paddle::get_racket_height() / 2.0f);
+//     }
+//     else if (Paddle::get_pos_y() > 600.0f - Paddle::get_racket_height() / 2.0f)
+//     {
+//         Paddle::set_pos_y(600.0f - Paddle::get_racket_height() / 2.0f);
+//     }
+// }
 void Paddle::update(float travel_time)
 {
     const Uint8 *state = SDL_GetKeyboardState(NULL);
 
+    // Lambda for moving the paddle
+    auto move_paddle = [this](float delta, float time)
+    {
+        this->set_pos_y(this->get_pos_y() + delta * this->get_racket_speed() * time);
+    };
+
+    // Checking and adjusting paddle boundaries
+    auto adjust_boundaries = [this]()
+    {
+        if (this->get_pos_y() < this->get_racket_height() / 2.0f)
+        {
+            this->set_pos_y(this->get_racket_height() / 2.0f);
+        }
+        else if (this->get_pos_y() > 600.0f - this->get_racket_height() / 2.0f)
+        {
+            this->set_pos_y(600.0f - this->get_racket_height() / 2.0f);
+        }
+    };
+
+    // The mouvement
     if (Paddle::get_is_left())
     {
         if (state[SDL_SCANCODE_W])
         {
-            Paddle::set_pos_y(Paddle::get_pos_y() - Paddle::get_racket_speed() * travel_time);
+            move_paddle(-1.0f, travel_time);
         }
         if (state[SDL_SCANCODE_S])
         {
-            Paddle::set_pos_y(Paddle::get_pos_y() + Paddle::get_racket_speed() * travel_time);
+            move_paddle(1.0f, travel_time);
         }
     }
     else
     {
         if (state[SDL_SCANCODE_UP])
         {
-            Paddle::set_pos_y(Paddle::get_pos_y() - Paddle::get_racket_speed() * travel_time);
+            move_paddle(-1.0f, travel_time);
         }
         if (state[SDL_SCANCODE_DOWN])
         {
-            Paddle::set_pos_y(Paddle::get_pos_y() + Paddle::get_racket_speed() * travel_time);
+            move_paddle(1.0f, travel_time);
         }
     }
 
-    if (Paddle::get_pos_y() < Paddle::get_racket_height() / 2.0f)
-    {
-        Paddle::set_pos_y(Paddle::get_racket_height() / 2.0f);
-    }
-    else if (Paddle::get_pos_y() > 600.0f - Paddle::get_racket_height() / 2.0f)
-    {
-        Paddle::set_pos_y(600.0f - Paddle::get_racket_height() / 2.0f);
-    }
+    // Adjust paddle position if it's out of bounds
+    adjust_boundaries();
 }
+/* The lambdas make the code more modular and easier to modify if you need to change the movement behavior or boundary conditions later. */
 
 /* Drawing the paddle on the screen */
 void Paddle::render_object(SDL_Renderer *renderer)

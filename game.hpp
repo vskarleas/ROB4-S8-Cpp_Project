@@ -18,7 +18,7 @@
 #include "middle_menu.hpp"
 
 
-#include "notice_menu.hpp"
+#include "notices.hpp"
 
 enum class GameState {
     Notice_Menu,

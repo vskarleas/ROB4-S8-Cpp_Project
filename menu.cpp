@@ -9,6 +9,7 @@
 #include "menu.hpp"
 #include "game_save.hpp"
 #include "macros.hpp"
+#include "render.hpp"
 
 Menu::Menu(SDL_Renderer *_renderer, TTF_Font *font) : /* Follwoing the order in the class declaration*/
     start_new_game(false),
@@ -24,28 +25,6 @@ Menu::Menu(SDL_Renderer *_renderer, TTF_Font *font) : /* Follwoing the order in 
     button_start = SDL_Rect{WINDOW_HEIGHT / 2, 100, 200, 50};
     button_continue = SDL_Rect{WINDOW_HEIGHT / 2, 180, 200, 50};
     button_exit = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 300, 200, 50}; // Keep space before exit
-}
-
-/* Rendering an SDL rectangle which plays the role of a button */
-void Menu::render_button(const char *text, const SDL_Rect &button, const SDL_Color &color)
-{
-
-    SDL_Surface *text_surface = TTF_RenderText_Solid(police, text, color);
-    if (text_surface)
-    {
-        SDL_Texture *text_texture = SDL_CreateTextureFromSurface(renderer, text_surface);
-        if (text_texture)
-        {
-            SDL_Rect textRect = {
-                button.x + (button.w - text_surface->w) / 2,
-                button.y + (button.h - text_surface->h) / 2,
-                text_surface->w,
-                text_surface->h};
-            SDL_RenderCopy(renderer, text_texture, nullptr, &textRect);
-            SDL_DestroyTexture(text_texture);
-        }
-        SDL_FreeSurface(text_surface);
-    }
 }
 
 Menu::~Menu()
@@ -100,17 +79,17 @@ void Menu::render_object()
     SDL_Color text_color = {0, 0, 0, 0};
 
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    render_button("Start New Game", button_start, text_color);
+    Utilities::render_button(renderer, police, "Start New Game", button_start, text_color);
 
     TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
 
     if (saved_file_exists)
     {
-        render_button("Continue Game", button_continue, text_color);
+        Utilities::render_button(renderer, police, "Continue Game", button_continue, text_color);
     }
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
 
-    render_button("Exit Game", button_exit, text_color);
+    Utilities::render_button(renderer, police, "Exit Game", button_exit, text_color);
 
     SDL_RenderPresent(renderer);
 }

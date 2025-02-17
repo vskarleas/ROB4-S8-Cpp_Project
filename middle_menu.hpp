@@ -28,8 +28,6 @@ private:
     SDL_Rect button_square_ball;
     SDL_Rect button_triangle_ball;
 
-    void render_button(const char* text, const SDL_Rect& button, const SDL_Color& color);
-
 public:
     // Constructor and destructor of the middle menu page
     MiddleMenu(SDL_Renderer* _renderer, TTF_Font* font);   

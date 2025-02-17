@@ -22,8 +22,6 @@ public:
     bool get_exit_game() const { return mExit; }
 
 private:
-    void render_button(const char* text, const SDL_Rect& button, const SDL_Color& color);
-
     SDL_Renderer* renderer;
     TTF_Font* police;
     bool mResume;

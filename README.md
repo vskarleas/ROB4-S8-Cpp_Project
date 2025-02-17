@@ -6,6 +6,7 @@
 
 * V4.2.2 Saving the demi correct viwes
 * V4.2.3 The views logic has been completed
+* V5.0.1: Added lamda functions on the paddle.cpp. The reason why we do this is found on the paddle.cpp file
 
 ## TO-DO list
 
