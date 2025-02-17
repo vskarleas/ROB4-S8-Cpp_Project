@@ -616,7 +616,12 @@ void Game::GenerateOutput()
     SDL_DestroyTexture(tex2);
 
     // Draw save button at the bottom
-    DrawSaveButton();
+    mNoticeMenu->set_notice_id(2); // THIS IS ONLY TEMPORRAY UNTIL THE LOGIC IS COMPLETED
+    if (mNoticeMenu->get_notice_id() == 2) // We are rendering the Pause button only in the default Pong game
+    {
+        DrawSaveButton();
+    }
+    
 
     SDL_RenderPresent(renderer);
 }

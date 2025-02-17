@@ -22,7 +22,7 @@ private:
     bool notice_displayed;
     bool go_back; // to go back on the modes menu
 
-    int notice_id;
+    int notice_id; // check the mode_menu.hpp for the for the different notice IDs
 
 public:
 

@@ -72,6 +72,7 @@ private:
     PauseMenu* mPauseMenu;
     MiddleMenu* mMiddleMenu;
 
+
     // This allows us to control on which state we are and make the appropriate UI and action decisons
     GameState mGameState;
 

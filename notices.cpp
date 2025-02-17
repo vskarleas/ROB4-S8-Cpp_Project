@@ -70,7 +70,7 @@ void NoticeMenu::render_object()
 
     switch(notice_id) // a great way to add more notices without creatign new files for the same fuctionality
     {
-        case 0:
+        case 2:
             notice_text[0] = "Default Pong Game instructions";
             notice_text[1] = "";
             notice_text[2] = "Player 1 Controls:";
@@ -98,7 +98,7 @@ void NoticeMenu::render_object()
             text_size = 7;
             break;
 
-        case 2:
+        case 3:
             notice_text[0] = "Story Mode Instructions";
             notice_text[1] = "";
             notice_text[2] = "Complete challenges to unlock new features!";
@@ -108,7 +108,7 @@ void NoticeMenu::render_object()
             text_size = 6;
             break;
 
-        case 3:
+        case 4:
             notice_text[0] = "Fun Mode Instructions";
             notice_text[1] = "";
             notice_text[2] = "In this mode, you'll play against the computer!";
