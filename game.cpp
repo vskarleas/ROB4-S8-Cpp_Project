@@ -27,7 +27,7 @@ Game::Game()
     mBackgroundColor2.b = 0;
     mBackgroundColor2.a = 255;
 
-    mSaveButtonRect = {700, 550, 100, 30}; // x, y, width, height
+    mPauseButtonRect = {700, 550, 100, 30}; // x, y, width, height
 }
 
 Game::~Game()
@@ -117,7 +117,7 @@ bool Game::DrawSaveButton()
     TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
     TTF_SetFontSize(police, 24);
 
-    SDL_Surface *saveText = TTF_RenderText_Solid(police, "Save", white);
+    SDL_Surface *saveText = TTF_RenderText_Solid(police, "Pause", white);
     if (!saveText)
         return false;
 
@@ -129,8 +129,8 @@ bool Game::DrawSaveButton()
     }
 
     SDL_Rect textRect = {
-        mSaveButtonRect.x + (mSaveButtonRect.w - saveText->w) / 2,
-        mSaveButtonRect.y + (mSaveButtonRect.h - saveText->h) / 2,
+        mPauseButtonRect.x + (mPauseButtonRect.w - saveText->w) / 2,
+        mPauseButtonRect.y + (mPauseButtonRect.h - saveText->h) / 2,
         saveText->w,
         saveText->h};
 
@@ -221,7 +221,7 @@ bool Game::initialise()
 
 void Game::loop()
 {
-    while (mIsRunning)
+    while (mIsRunning) // set to false when we either tap on the X to close the SDL window or when we tap on the Exit game button
     {
         ProcessInput();
         UpdateGame();
@@ -236,7 +236,7 @@ void Game::ProcessInput()
     {
         switch (event.type)
         {
-        case SDL_QUIT:  // Handle window close (X button)
+        case SDL_QUIT: // Handle window close (X button)
             mIsRunning = false;
             break;
 
@@ -261,48 +261,82 @@ void Game::ProcessInput()
                                 mBall->set_position(savedState.ball_x, savedState.ball_y);
                                 mBall->set_velocity(savedState.ball_vel_x, savedState.ball_vel_y);
                                 UpdateBackground();
-                                // Delete save file after loading
+
                                 GameSave::delete_save();
+
                                 mGameState = GameState::Playing;
                             }
                         }
                         else
                         {
-                            // New game - delete any existing save
-                            GameSave::delete_save();
                             CreateBall(mMenu->get_selected_ball());
-                            mScore1 = mScore2 = 0;
+                            mScore1 = 0;
+                            mScore2 = 0;
                             UpdateBackground();
                             mGameState = GameState::Playing;
                         }
                     }
                     else if (mMenu->get_exit_game())
                     {
+                        // Exit the game => closing the SDL
                         mIsRunning = false;
                     }
+                }
+                else
+                {
+                    // Nothing happens. The mouse is not over any over any option
+                    return;
                 }
             }
             else if (mGameState == GameState::Playing)
             {
                 SDL_Point clickPoint = {event.button.x, event.button.y};
-                if (SDL_PointInRect(&clickPoint, &mSaveButtonRect))
+                if (SDL_PointInRect(&clickPoint, &mPauseButtonRect))
                 {
-                    SaveState saveState;
-                    saveState.score1 = mScore1;
-                    saveState.score2 = mScore2;
-                    saveState.paddle1_y = mPaddle1->get_pos_y();
-                    saveState.paddle2_y = mPaddle2->get_pos_y();
-                    saveState.ball_x = mBall->get_pos_x();
-                    saveState.ball_y = mBall->get_pos_y();
-                    saveState.ball_vel_x = mBall->get_vel_x();
-                    saveState.ball_vel_y = mBall->get_vel_y();
-                    saveState.ball_type = mMenu->get_selected_ball();
-            
-                    if (GameSave::save_game(saveState, ""))
+                    mGameState = GameState::Paused;
+                }
+            }
+            else if (mGameState == GameState::Paused)
+            {
+                if (mPauseMenu->action_handler(event))
+                {
+                    if (mPauseMenu->ShouldResume())
                     {
-                        SDL_Log("Game saved successfully");
+                        mGameState = GameState::Playing;
+                    }
+                    else if (mPauseMenu->ShouldSave())
+                    {
+                        SaveState saveState;
+                        saveState.score1 = mScore1;
+                        saveState.score2 = mScore2;
+                        saveState.paddle1_y = mPaddle1->get_pos_y();
+                        saveState.paddle2_y = mPaddle2->get_pos_y();
+                        saveState.ball_x = mBall->get_pos_x();
+                        saveState.ball_y = mBall->get_pos_y();
+                        saveState.ball_vel_x = mBall->get_vel_x();
+                        saveState.ball_vel_y = mBall->get_vel_y();
+                        saveState.ball_type = mMenu->get_selected_ball();
+
+                        if (GameSave::save_game(saveState, ""))
+                        {
+                            SDL_Log("Game saved successfully");
+                            mMenu->set_saved_file_exists();
+                            mGameState = GameState::Menu;
+                        }
+                        else
+                        {
+                            SDL_Log("Failed to save game");
+                            mIsRunning = false;
+                        }
+                    }
+                    else if (mPauseMenu->get_exit_game())
+                    {
                         mGameState = GameState::Menu;
-                        mMenu->set_saved_file_exists(); // Add this method to Menu class
+                        // mIsRunning = false;
+                    }
+                    else
+                    {
+                        printf("ERROR: Unhandled pause menu option\n");
                     }
                 }
             }
@@ -310,7 +344,7 @@ void Game::ProcessInput()
         }
     }
 
-    const Uint8* state = SDL_GetKeyboardState(NULL);
+    const Uint8 *state = SDL_GetKeyboardState(NULL);
     if (state[SDL_SCANCODE_ESCAPE])
     {
         if (mGameState == GameState::Playing)
@@ -326,7 +360,7 @@ void Game::ProcessInput()
 
 void Game::UpdateGame()
 {
-    if (mGameState != GameState::Playing)
+    if (mGameState != GameState::Playing) // There is nothing to update if the game is not in playing state
     {
         return;
     }

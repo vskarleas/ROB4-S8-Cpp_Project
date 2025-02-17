@@ -22,6 +22,7 @@ private:
     bool started;
     bool exit_game;
     bool continue_game; 
+    
     int selected_ball;
     int selected_button;
     bool saved_file_exists;

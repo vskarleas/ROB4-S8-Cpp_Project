@@ -124,6 +124,7 @@ bool Menu::action_handler(const SDL_Event &event)
         }
         else if (SDL_PointInRect(&point, &button_exit))
         {
+            exit_game = true;
             SDL_Event quitEvent;
             quitEvent.type = SDL_QUIT;
             SDL_PushEvent(&quitEvent);

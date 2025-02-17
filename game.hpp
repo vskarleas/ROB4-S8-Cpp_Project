@@ -19,8 +19,7 @@
 enum class GameState {
     Menu,
     Playing,
-    Paused,
-    GameOver
+    Paused
 };
 
 class Game {
@@ -63,7 +62,7 @@ private:
     SDL_Color mBackgroundColor1;
     SDL_Color mBackgroundColor2;
 
-    SDL_Rect mSaveButtonRect;
+    SDL_Rect mPauseButtonRect;
     bool DrawSaveButton();     
 };
 

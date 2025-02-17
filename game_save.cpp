@@ -120,7 +120,7 @@ bool GameSave::load_game(SaveState &state, const std::string &)
     }
 }
 
-/* Check if a save file exists or not */
+/* Check if a save file exists or not (the idea is that it has been generated previously) */
 bool GameSave::save_exists()
 {
     std::ifstream file(SAVE_FILENAME);
