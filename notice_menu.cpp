@@ -7,9 +7,11 @@
 #include "notice_menu.hpp"
 #include "macros.hpp"
 
-NoticeMenu::NoticeMenu(SDL_Renderer *_renderer, TTF_Font *font) : texture_menu(nullptr),
-                                                                  renderer(_renderer),
-                                                                  police(font)
+NoticeMenu::NoticeMenu(SDL_Renderer *_renderer, TTF_Font *font) : 
+    texture_menu(nullptr),
+    renderer(_renderer),
+    police(font),
+    notice_displayed(false)
 {
     button_lets_go = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 300, 200, 50};
 }

@@ -2,6 +2,11 @@
 
 ###### Auters: Dounia Bakalem, Yanis Sadoun, Vasileios Filippos Skarleas
 
+## Versions
+
+* V4.2.2 Saving the demi correct viwes
+* V4.2.3 The views logic has been completed
+
 ## TO-DO list
 
 * [ ] Find a way to prpose an initial SDL window that show cases the instructionsof the game. Then when teh user taps on a button "Let's go", then this SDL windows closes and a new one Appears where a user chooses between the modes of the game that exist. The "Simple" one which is the current version of the game, the "Storytime" one where is the game without the saving functionality, but with the user class and the hisgh score board, and the third one which is "Hardcore" which is the same with the "Storytime" but now there is a single user that plays against an AI on the opposite Paddle. There is also the exit game button that terminates the game. When a mode is slected this SDL window closes and we are presented with the menu window of the different game modes. (definitely there are modification son the main.cpp for this functionaity to take place)
@@ -205,7 +210,7 @@ public:
         // Prédiction de la position future de la balle
         float predictedY = Predictball_y(ball);
         float currentY = paddle->get_pos_y();
-    
+  
         // Décision de mouvement avec une marge d'erreur pour simulation humaine
         return (predictedY > currentY + ERROR_MARGIN) ? 1.0f : 
                (predictedY < currentY - ERROR_MARGIN) ? -1.0f : 0.0f;

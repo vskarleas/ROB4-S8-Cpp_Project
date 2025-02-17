@@ -33,6 +33,7 @@ Game::Game()
       mNoticeMenu(nullptr),
       mMenu(nullptr),
       mPauseMenu(nullptr),
+      mMiddleMenu(nullptr),
 
       mGameState(GameState::Notice_Menu) // by default we get into the Notice Menu
 
@@ -69,6 +70,12 @@ Game::~Game()
     {
         delete mNoticeMenu;
         mNoticeMenu = nullptr;
+    }
+
+    if (mMiddleMenu)
+    {
+        delete mMiddleMenu;
+        mMiddleMenu = nullptr;
     }
 
     // Delete game objects
@@ -214,11 +221,15 @@ bool Game::initialise()
         return false;
     }
 
+    // Rendering the different views of the game
     mMenu = new Menu(renderer, police);
     mNoticeMenu = new NoticeMenu(renderer, police);
+    mMiddleMenu = new MiddleMenu(renderer, police);
+
+    // Creating the different objects of the game
     mPaddle1 = new Paddle(30, true);
     mPaddle2 = new Paddle(770, false);
-    CreateBall(0); // Start with classic ball
+    CreateBall(0); // Start with classic ball then it is updated over the choices at MiddleMenu
 
     // Load audio files (make sure these files exist in your project directory)
     mBackgroundMusic = Mix_LoadMUS("assets/background.wav");
@@ -351,7 +362,7 @@ void Game::ProcessInput()
                         saveState.ball_y = mBall->get_pos_y();
                         saveState.ball_vel_x = mBall->get_vel_x();
                         saveState.ball_vel_y = mBall->get_vel_y();
-                        saveState.ball_type = 0; // TO BE UPDATED TO SOMETHING REALLY DYNAMIC - CHECK FUNCTION AT THE SelectBallMenu class available at select_ball_menu.cpp
+                        saveState.ball_type = mMiddleMenu->get_selected_ball();
 
                         if (GameSave::save_game(saveState, ""))
                         {
@@ -379,11 +390,11 @@ void Game::ProcessInput()
             }
             else if (mGameState == GameState::Select_Ball_Menu)
             {
-                GameSave::delete_save(); // delete only in the case that we start a new game
+                if (mMiddleMenu->action_handler(event))
+                {
+                    GameSave::delete_save(); // delete only in the case that we start a new game
 
-                // CreateBall(mMenu->get_selected_ball()); // TO BE CORRECTED. USE A DYNAMIC WAY TO RECEIVE THE SELECTED BALL TYPE
-
-                CreateBall(0);
+                CreateBall(mMiddleMenu->get_selected_ball());
 
                 // Reset game state
                 mScore1 = 0;
@@ -402,6 +413,13 @@ void Game::ProcessInput()
 
                 mGameState = GameState::Playing;
                 SDL_Log("New game started with selected ball type");
+
+                }
+                else
+                {
+                    SDL_Log("We couldn't try to select a ball type on the middle menu");
+                }
+                
             }
             break;
 
@@ -536,6 +554,12 @@ void Game::GenerateOutput()
     if (mGameState == GameState::Menu)
     {
         mMenu->render_object();
+        return;
+    }
+
+    if (mGameState == GameState::Select_Ball_Menu)
+    {
+        mMiddleMenu->render_object();
         return;
     }
 

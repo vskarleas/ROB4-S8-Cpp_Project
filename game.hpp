@@ -15,6 +15,7 @@
 #include "ball_base.hpp"
 #include "menu.hpp"
 #include "pause_menu.hpp"
+#include "middle_menu.hpp"
 
 
 #include "notice_menu.hpp"
@@ -69,6 +70,7 @@ private:
     NoticeMenu* mNoticeMenu;
     Menu* mMenu;
     PauseMenu* mPauseMenu;
+    MiddleMenu* mMiddleMenu;
 
     // This allows us to control on which state we are and make the appropriate UI and action decisons
     GameState mGameState;
