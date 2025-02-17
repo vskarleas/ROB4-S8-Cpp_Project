@@ -22,7 +22,8 @@ SRCS = main.cpp \
     game_save.cpp \
 	notices.cpp \
 	middle_menu.cpp \
-	renderers.cpp
+	renderers.cpp \
+	mode_menu.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 EXECUTABLE = game
@@ -30,6 +31,13 @@ EXECUTABLE = game
 all: $(EXECUTABLE)
 
 paddle.o: paddle.cpp paddle.hpp
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module "$*
+	@echo "---------------------------------------------"
+	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
+
+mode_menu.o : mode_menu.cpp mode_menu.hpp renderers.hpp macros.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*

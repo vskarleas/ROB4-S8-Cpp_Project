@@ -32,6 +32,9 @@ public:
 
     bool get_notice_displayed() const { return notice_displayed; }
 
+    // Required for the game lofgic to update the notices tree and remder the correct text every time
+    int get_notice_id() const { return notice_id; }
+    void set_notice_id(int _id) { notice_id = _id; }
 
     void render_object();
 };

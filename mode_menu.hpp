@@ -13,10 +13,13 @@
 
 class ModeMenu {
 private:
-    bool ai_mode;
-    bool two_players_mode;
-    bool storytime_mode;
-    bool fun_mode;
+    int mode_id;
+    /*
+    mode = 1 -> AI mode
+    mode = 2 -> Two players mode
+    mode = 3 -> Storytime mode
+    mode = 4 -> Fun mode
+    */
 
     SDL_Texture* texture_menu;
     SDL_Renderer* renderer; // Responsible for placing the objects on the SDL screen
@@ -35,11 +38,9 @@ public:
     bool action_handler(const SDL_Event& event);
     void render_object();
 
-    // Getters for the private variables of the mode menu class
-    bool get_ai_mode() const { return ai_mode; }
-    bool get_two_players_mode() const { return two_players_mode; }
-    bool get_storytime_mode() const { return storytime_mode; }
-    bool get_fun_mode() const { return fun_mode; }
+    // Allows to redirect to correct view using a switch function
+    int get_mode_id() const { return mode_id; }
+    
 };
 
 #endif // MODE_MENU_HPP
