@@ -9,7 +9,7 @@
 #include "menu.hpp"
 #include "game_save.hpp"
 #include "macros.hpp"
-#include "render.hpp"
+#include "renderers.hpp"
 
 Menu::Menu(SDL_Renderer *_renderer, TTF_Font *font) : /* Follwoing the order in the class declaration*/
     start_new_game(false),

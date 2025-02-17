@@ -5,7 +5,7 @@
 // #############################################################################
 
 #include "pause_menu.hpp"
-#include "render.hpp"
+#include "renderers.hpp"
 
 PauseMenu::PauseMenu(SDL_Renderer *renderer, TTF_Font *font)
     : renderer(renderer), police(font), mResume(false), mSave(false), mExit(false), selected_button(-1)

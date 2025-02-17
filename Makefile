@@ -22,7 +22,7 @@ SRCS = main.cpp \
     game_save.cpp \
 	notices.cpp \
 	middle_menu.cpp \
-	render.cpp
+	renderers.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 EXECUTABLE = game
@@ -36,7 +36,7 @@ paddle.o: paddle.cpp paddle.hpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-render.o: render.cpp render.hpp
+renderers.o: renderers.cpp renderers.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
@@ -50,28 +50,28 @@ ball_base.o: ball_base.cpp ball_base.hpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-classic_ball.o: classic_ball.cpp classic_ball.hpp ball_base.hpp
+classic_ball.o: classic_ball.cpp classic_ball.hpp ball_base.hpp renderers.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-square_ball.o: square_ball.cpp square_ball.hpp ball_base.hpp
+square_ball.o: square_ball.cpp square_ball.hpp ball_base.hpp renderers.hpp
 	@echo ""@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-triangle_ball.o: triangle_ball.cpp triangle_ball.hpp ball_base.hpp
+triangle_ball.o: triangle_ball.cpp triangle_ball.hpp ball_base.hpp renderers.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-menu.o: menu.cpp menu.hpp game_save.hpp macros.hpp render.hpp
+menu.o: menu.cpp menu.hpp game_save.hpp macros.hpp renderers.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
@@ -85,7 +85,7 @@ notices.o : notices.cpp notices.hpp macros.hpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-pause_menu.o: pause_menu.cpp pause_menu.hpp render.hpp
+pause_menu.o: pause_menu.cpp pause_menu.hpp renderers.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
@@ -99,7 +99,7 @@ game_save.o: game_save.cpp game_save.hpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-middle_menu.o: middle_menu.cpp middle_menu.hpp render.hpp
+middle_menu.o: middle_menu.cpp middle_menu.hpp renderers.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*

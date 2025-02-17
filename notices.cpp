@@ -5,7 +5,7 @@
 // #############################################################################
 
 #include "notices.hpp"
-#include "render.hpp"
+#include "renderers.hpp"
 #include "macros.hpp"
 
 NoticeMenu::NoticeMenu(SDL_Renderer *_renderer, TTF_Font *font) : 
@@ -13,7 +13,7 @@ NoticeMenu::NoticeMenu(SDL_Renderer *_renderer, TTF_Font *font) :
     renderer(_renderer),
     police(font),
     notice_displayed(false),
-    notice_id(0) //be default we display the first notice
+    notice_id(-1) //be default we display the general notice
 {
     button_lets_go = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 300, 200, 50};
 }
@@ -62,7 +62,7 @@ void NoticeMenu::render_object()
     switch(notice_id) // a great way to add more notices without creatign new files for the same fuctionality
     {
         case 0:
-            notice_text[0] = "Welcome to Pong Game!";
+            notice_text[0] = "Default Pong Game instructions";
             notice_text[1] = "";
             notice_text[2] = "Player 1 Controls:";
             notice_text[3] = "- Use W to move paddle up";
@@ -98,6 +98,31 @@ void NoticeMenu::render_object()
             notice_text[5] = "Complete 5 levels to win the game!";
             text_size = 6;
             break;
+
+        case 3:
+            notice_text[0] = "Fun Mode Instructions";
+            notice_text[1] = "";
+            notice_text[2] = "In this mode, you'll play against the computer!";
+            notice_text[3] = "The ball will change its shape randomly!";
+            notice_text[4] = "";
+            notice_text[5] = "Controls:";
+            notice_text[6] = "- Use W/S keys to move your paddle";
+            notice_text[7] = "- The AI will control the other paddle";
+            text_size = 8;
+            break;
+
+        case -1:
+            notice_text[0] = "Welcome to the Pong Game!";
+            notice_text[1] = "";
+            notice_text[2] = "This game was developed using the SDL library and OOP principles.";
+            notice_text[3] = "It was developed with inheritance, polymorphisms, lamda functions and functors in mind.";
+            notice_text[4] = "";
+            notice_text[5] = "There are four game modes available. Each mode has its own set of instructions for you to discover.";
+            notice_text[6] = "";
+            notice_text[7] = "Let's go and select a mode to start playing!";
+            text_size = 8;
+            break;
+
 
         default:
             notice_text[0] = "Invalid mode selected";

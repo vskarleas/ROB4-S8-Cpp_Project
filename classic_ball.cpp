@@ -5,6 +5,7 @@
 // #############################################################################
 
 #include "classic_ball.hpp"
+#include "renderers.hpp"
 
 // Helper function to draw filled circle
 void DrawFilledCircle(SDL_Renderer* renderer, int32_t centerX, int32_t centerY, int32_t radius)
@@ -40,14 +41,6 @@ void DrawFilledCircle(SDL_Renderer* renderer, int32_t centerX, int32_t centerY, 
     }
 }
 
-void ClassicBall::render_object(SDL_Renderer* renderer)
-{
-    // Set color to white
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    
-    // Draw filled circle
-    DrawFilledCircle(renderer, 
-        static_cast<int32_t>(pos_x),
-        static_cast<int32_t>(pos_y),
-        static_cast<int32_t>(ball_size / 2.0f));
+void ClassicBall::render_object(SDL_Renderer* renderer) {
+    CircleRenderer()(renderer, pos_x, pos_y, ball_size);
 }
