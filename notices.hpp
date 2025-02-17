@@ -17,8 +17,10 @@ private:
     TTF_Font* police;
 
     SDL_Rect button_lets_go;
+    SDL_Rect button_back;
 
     bool notice_displayed;
+    bool go_back; // to go back on the modes menu
 
     int notice_id;
 

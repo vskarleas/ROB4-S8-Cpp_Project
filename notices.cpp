@@ -13,9 +13,11 @@ NoticeMenu::NoticeMenu(SDL_Renderer *_renderer, TTF_Font *font) :
     renderer(_renderer),
     police(font),
     notice_displayed(false),
+    go_back(false), //be default we don't go back on the modes menu
     notice_id(-1) //be default we display the general notice
 {
     button_lets_go = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 300, 200, 50};
+    button_back = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 200, 200, 50};
 }
 
 NoticeMenu::~NoticeMenu()
@@ -30,6 +32,7 @@ NoticeMenu::~NoticeMenu()
 bool NoticeMenu::action_handler(const SDL_Event &event)
 {
     notice_displayed = false;
+
     if (event.type == SDL_MOUSEBUTTONDOWN)
     {
         SDL_Point point = {event.button.x, event.button.y};
@@ -37,6 +40,12 @@ bool NoticeMenu::action_handler(const SDL_Event &event)
         if (SDL_PointInRect(&point, &button_lets_go))
         {
             notice_displayed = true;
+            return true;
+        }
+
+        if (SDL_PointInRect(&point, &button_back))
+        {
+            go_back = true;
             return true;
         }
     }
@@ -143,6 +152,12 @@ void NoticeMenu::render_object()
     TTF_SetFontSize(police, 24);
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
     Utilities::render_button(renderer, police,"Let's go", button_lets_go, text_color);
+
+    if (notice_id != -1) // show the go back button
+    {
+        TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
+        Utilities::render_button(renderer, police,"Go back", button_back, text_color);
+    }
 
     SDL_RenderPresent(renderer);
 }
