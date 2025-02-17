@@ -44,6 +44,11 @@ void PauseMenu::render_object()
 
 bool PauseMenu::action_handler(const SDL_Event &event)
 {
+    // We reinitialise the state of the buttons after each event
+    mResume = false;
+    mSave = false;
+    mExit = false;
+
     if (event.type == SDL_MOUSEMOTION) //for color changes only
     {
         SDL_Point point = {event.motion.x, event.motion.y};

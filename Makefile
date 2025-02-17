@@ -19,7 +19,8 @@ SRCS = main.cpp \
     triangle_ball.cpp \
     menu.cpp \
     pause_menu.cpp \
-    game_save.cpp
+    game_save.cpp \
+	notice_menu.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 EXECUTABLE = game
@@ -68,6 +69,13 @@ menu.o: menu.cpp menu.hpp game_save.hpp macros.hpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
+notice_menu.o : notice_menu.cpp notice_menu.hpp macros.hpp
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module "$*
+	@echo "---------------------------------------------"
+	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
+
 pause_menu.o: pause_menu.cpp pause_menu.hpp
 	@echo ""
 	@echo "---------------------------------------------"
@@ -82,7 +90,7 @@ game_save.o: game_save.cpp game_save.hpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-game.o: game.cpp game.hpp paddle.hpp ball_base.hpp menu.hpp pause_menu.hpp game_save.hpp macros.hpp
+game.o: game.cpp game.hpp paddle.hpp ball_base.hpp menu.hpp pause_menu.hpp game_save.hpp macros.hpp notice_menu.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*

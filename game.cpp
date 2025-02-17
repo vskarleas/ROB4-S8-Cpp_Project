@@ -15,7 +15,27 @@
 #include <string>
 
 Game::Game()
-    : mWindow(nullptr), renderer(nullptr), mIsRunning(true), mTicksCount(0), mPaddle1(nullptr), mPaddle2(nullptr), mBall(nullptr), mScore1(0), mScore2(0), police(nullptr), mMenu(nullptr), mGameState(GameState::Menu), mPauseMenu(nullptr) // Initialize pause menu pointer
+    : mWindow(nullptr),
+      renderer(nullptr),
+
+      mIsRunning(true),
+      mTicksCount(0),
+
+      mPaddle1(nullptr),
+      mPaddle2(nullptr),
+      mBall(nullptr),
+
+      mScore1(0),
+      mScore2(0),
+
+      police(nullptr),
+
+      mNoticeMenu(nullptr),
+      mMenu(nullptr),
+      mPauseMenu(nullptr),
+
+      mGameState(GameState::Notice_Menu) // by default we get into the Notice Menu
+
 {
     mBackgroundColor1.r = 0;
     mBackgroundColor1.g = 0;
@@ -43,6 +63,12 @@ Game::~Game()
     {
         delete mPauseMenu;
         mPauseMenu = nullptr;
+    }
+
+    if (mNoticeMenu)
+    {
+        delete mNoticeMenu;
+        mNoticeMenu = nullptr;
     }
 
     // Delete game objects
@@ -114,7 +140,7 @@ bool Game::DrawSaveButton()
 {
     // Draw save button with white text
     SDL_Color white = {255, 255, 255, 255};
-    TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
+    TTF_SetFontStyle(police, TTF_STYLE_BOLD);
     TTF_SetFontSize(police, 24);
 
     SDL_Surface *saveText = TTF_RenderText_Solid(police, "Pause", white);
@@ -189,6 +215,7 @@ bool Game::initialise()
     }
 
     mMenu = new Menu(renderer, police);
+    mNoticeMenu = new NoticeMenu(renderer, police);
     mPaddle1 = new Paddle(30, true);
     mPaddle2 = new Paddle(770, false);
     CreateBall(0); // Start with classic ball
@@ -241,59 +268,66 @@ void Game::ProcessInput()
             break;
 
         case SDL_MOUSEBUTTONDOWN:
-            if (mGameState == GameState::Menu)
+            if (mGameState == GameState::Notice_Menu)
+            {
+                if (mNoticeMenu->action_handler(event))
+                {
+                    if (mNoticeMenu->get_notice_displayed()) // The let's go button has been clicked
+                    {
+                        mGameState = GameState::Menu;
+                    }
+                    else // Let's go button has not been clicked => keep showing the Notice with the instructions and this Let's go button
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    SDL_Log("Invalid action on Notice menu");
+                }
+            }
+            else if (mGameState == GameState::Menu)
             {
                 if (mMenu->action_handler(event))
                 {
                     if (mMenu->get_started())
                     {
-                        if (mMenu->get_continue_game())
-                        {
-                            // Load saved game state
-                            SaveState savedState;
-                            if (GameSave::load_game(savedState, ""))
-                            {
-                                mScore1 = savedState.score1;
-                                mScore2 = savedState.score2;
-                                mPaddle1->set_pos_y(savedState.paddle1_y);
-                                mPaddle2->set_pos_y(savedState.paddle2_y);
-                                CreateBall(savedState.ball_type);
-                                mBall->set_position(savedState.ball_x, savedState.ball_y);
-                                mBall->set_velocity(savedState.ball_vel_x, savedState.ball_vel_y);
-                                UpdateBackground();
-
-                                // GameSave::delete_save();
-
-                                mGameState = GameState::Playing;
-                            }
-                        }
-                        else
-                        {
-                            GameSave::delete_save(); // delete only in the case that we start a new game
-                            CreateBall(mMenu->get_selected_ball());
-                            mScore1 = 0;
-                            mScore2 = 0;
-                            UpdateBackground();
-                            mGameState = GameState::Playing;
-                            SDL_Log("Game saved successfully");
-                        }
+                        mGameState = GameState::Select_Ball_Menu; // We need to select the ball type before starting a new game
                     }
                     else if (mMenu->get_exit_game())
                     {
-                        // Exit the game => closing the SDL
-                        mIsRunning = false;
+                        mIsRunning = false; // No need to delete the saved game file before exiting if it exists. The idea is that we find itback when we reneter the game
+                    }
+                    else if (mMenu->get_continue_game())
+                    {
+                        // Load saved game state
+                        SaveState savedState;
+                        if (GameSave::load_game(savedState, ""))
+                        {
+                            mScore1 = savedState.score1;
+                            mScore2 = savedState.score2;
+                            mPaddle1->set_pos_y(savedState.paddle1_y);
+                            mPaddle2->set_pos_y(savedState.paddle2_y);
+                            CreateBall(savedState.ball_type);
+                            mBall->set_position(savedState.ball_x, savedState.ball_y);
+                            mBall->set_velocity(savedState.ball_vel_x, savedState.ball_vel_y);
+                            UpdateBackground();
+
+                            GameSave::delete_save(); // Delete the saved game file once we have loaded the game state
+
+                            mGameState = GameState::Playing;
+                        }
                     }
                 }
                 else
                 {
-                    // Nothing happens. The mouse is not over any over any option
-                    return;
+                    SDL_Log("Invalid action on Main menu");
                 }
             }
             else if (mGameState == GameState::Playing)
             {
                 SDL_Point clickPoint = {event.button.x, event.button.y};
-                if (SDL_PointInRect(&clickPoint, &mPauseButtonRect))
+                if (SDL_PointInRect(&clickPoint, &mPauseButtonRect)) // We go to pause menu if the pause button is clicked
                 {
                     mGameState = GameState::Paused;
                 }
@@ -317,14 +351,13 @@ void Game::ProcessInput()
                         saveState.ball_y = mBall->get_pos_y();
                         saveState.ball_vel_x = mBall->get_vel_x();
                         saveState.ball_vel_y = mBall->get_vel_y();
-                        saveState.ball_type = mMenu->get_selected_ball();
+                        saveState.ball_type = 0; // TO BE UPDATED TO SOMETHING REALLY DYNAMIC - CHECK FUNCTION AT THE SelectBallMenu class available at select_ball_menu.cpp
 
                         if (GameSave::save_game(saveState, ""))
                         {
                             SDL_Log("Game saved successfully");
                             mMenu->set_saved_file_exists();
-                            mGameState = GameState::Menu;
-                            mMenu->reset_selection(); // essential otherwise we are stuck on the inner menu
+                            mGameState = GameState::Menu; // We go back to the main menu
                         }
                         else
                         {
@@ -334,9 +367,9 @@ void Game::ProcessInput()
                     }
                     else if (mPauseMenu->get_exit_game())
                     {
-                        mGameState = GameState::Menu;
-                        mMenu->reset_selection();
-                        // mIsRunning = false;
+                        // We update the existens of the save file
+                        mMenu->set_saved_file_exists();
+                        mGameState = GameState::Menu; // We go back to the main menu without saving the progress
                     }
                     else
                     {
@@ -344,22 +377,51 @@ void Game::ProcessInput()
                     }
                 }
             }
+            else if (mGameState == GameState::Select_Ball_Menu)
+            {
+                GameSave::delete_save(); // delete only in the case that we start a new game
+
+                // CreateBall(mMenu->get_selected_ball()); // TO BE CORRECTED. USE A DYNAMIC WAY TO RECEIVE THE SELECTED BALL TYPE
+
+                CreateBall(0);
+
+                // Reset game state
+                mScore1 = 0;
+                mScore2 = 0;
+
+                // Reset paddle positions
+                mPaddle1->set_pos_y(WINDOW_HEIGHT / 2.0f);
+                mPaddle2->set_pos_y(WINDOW_HEIGHT / 2.0f);
+
+                // Reset ball position and give it initial velocity
+                mBall->set_position(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f);
+                mBall->set_velocity(200.0f, 235.0f); // Initial ball speed
+
+                // Reset background colors
+                UpdateBackground();
+
+                mGameState = GameState::Playing;
+                SDL_Log("New game started with selected ball type");
+            }
+            break;
+
+        default:
             break;
         }
     }
 
-    const Uint8 *state = SDL_GetKeyboardState(NULL);
-    if (state[SDL_SCANCODE_ESCAPE])
-    {
-        if (mGameState == GameState::Playing)
-        {
-            mGameState = GameState::Paused;
-        }
-        else if (mGameState == GameState::Paused)
-        {
-            mGameState = GameState::Playing;
-        }
-    }
+    // const Uint8 *state = SDL_GetKeyboardState(NULL);
+    // if (state[SDL_SCANCODE_ESCAPE])
+    // {
+    //     if (mGameState == GameState::Playing)
+    //     {
+    //         mGameState = GameState::Paused;
+    //     }
+    //     else if (mGameState == GameState::Paused)
+    //     {
+    //         mGameState = GameState::Playing;
+    //     }
+    // }
 }
 
 void Game::UpdateGame()
@@ -459,6 +521,12 @@ void Game::UpdateBackground()
 
 void Game::GenerateOutput()
 {
+    if (mGameState == GameState::Notice_Menu)
+    {
+        mNoticeMenu->render_object();
+        return;
+    }
+
     if (mGameState == GameState::Paused)
     {
         mPauseMenu->render_object();

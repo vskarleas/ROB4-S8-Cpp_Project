@@ -5,11 +5,12 @@
 // #############################################################################
 
 #include "paddle.hpp"
+#include "macros.hpp"
 
 /* Constructing the Racket object for the game */
 Paddle::Paddle(int x, bool on_the_left_side): 
     // Paddle's position on the screen initially
-    pos_y(300.0f), 
+    pos_y(static_cast<float>(WINDOW_HEIGHT/2)), 
     pos_x(static_cast<float>(x)),
 
     // Paddle's caracteristics that compose the object height x width

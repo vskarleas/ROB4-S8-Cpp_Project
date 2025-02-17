@@ -19,12 +19,10 @@
 class Menu {
 private:
     // Prininting buttons flags
-    bool started;
+    bool start_new_game;
     bool exit_game;
     bool continue_game; 
 
-    int selected_ball;
-    int selected_button;
     bool saved_file_exists;
 
     // SDL objects for the menu page 
@@ -34,23 +32,10 @@ private:
 
     // Buttons
     SDL_Rect button_start;
-    SDL_Rect button_circle_ball;
-    SDL_Rect button_square_ball;
-    SDL_Rect button_triangle_ball;
     SDL_Rect button_exit;
     SDL_Rect button_continue;
 
-    // Ball type buttons for selection
-    SDL_Rect mball_typeButtons[3]; 
-    std::array<SDL_Texture*, 3> mball_typeTextures;
-
-    bool in_ball_selection;
-
-
     void render_button(const char* text, const SDL_Rect& button, const SDL_Color& color);
-
-    void render_main_menu();
-    void render_ball_selection();
 
 public:
     // Constructor and destructor of the menu page
@@ -59,15 +44,11 @@ public:
     
     bool action_handler(const SDL_Event& event);
     void render_object();
-
-    void reset_selection() { in_ball_selection = false; selected_ball = 0; selected_button = -1; }
     
     // Getters for the private variables of the menu class
-    bool get_started() const { return started; }
-    int get_selected_ball() const { return selected_ball; }
+    bool get_started() const { return start_new_game; }
     bool get_exit_game() const { return exit_game; }
     bool get_saved_file_exists() const { return saved_file_exists; }
- 
     bool get_continue_game() const { return continue_game; } 
 
     // Update the continue button

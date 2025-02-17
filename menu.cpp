@@ -10,39 +10,21 @@
 #include "game_save.hpp"
 #include "macros.hpp"
 
-Menu::Menu(SDL_Renderer *_renderer, TTF_Font *font): 
-    /* Follwoing the order in the class declaration*/
-    started(false), 
-    exit_game(false), 
+Menu::Menu(SDL_Renderer *_renderer, TTF_Font *font) : /* Follwoing the order in the class declaration*/
+    start_new_game(false),
+    exit_game(false),
     continue_game(false),
-    selected_ball(0),
-    selected_button(-1),
     saved_file_exists(GameSave::save_exists()), // calls the save_exists() function to check if a game state file exists
 
-    texture_menu(nullptr), 
-    renderer(_renderer), 
-    police(font),
-    in_ball_selection(false)
+    texture_menu(nullptr),
+    renderer(_renderer),
+    police(font)
 {
-    for (auto &texture : mball_typeTextures)
-    {
-        texture = nullptr; // all button tectures set to NILL (nullptr) for initialisation
-    }
-
-    // Buttons positioning on the menu page
-    button_start = SDL_Rect{WINDOW_HEIGHT/2, 100, 200, 50};
-    button_continue = SDL_Rect{WINDOW_HEIGHT/2, 180, 200, 50};
-    button_circle_ball = SDL_Rect{WINDOW_HEIGHT/2, WINDOW_WIDTH - 500, 200, 40}; // The tree following buttons willbe closer to each other
-    button_square_ball = SDL_Rect{WINDOW_HEIGHT/2, WINDOW_WIDTH - 450, 200, 40};   
-    button_triangle_ball = SDL_Rect{WINDOW_HEIGHT/2, WINDOW_WIDTH - 400, 200, 40}; 
-    button_exit = SDL_Rect{WINDOW_HEIGHT/2, WINDOW_WIDTH - 300, 200, 50}; // Keep space before exit
-
-    // Initialize ball type buttons array for the selection
-    mball_typeButtons[0] = button_circle_ball;
-    mball_typeButtons[1] = button_square_ball;
-    mball_typeButtons[2] = button_triangle_ball;
+    // Buttons positioning on the main menu page
+    button_start = SDL_Rect{WINDOW_HEIGHT / 2, 100, 200, 50};
+    button_continue = SDL_Rect{WINDOW_HEIGHT / 2, 180, 200, 50};
+    button_exit = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 300, 200, 50}; // Keep space before exit
 }
-
 
 /* Rendering an SDL rectangle which plays the role of a button */
 void Menu::render_button(const char *text, const SDL_Rect &button, const SDL_Color &color)
@@ -74,156 +56,61 @@ Menu::~Menu()
         SDL_DestroyTexture(texture_menu);
         texture_menu = nullptr;
     }
-
-    // all removing all the ball textures (array) from the memory
-    for (auto &texture : mball_typeTextures)
-    {
-        if (texture)
-        {
-            SDL_DestroyTexture(texture);
-            texture = nullptr;
-        }
-    }
 }
 
-bool Menu::action_handler(const SDL_Event& event)
+bool Menu::action_handler(const SDL_Event &event)
 {
-    if (event.type == SDL_MOUSEMOTION)
-    {
-        SDL_Point point = {event.motion.x, event.motion.y};
-        selected_button = -1;
+    // Reset the flags for new game, continue game and exit game, otherwise the logic is not triggered correctly
+    start_new_game = false;
+    continue_game = false;
+    exit_game = false;
 
-        if (!in_ball_selection)
-        {
-            // Main menu hover handling
-            if (SDL_PointInRect(&point, &button_start))
-                selected_button = 0;
-            else if (saved_file_exists && SDL_PointInRect(&point, &button_continue))
-                selected_button = 1;
-            else if (SDL_PointInRect(&point, &button_exit))
-                selected_button = 2;
-        }
-        else
-        {
-            // Ball selection menu hover handling
-            if (SDL_PointInRect(&point, &button_circle_ball))
-                selected_button = 3;
-            else if (SDL_PointInRect(&point, &button_square_ball))
-                selected_button = 4;
-            else if (SDL_PointInRect(&point, &button_triangle_ball))
-                selected_button = 5;
-        }
-    }
-    else if (event.type == SDL_MOUSEBUTTONDOWN)
+    if (event.type == SDL_MOUSEBUTTONDOWN)
     {
         SDL_Point point = {event.button.x, event.button.y};
 
-        if (!in_ball_selection)
+        if (SDL_PointInRect(&point, &button_start))
         {
-            // Main menu button clicks
-            if (SDL_PointInRect(&point, &button_start))
-            {
-                in_ball_selection = true;  // Move to ball selection
-                return false;  // Don't start game yet
-            }
-            else if (saved_file_exists && SDL_PointInRect(&point, &button_continue))
-            {
-                started = true;
-                continue_game = true;
-                return true;
-            }
-            else if (SDL_PointInRect(&point, &button_exit))
-            {
-                exit_game = true;
-                SDL_Event quitEvent;
-                quitEvent.type = SDL_QUIT;
-                SDL_PushEvent(&quitEvent);
-                return true;
-            }
+            start_new_game = true;
+            return true;
         }
-        else
+        else if (saved_file_exists && SDL_PointInRect(&point, &button_continue))
         {
-            // Ball selection menu clicks
-            if (SDL_PointInRect(&point, &button_circle_ball))
-            {
-                selected_ball = 0;
-                started = true;
-                // GameSave::delete_save(); 
-                return true;
-            }
-            else if (SDL_PointInRect(&point, &button_square_ball))
-            {
-                selected_ball = 1;
-                started = true;
-                // GameSave::delete_save();
-                return true;
-            }
-            else if (SDL_PointInRect(&point, &button_triangle_ball))
-            {
-                selected_ball = 2;
-                started = true;
-                // GameSave::delete_save();
-                return true;
-            }
+            continue_game = true;
+            return true;
+        }
+        else if (SDL_PointInRect(&point, &button_exit))
+        {
+            exit_game = true;
+            SDL_Event quitEvent;
+            quitEvent.type = SDL_QUIT;
+            SDL_PushEvent(&quitEvent);
+            return true;
         }
     }
+
     return false;
 }
 
 void Menu::render_object()
 {
-    if (in_ball_selection)
-        render_ball_selection();
-    else
-        render_main_menu();
-}
-
-void Menu::render_main_menu()
-{
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
     SDL_Color text_color = {0, 0, 0, 0};
-    SDL_Color text_color_selected = {100, 180, 190, 220};
 
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    render_button("Start New Game", button_start,
-                 selected_button == 0 ? text_color_selected : text_color);
+    render_button("Start New Game", button_start, text_color);
 
     TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
 
     if (saved_file_exists)
     {
-        render_button("Continue Game", button_continue,
-                     selected_button == 1 ? text_color_selected : text_color);
+        render_button("Continue Game", button_continue, text_color);
     }
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
 
-    render_button("Exit Game", button_exit,
-                 selected_button == 2 ? text_color_selected : text_color);
-
-    SDL_RenderPresent(renderer);
-}
-
-void Menu::render_ball_selection()
-{
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderClear(renderer);
-
-    SDL_Color text_color = {0, 0, 0, 0};
-    SDL_Color text_color_selected = {100, 180, 190, 220};
-
-    TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    render_button("Select Ball Type", SDL_Rect{WINDOW_HEIGHT/2, 50, 200, 50},
-                 text_color);
-
-    TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
-    render_button("Classic Ball", button_circle_ball,
-                 selected_button == 3 ? text_color_selected : text_color);
-    render_button("Square Ball", button_square_ball,
-                 selected_button == 4 ? text_color_selected : text_color);
-    render_button("Triangle Ball", button_triangle_ball,
-                 selected_button == 5 ? text_color_selected : text_color);
+    render_button("Exit Game", button_exit, text_color);
 
     SDL_RenderPresent(renderer);
 }
