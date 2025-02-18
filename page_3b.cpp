@@ -8,7 +8,7 @@
 #include "renderers.hpp"
 #include "macros.hpp"
 
-PauseMenu::PauseMenu(SDL_Renderer *renderer, TTF_Font *font)
+page_3b::page_3b(SDL_Renderer *renderer, TTF_Font *font)
     : renderer(renderer), police(font), mResume(false), mSave(false), mExit(false), selected_button(-1), mode_type(-1)
 {
     // Center the buttons on screen
@@ -17,9 +17,9 @@ PauseMenu::PauseMenu(SDL_Renderer *renderer, TTF_Font *font)
     button_exit = {300, 360, 200, 50};
 }
 
-PauseMenu::~PauseMenu() {}
+page_3b::~page_3b() {}
 
-void PauseMenu::render_object()
+void page_3b::render_object()
 {
     // Semi-transparent background
     // SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
@@ -47,7 +47,7 @@ void PauseMenu::render_object()
     SDL_RenderPresent(renderer);
 }
 
-bool PauseMenu::action_handler(const SDL_Event &event)
+bool page_3b::action_handler(const SDL_Event &event)
 {
     // We reinitialise the state of the buttons after each event
     mResume = false;

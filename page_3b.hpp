@@ -10,10 +10,10 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 
-class PauseMenu {
+class page_3b {
 public:
-    PauseMenu(SDL_Renderer* renderer, TTF_Font* font);
-    ~PauseMenu();
+    page_3b(SDL_Renderer* renderer, TTF_Font* font);
+    ~page_3b();
     
     void render_object();
     bool action_handler(const SDL_Event& event);

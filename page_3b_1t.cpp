@@ -11,7 +11,7 @@
 #include <iostream>
 #include <string>
 
-MiddleMenu::MiddleMenu(SDL_Renderer *_renderer, TTF_Font *font) : selected_button(-1),
+page_3b_1t::page_3b_1t(SDL_Renderer *_renderer, TTF_Font *font) : selected_button(-1),
                                                                   mode_type(-1),
                                                                   texture_middle_menu(nullptr),
                                                                   renderer(_renderer),
@@ -22,7 +22,7 @@ MiddleMenu::MiddleMenu(SDL_Renderer *_renderer, TTF_Font *font) : selected_butto
     button_3 = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 400, 200, 40};
 }
 
-MiddleMenu::~MiddleMenu()
+page_3b_1t::~page_3b_1t()
 {
     // Deallocate menu texture
     if (texture_middle_menu)
@@ -32,7 +32,7 @@ MiddleMenu::~MiddleMenu()
     }
 }
 
-bool MiddleMenu::action_handler(const SDL_Event &event)
+bool page_3b_1t::action_handler(const SDL_Event &event)
 {
     // Reinitialisations
     selected_button = -1;
@@ -77,7 +77,7 @@ bool MiddleMenu::action_handler(const SDL_Event &event)
     return false;
 }
 
-void MiddleMenu::render_object()
+void page_3b_1t::render_object()
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);

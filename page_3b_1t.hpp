@@ -13,7 +13,7 @@
 
 #include <array>
 
-class MiddleMenu {
+class page_3b_1t {
 private:
     int selected_button;
 
@@ -31,8 +31,8 @@ private:
 
 public:
     // Constructor and destructor of the middle menu page
-    MiddleMenu(SDL_Renderer* _renderer, TTF_Font* font);   
-    ~MiddleMenu();
+    page_3b_1t(SDL_Renderer* _renderer, TTF_Font* font);   
+    ~page_3b_1t();
 
     int get_selected_option() const { return selected_button; } // allow to get the selected ball type on other parts of the program
     

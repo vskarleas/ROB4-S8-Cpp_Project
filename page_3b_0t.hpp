@@ -16,7 +16,7 @@
 #include "game_save.hpp"
 
 
-class Menu {
+class page_3b_0t {
 private:
     // Prininting buttons flags
     bool start_new_game;
@@ -37,8 +37,8 @@ private:
 
 public:
     // Constructor and destructor of the menu page
-    Menu(SDL_Renderer* _renderer, TTF_Font* font);   
-    ~Menu();
+    page_3b_0t(SDL_Renderer* _renderer, TTF_Font* font);   
+    ~page_3b_0t();
     
     bool action_handler(const SDL_Event& event);
     void render_object();

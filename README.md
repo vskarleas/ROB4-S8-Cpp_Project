@@ -15,6 +15,7 @@
 * V6.1.0: Added updates pages structures and logic for correct AI and balls selection to their respective modes
 * V6.1.1: Changes GameState to game_sate for normalisation reasons
 * V6.1.2: Renamed files according to teh pages structure below for clarity reasons. The classes on those files has not been updated yet
+* V6.1.3: Updates class names according to the pages structures below and AI logic has been implemented. Needs to be added on the game's global logic
 
 ## Pages structures
 

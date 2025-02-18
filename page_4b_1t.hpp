@@ -11,7 +11,7 @@
 #include <SDL_ttf.h>
 #include <array>
 
-class ModeMenu {
+class page_4b_1t {
 private:
     int mode_id;
     bool exit_game;
@@ -34,8 +34,8 @@ private:
 
 public:
     // Constructor and destructor of the mode menu page
-    ModeMenu(SDL_Renderer* _renderer, TTF_Font* font);
-    ~ModeMenu();
+    page_4b_1t(SDL_Renderer* _renderer, TTF_Font* font);
+    ~page_4b_1t();
 
     bool action_handler(const SDL_Event& event);
     void render_object();

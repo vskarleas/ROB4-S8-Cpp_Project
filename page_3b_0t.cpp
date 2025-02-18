@@ -11,7 +11,7 @@
 #include "macros.hpp"
 #include "renderers.hpp"
 
-Menu::Menu(SDL_Renderer *_renderer, TTF_Font *font) : /* Follwoing the order in the class declaration*/
+page_3b_0t::page_3b_0t(SDL_Renderer *_renderer, TTF_Font *font) : /* Follwoing the order in the class declaration*/
     start_new_game(false),
     exit_mode(false),
     continue_game(false),
@@ -27,7 +27,7 @@ Menu::Menu(SDL_Renderer *_renderer, TTF_Font *font) : /* Follwoing the order in 
     button_exit = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 300, 200, 50}; // Keep space before exit
 }
 
-Menu::~Menu()
+page_3b_0t::~page_3b_0t()
 {
     // Deallocate menu texture
     if (texture_menu)
@@ -37,7 +37,7 @@ Menu::~Menu()
     }
 }
 
-bool Menu::action_handler(const SDL_Event &event)
+bool page_3b_0t::action_handler(const SDL_Event &event)
 {
     // Reset the flags for new game, continue game and exit game, otherwise the logic is not triggered correctly
     start_new_game = false;
@@ -71,7 +71,7 @@ bool Menu::action_handler(const SDL_Event &event)
     return false;
 }
 
-void Menu::render_object()
+void page_3b_0t::render_object()
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);

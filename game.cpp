@@ -229,11 +229,11 @@ bool Game::initialise()
     }
 
     // Rendering the different views of the game
-    mMenu = new Menu(renderer, police);
-    mNoticeMenu = new NoticeMenu(renderer, police);
-    mMiddleMenu = new MiddleMenu(renderer, police);
-    mModeMenu = new ModeMenu(renderer, police);
-    mPauseMenu = new PauseMenu(renderer, police);
+    mMenu = new page_3b_0t(renderer, police);
+    mNoticeMenu = new page_2b_1t(renderer, police);
+    mMiddleMenu = new page_3b_1t(renderer, police);
+    mModeMenu = new page_4b_1t(renderer, police);
+    mPauseMenu = new page_3b(renderer, police);
 
     // Creating the different objects of the game
     mPaddle1 = new Paddle(30, true);

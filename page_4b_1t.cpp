@@ -11,7 +11,7 @@
 #include <iostream>
 #include <string>
 
-ModeMenu::ModeMenu(SDL_Renderer *_renderer, TTF_Font *font) :
+page_4b_1t::page_4b_1t(SDL_Renderer *_renderer, TTF_Font *font) :
     mode_id(-1),
     exit_game(false),
 
@@ -36,7 +36,7 @@ ModeMenu::ModeMenu(SDL_Renderer *_renderer, TTF_Font *font) :
 }
 
 
-ModeMenu::~ModeMenu()
+page_4b_1t::~page_4b_1t()
 {
     if (texture_menu)
     {
@@ -45,7 +45,7 @@ ModeMenu::~ModeMenu()
     }
 }
 
-bool ModeMenu::action_handler(const SDL_Event &event)
+bool page_4b_1t::action_handler(const SDL_Event &event)
 {
     // Reinitialising everything sinc ethis is a repeated menu
     mode_id = -1;
@@ -88,7 +88,7 @@ bool ModeMenu::action_handler(const SDL_Event &event)
     return false;
 }
 
-void ModeMenu::render_object()
+void page_4b_1t::render_object()
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);

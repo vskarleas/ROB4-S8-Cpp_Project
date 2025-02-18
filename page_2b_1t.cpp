@@ -8,7 +8,7 @@
 #include "renderers.hpp"
 #include "macros.hpp"
 
-NoticeMenu::NoticeMenu(SDL_Renderer *_renderer, TTF_Font *font) : 
+page_2b_1t::page_2b_1t(SDL_Renderer *_renderer, TTF_Font *font) : 
     texture_menu(nullptr),
     renderer(_renderer),
     police(font),
@@ -26,7 +26,7 @@ NoticeMenu::NoticeMenu(SDL_Renderer *_renderer, TTF_Font *font) :
     button_lets_go = SDL_Rect{center_x, base_y + 70, button_width, button_height};
 }
 
-NoticeMenu::~NoticeMenu()
+page_2b_1t::~page_2b_1t()
 {
     if (texture_menu)
     {
@@ -35,7 +35,7 @@ NoticeMenu::~NoticeMenu()
     }
 }
 
-bool NoticeMenu::action_handler(const SDL_Event &event)
+bool page_2b_1t::action_handler(const SDL_Event &event)
 {
     next_view = false;
 
@@ -60,7 +60,7 @@ bool NoticeMenu::action_handler(const SDL_Event &event)
 }
 
 
-void NoticeMenu::render_object()
+void page_2b_1t::render_object()
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);

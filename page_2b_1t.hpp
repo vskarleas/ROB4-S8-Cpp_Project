@@ -10,7 +10,7 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 
-class NoticeMenu {
+class page_2b_1t {
 private:
     SDL_Texture* texture_menu;
     SDL_Renderer* renderer; // Responsible for placing the objects on the SDL screen
@@ -27,8 +27,8 @@ private:
 public:
 
     // Constructor and destructor of the notice page
-    NoticeMenu(SDL_Renderer* _renderer, TTF_Font* font);   
-    ~NoticeMenu();
+    page_2b_1t(SDL_Renderer* _renderer, TTF_Font* font);   
+    ~page_2b_1t();
 
     bool action_handler(const SDL_Event& event);
 

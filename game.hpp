@@ -71,12 +71,12 @@ private:
     // The font used on the whole game
     TTF_Font* police;
     
-    // Adding the different page sof the app
-    NoticeMenu* mNoticeMenu;
-    Menu* mMenu;
-    PauseMenu* mPauseMenu;
-    MiddleMenu* mMiddleMenu;
-    ModeMenu* mModeMenu;
+    // Adding the different page structures on the app
+    page_2b_1t* mNoticeMenu;
+    page_3b_0t* mMenu;
+    page_3b* mPauseMenu;
+    page_3b_1t* mMiddleMenu;
+    page_4b_1t* mModeMenu;
 
 
     // This allows us to control on which state we are and make the appropriate UI and action decisons
