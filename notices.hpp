@@ -26,7 +26,7 @@ private:
 
 public:
 
-    // Constructor and destructor of the menu page
+    // Constructor and destructor of the notice page
     NoticeMenu(SDL_Renderer* _renderer, TTF_Font* font);   
     ~NoticeMenu();
 

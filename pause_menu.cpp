@@ -6,9 +6,10 @@
 
 #include "pause_menu.hpp"
 #include "renderers.hpp"
+#include "macros.hpp"
 
 PauseMenu::PauseMenu(SDL_Renderer *renderer, TTF_Font *font)
-    : renderer(renderer), police(font), mResume(false), mSave(false), mExit(false), selected_button(-1)
+    : renderer(renderer), police(font), mResume(false), mSave(false), mExit(false), selected_button(-1), mode_type(-1)
 {
     // Center the buttons on screen
     mResumeButton = {300, 200, 200, 50};
@@ -34,11 +35,14 @@ void PauseMenu::render_object()
     SDL_Color text_color_selected = {0, 255, 255, 255};
 
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    Utilities::render_button(renderer, police,"Resume", mResumeButton, selected_button == 0 ? text_color_selected : normalColor);
+    Utilities::render_button(renderer, police, "Resume", mResumeButton, selected_button == 0 ? text_color_selected : normalColor);
     TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
 
-    Utilities::render_button(renderer, police,"Save", mSaveButton, selected_button == 1 ? text_color_selected : normalColor);
-    Utilities::render_button(renderer, police,"Back to menu", button_exit, selected_button == 2 ? text_color_selected : normalColor);
+    if (mode_type == TWO_PLAYERS_MODE)
+    {
+        Utilities::render_button(renderer, police, "Save", mSaveButton, selected_button == 1 ? text_color_selected : normalColor);
+    }
+    Utilities::render_button(renderer, police, "Back to menu", button_exit, selected_button == 2 ? text_color_selected : normalColor);
 
     SDL_RenderPresent(renderer);
 }
@@ -50,7 +54,9 @@ bool PauseMenu::action_handler(const SDL_Event &event)
     mSave = false;
     mExit = false;
 
-    if (event.type == SDL_MOUSEMOTION) //for color changes only
+    // mode_type = -1;
+
+    if (event.type == SDL_MOUSEMOTION) // for color changes only
     {
         SDL_Point point = {event.motion.x, event.motion.y};
         selected_button = -1;
@@ -71,15 +77,19 @@ bool PauseMenu::action_handler(const SDL_Event &event)
             mResume = true;
             return true;
         }
-        else if (SDL_PointInRect(&point, &mSaveButton))
-        {
-            mSave = true;
-            return true;
-        }
         else if (SDL_PointInRect(&point, &button_exit))
         {
             mExit = true;
             return true;
+        }
+
+        if (mode_type == TWO_PLAYERS_MODE) // detect this only for two players mode 
+        {
+            if (SDL_PointInRect(&point, &mSaveButton))
+            {
+                mSave = true;
+                return true;
+            }
         }
     }
     return false;

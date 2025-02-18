@@ -21,6 +21,9 @@ public:
     bool ShouldSave() const { return mSave; }
     bool get_exit_mode() const { return mExit; }
 
+    void set_mode_type(int type) { mode_type = type; } // update the mode type from the outside
+    int get_mode_type() const { return mode_type; } // allow to get the mode type for decision making on the game's logic
+
 private:
     SDL_Renderer* renderer;
     TTF_Font* police;
@@ -32,6 +35,8 @@ private:
     SDL_Rect mResumeButton;
     SDL_Rect mSaveButton;
     SDL_Rect button_exit;
+
+    int mode_type; // used to differetiate the rendering objects and content
 };
 
 #endif

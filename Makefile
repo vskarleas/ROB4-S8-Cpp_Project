@@ -93,7 +93,7 @@ notices.o : notices.cpp notices.hpp macros.hpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-pause_menu.o: pause_menu.cpp pause_menu.hpp renderers.hpp
+pause_menu.o: pause_menu.cpp pause_menu.hpp renderers.hpp macros.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*

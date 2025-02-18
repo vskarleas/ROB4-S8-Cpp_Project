@@ -59,6 +59,7 @@ Paddle::Paddle(int x, bool on_the_left_side) : // Paddle's position on the scree
 //         Paddle::set_pos_y(600.0f - Paddle::get_racket_height() / 2.0f);
 //     }
 // }
+
 void Paddle::update(float travel_time)
 {
     const Uint8 *state = SDL_GetKeyboardState(NULL);

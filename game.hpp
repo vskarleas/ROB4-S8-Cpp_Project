@@ -24,7 +24,7 @@
 enum class GameState {
     Notice_Menu,
     Menu, // th is the after menu after the Two players notice
-    Select_Ball_Menu,
+    Middle_menu,
     Choose_Mode, // this is used as our main menu where players can choose what they want to do
     AI_playing,
     Fun_playing,

@@ -12,5 +12,6 @@ const int WINDOW_HEIGHT = 600;
 #define TWO_PLAYERS_MODE 2
 #define STORYTIME_MODE 3
 #define FUN_MODE 4
+#define GAME_SAVED 5
 
 #endif

@@ -125,6 +125,12 @@ void NoticeMenu::render_object()
             notice_text[7] = "- The AI will control the other paddle";
             text_size = 8;
             break;
+        case GAME_SAVED:
+            notice_text[0] = "Game has been saved! succesfully !";
+            notice_text[1] = "";
+            notice_text[2] = "Please note that you can Continue the game only when you are on the Classic Pong Game mode";
+            text_size = 3;
+            break;
 
         case -1:
             notice_text[0] = "Welcome to the Pong Game!";
@@ -157,9 +163,15 @@ void NoticeMenu::render_object()
     // Render Let's Go button
     TTF_SetFontSize(police, 24);
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    Utilities::render_button(renderer, police,"Let's go", button_lets_go, text_color);
+    Utilities::render_button(renderer, police,"Alright", button_lets_go, text_color);
 
-    if (notice_id != -1) // show the go back button only if we are not in the general notice
+    // if (!(notice_id != -1 || notice_id == GAME_SAVED)) // hide the go back button if we are in the game saved notice
+    // {
+    //     TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
+    //     Utilities::render_button(renderer, police,"Go back", button_back, text_color);
+    // }
+
+    if (notice_id != -1 && notice_id != GAME_SAVED) // show the go back button only if we are not in the general notice
     {
         TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
         Utilities::render_button(renderer, police,"Go back", button_back, text_color);

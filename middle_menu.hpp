@@ -15,8 +15,9 @@
 
 class MiddleMenu {
 private:
-    int selected_ball;
     int selected_button;
+
+    int mode_type; // used to universalize this object
 
     // SDL objects for the middle menu page 
     SDL_Texture* texture_middle_menu;
@@ -24,19 +25,22 @@ private:
     TTF_Font* police;
 
     // Buttons
-    SDL_Rect button_circle_ball;
-    SDL_Rect button_square_ball;
-    SDL_Rect button_triangle_ball;
+    SDL_Rect button_1;
+    SDL_Rect button_2;
+    SDL_Rect button_3;
 
 public:
     // Constructor and destructor of the middle menu page
     MiddleMenu(SDL_Renderer* _renderer, TTF_Font* font);   
     ~MiddleMenu();
 
-    int get_selected_ball() const { return selected_ball; } // allow to get the selected ball type on other parts of the program
+    int get_selected_option() const { return selected_button; } // allow to get the selected ball type on other parts of the program
     
     bool action_handler(const SDL_Event& event);
     void render_object();
+
+    int get_mode_type() const { return mode_type; } // allow to get the mode type for decision making on the game's logic
+    void set_mode_type(int type) { mode_type = type; } // updatet the game mode type from the outside
 };
 
 #endif // MIDDLE_MENU_HPP
