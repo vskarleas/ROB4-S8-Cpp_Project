@@ -8,4 +8,9 @@ const int WINDOW_HEIGHT = 600;
 
 #define GAME_NAME "The NEW Pong"
 
+#define AI_MODE 1
+#define TWO_PLAYERS_MODE 2
+#define STORYTIME_MODE 3
+#define FUN_MODE 4
+
 #endif

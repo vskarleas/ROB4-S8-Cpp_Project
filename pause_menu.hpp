@@ -19,7 +19,7 @@ public:
     bool action_handler(const SDL_Event& event);
     bool ShouldResume() const { return mResume; }
     bool ShouldSave() const { return mSave; }
-    bool get_exit_game() const { return mExit; }
+    bool get_exit_mode() const { return mExit; }
 
 private:
     SDL_Renderer* renderer;

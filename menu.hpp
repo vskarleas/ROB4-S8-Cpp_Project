@@ -20,7 +20,7 @@ class Menu {
 private:
     // Prininting buttons flags
     bool start_new_game;
-    bool exit_game;
+    bool exit_mode;
     bool continue_game; 
 
     bool saved_file_exists;
@@ -35,8 +35,6 @@ private:
     SDL_Rect button_exit;
     SDL_Rect button_continue;
 
-    void render_button(const char* text, const SDL_Rect& button, const SDL_Color& color);
-
 public:
     // Constructor and destructor of the menu page
     Menu(SDL_Renderer* _renderer, TTF_Font* font);   
@@ -47,7 +45,7 @@ public:
     
     // Getters for the private variables of the menu class
     bool get_started() const { return start_new_game; }
-    bool get_exit_game() const { return exit_game; }
+    bool get_exit_mode() const { return exit_mode; }
     bool get_saved_file_exists() const { return saved_file_exists; }
     bool get_continue_game() const { return continue_game; } 
 

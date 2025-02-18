@@ -11,5 +11,5 @@
 
 // Rendering the white triangle ball
 void TriangleBall::render_object(SDL_Renderer* renderer) {
-    TriangleRenderer()(renderer, pos_x, pos_y, ball_size);
+    triangle_renderer()(renderer, pos_x, pos_y, ball_size);
 }

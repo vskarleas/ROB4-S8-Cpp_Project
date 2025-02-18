@@ -12,12 +12,18 @@ NoticeMenu::NoticeMenu(SDL_Renderer *_renderer, TTF_Font *font) :
     texture_menu(nullptr),
     renderer(_renderer),
     police(font),
-    notice_displayed(false),
+    next_view(false),
     go_back(false), //be default we don't go back on the modes menu
     notice_id(-1) //be default we display the general notice
 {
-    button_lets_go = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 300, 200, 50};
-    button_back = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 200, 200, 50};
+    const int button_width = 200;
+    const int button_height = 50;
+    const int base_y = WINDOW_WIDTH - 400;
+    const int center_x = WINDOW_HEIGHT / 2;
+
+    // "Go back" button above "Let's go" button
+    button_back = SDL_Rect{center_x, base_y, button_width, button_height};
+    button_lets_go = SDL_Rect{center_x, base_y + 70, button_width, button_height};
 }
 
 NoticeMenu::~NoticeMenu()
@@ -31,7 +37,7 @@ NoticeMenu::~NoticeMenu()
 
 bool NoticeMenu::action_handler(const SDL_Event &event)
 {
-    notice_displayed = false;
+    next_view = false;
 
     if (event.type == SDL_MOUSEBUTTONDOWN)
     {
@@ -39,7 +45,7 @@ bool NoticeMenu::action_handler(const SDL_Event &event)
 
         if (SDL_PointInRect(&point, &button_lets_go))
         {
-            notice_displayed = true;
+            next_view = true;
             return true;
         }
 
@@ -70,7 +76,7 @@ void NoticeMenu::render_object()
 
     switch(notice_id) // a great way to add more notices without creatign new files for the same fuctionality
     {
-        case 2:
+        case TWO_PLAYERS_MODE:
             notice_text[0] = "Default Pong Game instructions";
             notice_text[1] = "";
             notice_text[2] = "Player 1 Controls:";
@@ -87,7 +93,7 @@ void NoticeMenu::render_object()
             text_size = 13;
             break;
 
-        case 1:
+        case AI_MODE:
             notice_text[0] = "AI Mode Instructions";
             notice_text[1] = "";
             notice_text[2] = "In this mode, you'll play against the computer!";
@@ -98,7 +104,7 @@ void NoticeMenu::render_object()
             text_size = 7;
             break;
 
-        case 3:
+        case STORYTIME_MODE:
             notice_text[0] = "Story Mode Instructions";
             notice_text[1] = "";
             notice_text[2] = "Complete challenges to unlock new features!";
@@ -108,7 +114,7 @@ void NoticeMenu::render_object()
             text_size = 6;
             break;
 
-        case 4:
+        case FUN_MODE:
             notice_text[0] = "Fun Mode Instructions";
             notice_text[1] = "";
             notice_text[2] = "In this mode, you'll play against the computer!";
@@ -153,7 +159,7 @@ void NoticeMenu::render_object()
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
     Utilities::render_button(renderer, police,"Let's go", button_lets_go, text_color);
 
-    if (notice_id != -1) // show the go back button
+    if (notice_id != -1) // show the go back button only if we are not in the general notice
     {
         TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
         Utilities::render_button(renderer, police,"Go back", button_back, text_color);

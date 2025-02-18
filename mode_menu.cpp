@@ -13,15 +13,26 @@
 
 ModeMenu::ModeMenu(SDL_Renderer *_renderer, TTF_Font *font) :
     mode_id(-1),
+    exit_game(false),
 
     texture_menu(nullptr),
     renderer(_renderer),
     police(font)
 {
-    button_ai_mode = SDL_Rect{WINDOW_HEIGHT / 2 - 100, 150, 200, 50};
-    button_two_players_mode = SDL_Rect{WINDOW_HEIGHT / 2, 150, 200, 50};
-    button_storytime_mode = SDL_Rect{WINDOW_HEIGHT / 2 + 100, 150, 200, 50};
-    button_fun_mode = SDL_Rect{WINDOW_HEIGHT / 2, 250, 200, 50};
+    // Button dimensions
+    const int button_width = 200;
+    const int button_height = 50;
+    const int vertical_spacing = 20;
+    const int start_y = 150;
+
+    const int center_x = (WINDOW_WIDTH - button_width) / 2;
+
+    // Center all buttons horizontally and space them vertically
+    button_ai_mode = SDL_Rect{center_x, start_y, button_width, button_height};
+    button_two_players_mode = SDL_Rect{center_x, start_y + (button_height + vertical_spacing), button_width, button_height};
+    button_storytime_mode = SDL_Rect{center_x, start_y + 2 * (button_height + vertical_spacing), button_width, button_height};
+    button_fun_mode = SDL_Rect{center_x, start_y + 3 * (button_height + vertical_spacing), button_width, button_height};
+    button_exit = SDL_Rect{center_x, start_y + 4 * (button_height + vertical_spacing), button_width, button_height};
 }
 
 
@@ -38,6 +49,7 @@ bool ModeMenu::action_handler(const SDL_Event &event)
 {
     // Reinitialising everything sinc ethis is a repeated menu
     mode_id = -1;
+    exit_game = false;
 
     if (event.type == SDL_MOUSEBUTTONDOWN)
     {
@@ -46,22 +58,30 @@ bool ModeMenu::action_handler(const SDL_Event &event)
         // Ball selection menu clicks
         if (SDL_PointInRect(&point, &button_ai_mode))
         {
-            mode_id = 0;
+            mode_id = AI_MODE;
             return true;
         }
         else if (SDL_PointInRect(&point, &button_two_players_mode))
         {
-            mode_id = 1;
+            mode_id = TWO_PLAYERS_MODE;
             return true;
         }
         else if (SDL_PointInRect(&point, &button_storytime_mode))
         {
-            mode_id = 2;
+            mode_id = STORYTIME_MODE;
             return true;
         }
         else if (SDL_PointInRect(&point, &button_fun_mode))
         {
-            mode_id = 3;
+            mode_id = FUN_MODE;
+            return true;
+        }
+        else if (SDL_PointInRect(&point, &button_exit))
+        {
+            exit_game = true;
+            SDL_Event quitEvent;
+            quitEvent.type = SDL_QUIT;
+            SDL_PushEvent(&quitEvent);
             return true;
         }
     }
@@ -76,14 +96,18 @@ void ModeMenu::render_object()
     SDL_Color text_color = {0, 0, 0, 0};
 
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    Utilities::render_button(renderer, police,"Select Ball Type", SDL_Rect{WINDOW_HEIGHT/2, 50, 200, 50},
-                 text_color);
+    Utilities::render_button(renderer, police, "Select mode", 
+        SDL_Rect{(WINDOW_WIDTH - 200) / 2, 50, 200, 50},
+        text_color);
 
     TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
     Utilities::render_button(renderer, police, "AI mode", button_ai_mode, text_color);
     Utilities::render_button(renderer, police,"Classic Pong", button_two_players_mode, text_color);
     Utilities::render_button(renderer, police,"Storytime mode", button_storytime_mode, text_color);
     Utilities::render_button(renderer, police,"Fun mode", button_fun_mode, text_color);
+
+    TTF_SetFontStyle(police, TTF_STYLE_BOLD);  // Set bold style for exit button
+    Utilities::render_button(renderer, police, "Exit Game", button_exit, text_color);
 
     SDL_RenderPresent(renderer);
 }

@@ -16,15 +16,20 @@
 #include "menu.hpp"
 #include "pause_menu.hpp"
 #include "middle_menu.hpp"
+#include "mode_menu.hpp"
 
 
 #include "notices.hpp"
 
 enum class GameState {
     Notice_Menu,
-    Menu,
+    Menu, // th is the after menu after the Two players notice
     Select_Ball_Menu,
-    Playing,
+    Choose_Mode, // this is used as our main menu where players can choose what they want to do
+    AI_playing,
+    Fun_playing,
+    Storytime_playing,
+    Playing, // playing classic with two players (first implementation)
     Paused
 };
 
@@ -71,6 +76,7 @@ private:
     Menu* mMenu;
     PauseMenu* mPauseMenu;
     MiddleMenu* mMiddleMenu;
+    ModeMenu* mModeMenu;
 
 
     // This allows us to control on which state we are and make the appropriate UI and action decisons

@@ -9,5 +9,5 @@
 
 // Rendering the white square ball
 void SquareBall::render_object(SDL_Renderer* renderer) {
-    SquareRenderer()(renderer, pos_x, pos_y, ball_size);
+    square_renderer()(renderer, pos_x, pos_y, ball_size);
 }

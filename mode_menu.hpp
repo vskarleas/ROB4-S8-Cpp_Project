@@ -14,6 +14,7 @@
 class ModeMenu {
 private:
     int mode_id;
+    bool exit_game;
     /*
     mode = 1 -> AI mode
     mode = 2 -> Two players mode
@@ -29,6 +30,7 @@ private:
     SDL_Rect button_two_players_mode;
     SDL_Rect button_storytime_mode;
     SDL_Rect button_fun_mode;
+    SDL_Rect button_exit;
 
 public:
     // Constructor and destructor of the mode menu page
@@ -37,6 +39,8 @@ public:
 
     bool action_handler(const SDL_Event& event);
     void render_object();
+
+    bool get_exit_game() const { return exit_game; }
 
     // Allows to redirect to correct view using a switch function
     int get_mode_id() const { return mode_id; }

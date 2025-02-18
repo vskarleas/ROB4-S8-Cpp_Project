@@ -42,5 +42,5 @@ void DrawFilledCircle(SDL_Renderer* renderer, int32_t centerX, int32_t centerY, 
 }
 
 void ClassicBall::render_object(SDL_Renderer* renderer) {
-    CircleRenderer()(renderer, pos_x, pos_y, ball_size);
+    circle_renderer()(renderer, pos_x, pos_y, ball_size);
 }

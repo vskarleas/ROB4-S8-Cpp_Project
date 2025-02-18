@@ -13,7 +13,7 @@
 
 Menu::Menu(SDL_Renderer *_renderer, TTF_Font *font) : /* Follwoing the order in the class declaration*/
     start_new_game(false),
-    exit_game(false),
+    exit_mode(false),
     continue_game(false),
     saved_file_exists(GameSave::save_exists()), // calls the save_exists() function to check if a game state file exists
 
@@ -42,7 +42,7 @@ bool Menu::action_handler(const SDL_Event &event)
     // Reset the flags for new game, continue game and exit game, otherwise the logic is not triggered correctly
     start_new_game = false;
     continue_game = false;
-    exit_game = false;
+    exit_mode = false;
 
     if (event.type == SDL_MOUSEBUTTONDOWN)
     {
@@ -60,10 +60,10 @@ bool Menu::action_handler(const SDL_Event &event)
         }
         else if (SDL_PointInRect(&point, &button_exit))
         {
-            exit_game = true;
-            SDL_Event quitEvent;
-            quitEvent.type = SDL_QUIT;
-            SDL_PushEvent(&quitEvent);
+            exit_mode = true;
+            // SDL_Event quitEvent;
+            // quitEvent.type = SDL_QUIT;
+            // SDL_PushEvent(&quitEvent);
             return true;
         }
     }
@@ -89,7 +89,7 @@ void Menu::render_object()
     }
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
 
-    Utilities::render_button(renderer, police, "Exit Game", button_exit, text_color);
+    Utilities::render_button(renderer, police, "Choose another mode", button_exit, text_color);
 
     SDL_RenderPresent(renderer);
 }

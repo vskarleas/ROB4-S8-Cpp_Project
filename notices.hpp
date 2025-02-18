@@ -19,7 +19,7 @@ private:
     SDL_Rect button_lets_go;
     SDL_Rect button_back;
 
-    bool notice_displayed;
+    bool next_view;
     bool go_back; // to go back on the modes menu
 
     int notice_id; // check the mode_menu.hpp for the for the different notice IDs
@@ -32,7 +32,8 @@ public:
 
     bool action_handler(const SDL_Event& event);
 
-    bool get_notice_displayed() const { return notice_displayed; }
+    bool get_next_view() const { return next_view; }
+    bool get_go_back() const { return go_back; }
 
     // Required for the game lofgic to update the notices tree and remder the correct text every time
     int get_notice_id() const { return notice_id; }

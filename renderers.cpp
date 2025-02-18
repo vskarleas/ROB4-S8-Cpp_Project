@@ -8,6 +8,8 @@
 #include <iostream>
 
 namespace Utilities {
+
+    // Function to render the text on the SDL screen as a button
     void render_button(SDL_Renderer* renderer, TTF_Font* font, const char* text, 
                       const SDL_Rect& button, const SDL_Color& color) {
         SDL_Surface* text_surface = TTF_RenderText_Solid(font, text, color);
@@ -28,7 +30,8 @@ namespace Utilities {
     }
 }
 
-void CircleRenderer::DrawFilledCircle(SDL_Renderer* renderer, int32_t centerX, int32_t centerY, int32_t radius) const {
+// Implementation of the circle_renderer class
+void circle_renderer::DrawFilledCircle(SDL_Renderer* renderer, int32_t centerX, int32_t centerY, int32_t radius) const {
     const int32_t diameter = (radius * 2);
     int32_t x = (radius - 1);
     int32_t y = 0;
@@ -57,7 +60,9 @@ void CircleRenderer::DrawFilledCircle(SDL_Renderer* renderer, int32_t centerX, i
 
 /* We are using functors to encapsulate teh shapes rendering logic used to show the different ball types. It allows us to add more easily new shape types and also accelerated a lot the different tests because the functors allowed the different renderers to be tested individually */
 
-void CircleRenderer::operator()(SDL_Renderer* renderer, float pos_x, float pos_y, float size) const {
+
+// Implementation of the circle_renderer class
+void circle_renderer::operator()(SDL_Renderer* renderer, float pos_x, float pos_y, float size) const {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     DrawFilledCircle(renderer, 
         static_cast<int32_t>(pos_x),
@@ -65,7 +70,8 @@ void CircleRenderer::operator()(SDL_Renderer* renderer, float pos_x, float pos_y
         static_cast<int32_t>(size / 2.0f));
 }
 
-void SquareRenderer::operator()(SDL_Renderer* renderer, float pos_x, float pos_y, float size) const {
+// Implementation of the square_renderer class
+void square_renderer::operator()(SDL_Renderer* renderer, float pos_x, float pos_y, float size) const {
     SDL_Rect ball = {
         static_cast<int>(pos_x - size / 2.0f),
         static_cast<int>(pos_y - size / 2.0f),
@@ -76,7 +82,8 @@ void SquareRenderer::operator()(SDL_Renderer* renderer, float pos_x, float pos_y
     SDL_RenderFillRect(renderer, &ball);
 }
 
-void TriangleRenderer::operator()(SDL_Renderer* renderer, float pos_x, float pos_y, float size) const {
+// Implementation of the triangle_renderer class
+void triangle_renderer::operator()(SDL_Renderer* renderer, float pos_x, float pos_y, float size) const {
     SDL_Point points[3] = {
         {static_cast<int>(pos_x), static_cast<int>(pos_y - size / 2)},
         {static_cast<int>(pos_x - size / 2), static_cast<int>(pos_y + size / 2)},
