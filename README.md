@@ -16,6 +16,7 @@
 * V6.1.1: Changes GameState to game_sate for normalisation reasons
 * V6.1.2: Renamed files according to teh pages structure below for clarity reasons. The classes on those files has not been updated yet
 * V6.1.3: Updates class names according to the pages structures below and AI logic has been implemented. Needs to be added on the game's global logic
+* V7.0.1: Added the AI on the global game's logic
 
 ## Pages structures
 

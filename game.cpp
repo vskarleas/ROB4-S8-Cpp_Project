@@ -25,6 +25,8 @@ Game::Game()
       mPaddle2(nullptr),
       mBall(nullptr),
 
+      mAI(nullptr),
+
       mScore1(0),
       mScore2(0),
 
@@ -36,7 +38,7 @@ Game::Game()
       mMiddleMenu(nullptr),
       mModeMenu(nullptr),
 
-      mGameState(game_state::Notice_Menu) // by default we get into the Notice Menu
+      mGameState(game_state::Notice_Menu) // by default we get into the Notice Menu with option -1
 
 {
     mBackgroundColor1.r = 0;
@@ -142,6 +144,12 @@ Game::~Game()
     {
         SDL_DestroyWindow(mWindow);
         mWindow = nullptr;
+    }
+
+    if (mAI)
+    {
+        delete mAI;
+        mAI = nullptr;
     }
 
     // Quit SDL subsystems
@@ -260,6 +268,9 @@ bool Game::initialise()
     {
         Mix_PlayMusic(mBackgroundMusic, -1); // -1 means loop indefinitely
     }
+
+    // Adding the AI functionality on the PAddle No 2
+    mAI = new AI(mPaddle2);
 
     return true;
 }
@@ -534,12 +545,35 @@ void Game::ProcessInput()
                     }
                     else if (mMiddleMenu->get_mode_type() == AI_MODE)
                     {
-                        switch(mMiddleMenu->get_selected_option()) // TO BE COMPLETED WITH THE DEEP LEARNING MODEL
+                        switch (mMiddleMenu->get_selected_option())
                         {
-                            default:
-                                SDL_Log("Invalid ball type selected");
-                                break;
+                        case AI_MODE_EASY:
+
+                            mAI->setDifficulty(AI_MODE_EASY);
+                            break;
+
+                        case AI_MODE_NORMAL:
+                            mAI->setDifficulty(AI_MODE_NORMAL);
+                            break;
+
+                        case AI_MODE_HARD:
+                            mAI->setDifficulty(AI_MODE_HARD);
+                            break;
+
+                        default:
+                            SDL_Log("Invalid ball type selected");
+                            break;
                         }
+
+                        mScore1 = 0;
+                        mScore2 = 0;
+                        mPaddle1->set_pos_y(WINDOW_HEIGHT / 2.0f);
+                        mPaddle2->set_pos_y(WINDOW_HEIGHT / 2.0f);
+                        CreateBall(0);
+                        mBall->set_position(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f);
+                        mBall->set_velocity(200.0f, 235.0f);
+                        UpdateBackground();
+                        mGameState = game_state::AI_playing;
                     }
                     else
                     {
@@ -561,7 +595,7 @@ void Game::ProcessInput()
 
 void Game::UpdateGame()
 {
-    if (mGameState != game_state::Playing) // There is nothing to update if the game is not in playing state
+    if (mGameState != game_state::Playing && mGameState != game_state::AI_playing) // There is nothing to update if the game is not in playing state
     {
         return;
     }
@@ -574,10 +608,28 @@ void Game::UpdateGame()
     {
         travel_time = 0.05f;
     }
+
     mTicksCount = SDL_GetTicks();
 
     mPaddle1->update(travel_time);
-    mPaddle2->update(travel_time);
+
+    if (mGameState == game_state::Playing)
+    {
+        mPaddle2->update(travel_time);
+    }
+    else if (mGameState == game_state::AI_playing)
+    {
+        if (mAI)
+        {
+            mAI->updateAI(mBall, travel_time);
+        }
+        else
+        {
+            SDL_Log("AI object is not initialized and it returning a NILL");
+        }
+    }
+
+    
     mBall->update(travel_time, mPaddle1, mPaddle2, mScore1, mScore2);
 
     // Check for victory condition

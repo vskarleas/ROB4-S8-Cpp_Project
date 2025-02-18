@@ -13,13 +13,14 @@
 
 #include "paddle.hpp"
 #include "ball_base.hpp"
+
 #include "page_3b.hpp"
 #include "page_3b_0t.hpp"
 #include "page_3b_1t.hpp"
 #include "page_4b_1t.hpp"
-
-
 #include "page_2b_1t.hpp"
+
+#include "ai.hpp"
 
 enum class game_state {
     Notice_Menu,
@@ -63,6 +64,8 @@ private:
     Paddle* mPaddle1;
     Paddle* mPaddle2;
     BallBase* mBall;
+
+    AI* mAI; // the AI player
     
     // The scores of the two players
     int mScore1;

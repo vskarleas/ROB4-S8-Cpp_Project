@@ -11,6 +11,8 @@
 // #############################################################################
 
 #include "ai.hpp"
+#include "macros.hpp"
+
 #include <cmath> // pour fabs si besoin
 
 /* Constructeur */
@@ -44,13 +46,13 @@ void AI::updateAI(BallBase* ball, float dt)
     float reactionFactor = 1.0f;
     switch (mDifficulty)
     {
-    case 0: // facile
+    case AI_MODE_EASY: // facile
         reactionFactor = 0.6f; // plus lent => plus simple de passer
         break;
-    case 1: // normal
+    case AI_MODE_NORMAL: // normal
         reactionFactor = 1.0f;
         break;
-    case 2: // difficile
+    case AI_MODE_HARD: // difficile
         reactionFactor = 1.4f; // plus rapide => plus dur pour le joueur
         break;
     }

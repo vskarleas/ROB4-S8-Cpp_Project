@@ -23,7 +23,8 @@ SRCS = main.cpp \
 	page_2b_1t.cpp \
 	page_3b_1t.cpp \
 	renderers.cpp \
-	page_4b_1t.cpp
+	page_4b_1t.cpp \
+	ai.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 EXECUTABLE = game
@@ -114,7 +115,14 @@ page_3b_1t.o: page_3b_1t.cpp page_3b_1t.hpp renderers.hpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-game.o: game.cpp game.hpp paddle.hpp ball_base.hpp page_3b_0t.hpp page_3b.hpp game_save.hpp macros.hpp page_2b_1t.hpp page_3b_1t.hpp
+ai.o: ai.cpp ai.hpp paddle.hpp ball_base.hpp
+	@echo ""
+	@echo "---------------------------------------------"
+	@echo "Compilation du module "$*
+	@echo "---------------------------------------------"
+	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
+
+game.o: game.cpp game.hpp paddle.hpp ball_base.hpp page_3b_0t.hpp page_3b.hpp game_save.hpp macros.hpp page_2b_1t.hpp page_3b_1t.hpp ai.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
