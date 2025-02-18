@@ -13,15 +13,15 @@
 
 #include "paddle.hpp"
 #include "ball_base.hpp"
-#include "menu.hpp"
-#include "pause_menu.hpp"
-#include "middle_menu.hpp"
-#include "mode_menu.hpp"
+#include "page_3b.hpp"
+#include "page_3b_0t.hpp"
+#include "page_3b_1t.hpp"
+#include "page_4b_1t.hpp"
 
 
-#include "notices.hpp"
+#include "page_2b_1t.hpp"
 
-enum class GameState {
+enum class game_state {
     Notice_Menu,
     Menu, // th is the after menu after the Two players notice
     Middle_menu,
@@ -80,7 +80,7 @@ private:
 
 
     // This allows us to control on which state we are and make the appropriate UI and action decisons
-    GameState mGameState;
+    game_state mGameState;
 
     // Audio variables
     Mix_Music* mBackgroundMusic;

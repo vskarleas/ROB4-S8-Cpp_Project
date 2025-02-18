@@ -12,14 +12,27 @@
 * V5.1.3: Prepared notices so that we can return back to the mode menu
 * V5.1.4: Added logic for showng the paude button or not on the game
 * V6.0.1: We added the change views functionality succefully
+* V6.1.0: Added updates pages structures and logic for correct AI and balls selection to their respective modes
+* V6.1.1: Changes GameState to game_sate for normalisation reasons
+* V6.1.2: Renamed files according to teh pages structure below for clarity reasons. The classes on those files has not been updated yet
+
+## Pages structures
+
+This game comes with some specific predefined page structures that we use in order to render different content dynamicly or not (depending the extensive usage on the program). Here are the specifications for those files:
+
+- page_3b_1t : There are three buttons on the center and one title in bold on top (previous middle_menu)
+- page_2b_1t : There are two buttons and one grand part for long text (previous notices)
+- page_4b_1t: There four buttons and 1 title in bold (previous mode_menu)
+- page_3b_0t: There are three buttons, the two on top of the page and the third one close to the end (previous menu)
+- page_3b : There are 3 buttons, all of them centered in the middle of the screen (previous pause menu)
 
 ## TO-DO list
 
 * [X] Find a way to prpose an initial SDL window that show cases the instructionsof the game. Then when teh user taps on a button "Let's go", then this SDL windows closes and a new one Appears where a user chooses between the modes of the game that exist. The "Simple" one which is the current version of the game, the "Storytime" one where is the game without the saving functionality, but with the user class and the hisgh score board, and the third one which is "Hardcore" which is the same with the "Storytime" but now there is a single user that plays against an AI on the opposite Paddle. There is also the exit game button that terminates the game. When a mode is slected this SDL window closes and we are presented with the menu window of the different game modes. (definitely there are modification son the main.cpp for this functionaity to take place)
-* [ ] Add a message when the game is saved succesfully
+* [X] Add a message when the game is saved succesfully
 * [ ] Create a user class and use this to attribute the scores
 * [ ] Add a lifes functionality. Every user on the game starts with 6 lifes. The first one that runs out lifes in a round loses
-* [ ] Remove the end of game logic when score is greater than 10 for a user. Instead use the logic of the two previous points (not actually remove, but instead develop the new game mode like game_storytime.cpp). This new mode comes with its new menu_storytime.cpp that doesn't include the continue game functionality (as expected) but there is button that allows to see the high scores table (it opens on a new SDL window). The exit game button is transfored to exit mode button allowing to go back to the SDL window where we can choose the game mode.
+* [X] Remove the end of game logic when score is greater than 10 for a user. Instead use the logic of the two previous points (not actually remove, but instead develop the new game mode like game_storytime.cpp). This new mode comes with its new menu_storytime.cpp that doesn't include the continue game functionality (as expected) but there is button that allows to see the high scores table (it opens on a new SDL window). The exit game button is transfored to exit mode button allowing to go back to the SDL window where we can choose the game mode.
 * [ ] Have a high scores table where if any time in the future a user has a score greater than the last maximum one, then he is added on top of the Leaderboard. The leaderboard is a file that is always present on the directory of the game and it is also encrypted.
 * [ ] Add the AI player
 
@@ -60,8 +73,8 @@ game.cpp
 ├── GameStateHandler.hpp
 └── SDL headers (SDL.h, SDL_mixer.h, SDL_ttf.h)
 
-menu.cpp
-├── menu.hpp
+page_3b_0t.cpp
+├── page_3b_0t.hpp
 ├── game_save.hpp
 └── SDL headers
 
@@ -82,7 +95,7 @@ Projet/
 ├── src/
 │   ├── main.cpp
 │   ├── game.cpp
-│   ├── menu.cpp
+│   ├── page_3b_0t.cpp
 │   ├── paddle.cpp
 │   ├── BallBase.cpp
 │   ├── ClassicBall.cpp
@@ -91,7 +104,7 @@ Projet/
 │   └── GameSave.cpp
 ├── include/
 │   ├── game.hpp
-│   ├── menu.hpp
+│   ├── page_3b_0t.hpp
 │   └── [autres headers]
 ├── assets/
 │   ├── sounds/
@@ -248,7 +261,7 @@ Voici queques implementations pour ceux cas spécifiques:
    };
 3. Callbacks du Menu
    mMenu->SetStartCallback(this {
-   mGameState = GameState::Playing;
+   mGameState = game_state::Playing;
    resetGame();
    });
 

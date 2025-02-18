@@ -17,13 +17,13 @@ SRCS = main.cpp \
     classic_ball.cpp \
     square_ball.cpp \
     triangle_ball.cpp \
-    menu.cpp \
-    pause_menu.cpp \
+    page_3b_0t.cpp \
+    page_3b.cpp \
     game_save.cpp \
-	notices.cpp \
-	middle_menu.cpp \
+	page_2b_1t.cpp \
+	page_3b_1t.cpp \
 	renderers.cpp \
-	mode_menu.cpp
+	page_4b_1t.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 EXECUTABLE = game
@@ -37,7 +37,7 @@ paddle.o: paddle.cpp paddle.hpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-mode_menu.o : mode_menu.cpp mode_menu.hpp renderers.hpp macros.hpp
+page_4b_1t.o : page_4b_1t.cpp page_4b_1t.hpp renderers.hpp macros.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
@@ -79,21 +79,21 @@ triangle_ball.o: triangle_ball.cpp triangle_ball.hpp ball_base.hpp renderers.hpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-menu.o: menu.cpp menu.hpp game_save.hpp macros.hpp renderers.hpp
+page_3b_0t.o: page_3b_0t.cpp page_3b_0t.hpp game_save.hpp macros.hpp renderers.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-notices.o : notices.cpp notices.hpp macros.hpp
+page_2b_1t.o : page_2b_1t.cpp page_2b_1t.hpp macros.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-pause_menu.o: pause_menu.cpp pause_menu.hpp renderers.hpp macros.hpp
+page_3b.o: page_3b.cpp page_3b.hpp renderers.hpp macros.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
@@ -107,14 +107,14 @@ game_save.o: game_save.cpp game_save.hpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-middle_menu.o: middle_menu.cpp middle_menu.hpp renderers.hpp
+page_3b_1t.o: page_3b_1t.cpp page_3b_1t.hpp renderers.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-game.o: game.cpp game.hpp paddle.hpp ball_base.hpp menu.hpp pause_menu.hpp game_save.hpp macros.hpp notices.hpp middle_menu.hpp
+game.o: game.cpp game.hpp paddle.hpp ball_base.hpp page_3b_0t.hpp page_3b.hpp game_save.hpp macros.hpp page_2b_1t.hpp page_3b_1t.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*

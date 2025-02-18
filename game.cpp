@@ -9,7 +9,7 @@
 #include "square_ball.hpp"
 #include "triangle_ball.hpp"
 #include "game_save.hpp"
-#include "menu.hpp"
+#include "page_3b.hpp"
 #include "macros.hpp"
 
 #include <string>
@@ -36,7 +36,7 @@ Game::Game()
       mMiddleMenu(nullptr),
       mModeMenu(nullptr),
 
-      mGameState(GameState::Notice_Menu) // by default we get into the Notice Menu
+      mGameState(game_state::Notice_Menu) // by default we get into the Notice Menu
 
 {
     mBackgroundColor1.r = 0;
@@ -286,13 +286,13 @@ void Game::ProcessInput()
             break;
 
         case SDL_MOUSEBUTTONDOWN:
-            if (mGameState == GameState::Notice_Menu && mNoticeMenu->get_notice_id() == -1)
+            if (mGameState == game_state::Notice_Menu && mNoticeMenu->get_notice_id() == -1)
             {
                 if (mNoticeMenu->action_handler(event))
                 {
                     if (mNoticeMenu->get_next_view()) // The let's go button has been clicked
                     {
-                        mGameState = GameState::Choose_Mode;
+                        mGameState = game_state::Choose_Mode;
                     }
                     else // Waiting for user to enter the game
                     {
@@ -304,7 +304,7 @@ void Game::ProcessInput()
                     SDL_Log("Invalid action on Notice menu with id -1");
                 }
             }
-            else if (mGameState == GameState::Notice_Menu && mNoticeMenu->get_notice_id() != -1)
+            else if (mGameState == game_state::Notice_Menu && mNoticeMenu->get_notice_id() != -1)
             {
                 if (mNoticeMenu->action_handler(event)) // we check which of two button was clicked
                 {
@@ -314,19 +314,19 @@ void Game::ProcessInput()
                         {
                         case AI_MODE:
                             mMiddleMenu->set_mode_type(AI_MODE);
-                            mGameState = GameState::Middle_menu;
+                            mGameState = game_state::Middle_menu;
                             break;
                         case TWO_PLAYERS_MODE:
-                            mGameState = GameState::Menu; // entering the internal menu of the game
+                            mGameState = game_state::Menu; // entering the internal menu of the game
                             break;
                         case STORYTIME_MODE:
-                            mGameState = GameState::Storytime_playing;
+                            mGameState = game_state::Storytime_playing;
                             break;
                         case FUN_MODE:
-                            mGameState = GameState::Fun_playing;
+                            mGameState = game_state::Fun_playing;
                             break;
                         case GAME_SAVED:
-                            mGameState = GameState::Choose_Mode;
+                            mGameState = game_state::Choose_Mode;
                             break;
                         default:
                         {
@@ -337,7 +337,7 @@ void Game::ProcessInput()
                     }
                     else if (mNoticeMenu->get_go_back()) // we want to go back to the Mode menu
                     {
-                        mGameState = GameState::Choose_Mode;
+                        mGameState = game_state::Choose_Mode;
                     }
                     else
                     {
@@ -349,7 +349,7 @@ void Game::ProcessInput()
                     SDL_Log("Invalid action on Notice menu");
                 }
             }
-            else if (mGameState == GameState::Choose_Mode)
+            else if (mGameState == game_state::Choose_Mode)
             {
                 if (mModeMenu->action_handler(event))
                 {
@@ -363,19 +363,19 @@ void Game::ProcessInput()
                         {
                         case AI_MODE:
                             mNoticeMenu->set_notice_id(AI_MODE);
-                            mGameState = GameState::Notice_Menu;
+                            mGameState = game_state::Notice_Menu;
                             break;
                         case TWO_PLAYERS_MODE:
                             mNoticeMenu->set_notice_id(TWO_PLAYERS_MODE);
-                            mGameState = GameState::Notice_Menu;
+                            mGameState = game_state::Notice_Menu;
                             break;
                         case STORYTIME_MODE:
                             mNoticeMenu->set_notice_id(STORYTIME_MODE);
-                            mGameState = GameState::Notice_Menu;
+                            mGameState = game_state::Notice_Menu;
                             break;
                         case FUN_MODE:
                             mNoticeMenu->set_notice_id(FUN_MODE);
-                            mGameState = GameState::Notice_Menu;
+                            mGameState = game_state::Notice_Menu;
                             break;
                         default:
                             SDL_Log("Invalid mode id");
@@ -388,18 +388,18 @@ void Game::ProcessInput()
                     SDL_Log("Invalid action on Mode menu");
                 }
             }
-            else if (mGameState == GameState::Menu)
+            else if (mGameState == game_state::Menu)
             {
                 if (mMenu->action_handler(event))
                 {
                     if (mMenu->get_started())
                     {
                         mMiddleMenu->set_mode_type(TWO_PLAYERS_MODE);
-                        mGameState = GameState::Middle_menu; // We need to select the ball type before starting a new game
+                        mGameState = game_state::Middle_menu; // We need to select the ball type before starting a new game
                     }
                     else if (mMenu->get_exit_mode())
                     {
-                        mGameState = GameState::Choose_Mode; // Go back to the Mode menu
+                        mGameState = game_state::Choose_Mode; // Go back to the Mode menu
                         // mIsRunning = false; // No need to delete the saved game file before exiting if it exists. The idea is that we find itback when we reneter the game
                     }
                     else if (mMenu->get_continue_game())
@@ -419,7 +419,7 @@ void Game::ProcessInput()
 
                             GameSave::delete_save(); // Delete the saved game file once we have loaded the game state
 
-                            mGameState = GameState::Playing;
+                            mGameState = game_state::Playing;
                         }
                     }
                 }
@@ -428,25 +428,25 @@ void Game::ProcessInput()
                     SDL_Log("Invalid action on Main menu");
                 }
             }
-            else if (mGameState == GameState::Playing)
+            else if (mGameState == game_state::Playing)
             {
                 SDL_Point clickPoint = {event.button.x, event.button.y};
                 if (SDL_PointInRect(&clickPoint, &mPauseButtonRect)) // We go to pause menu if the pause button is clicked
                 {
                     mPauseMenu->set_mode_type(TWO_PLAYERS_MODE); // essential otherwise we do not know where are right now
-                    mGameState = GameState::Paused;
+                    mGameState = game_state::Paused;
                 }
             }
-            else if (mGameState == GameState::AI_playing)
+            else if (mGameState == game_state::AI_playing)
             {
                 SDL_Point clickPoint = {event.button.x, event.button.y};
                 if (SDL_PointInRect(&clickPoint, &mPauseButtonRect)) // We go to pause menu if the pause button is clicked
                 {
                     mPauseMenu->set_mode_type(AI_MODE);
-                    mGameState = GameState::Paused;
+                    mGameState = game_state::Paused;
                 }
             }
-            else if (mGameState == GameState::Paused)
+            else if (mGameState == game_state::Paused)
             {
                 if (mPauseMenu->action_handler(event))
                 {
@@ -455,11 +455,11 @@ void Game::ProcessInput()
                         // mPauseMenu->set_mode_type(mNoticeMenu->get_notice_id()); // We go back to the mode we came from (either two players or AI) to make sure the correct redering
                         if (mPauseMenu->get_mode_type() == TWO_PLAYERS_MODE)
                         {
-                            mGameState = GameState::Playing;
+                            mGameState = game_state::Playing;
                         }
                         else if (mPauseMenu->get_mode_type() == AI_MODE)
                         {
-                            mGameState = GameState::AI_playing;
+                            mGameState = game_state::AI_playing;
                         }
                         else
                         {
@@ -484,7 +484,7 @@ void Game::ProcessInput()
                             SDL_Log("Game saved successfully");
                             mMenu->set_saved_file_exists();
                             mNoticeMenu->set_notice_id(GAME_SAVED);
-                            mGameState = GameState::Notice_Menu; // We go back to the main menu
+                            mGameState = game_state::Notice_Menu; // We go back to the main menu
                         }
                         else
                         {
@@ -496,7 +496,7 @@ void Game::ProcessInput()
                     {
                         // We update the existens of the save file
                         mMenu->set_saved_file_exists();
-                        mGameState = GameState::Choose_Mode; // We go back to the main menu without saving the progress
+                        mGameState = game_state::Choose_Mode; // We go back to the main menu without saving the progress
                     }
                     else
                     {
@@ -504,7 +504,7 @@ void Game::ProcessInput()
                     }
                 }
             }
-            else if (mGameState == GameState::Middle_menu)
+            else if (mGameState == game_state::Middle_menu)
             {
                 if (mMiddleMenu->action_handler(event))
                 {
@@ -529,7 +529,7 @@ void Game::ProcessInput()
                         // Reset background colors
                         UpdateBackground();
 
-                        mGameState = GameState::Playing;
+                        mGameState = game_state::Playing;
                         SDL_Log("New game started with selected ball type (%d)", mMiddleMenu->get_selected_option());
                     }
                     else if (mMiddleMenu->get_mode_type() == AI_MODE)
@@ -561,7 +561,7 @@ void Game::ProcessInput()
 
 void Game::UpdateGame()
 {
-    if (mGameState != GameState::Playing) // There is nothing to update if the game is not in playing state
+    if (mGameState != game_state::Playing) // There is nothing to update if the game is not in playing state
     {
         return;
     }
@@ -583,7 +583,7 @@ void Game::UpdateGame()
     // Check for victory condition
     if (mScore1 >= 10 || mScore2 >= 10)
     {
-        mGameState = GameState::Menu;
+        mGameState = game_state::Menu;
         return;
     }
 
@@ -656,31 +656,31 @@ void Game::UpdateBackground()
 
 void Game::GenerateOutput()
 {
-    if (mGameState == GameState::Notice_Menu)
+    if (mGameState == game_state::Notice_Menu)
     {
         mNoticeMenu->render_object();
         return;
     }
 
-    if (mGameState == GameState::Choose_Mode)
+    if (mGameState == game_state::Choose_Mode)
     {
         mModeMenu->render_object();
         return;
     }
 
-    if (mGameState == GameState::Paused)
+    if (mGameState == game_state::Paused)
     {
         mPauseMenu->render_object();
         return;
     }
 
-    if (mGameState == GameState::Menu)
+    if (mGameState == game_state::Menu)
     {
         mMenu->render_object();
         return;
     }
 
-    if (mGameState == GameState::Middle_menu)
+    if (mGameState == game_state::Middle_menu)
     {
         mMiddleMenu->render_object();
         return;

@@ -1,10 +1,10 @@
 // #############################################################################
-// # File notices.cpp
+// # File page_2b_1t.cpp
 // # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
 // # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
 // #############################################################################
 
-#include "notices.hpp"
+#include "page_2b_1t.hpp"
 #include "renderers.hpp"
 #include "macros.hpp"
 

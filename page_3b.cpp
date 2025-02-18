@@ -1,10 +1,10 @@
 // #############################################################################
-// # File pause_menu.cpp
+// # File page_3b.cpp
 // # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
 // # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
 // #############################################################################
 
-#include "pause_menu.hpp"
+#include "page_3b.hpp"
 #include "renderers.hpp"
 #include "macros.hpp"
 

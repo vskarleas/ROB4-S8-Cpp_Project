@@ -1,5 +1,5 @@
 // #############################################################################
-// # File notices.hpp
+// # File page_2b_1t.hpp
 // # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
 // # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
 // #############################################################################
@@ -22,7 +22,7 @@ private:
     bool next_view;
     bool go_back; // to go back on the modes menu
 
-    int notice_id; // check the mode_menu.hpp for the for the different notice IDs
+    int notice_id; // check the page_4b_1t.hpp for the for the different notice IDs
 
 public:
 

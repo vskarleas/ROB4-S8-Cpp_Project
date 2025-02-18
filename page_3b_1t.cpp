@@ -1,10 +1,10 @@
 // #############################################################################
-// # File middle_menu.cpp
+// # File page_3b_1t.cpp
 // # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
 // # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
 // #############################################################################
 
-#include "middle_menu.hpp"
+#include "page_3b_1t.hpp"
 #include "macros.hpp"
 #include "renderers.hpp"
 
