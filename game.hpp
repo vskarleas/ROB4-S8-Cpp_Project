@@ -20,6 +20,8 @@
 #include "page_4b_1t.hpp"
 #include "page_2b_1t.hpp"
 
+#include "game_over.hpp"
+
 #include "ai.hpp"
 
 enum class game_state {
@@ -31,7 +33,8 @@ enum class game_state {
     Fun_playing,
     Storytime_playing,
     Playing, // playing classic with two players (first implementation)
-    Paused
+    Paused,
+    Game_Over
 };
 
 class Game {
@@ -43,7 +46,7 @@ public:
     void close();
 
 private:
-    void ProcessInput();
+    void pages_logic();
     void UpdateGame();
     void GenerateOutput();
     void CreateBall(int type);
@@ -80,6 +83,8 @@ private:
     page_3b* mPauseMenu;
     page_3b_1t* mMiddleMenu;
     page_4b_1t* mModeMenu;
+
+    game_over* mGameOver; // This is used when the game is over
 
 
     // This allows us to control on which state we are and make the appropriate UI and action decisons

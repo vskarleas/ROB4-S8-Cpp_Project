@@ -37,6 +37,7 @@ Game::Game()
       mPauseMenu(nullptr),
       mMiddleMenu(nullptr),
       mModeMenu(nullptr),
+      mGameOver(nullptr),
 
       mGameState(game_state::Notice_Menu) // by default we get into the Notice Menu with option -1
 
@@ -242,6 +243,7 @@ bool Game::initialise()
     mMiddleMenu = new page_3b_1t(renderer, police);
     mModeMenu = new page_4b_1t(renderer, police);
     mPauseMenu = new page_3b(renderer, police);
+    mGameOver = new game_over(renderer, police);
 
     // Creating the different objects of the game
     mPaddle1 = new Paddle(30, true);
@@ -279,13 +281,13 @@ void Game::loop()
 {
     while (mIsRunning) // set to false when we either tap on the X to close the SDL window or when we tap on the Exit game button
     {
-        ProcessInput();
+        pages_logic();
         UpdateGame();
         GenerateOutput();
     }
 }
 
-void Game::ProcessInput()
+void Game::pages_logic()
 {
     SDL_Event event;
     while (SDL_PollEvent(&event))
@@ -515,6 +517,24 @@ void Game::ProcessInput()
                     }
                 }
             }
+            else if (mGameState == game_state::Game_Over)
+            {
+                if (mGameOver->action_handler(event))
+                {
+                    switch(mGameOver->get_game_mode())
+                    {
+                        case TWO_PLAYERS_MODE:
+                            mGameState = game_state::Menu;
+                            break;
+                        case AI_MODE:
+                            mGameState = game_state::Choose_Mode;
+                            break;
+                        default:
+                            printf("ERROR: Unhandled game over menu option\n");
+                            break;
+                    }
+                }
+            }
             else if (mGameState == game_state::Middle_menu)
             {
                 if (mMiddleMenu->action_handler(event))
@@ -635,7 +655,24 @@ void Game::UpdateGame()
     // Check for victory condition
     if (mScore1 >= 10 || mScore2 >= 10)
     {
-        mGameState = game_state::Menu;
+        switch(mNoticeMenu->get_notice_id())
+        {
+            case TWO_PLAYERS_MODE:
+                mGameOver->set_game_mode(TWO_PLAYERS_MODE);
+                break;
+                
+            case AI_MODE:
+                mGameOver->set_game_mode(AI_MODE);
+                break;
+            default:
+            {
+                SDL_Log("Invalid notice menu ID when we are at Game Over (before going back to inner menu or Choose mode menu)");
+                break;
+            }
+        }
+
+        mGameState = game_state::Game_Over;
+
         return;
     }
 
@@ -735,6 +772,12 @@ void Game::GenerateOutput()
     if (mGameState == game_state::Middle_menu)
     {
         mMiddleMenu->render_object();
+        return;
+    }
+
+    if (mGameState == game_state::Game_Over)
+    {
+        mGameOver->render_object();
         return;
     }
 

@@ -17,6 +17,7 @@
 * V6.1.2: Renamed files according to teh pages structure below for clarity reasons. The classes on those files has not been updated yet
 * V6.1.3: Updates class names according to the pages structures below and AI logic has been implemented. Needs to be added on the game's global logic
 * V7.0.1: Added the AI on the global game's logic
+* V7.1.2: Added game over page and Cmake structure. Changed some function names on the game.cpp and we added an automatic installer and handler of packages.
 
 ## Pages structures
 
@@ -36,7 +37,20 @@ This game comes with some specific predefined page structures that we use in ord
 * [ ] Add a lifes functionality. Every user on the game starts with 6 lifes. The first one that runs out lifes in a round loses
 * [X] Remove the end of game logic when score is greater than 10 for a user. Instead use the logic of the two previous points (not actually remove, but instead develop the new game mode like game_storytime.cpp). This new mode comes with its new menu_storytime.cpp that doesn't include the continue game functionality (as expected) but there is button that allows to see the high scores table (it opens on a new SDL window). The exit game button is transfored to exit mode button allowing to go back to the SDL window where we can choose the game mode.
 * [ ] Have a high scores table where if any time in the future a user has a score greater than the last maximum one, then he is added on top of the Leaderboard. The leaderboard is a file that is always present on the directory of the game and it is also encrypted.
-* [ ] Add the AI player
+* [X] Add the AI player
+
+## Usage of the CMake
+
+### First time setup
+
+mkdir build
+cd build
+cmake ..
+cmake --build .
+
+### For subsequent code changes, just run
+
+cmake --build .
 
 ## Guide de Démarrage
 
@@ -50,17 +64,22 @@ brew install sdl2 sdl2_mixer sdl2_ttf sdl2_image
 sudo apt-get update
 sudo apt-get install libsdl2-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-image-dev
 
-# Windows avec MSYS2
-pacman -S mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_mixer mingw-w64-x86_64-SDL2_ttf mingw-w64-x86_64-SDL2_image
 ```
 
-### Compilation et Lancement
+## Compilation
 
-```bash
-make clean      # Nettoie les fichiers compilés
-make           # Compile le projet
-make run       # Lance le jeu
-```
+Pour compiler le codebase du jeu, vous pouvez tout simplement sur le repertoire build une fois que vous avez installé les Prérequis. Il faut suivre les instructions suivantes:
+
+1. `cd build`
+2. `cmake ..`
+3. `cmake --build .`
+
+Donc, pour lancer le jeu il suffit de faire `./Pong`
+
+For your convinience, we are including on the codebase a launch file that will automaticly process everything for you. You simply need to do make sure that this file has the right to execute on your computer. This installer will make sure that you have all the dependencies installed and it will prepare all the executables for you.
+
+1. `chmod 777 play.sh`
+2. `bash play.sh`
 
 ## Dépendances et Structure
 
@@ -75,12 +94,8 @@ game.cpp
 ├── GameStateHandler.hpp
 └── SDL headers (SDL.h, SDL_mixer.h, SDL_ttf.h)
 
-page_3b_0t.cpp
-├── page_3b_0t.hpp
-├── game_save.hpp
-└── SDL headers
 
-ball.cpp (classes dérivées)
+ball_base.cpp (classes dérivées)
 ├── BallBase.hpp
 ├── paddle.hpp
 └── SDL headers
@@ -88,30 +103,6 @@ ball.cpp (classes dérivées)
 paddle.cpp
 ├── paddle.hpp
 └── SDL headers
-```
-
-### Structure des Fichiers
-
-```
-Projet/
-├── src/
-│   ├── main.cpp
-│   ├── game.cpp
-│   ├── page_3b_0t.cpp
-│   ├── paddle.cpp
-│   ├── BallBase.cpp
-│   ├── ClassicBall.cpp
-│   ├── SquareBall.cpp
-│   ├── TriangleBall.cpp
-│   └── GameSave.cpp
-├── include/
-│   ├── game.hpp
-│   ├── page_3b_0t.hpp
-│   └── [autres headers]
-├── assets/
-│   ├── sounds/
-│   └── fonts/
-└── Makefile
 ```
 
 ## Sécurité et Sauvegarde de l'état du jeu

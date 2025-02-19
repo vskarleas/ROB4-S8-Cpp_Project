@@ -14,6 +14,9 @@ const int WINDOW_HEIGHT = 600;
 #define FUN_MODE 4
 #define GAME_SAVED 5
 
+#define BALL_TYPE_SELECTION 2
+#define AI_MODE_SELECTION 1
+
 #define AI_MODE_EASY     0
 #define AI_MODE_NORMAL   1
 #define AI_MODE_HARD     2

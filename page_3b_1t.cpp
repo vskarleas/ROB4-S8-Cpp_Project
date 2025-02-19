@@ -85,7 +85,7 @@ void page_3b_1t::render_object()
     SDL_Color text_color = {0, 0, 0, 0};
 
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    if (mode_type == TWO_PLAYERS_MODE)
+    if (mode_type == BALL_TYPE_SELECTION)
     {
         Utilities::render_button(renderer, police, "Select Ball Type", SDL_Rect{WINDOW_HEIGHT / 2, 50, 200, 50},
                                  text_color);
@@ -95,7 +95,7 @@ void page_3b_1t::render_object()
         Utilities::render_button(renderer, police, "Square Ball", button_2, text_color);
         Utilities::render_button(renderer, police, "Triangle Ball", button_3, text_color);
     }
-    else if (mode_type == AI_MODE)
+    else if (mode_type == AI_MODE_SELECTION)
     {
         Utilities::render_button(renderer, police, "Select difficulty level", SDL_Rect{WINDOW_HEIGHT / 2, 50, 200, 50},
                                  text_color);
