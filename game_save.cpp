@@ -42,6 +42,12 @@ namespace
             bytes[i] = codec_byte(bytes[i]);
         }
     }
+
+    void codec_string(char* str, size_t length) {
+        for (size_t i = 0; i < length; ++i) {
+            str[i] = codec_byte(str[i]);
+        }
+    }
 }
 
 /* Deleting the save file */
@@ -73,6 +79,8 @@ bool GameSave::save_game(const SaveState &state, const std::string & /*filename*
     codec_float(encode_state.ball_vel_x);
     codec_float(encode_state.ball_vel_y);
     codec_int(encode_state.ball_type);
+    codec_string(encode_state.player1_name, 20);
+    codec_string(encode_state.player2_name, 20);
 
     // Creating the file
     file.write(reinterpret_cast<const char *>(&encode_state), sizeof(SaveState));
@@ -112,6 +120,8 @@ bool GameSave::load_game(SaveState &state, const std::string &)
         codec_float(encode_state.ball_vel_x);
         codec_float(encode_state.ball_vel_y);
         codec_int(encode_state.ball_type);
+        codec_string(encode_state.player1_name, 20);
+        codec_string(encode_state.player2_name, 20);
 
         
         state = encode_state; // Copy decoded state back

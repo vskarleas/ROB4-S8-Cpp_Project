@@ -10,6 +10,7 @@
 #include "game_save.hpp"
 #include "macros.hpp"
 #include "renderers.hpp"
+#include "game.hpp"
 
 page_3b_0t::page_3b_0t(SDL_Renderer *_renderer, TTF_Font *font) : /* Follwoing the order in the class declaration*/
     start_new_game(false),
@@ -50,17 +51,20 @@ bool page_3b_0t::action_handler(const SDL_Event &event)
 
         if (SDL_PointInRect(&point, &button_start))
         {
+            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
             start_new_game = true;
             return true;
         }
         else if (saved_file_exists && SDL_PointInRect(&point, &button_continue))
         {
             continue_game = true;
+            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
             return true;
         }
         else if (SDL_PointInRect(&point, &button_exit))
         {
             exit_mode = true;
+            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
             // SDL_Event quitEvent;
             // quitEvent.type = SDL_QUIT;
             // SDL_PushEvent(&quitEvent);

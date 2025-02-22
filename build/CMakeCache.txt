@@ -264,6 +264,15 @@ FluidSynth_LINK_LIBRARIES:STRING=
 //Extra link flags of FluidSynth
 FluidSynth_LINK_OPTIONS:STRING=
 
+//Path to a file.
+JPEG_INCLUDE_DIR:PATH=/opt/homebrew/include
+
+//Path to a library.
+JPEG_LIBRARY_DEBUG:FILEPATH=JPEG_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+JPEG_LIBRARY_RELEASE:FILEPATH=/opt/homebrew/lib/libjpeg.dylib
+
 //Extra compile options of opusfile
 OpusFile_COMPILE_OPTIONS:STRING=
 
@@ -288,6 +297,15 @@ PKG_CONFIG_ARGN:STRING=
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/opt/homebrew/bin/pkg-config
 
+//Path to a library.
+PNG_LIBRARY_DEBUG:FILEPATH=PNG_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+PNG_LIBRARY_RELEASE:FILEPATH=/opt/homebrew/lib/libpng.dylib
+
+//Path to a file.
+PNG_PNG_INCLUDE_DIR:PATH=/opt/homebrew/include
+
 //Value Computed by CMake
 Pong_BINARY_DIR:STATIC=/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/build
 
@@ -303,8 +321,23 @@ SDL2_image_DIR:PATH=/opt/homebrew/lib/cmake/SDL2_image
 //The directory containing a CMake configuration file for SDL2_mixer.
 SDL2_mixer_DIR:PATH=/opt/homebrew/lib/cmake/SDL2_mixer
 
+//The directory containing a CMake configuration file for SDL2_net.
+SDL2_net_DIR:PATH=/opt/homebrew/lib/cmake/SDL2_net
+
 //The directory containing a CMake configuration file for SDL2_ttf.
 SDL2_ttf_DIR:PATH=/opt/homebrew/lib/cmake/SDL2_ttf
+
+//Path to a file.
+TIFF_INCLUDE_DIR:PATH=/opt/homebrew/include
+
+//Path to a library.
+TIFF_LIBRARY_DEBUG:FILEPATH=TIFF_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+TIFF_LIBRARY_RELEASE:FILEPATH=/opt/homebrew/lib/libtiff.dylib
+
+//The directory containing a CMake configuration file for Tiff.
+Tiff_DIR:PATH=Tiff_DIR-NOTFOUND
 
 //Extra compile options of vorbisfile
 Vorbis_vorbisfile_COMPILE_OPTIONS:STRING=
@@ -323,6 +356,33 @@ Vorbis_vorbisfile_LINK_LIBRARIES:STRING=
 
 //Extra link flags of vorbisfile
 Vorbis_vorbisfile_LINK_OPTIONS:STRING=
+
+//Path to a file.
+ZLIB_INCLUDE_DIR:PATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include
+
+//Path to a library.
+ZLIB_LIBRARY_DEBUG:FILEPATH=ZLIB_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+ZLIB_LIBRARY_RELEASE:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/lib/libz.tbd
+
+//The directory containing a CMake configuration file for libavif.
+libavif_DIR:PATH=/opt/homebrew/lib/cmake/libavif
+
+//Extra compile options of libjxl
+libjxl_COMPILE_OPTIONS:STRING=
+
+//Path to a file.
+libjxl_INCLUDE_PATH:PATH=/opt/homebrew/include
+
+//Path to a library.
+libjxl_LIBRARY:FILEPATH=/opt/homebrew/lib/libjxl.dylib
+
+//Extra link flags of libjxl
+libjxl_LINK_FLAGS:STRING=
+
+//Extra link libraries of libjxl
+libjxl_LINK_LIBRARIES:STRING=
 
 //Extra compile options of libxmp
 libxmp_COMPILE_OPTIONS:STRING=
@@ -392,6 +452,36 @@ wavpack_LINK_LIBRARIES:STRING=
 
 //Extra link flags of wavpack
 wavpack_LINK_OPTIONS:STRING=
+
+//Extra compile options of webp
+webp_COMPILE_OPTIONS:STRING=
+
+//Path to a file.
+webp_INCLUDE_PATH:PATH=/opt/homebrew/include
+
+//Path to a library.
+webp_LIBRARY:FILEPATH=/opt/homebrew/lib/libwebp.dylib
+
+//Extra link flags of webp
+webp_LINK_FLAGS:STRING=
+
+//Extra link libraries of webp
+webp_LINK_LIBRARIES:STRING=
+
+//Extra compile options of webpdemux
+webpdemux_COMPILE_OPTIONS:STRING=
+
+//Path to a file.
+webpdemux_INCLUDE_PATH:PATH=/opt/homebrew/include
+
+//Path to a library.
+webpdemux_LIBRARY:FILEPATH=/opt/homebrew/lib/libwebpdemux.dylib
+
+//Extra link flags of webpdemux
+webpdemux_LINK_FLAGS:STRING=
+
+//Extra link libraries of webpdemux
+webpdemux_LINK_LIBRARIES:STRING=
 
 
 ########################
@@ -541,16 +631,34 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 FIND_PACKAGE_MESSAGE_DETAILS_FLAC:INTERNAL=[/opt/homebrew/Cellar/flac/1.4.3/lib/libFLAC.dylib][/opt/homebrew/Cellar/flac/1.4.3/include][v()]
 //Details about finding FluidSynth
 FIND_PACKAGE_MESSAGE_DETAILS_FluidSynth:INTERNAL=[/opt/homebrew/Cellar/fluid-synth/2.4.3/lib/libfluidsynth.dylib][/opt/homebrew/Cellar/fluid-synth/2.4.3/include][v()]
+//Details about finding JPEG
+FIND_PACKAGE_MESSAGE_DETAILS_JPEG:INTERNAL=[/opt/homebrew/lib/libjpeg.dylib][/opt/homebrew/include][v80()]
 //Details about finding OpusFile
 FIND_PACKAGE_MESSAGE_DETAILS_OpusFile:INTERNAL=[/opt/homebrew/Cellar/opusfile/0.12_1/lib/libopusfile.dylib][/opt/homebrew/Cellar/opusfile/0.12_1/include/opus][v()]
+//Details about finding PNG
+FIND_PACKAGE_MESSAGE_DETAILS_PNG:INTERNAL=[/opt/homebrew/lib/libpng.dylib][/opt/homebrew/include][v1.6.46()]
+//Details about finding TIFF
+FIND_PACKAGE_MESSAGE_DETAILS_TIFF:INTERNAL=[/opt/homebrew/lib/libtiff.dylib][/opt/homebrew/include][c ][v4.7.0()]
 //Details about finding Vorbis
 FIND_PACKAGE_MESSAGE_DETAILS_Vorbis:INTERNAL=[/opt/homebrew/Cellar/libvorbis/1.3.7/lib/libvorbisfile.dylib][/opt/homebrew/Cellar/libvorbis/1.3.7/include][v()]
+//Details about finding ZLIB
+FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/lib/libz.tbd][/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include][c ][v1.2.12()]
+//Details about finding libjxl
+FIND_PACKAGE_MESSAGE_DETAILS_libjxl:INTERNAL=[/opt/homebrew/lib/libjxl.dylib][/opt/homebrew/include][v()]
 //Details about finding libxmp
 FIND_PACKAGE_MESSAGE_DETAILS_libxmp:INTERNAL=[/opt/homebrew/Cellar/libxmp/4.6.1/lib/libxmp.dylib][/opt/homebrew/Cellar/libxmp/4.6.1/include][v()]
 //Details about finding mpg123
 FIND_PACKAGE_MESSAGE_DETAILS_mpg123:INTERNAL=[/opt/homebrew/Cellar/mpg123/1.32.10/lib/libmpg123.dylib][/opt/homebrew/Cellar/mpg123/1.32.10/include][v()]
 //Details about finding wavpack
 FIND_PACKAGE_MESSAGE_DETAILS_wavpack:INTERNAL=[/opt/homebrew/lib/libwavpack.dylib][/opt/homebrew/include][v()]
+//Details about finding webp
+FIND_PACKAGE_MESSAGE_DETAILS_webp:INTERNAL=[/opt/homebrew/lib/libwebp.dylib][/opt/homebrew/include][/opt/homebrew/lib/libwebpdemux.dylib][/opt/homebrew/include][v()]
+//ADVANCED property for variable: JPEG_INCLUDE_DIR
+JPEG_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: JPEG_LIBRARY_DEBUG
+JPEG_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: JPEG_LIBRARY_RELEASE
+JPEG_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 PC_FLAC_CFLAGS:INTERNAL=-I/opt/homebrew/Cellar/flac/1.4.3/include;-I/opt/homebrew/Cellar/libogg/1.3.5/include
 PC_FLAC_CFLAGS_I:INTERNAL=
 PC_FLAC_CFLAGS_OTHER:INTERNAL=
@@ -765,6 +873,24 @@ PC_XMP_libxmp_VERSION:INTERNAL=
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PNG_LIBRARY_DEBUG
+PNG_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PNG_LIBRARY_RELEASE
+PNG_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PNG_PNG_INCLUDE_DIR
+PNG_PNG_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TIFF_INCLUDE_DIR
+TIFF_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TIFF_LIBRARY_DEBUG
+TIFF_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TIFF_LIBRARY_RELEASE
+TIFF_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_INCLUDE_DIR
+ZLIB_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_LIBRARY_DEBUG
+ZLIB_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_LIBRARY_RELEASE
+ZLIB_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 __pkg_config_arguments_PC_FLAC:INTERNAL=QUIET;flac
 __pkg_config_arguments_PC_FLUIDSYNTH:INTERNAL=QUIET;fluidsynth
 __pkg_config_arguments_PC_MPG123:INTERNAL=QUIET;libmpg123

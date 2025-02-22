@@ -323,6 +323,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong.dir/build.make CMakeFiles/Pong.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+network.o: network.cpp.o
+.PHONY : network.o
+
+# target to build an object file
+network.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/network.cpp.o
+.PHONY : network.cpp.o
+
+network.i: network.cpp.i
+.PHONY : network.i
+
+# target to preprocess a source file
+network.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/network.cpp.i
+.PHONY : network.cpp.i
+
+network.s: network.cpp.s
+.PHONY : network.s
+
+# target to generate assembly for a file
+network.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/network.cpp.s
+.PHONY : network.cpp.s
+
 paddle.o: paddle.cpp.o
 .PHONY : paddle.o
 
@@ -491,6 +515,30 @@ renderers.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/renderers.cpp.s
 .PHONY : renderers.cpp.s
 
+setup.o: setup.cpp.o
+.PHONY : setup.o
+
+# target to build an object file
+setup.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/setup.cpp.o
+.PHONY : setup.cpp.o
+
+setup.i: setup.cpp.i
+.PHONY : setup.i
+
+# target to preprocess a source file
+setup.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/setup.cpp.i
+.PHONY : setup.cpp.i
+
+setup.s: setup.cpp.s
+.PHONY : setup.s
+
+# target to generate assembly for a file
+setup.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/setup.cpp.s
+.PHONY : setup.cpp.s
+
 square_ball.o: square_ball.cpp.o
 .PHONY : square_ball.o
 
@@ -539,6 +587,30 @@ triangle_ball.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/triangle_ball.cpp.s
 .PHONY : triangle_ball.cpp.s
 
+user.o: user.cpp.o
+.PHONY : user.o
+
+# target to build an object file
+user.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/user.cpp.o
+.PHONY : user.cpp.o
+
+user.i: user.cpp.i
+.PHONY : user.i
+
+# target to preprocess a source file
+user.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/user.cpp.i
+.PHONY : user.cpp.i
+
+user.s: user.cpp.s
+.PHONY : user.s
+
+# target to generate assembly for a file
+user.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/user.cpp.s
+.PHONY : user.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -571,6 +643,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... network.o"
+	@echo "... network.i"
+	@echo "... network.s"
 	@echo "... paddle.o"
 	@echo "... paddle.i"
 	@echo "... paddle.s"
@@ -592,12 +667,18 @@ help:
 	@echo "... renderers.o"
 	@echo "... renderers.i"
 	@echo "... renderers.s"
+	@echo "... setup.o"
+	@echo "... setup.i"
+	@echo "... setup.s"
 	@echo "... square_ball.o"
 	@echo "... square_ball.i"
 	@echo "... square_ball.s"
 	@echo "... triangle_ball.o"
 	@echo "... triangle_ball.i"
 	@echo "... triangle_ball.s"
+	@echo "... user.o"
+	@echo "... user.i"
+	@echo "... user.s"
 .PHONY : help
 
 

@@ -66,10 +66,12 @@ void game_over::render_object()
     const char* notice_text[20]; // Define a fixed size array
     int text_size = 0; // To keep track of array size
 
-    notice_text[0] = "Game over !";
+    notice_text[0] = "Game is over !";
     notice_text[1] = "";
-    notice_text[2] = "Feel free to go back to the new menu ";
-    text_size = 3;
+    std::string winner = "Winner: " + winnerName + "!";
+    notice_text[2] = winner.c_str();
+    notice_text[3] = "Feel free to go back to the new menu ";
+    text_size = 4;
     
 
     int y_position = 100;
@@ -87,4 +89,8 @@ void game_over::render_object()
 
 
     SDL_RenderPresent(renderer);
+}
+
+void game_over::setWinnerName(const std::string& name) {
+    winnerName = name;
 }

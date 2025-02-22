@@ -12,6 +12,7 @@
 #include <array>
 #include <string>
 #include <functional>
+#include <SDL_mixer.h> 
 
 #include "game_save.hpp"
 

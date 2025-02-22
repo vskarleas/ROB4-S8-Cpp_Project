@@ -7,6 +7,7 @@
 #include "page_3b.hpp"
 #include "renderers.hpp"
 #include "macros.hpp"
+#include "game.hpp"
 
 page_3b::page_3b(SDL_Renderer *renderer, TTF_Font *font)
     : renderer(renderer), police(font), mResume(false), mSave(false), mExit(false), selected_button(-1), mode_type(-1)
@@ -74,11 +75,13 @@ bool page_3b::action_handler(const SDL_Event &event)
 
         if (SDL_PointInRect(&point, &mResumeButton))
         {
+            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
             mResume = true;
             return true;
         }
         else if (SDL_PointInRect(&point, &button_exit))
         {
+            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
             mExit = true;
             return true;
         }
@@ -87,6 +90,7 @@ bool page_3b::action_handler(const SDL_Event &event)
         {
             if (SDL_PointInRect(&point, &mSaveButton))
             {
+                Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
                 mSave = true;
                 return true;
             }

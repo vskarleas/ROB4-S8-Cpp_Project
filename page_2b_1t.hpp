@@ -9,6 +9,7 @@
 
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include <SDL_mixer.h> 
 
 class page_2b_1t {
 private:

@@ -9,9 +9,10 @@
 
 #include <SDL.h>
 #include <SDL_ttf.h>
-
-
 #include <array>
+#include <SDL_mixer.h> 
+
+class Game; // implicit declaration, oher
 
 class page_3b_1t {
 private:

@@ -12,11 +12,13 @@ if(APPLE)
     set(SDL2_TTF_DIR "/opt/homebrew/Cellar/sdl2_ttf/2.24.0/lib/cmake/SDL2_ttf")
     set(SDL2_MIXER_DIR "/opt/homebrew/Cellar/sdl2_mixer/2.8.1/lib/cmake/SDL2_mixer")
     set(SDL2_IMAGE_DIR "/opt/homebrew/Cellar/sdl2_image/2.8.4/lib/cmake/SDL2_image")
+    set(SDL2_NET_DIR "/opt/homebrew/Cellar/sdl2_net/2.0.1/lib/cmake/SDL2_net")
 
     set(SDL2_INCLUDE_DIRS "/opt/homebrew/Cellar/sdl2/2.30.12/include/SDL2")
     set(SDL2_TTF_INCLUDE_DIRS "/opt/homebrew/Cellar/sdl2_ttf/2.24.0/include/SDL2")
     set(SDL2_MIXER_INCLUDE_DIRS "/opt/homebrew/Cellar/sdl2_mixer/2.8.1/include/SDL2")
     set(SDL2_IMAGE_INCLUDE_DIRS "/opt/homebrew/Cellar/sdl2_image/2.8.4/include/SDL2")
+    set(SDL2_NET_INCLUDE_DIRS "/opt/homebrew/Cellar/sdl2_net/2.0.1/include/SDL2")
 elseif(UNIX AND NOT APPLE)
     # Linux paths
     find_package(PkgConfig REQUIRED)
@@ -24,6 +26,7 @@ elseif(UNIX AND NOT APPLE)
     pkg_check_modules(SDL2_TTF REQUIRED SDL2_ttf)
     pkg_check_modules(SDL2_MIXER REQUIRED SDL2_mixer)
     pkg_check_modules(SDL2_IMAGE REQUIRED SDL2_image)
+    pkg_check_modules(SDL2_NET REQUIRED SDL2_net)
 endif()
 
 # Find required packages
@@ -31,6 +34,7 @@ find_package(SDL2 REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 find_package(SDL2_image REQUIRED)
+find_package(SDL2_net REQUIRED)
 
 # Include directories for SDL2 and its extensions
 include_directories(
@@ -38,6 +42,7 @@ include_directories(
     ${SDL2_TTF_INCLUDE_DIRS}
     ${SDL2_MIXER_INCLUDE_DIRS}
     ${SDL2_IMAGE_INCLUDE_DIRS}
+    ${SDL2_NET_INCLUDE_DIRS}
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
@@ -58,6 +63,9 @@ add_library(${PROJECT_NAME}_lib
     ai.cpp
     game.cpp
     game_over.cpp
+    user.cpp
+    setup.cpp
+    network.cpp
 )
 
 # Create the main executable
@@ -72,6 +80,7 @@ target_link_libraries(${PROJECT_NAME}
     SDL2_ttf::SDL2_ttf
     SDL2_mixer::SDL2_mixer
     SDL2_image::SDL2_image
+    SDL2_net::SDL2_net
 )
 
 # Link SDL2 libraries to the lib target
@@ -82,6 +91,7 @@ target_link_libraries(${PROJECT_NAME}_lib
     SDL2_ttf::SDL2_ttf
     SDL2_mixer::SDL2_mixer
     SDL2_image::SDL2_image
+    SDL2_net::SDL2_net
 )
 
 # Include directories

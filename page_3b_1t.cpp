@@ -7,6 +7,7 @@
 #include "page_3b_1t.hpp"
 #include "macros.hpp"
 #include "renderers.hpp"
+#include "game.hpp"
 
 #include <iostream>
 #include <string>
@@ -59,17 +60,20 @@ bool page_3b_1t::action_handler(const SDL_Event &event)
         {
             selected_button = 0;
             // GameSave::delete_save();
+            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
             return true;
         }
         else if (SDL_PointInRect(&point, &button_2))
         {
             selected_button = 1;
+            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
             // GameSave::delete_save();
             return true;
         }
         else if (SDL_PointInRect(&point, &button_3))
         {
             selected_button = 2;
+            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
             // GameSave::delete_save();
             return true;
         }

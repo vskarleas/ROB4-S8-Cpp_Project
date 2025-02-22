@@ -20,6 +20,9 @@ struct SaveState
     float ball_vel_x;
     float ball_vel_y;
     int ball_type; // 0 for classic, 1 for square, 2 for triangle
+
+    char player1_name[20];
+    char player2_name[20];
 };
 
 class GameSave

@@ -1,0 +1,5 @@
+/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/build/CMakeFiles/Pong_lib.dir
+/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/build/CMakeFiles/Pong.dir
+/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/build/CMakeFiles/copy_assets.dir
+/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/build/CMakeFiles/edit_cache.dir
+/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/build/CMakeFiles/rebuild_cache.dir

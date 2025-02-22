@@ -10,6 +10,7 @@
 
 #include "paddle.hpp"
 #include "ball_base.hpp"
+#include "game.hpp"
 
 BallBase::BallBase(float size)
     : pos_x(400.0f), pos_y(300.0f), vel_x(0.0f), vel_y(0.0f), ball_size(size)
@@ -34,10 +35,16 @@ void BallBase::random_direction_angle()
 }
 
 // Update the ball's position
-void BallBase::update(float travel_time, Paddle *paddle1, Paddle *paddle2, int &score1, int &score2)
+void BallBase::update(float travel_time, Paddle *paddle1, Paddle *paddle2,  User* player1, User* player2)
 {
     pos_x += vel_x * travel_time; // velocity = position / time => position = velocity * time
     pos_y += vel_y * travel_time;
+
+    // Wall collision sound
+    if (pos_y <= 0.0f || pos_y >= 600.0f)
+    {
+        Mix_PlayChannel(-1, Game::mWallHitSound, 0);
+    }
 
     // Check if the ball hit the top or bottom of the screen so that we reverse the velocity direction
     if (pos_y <= 0.0f)
@@ -51,17 +58,24 @@ void BallBase::update(float travel_time, Paddle *paddle1, Paddle *paddle2, int &
         vel_y *= -1;
     }
 
-    // Check if the ball hit the left or right side of the screen and we update the score
-    if (pos_x <= 0.0f)
+    if (pos_x <= 0.0f || pos_x >= 800.0f)
     {
-        score2++;
-        reset(); // starting the new round 
+        Mix_PlayChannel(-1, Game::mScoreSound, 0);
+
+        // Check if the ball hit the left or right side of the screen and we update the score
+        if (pos_x <= 0.0f)
+        {
+            player2->increment_score();
+            reset(); // starting the new round 
+        }
+        else if (pos_x >= 800.0f)
+        {
+            player1->increment_score();
+            reset();
+        }
     }
-    else if (pos_x >= 800.0f)
-    {
-        score1++;
-        reset();
-    }
+
+    
 
     SDL_Rect ballRect = {
         static_cast<int>(pos_x - ball_size / 2.0f),
@@ -74,11 +88,13 @@ void BallBase::update(float travel_time, Paddle *paddle1, Paddle *paddle2, int &
 
     if (SDL_HasIntersection(&ballRect, &paddle1Rect))
     {
+        Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
         pos_x = paddle1Rect.x + paddle1Rect.w + ball_size / 2.0f;
         vel_x *= -1.1f;
     }
     else if (SDL_HasIntersection(&ballRect, &paddle2Rect))
     {
+        Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
         pos_x = paddle2Rect.x - ball_size / 2.0f;
         vel_x *= -1.1f;
     }

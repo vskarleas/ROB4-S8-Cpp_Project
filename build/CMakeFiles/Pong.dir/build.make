@@ -97,7 +97,8 @@ Pong: /opt/homebrew/Cellar/sdl2/2.30.12/lib/libSDL2.dylib
 Pong: /opt/homebrew/Cellar/sdl2/2.30.12/lib/libSDL2main.a
 Pong: /opt/homebrew/Cellar/sdl2_ttf/2.24.0/lib/libSDL2_ttf.dylib
 Pong: /opt/homebrew/Cellar/sdl2_mixer/2.8.1/lib/libSDL2_mixer.dylib
-Pong: /opt/homebrew/Cellar/sdl2_image/2.8.4/lib/libSDL2_image.dylib
+Pong: /opt/homebrew/Cellar/sdl2_image/2.8.5/lib/libSDL2_image.dylib
+Pong: /opt/homebrew/lib/libSDL2_net.dylib
 Pong: CMakeFiles/Pong.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Pong"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Pong.dir/link.txt --verbose=$(VERBOSE)

@@ -23,18 +23,23 @@
 #include "game_over.hpp"
 
 #include "ai.hpp"
+#include "user.hpp"
+#include "setup.hpp"
+#include "network.hpp"
 
 enum class game_state {
     Notice_Menu,
-    Menu, // th is the after menu after the Two players notice
+    Menu,
     Middle_menu,
     Choose_Mode, // this is used as our main menu where players can choose what they want to do
     AI_playing,
+    Remote_playing,
     Fun_playing,
     Storytime_playing,
     Playing, // playing classic with two players (first implementation)
     Paused,
-    Game_Over
+    Game_Over,
+    Set_up
 };
 
 class Game {
@@ -45,10 +50,17 @@ public:
     void loop();
     void close();
 
+    static Mix_Chunk* mPaddleHitSound;
+    static Mix_Chunk* mWallHitSound;
+    static Mix_Chunk* mScoreSound;
+
+    static Mix_Music* mPauseMusic;
+    static Mix_Music* mOnHoldMusic;
+
 private:
-    void pages_logic();
+    void game_logic();
     void UpdateGame();
-    void GenerateOutput();
+    void output();
     void CreateBall(int type);
     void UpdateBackground();
     
@@ -71,8 +83,8 @@ private:
     AI* mAI; // the AI player
     
     // The scores of the two players
-    int mScore1;
-    int mScore2;
+    // int mScore1;
+    // int mScore2;
 
     // The font used on the whole game
     TTF_Font* police;
@@ -84,17 +96,21 @@ private:
     page_3b_1t* mMiddleMenu;
     page_4b_1t* mModeMenu;
 
+    Setup* mSetup; // NOT USED YET
+
+    // Network game
+    NetworkManager* network;
+    bool is_network_game;
+
     game_over* mGameOver; // This is used when the game is over
 
 
     // This allows us to control on which state we are and make the appropriate UI and action decisons
     game_state mGameState;
 
-    // Audio variables
+    // For the background music
     Mix_Music* mBackgroundMusic;
-    Mix_Chunk* mPaddleHitSound;
-    Mix_Chunk* mWallHitSound;
-    Mix_Chunk* mScoreSound;
+
     
     // Background color for the two sides
     SDL_Color mBackgroundColor1;
@@ -102,7 +118,11 @@ private:
 
     // The pause button object declared here
     SDL_Rect mPauseButtonRect;
-    bool DrawSaveButton();     
+    bool pause_button();   
+    
+    User* player1;
+    User* player2;
+    std::string winnerName;  // To store winner's name
 };
 
 #endif

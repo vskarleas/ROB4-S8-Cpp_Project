@@ -14,6 +14,12 @@
 
 #include <string>
 
+Mix_Chunk *Game::mPaddleHitSound = nullptr;
+Mix_Chunk *Game::mWallHitSound = nullptr;
+Mix_Chunk *Game::mScoreSound = nullptr;
+Mix_Music *Game::mPauseMusic = nullptr;
+Mix_Music *Game::mOnHoldMusic = nullptr;
+
 Game::Game()
     : mWindow(nullptr),
       renderer(nullptr),
@@ -27,8 +33,8 @@ Game::Game()
 
       mAI(nullptr),
 
-      mScore1(0),
-      mScore2(0),
+      //   mScore1(0),
+      //   mScore2(0),
 
       police(nullptr),
 
@@ -39,7 +45,11 @@ Game::Game()
       mModeMenu(nullptr),
       mGameOver(nullptr),
 
-      mGameState(game_state::Notice_Menu) // by default we get into the Notice Menu with option -1
+      mGameState(game_state::Notice_Menu), // by default we get into the Notice Menu with option -1
+
+      player1(new User("Player 1")),
+      player2(new User("Player 2")),
+      winnerName("")
 
 {
     mBackgroundColor1.r = 0;
@@ -57,6 +67,9 @@ Game::Game()
 
 Game::~Game()
 {
+    delete player1;
+    delete player2;
+
     // Delete menu first since it might use renderer
     if (mMenu)
     {
@@ -105,6 +118,12 @@ Game::~Game()
         mBall = nullptr;
     }
 
+    if (mOnHoldMusic)
+    {
+        Mix_FreeMusic(mOnHoldMusic);
+        mOnHoldMusic = nullptr;
+    }
+
     // Clean up audio resources
     if (mBackgroundMusic)
     {
@@ -135,6 +154,12 @@ Game::~Game()
         police = nullptr;
     }
 
+    if (mSetup)
+    {
+        delete mSetup;
+        mSetup = nullptr;
+    }
+
     // Clean up SDL resources
     if (renderer)
     {
@@ -147,19 +172,25 @@ Game::~Game()
         mWindow = nullptr;
     }
 
+    if (mPauseMusic)
+    {
+        Mix_FreeMusic(mPauseMusic);
+        mPauseMusic = nullptr;
+    }
+
     if (mAI)
     {
         delete mAI;
         mAI = nullptr;
     }
 
-    // Quit SDL subsystems
+    // Quit SDL systems
     Mix_CloseAudio();
     TTF_Quit();
     SDL_Quit();
 }
 
-bool Game::DrawSaveButton()
+bool Game::pause_button()
 {
     // Draw save button with white text
     SDL_Color white = {255, 255, 255, 255};
@@ -244,6 +275,7 @@ bool Game::initialise()
     mModeMenu = new page_4b_1t(renderer, police);
     mPauseMenu = new page_3b(renderer, police);
     mGameOver = new game_over(renderer, police);
+    mSetup = new Setup(renderer, police);
 
     // Creating the different objects of the game
     mPaddle1 = new Paddle(30, true);
@@ -255,21 +287,59 @@ bool Game::initialise()
     mPaddleHitSound = Mix_LoadWAV("assets/paddle_hit.wav");
     mWallHitSound = Mix_LoadWAV("assets/wall_hit.wav");
     mScoreSound = Mix_LoadWAV("assets/score.wav");
+    mPauseMusic = Mix_LoadMUS("assets/pause.wav");
+
+    mOnHoldMusic = Mix_LoadMUS("assets/onhold.wav");
 
     if (!mBackgroundMusic)
     {
         SDL_Log("Failed to load background music: %s", Mix_GetError());
     }
+
     if (!mPaddleHitSound)
     {
         SDL_Log("Failed to load paddle hit sound: %s", Mix_GetError());
+    }
+
+    if (!mOnHoldMusic)
+    {
+        SDL_Log("Failed to load onhold music: %s", Mix_GetError());
+    }
+
+    if (!mPauseMusic)
+    {
+        SDL_Log("Failed to load pause music: %s", Mix_GetError());
+    }
+
+    if (!mWallHitSound)
+    {
+        SDL_Log("Failed to load wall hit sound: %s", Mix_GetError());
+    }
+
+    if (!mScoreSound)
+    {
+        SDL_Log("Failed to load score sound: %s", Mix_GetError());
     }
 
     // Start playing background music on loop
     if (mBackgroundMusic)
     {
         Mix_PlayMusic(mBackgroundMusic, -1); // -1 means loop indefinitely
+        Mix_VolumeMusic(MIX_MAX_VOLUME / 3); // 25% of the max volume for the background music
     }
+
+    if (mOnHoldMusic)
+    {
+        Mix_PlayMusic(mOnHoldMusic, -1);
+        Mix_VolumeMusic(MIX_MAX_VOLUME / 3);
+    }
+
+    if (mPaddleHitSound)
+        Mix_VolumeChunk(mPaddleHitSound, MIX_MAX_VOLUME / 2);
+    if (mWallHitSound)
+        Mix_VolumeChunk(mWallHitSound, MIX_MAX_VOLUME / 4);
+    if (mScoreSound)
+        Mix_VolumeChunk(mScoreSound, MIX_MAX_VOLUME / 2);
 
     // Adding the AI functionality on the PAddle No 2
     mAI = new AI(mPaddle2);
@@ -281,13 +351,13 @@ void Game::loop()
 {
     while (mIsRunning) // set to false when we either tap on the X to close the SDL window or when we tap on the Exit game button
     {
-        pages_logic();
+        game_logic();
         UpdateGame();
-        GenerateOutput();
+        output();
     }
 }
 
-void Game::pages_logic()
+void Game::game_logic()
 {
     SDL_Event event;
     while (SDL_PollEvent(&event))
@@ -319,28 +389,47 @@ void Game::pages_logic()
             }
             else if (mGameState == game_state::Notice_Menu && mNoticeMenu->get_notice_id() != -1)
             {
+                player1->reset_score();
+                player2->reset_score();
+
                 if (mNoticeMenu->action_handler(event)) // we check which of two button was clicked
                 {
                     if (mNoticeMenu->get_next_view()) // if we want to move on with this choice
                     {
+                        char name[20];
+
                         switch (mNoticeMenu->get_notice_id())
                         {
                         case AI_MODE:
-                            mMiddleMenu->set_mode_type(AI_MODE);
+                            mMiddleMenu->set_mode_type(AI_MODE_SELECTION);
+                            player2->set_user_name("DrixAI");
+
+                            printf("What is the name of Player 1 ?\n");
+
+                            // Receive the name on the termina
+                            printf("Enter your name: ");
+                            scanf("%s", name);
+                            player1->set_user_name(name);
+
                             mGameState = game_state::Middle_menu;
                             break;
+
                         case TWO_PLAYERS_MODE:
                             mGameState = game_state::Menu; // entering the internal menu of the game
                             break;
+
                         case STORYTIME_MODE:
                             mGameState = game_state::Storytime_playing;
                             break;
+
                         case FUN_MODE:
                             mGameState = game_state::Fun_playing;
                             break;
+
                         case GAME_SAVED:
                             mGameState = game_state::Choose_Mode;
                             break;
+
                         default:
                         {
                             SDL_Log("Invalid notice id");
@@ -376,24 +465,21 @@ void Game::pages_logic()
                         {
                         case AI_MODE:
                             mNoticeMenu->set_notice_id(AI_MODE);
-                            mGameState = game_state::Notice_Menu;
                             break;
                         case TWO_PLAYERS_MODE:
                             mNoticeMenu->set_notice_id(TWO_PLAYERS_MODE);
-                            mGameState = game_state::Notice_Menu;
                             break;
                         case STORYTIME_MODE:
                             mNoticeMenu->set_notice_id(STORYTIME_MODE);
-                            mGameState = game_state::Notice_Menu;
                             break;
                         case FUN_MODE:
                             mNoticeMenu->set_notice_id(FUN_MODE);
-                            mGameState = game_state::Notice_Menu;
                             break;
                         default:
                             SDL_Log("Invalid mode id");
                             break;
                         }
+                        mGameState = game_state::Notice_Menu;
                     }
                 }
                 else
@@ -405,9 +491,21 @@ void Game::pages_logic()
             {
                 if (mMenu->action_handler(event))
                 {
+                    char name[20];
+
                     if (mMenu->get_started())
                     {
-                        mMiddleMenu->set_mode_type(TWO_PLAYERS_MODE);
+                        printf("What is the name of Player 1 ?\n");
+                        printf("Enter your name: ");
+                        scanf("%s", name);
+                        player1->set_user_name(name);
+
+                        printf("\n\nWhat is the name of Player 2 ?\n");
+                        printf("Enter your name: ");
+                        scanf("%s", name);
+                        player2->set_user_name(name);
+
+                        mMiddleMenu->set_mode_type(BALL_TYPE_SELECTION);
                         mGameState = game_state::Middle_menu; // We need to select the ball type before starting a new game
                     }
                     else if (mMenu->get_exit_mode())
@@ -421,8 +519,12 @@ void Game::pages_logic()
                         SaveState savedState;
                         if (GameSave::load_game(savedState, ""))
                         {
-                            mScore1 = savedState.score1;
-                            mScore2 = savedState.score2;
+                            player1->set_user_score(savedState.score1);
+                            player2->set_user_score(savedState.score2);
+
+                            player1->set_user_name(savedState.player1_name);
+                            player2->set_user_name(savedState.player2_name);
+
                             mPaddle1->set_pos_y(savedState.paddle1_y);
                             mPaddle2->set_pos_y(savedState.paddle2_y);
                             CreateBall(savedState.ball_type);
@@ -433,6 +535,12 @@ void Game::pages_logic()
                             GameSave::delete_save(); // Delete the saved game file once we have loaded the game state
 
                             mGameState = game_state::Playing;
+
+                            Mix_FadeOutMusic(500);
+                            SDL_Delay(5);
+                            Mix_PlayMusic(mBackgroundMusic, -1); // fade in the background music
+                            Mix_VolumeMusic(MIX_MAX_VOLUME / 3);
+
                         }
                     }
                 }
@@ -441,22 +549,36 @@ void Game::pages_logic()
                     SDL_Log("Invalid action on Main menu");
                 }
             }
-            else if (mGameState == game_state::Playing)
+            else if (mGameState == game_state::Playing || mGameState == game_state::AI_playing)
             {
                 SDL_Point clickPoint = {event.button.x, event.button.y};
                 if (SDL_PointInRect(&clickPoint, &mPauseButtonRect)) // We go to pause menu if the pause button is clicked
                 {
-                    mPauseMenu->set_mode_type(TWO_PLAYERS_MODE); // essential otherwise we do not know where are right now
+                    Mix_FadeOutMusic(500);
+                    SDL_Delay(5);
+                    Mix_FadeInMusic(mPauseMusic, -1, 500); // fade in the pause music
+                    Mix_VolumeMusic(MIX_MAX_VOLUME / 3);
+
+                    switch (mGameState)
+                    {
+                    case game_state::Playing:
+                        mPauseMenu->set_mode_type(TWO_PLAYERS_MODE); // essential otherwise we do not know where we are right now on the logic
+                        break;
+                    case game_state::AI_playing:
+                        mPauseMenu->set_mode_type(AI_MODE);
+                        break;
+                    default:
+                        printf("ERROR: Unhandled pause menu option\n");
+                    }
+
                     mGameState = game_state::Paused;
                 }
-            }
-            else if (mGameState == game_state::AI_playing)
-            {
-                SDL_Point clickPoint = {event.button.x, event.button.y};
-                if (SDL_PointInRect(&clickPoint, &mPauseButtonRect)) // We go to pause menu if the pause button is clicked
+                else
                 {
-                    mPauseMenu->set_mode_type(AI_MODE);
-                    mGameState = game_state::Paused;
+                    Mix_FadeOutMusic(500);
+                    SDL_Delay(5);
+                    Mix_FadeInMusic(mBackgroundMusic, -1, 500);
+                    Mix_VolumeMusic(MIX_MAX_VOLUME / 3);
                 }
             }
             else if (mGameState == game_state::Paused)
@@ -466,24 +588,28 @@ void Game::pages_logic()
                     if (mPauseMenu->ShouldResume())
                     {
                         // mPauseMenu->set_mode_type(mNoticeMenu->get_notice_id()); // We go back to the mode we came from (either two players or AI) to make sure the correct redering
-                        if (mPauseMenu->get_mode_type() == TWO_PLAYERS_MODE)
+                        switch (mPauseMenu->get_mode_type())
                         {
-                            mGameState = game_state::Playing;
-                        }
-                        else if (mPauseMenu->get_mode_type() == AI_MODE)
-                        {
+                        case AI_MODE:
                             mGameState = game_state::AI_playing;
-                        }
-                        else
-                        {
+                            break;
+                        case TWO_PLAYERS_MODE:
+                            mGameState = game_state::Playing;
+                            break;
+                        default:
                             printf("ERROR: Unhandled pause menu option\n");
                         }
+
+                        Mix_FadeOutMusic(500);
+                        SDL_Delay(5);
+                        Mix_FadeInMusic(mBackgroundMusic, -1, 500); // Fade in background music
+                        Mix_VolumeMusic(MIX_MAX_VOLUME / 3);
                     }
                     else if (mPauseMenu->ShouldSave())
                     {
                         SaveState saveState;
-                        saveState.score1 = mScore1;
-                        saveState.score2 = mScore2;
+                        saveState.score1 = player1->get_user_score();
+                        saveState.score2 = player2->get_user_score();
                         saveState.paddle1_y = mPaddle1->get_pos_y();
                         saveState.paddle2_y = mPaddle2->get_pos_y();
                         saveState.ball_x = mBall->get_pos_x();
@@ -491,6 +617,11 @@ void Game::pages_logic()
                         saveState.ball_vel_x = mBall->get_vel_x();
                         saveState.ball_vel_y = mBall->get_vel_y();
                         saveState.ball_type = mMiddleMenu->get_selected_option();
+
+                        strncpy(saveState.player1_name, player1->get_user_name().c_str(), 19);
+                        saveState.player1_name[19] = '\0';  // Ensuring that the name ends to \0 that is standar for string types
+                        strncpy(saveState.player2_name, player2->get_user_name().c_str(), 19);
+                        saveState.player2_name[19] = '\0'; 
 
                         if (GameSave::save_game(saveState, ""))
                         {
@@ -504,9 +635,19 @@ void Game::pages_logic()
                             SDL_Log("Failed to save game");
                             mIsRunning = false;
                         }
+
+                        Mix_FadeOutMusic(500);
+                        SDL_Delay(5);
+                        Mix_FadeInMusic(mOnHoldMusic, -1, 500);
+                        Mix_VolumeMusic(MIX_MAX_VOLUME / 3);
                     }
                     else if (mPauseMenu->get_exit_mode())
                     {
+                        Mix_FadeOutMusic(500);
+                        SDL_Delay(5);
+                        Mix_FadeInMusic(mOnHoldMusic, -1, 500);
+                        Mix_VolumeMusic(MIX_MAX_VOLUME / 3);
+
                         // We update the existens of the save file
                         mMenu->set_saved_file_exists();
                         mGameState = game_state::Choose_Mode; // We go back to the main menu without saving the progress
@@ -519,51 +660,87 @@ void Game::pages_logic()
             }
             else if (mGameState == game_state::Game_Over)
             {
+                mMenu->set_saved_file_exists();
                 if (mGameOver->action_handler(event))
                 {
-                    switch(mGameOver->get_game_mode())
+                    switch (mGameOver->get_game_mode())
                     {
-                        case TWO_PLAYERS_MODE:
-                            mGameState = game_state::Menu;
-                            break;
-                        case AI_MODE:
-                            mGameState = game_state::Choose_Mode;
-                            break;
-                        default:
-                            printf("ERROR: Unhandled game over menu option\n");
-                            break;
+                    case TWO_PLAYERS_MODE:
+                        mGameState = game_state::Menu;
+                        break;
+
+                    case AI_MODE:
+                        mGameState = game_state::Choose_Mode;
+                        break;
+                        
+                    default:
+                        printf("ERROR: Unhandled game over menu option\n");
+                        break;
                     }
+
+                    Mix_FadeOutMusic(500);
+                    SDL_Delay(5);
+                    Mix_FadeInMusic(mOnHoldMusic, -1, 500);
+                    Mix_VolumeMusic(MIX_MAX_VOLUME / 3);
                 }
             }
             else if (mGameState == game_state::Middle_menu)
             {
                 if (mMiddleMenu->action_handler(event))
                 {
-                    if (mMiddleMenu->get_mode_type() == TWO_PLAYERS_MODE)
+                    if (mMiddleMenu->get_mode_type() == BALL_TYPE_SELECTION)
                     {
-                        GameSave::delete_save(); // delete only in the case that we start a new game
+                        if (mNoticeMenu->get_notice_id() == TWO_PLAYERS_MODE)
+                        {
+                            GameSave::delete_save(); // delete only in the case that we start a new game
 
-                        CreateBall(mMiddleMenu->get_selected_option());
+                            CreateBall(mMiddleMenu->get_selected_option());
 
-                        // Reset game state
-                        mScore1 = 0;
-                        mScore2 = 0;
+                            // Reset game state
+                            player1->reset_score();
+                            player2->reset_score();
 
-                        // Reset paddle positions
-                        mPaddle1->set_pos_y(WINDOW_HEIGHT / 2.0f);
-                        mPaddle2->set_pos_y(WINDOW_HEIGHT / 2.0f);
+                            // Reset paddle positions
+                            mPaddle1->set_pos_y(WINDOW_HEIGHT / 2.0f);
+                            mPaddle2->set_pos_y(WINDOW_HEIGHT / 2.0f);
 
-                        // Reset ball position and give it initial velocity
-                        mBall->set_position(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f);
-                        mBall->set_velocity(200.0f, 235.0f); // Initial ball speed
+                            // Reset ball position and give it initial velocity
+                            mBall->set_position(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f);
+                            mBall->set_velocity(200.0f, 235.0f); // Initial ball speed
 
-                        // Reset background colors
-                        UpdateBackground();
+                            // Reset background colors
+                            UpdateBackground();
 
-                        mGameState = game_state::Playing;
-                        SDL_Log("New game started with selected ball type (%d)", mMiddleMenu->get_selected_option());
+                            mGameState = game_state::Playing;
+                            SDL_Log("New game started with selected ball type (%d)", mMiddleMenu->get_selected_option());
+                        }
+                        else if (mNoticeMenu->get_notice_id() == AI_MODE)
+                        {
+                            player1->reset_score();
+                            player2->reset_score();
+
+                            mPaddle1->set_pos_y(WINDOW_HEIGHT / 2.0f);
+                            mPaddle2->set_pos_y(WINDOW_HEIGHT / 2.0f);
+
+                            CreateBall(mMiddleMenu->get_selected_option());
+
+                            mBall->set_position(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f);
+                            mBall->set_velocity(200.0f, 235.0f);
+                            UpdateBackground();
+                            mGameState = game_state::AI_playing;
+                        }
+                        else
+                        {
+                            printf("ERROR: Unhandled middle menu option under the BALL_TYPE_SELECTION\n");
+                        }
+
+                        // Starting the arcade background music
+                        Mix_FadeOutMusic(500);
+                        SDL_Delay(5);
+                        Mix_FadeInMusic(mBackgroundMusic, -1, 500); // Fade in background music
+                        Mix_VolumeMusic(MIX_MAX_VOLUME / 3);
                     }
-                    else if (mMiddleMenu->get_mode_type() == AI_MODE)
+                    else if (mMiddleMenu->get_mode_type() == AI_MODE_SELECTION)
                     {
                         switch (mMiddleMenu->get_selected_option())
                         {
@@ -585,15 +762,8 @@ void Game::pages_logic()
                             break;
                         }
 
-                        mScore1 = 0;
-                        mScore2 = 0;
-                        mPaddle1->set_pos_y(WINDOW_HEIGHT / 2.0f);
-                        mPaddle2->set_pos_y(WINDOW_HEIGHT / 2.0f);
-                        CreateBall(0);
-                        mBall->set_position(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f);
-                        mBall->set_velocity(200.0f, 235.0f);
-                        UpdateBackground();
-                        mGameState = game_state::AI_playing;
+                        // No change on the state of the game. It will update the output to show the ball menu since we changed the input mode
+                        mMiddleMenu->set_mode_type(BALL_TYPE_SELECTION);
                     }
                     else
                     {
@@ -649,26 +819,29 @@ void Game::UpdateGame()
         }
     }
 
-    
-    mBall->update(travel_time, mPaddle1, mPaddle2, mScore1, mScore2);
+    mBall->update(travel_time, mPaddle1, mPaddle2, player1, player2);
 
     // Check for victory condition
-    if (mScore1 >= 10 || mScore2 >= 10)
+    if (player1->get_user_score() >= 10 || player2->get_user_score() >= 10)
     {
-        switch(mNoticeMenu->get_notice_id())
+        // Decide who wins
+        winnerName = (player1->get_user_score() >= 10) ? player1->get_user_name() : player2->get_user_name();
+        mGameOver->setWinnerName(winnerName);
+
+        switch (mNoticeMenu->get_notice_id())
         {
-            case TWO_PLAYERS_MODE:
-                mGameOver->set_game_mode(TWO_PLAYERS_MODE);
-                break;
-                
-            case AI_MODE:
-                mGameOver->set_game_mode(AI_MODE);
-                break;
-            default:
-            {
-                SDL_Log("Invalid notice menu ID when we are at Game Over (before going back to inner menu or Choose mode menu)");
-                break;
-            }
+        case TWO_PLAYERS_MODE:
+            mGameOver->set_game_mode(TWO_PLAYERS_MODE);
+            break;
+
+        case AI_MODE:
+            mGameOver->set_game_mode(AI_MODE);
+            break;
+        default:
+        {
+            SDL_Log("Invalid notice menu ID when we are at Game Over (before going back to inner menu or Choose mode menu)");
+            break;
+        }
         }
 
         mGameState = game_state::Game_Over;
@@ -683,21 +856,21 @@ void Game::UpdateGame()
 void Game::UpdateBackground()
 {
     // Player 1 background color
-    if (mScore1 >= 7)
+    if (player1->get_user_score() >= 7)
     {
         mBackgroundColor1.r = 0;
         mBackgroundColor1.g = 255;
         mBackgroundColor1.b = 0;
         mBackgroundColor1.a = 255;
     }
-    else if (mScore1 >= 5)
+    else if (player1->get_user_score() >= 5)
     {
         mBackgroundColor1.r = 255;
         mBackgroundColor1.g = 0;
         mBackgroundColor1.b = 0;
         mBackgroundColor1.a = 255;
     }
-    else if (mScore1 >= 3)
+    else if (player1->get_user_score() >= 3)
     {
         mBackgroundColor1.r = 0;
         mBackgroundColor1.g = 0;
@@ -713,21 +886,21 @@ void Game::UpdateBackground()
     }
 
     // Player 2 background color
-    if (mScore2 >= 7)
+    if (player2->get_user_score() >= 7)
     {
         mBackgroundColor2.r = 0;
         mBackgroundColor2.g = 255;
         mBackgroundColor2.b = 0;
         mBackgroundColor2.a = 255;
     }
-    else if (mScore2 >= 5)
+    else if (player2->get_user_score() >= 5)
     {
         mBackgroundColor2.r = 255;
         mBackgroundColor2.g = 0;
         mBackgroundColor2.b = 0;
         mBackgroundColor2.a = 255;
     }
-    else if (mScore2 >= 3)
+    else if (player2->get_user_score() >= 3)
     {
         mBackgroundColor2.r = 0;
         mBackgroundColor2.g = 0;
@@ -743,7 +916,7 @@ void Game::UpdateBackground()
     }
 }
 
-void Game::GenerateOutput()
+void Game::output()
 {
     if (mGameState == game_state::Notice_Menu)
     {
@@ -781,6 +954,12 @@ void Game::GenerateOutput()
         return;
     }
 
+    if (mGameState == game_state::Set_up)
+    {
+        mSetup->render_object();
+        return;
+    }
+
     // Draw split background
     SDL_Rect leftHalf = {0, 0, 400, 600};
     SDL_Rect rightHalf = {400, 0, 400, 600};
@@ -810,8 +989,9 @@ void Game::GenerateOutput()
 
     // Print scores
     SDL_Color white = {255, 255, 255, 255};
-    std::string score1Text = std::to_string(mScore1);
-    std::string score2Text = std::to_string(mScore2);
+
+    std::string score1Text = std::to_string(player1->get_user_score());
+    std::string score2Text = std::to_string(player2->get_user_score());
 
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
     TTF_SetFontSize(police, 48);
@@ -836,7 +1016,7 @@ void Game::GenerateOutput()
     // Pause menu only on the default Pong game or AI mode
     if (mNoticeMenu->get_notice_id() == AI_MODE || mNoticeMenu->get_notice_id() == TWO_PLAYERS_MODE) // We are rendering the Pause button only in the default Pong game
     {
-        DrawSaveButton();
+        pause_button();
     }
 
     SDL_RenderPresent(renderer);

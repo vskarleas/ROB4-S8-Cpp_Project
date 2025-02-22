@@ -10,14 +10,10 @@
 #include "paddle.hpp"
 #include "ball_base.hpp"
 
-/*
-  Classe AI qui contrôle la raquette (raquette de droite).
-  
-*/
+
 class AI
 {
 public:
-    // Constructeur : on lui fournit la raquette à contrôler (ex. mPaddle2)
     AI(Paddle* controlledPaddle);
 
     // Méthode appelée à chaque frame quand on est en mode IA

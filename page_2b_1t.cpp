@@ -7,6 +7,7 @@
 #include "page_2b_1t.hpp"
 #include "renderers.hpp"
 #include "macros.hpp"
+#include "game.hpp"
 
 page_2b_1t::page_2b_1t(SDL_Renderer *_renderer, TTF_Font *font) : 
     texture_menu(nullptr),
@@ -45,12 +46,14 @@ bool page_2b_1t::action_handler(const SDL_Event &event)
 
         if (SDL_PointInRect(&point, &button_lets_go))
         {
+            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
             next_view = true;
             return true;
         }
 
         if (SDL_PointInRect(&point, &button_back))
         {
+            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
             go_back = true;
             return true;
         }
@@ -141,7 +144,13 @@ void page_2b_1t::render_object()
             notice_text[5] = "There are four game modes available. Each mode has its own set of instructions for you to discover.";
             notice_text[6] = "";
             notice_text[7] = "Let's go and select a mode to start playing!";
-            text_size = 8;
+            notice_text[8] = "";
+            notice_text[9] = "Informatory:";
+            TTF_SetFontStyle(police, TTF_STYLE_BOLD);
+            notice_text[10] = "The game comes with its integrated UI, but in order to set up the players names";
+            notice_text[11] = "you need to use the terminal, so keep an eye open for that!";
+            TTF_SetFontStyle(police, TTF_STYLE_NORMAL); 
+            text_size = 12;
             break;
 
 

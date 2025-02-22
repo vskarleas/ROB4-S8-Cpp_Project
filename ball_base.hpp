@@ -8,6 +8,7 @@
 #define BALL_BASE_HPP
 
 #include <SDL.h>
+#include "user.hpp"
 
 class BallBase
 {
@@ -20,7 +21,8 @@ public:
     /* We are using virtual methods in order to respect the heritage synatx */
 
     // Updates the ball's position
-    virtual void update(float travel_time, class Paddle *paddle1, class Paddle *paddle2, int &score1, int &score2);
+    // Update the update method signature to use User pointers
+    virtual void update(float travel_time, class Paddle *paddle1, class Paddle *paddle2, User* player1, User* player2);
     virtual void render_object(SDL_Renderer *renderer) = 0;
 
     // Resets the ball's position
