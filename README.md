@@ -19,6 +19,7 @@
 * V7.0.1: Added the AI on the global game's logic
 * V7.1.2: Added game over page and Cmake structure. Changed some function names on the game.cpp and we added an automatic installer and handler of packages.
 * V8.1.0: Added user class, started network codebase, added special effects support for game's actions and buttons click actions, updated saving state to include players names and updated the game's logic to support the definition of the player's names.
+* V8.1.1: Added support for showing player's names when we play
 
 ## Pages structures
 

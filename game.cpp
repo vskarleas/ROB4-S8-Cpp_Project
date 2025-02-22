@@ -672,7 +672,7 @@ void Game::game_logic()
                     case AI_MODE:
                         mGameState = game_state::Choose_Mode;
                         break;
-                        
+
                     default:
                         printf("ERROR: Unhandled game over menu option\n");
                         break;
@@ -990,11 +990,11 @@ void Game::output()
     // Print scores
     SDL_Color white = {255, 255, 255, 255};
 
-    std::string score1Text = std::to_string(player1->get_user_score());
-    std::string score2Text = std::to_string(player2->get_user_score());
+    std::string score1Text = std::to_string(player1->get_user_score()) + " [" + player1->get_user_name() + "]";
+    std::string score2Text = std::to_string(player2->get_user_score()) + " [" + player2->get_user_name() + "]";
 
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    TTF_SetFontSize(police, 48);
+    TTF_SetFontSize(police, 36);
 
     SDL_Surface *surf1 = TTF_RenderText_Solid(police, score1Text.c_str(), white);
     SDL_Surface *surf2 = TTF_RenderText_Solid(police, score2Text.c_str(), white);
@@ -1002,8 +1002,8 @@ void Game::output()
     SDL_Texture *tex1 = SDL_CreateTextureFromSurface(renderer, surf1);
     SDL_Texture *tex2 = SDL_CreateTextureFromSurface(renderer, surf2);
 
-    SDL_Rect score1Rect = {200, 20, surf1->w, surf1->h};
-    SDL_Rect score2Rect = {600, 20, surf2->w, surf2->h};
+    SDL_Rect score1Rect = {100, 20, surf1->w, surf1->h};
+    SDL_Rect score2Rect = {500, 20, surf2->w, surf2->h};
 
     SDL_RenderCopy(renderer, tex1, nullptr, &score1Rect);
     SDL_RenderCopy(renderer, tex2, nullptr, &score2Rect);
