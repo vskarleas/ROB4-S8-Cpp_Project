@@ -66,6 +66,8 @@ add_library(${PROJECT_NAME}_lib
     user.cpp
     setup.cpp
     network.cpp
+    gui.cpp
+    letter.cpp
 )
 
 # Create the main executable

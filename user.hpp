@@ -8,6 +8,8 @@
 #define USER_HPP
 
 #include <string>
+#include <SDL.h>
+#include <SDL_ttf.h>
 
 class User
 {

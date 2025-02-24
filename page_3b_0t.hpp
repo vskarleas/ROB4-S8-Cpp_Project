@@ -42,7 +42,7 @@ public:
     ~page_3b_0t();
     
     bool action_handler(const SDL_Event& event);
-    void render_object();
+    void render_object(int mode, const std::string& highscore_name, int highscore);
     
     // Getters for the private variables of the menu class
     bool get_started() const { return start_new_game; }
@@ -51,7 +51,7 @@ public:
     bool get_continue_game() const { return continue_game; } 
 
     // Update the continue button
-    void set_saved_file_exists() { saved_file_exists = GameSave::save_exists(); }
+    void set_saved_file_exists() { saved_file_exists = Saving::save_exists(); }
 };
 
 #endif

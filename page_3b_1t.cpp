@@ -59,7 +59,7 @@ bool page_3b_1t::action_handler(const SDL_Event &event)
         if (SDL_PointInRect(&point, &button_1))
         {
             selected_button = 0;
-            // GameSave::delete_save();
+            // Saving::delete_save();
             Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
             return true;
         }
@@ -67,14 +67,14 @@ bool page_3b_1t::action_handler(const SDL_Event &event)
         {
             selected_button = 1;
             Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
-            // GameSave::delete_save();
+            // Saving::delete_save();
             return true;
         }
         else if (SDL_PointInRect(&point, &button_3))
         {
             selected_button = 2;
             Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
-            // GameSave::delete_save();
+            // Saving::delete_save();
             return true;
         }
     }

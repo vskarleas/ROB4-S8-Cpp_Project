@@ -900,8 +900,8 @@ CMakeFiles/Pong_lib.dir/ball_base.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__bit/byteswap.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__bit/endian.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.2.sdk/usr/include/c++/v1/__bit/has_single_bit.h \
-  /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/game.hpp \
   /opt/homebrew/Cellar/sdl2_ttf/2.24.0/include/SDL2/SDL_ttf.h \
+  /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/game.hpp \
   /opt/homebrew/Cellar/sdl2_mixer/2.8.1/include/SDL2/SDL_mixer.h \
   /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/page_3b.hpp \
   /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/page_3b_0t.hpp \
@@ -1010,4 +1010,5 @@ CMakeFiles/Pong_lib.dir/ball_base.cpp.o: \
   /opt/homebrew/include/SDL2/SDL_endian.h \
   /opt/homebrew/include/SDL2/SDL_version.h \
   /opt/homebrew/include/SDL2/begin_code.h \
-  /opt/homebrew/include/SDL2/close_code.h
+  /opt/homebrew/include/SDL2/close_code.h \
+  /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/gui.hpp

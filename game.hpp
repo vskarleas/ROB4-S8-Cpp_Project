@@ -27,6 +27,8 @@
 #include "setup.hpp"
 #include "network.hpp"
 
+#include "gui.hpp"
+
 enum class game_state {
     Notice_Menu,
     Menu,
@@ -99,7 +101,7 @@ private:
     Setup* mSetup; // NOT USED YET
 
     // Network game
-    NetworkManager* network;
+    NetworkManager* network; // NOT USED YET
     bool is_network_game;
 
     game_over* mGameOver; // This is used when the game is over
@@ -123,6 +125,9 @@ private:
     User* player1;
     User* player2;
     std::string winnerName;  // To store winner's name
+
+    int last_highscore;
+    char last_highscore_name[20]; // To store the name of the last high score player
 };
 
 #endif

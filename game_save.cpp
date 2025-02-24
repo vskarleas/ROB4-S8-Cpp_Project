@@ -8,6 +8,7 @@
 #include <ctime>
 #include <sstream>
 #include <iomanip>
+#include <SDL.h>
 
 #include "game_save.hpp"
 
@@ -17,6 +18,7 @@ namespace
 {
     const unsigned char KEY = 0x83;
     const char *SAVE_FILENAME = "game_pong-save_849374.txt"; // we always save the gam'es state on this prticular file
+    const char *HIGHSCCORE_FILENAME = "game_pong-highscore_849216.txt";
 
     /* Encrypting a byte (unsigned 8 bits) - Inspired from https://www.101computing.net/xor-encryption-algorithm/
        It allows fusing the same operation to retrieve the encrypted data */
@@ -51,13 +53,40 @@ namespace
 }
 
 /* Deleting the save file */
-void GameSave::delete_save()
+void Saving::delete_save()
 {
     std::remove(SAVE_FILENAME);
 }
 
+void Saving::delete_highscore()
+{
+    std::remove(HIGHSCCORE_FILENAME);
+}
+
+bool Saving::save_highscore(const HighScore &score)
+{
+    std::ofstream file(HIGHSCCORE_FILENAME, std::ios::binary | std::ios::app); // open the file in binary mode and append mode
+
+    if (!file)
+    {
+        return false;
+    }
+
+    // Create a copy of the score to encode
+    HighScore encode_score = score;
+
+    // Encrypting the ints and floats of the HighScore structure
+    codec_int(encode_score.score);
+    codec_string(encode_score.name, 20);
+
+    // Creating the file
+    file.write(reinterpret_cast<const char *>(&encode_score), sizeof(HighScore));
+
+    return file.good();
+}
+
 /* Creates or rewrites a save file with encrypted informations using the XOR algorithm */
-bool GameSave::save_game(const SaveState &state, const std::string & /*filename*/)
+bool Saving::save_game(const SaveState &state)
 {
     std::ofstream file(SAVE_FILENAME, std::ios::binary);
 
@@ -88,8 +117,7 @@ bool GameSave::save_game(const SaveState &state, const std::string & /*filename*
     return file.good(); // returns true if write operation was successful
 }
 
-/*  */
-bool GameSave::load_game(SaveState &state, const std::string &)
+bool Saving::load_game(SaveState &state)
 {
     std::ifstream file(SAVE_FILENAME, std::ios::binary); // opening the file in binary mode
 
@@ -130,9 +158,51 @@ bool GameSave::load_game(SaveState &state, const std::string &)
     }
 }
 
+bool Saving::load_highscore(HighScore &score)
+{
+    std::ifstream file(HIGHSCCORE_FILENAME, std::ios::binary);
+
+    if (!file)
+    {
+        return false;
+    }
+
+    // Read the latest high score (at the end of file)
+    file.seekg(0, std::ios::end);
+    std::streampos fileSize = file.tellg();
+    if (fileSize < sizeof(HighScore))
+    {
+        return false;
+    }
+    // Move to the last record
+    file.seekg(-static_cast<int>(sizeof(HighScore)), std::ios::end);
+
+    HighScore encode_score;
+    file.read(reinterpret_cast<char *>(&encode_score), sizeof(HighScore));
+
+    if (!file.good())
+    {
+        return false;
+    }
+
+    codec_int(encode_score.score);
+    codec_string(encode_score.name, 20);
+
+    score = encode_score;
+    
+    SDL_Log("Loaded high score - Name: %s, Score: %d", score.name, score.score);
+    return true;
+}
+
 /* Check if a save file exists or not (the idea is that it has been generated previously) */
-bool GameSave::save_exists()
+bool Saving::save_exists()
 {
     std::ifstream file(SAVE_FILENAME);
+    return file.good();
+}
+
+bool Saving::highscore_exists()
+{
+    std::ifstream file(HIGHSCCORE_FILENAME);
     return file.good();
 }

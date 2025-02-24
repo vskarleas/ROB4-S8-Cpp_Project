@@ -25,20 +25,34 @@ struct SaveState
     char player2_name[20];
 };
 
-class GameSave
+struct HighScore
+{
+    int score;
+    char name[20];
+};
+
+class Saving
 {
 public:
     // Deleting the file including the game's state (save)
     static void delete_save();
 
+    static void delete_highscore();
+
     // Generating the game's state (save) to a file 
-    static bool save_game(const SaveState &state, const std::string &filename);
+    static bool save_game(const SaveState &state);
 
     // Loading the game's state from the file 
-    static bool load_game(SaveState &state, const std::string &filename);
+    static bool load_game(SaveState &state);
 
     // Check if a save file exists or not
     static bool save_exists();
+
+    static bool save_highscore(const HighScore &score);
+
+    static bool load_highscore(HighScore &score);
+
+    static bool highscore_exists();
 };
 
 #endif

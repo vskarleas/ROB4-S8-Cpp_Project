@@ -16,7 +16,7 @@ page_3b_0t::page_3b_0t(SDL_Renderer *_renderer, TTF_Font *font) : /* Follwoing t
     start_new_game(false),
     exit_mode(false),
     continue_game(false),
-    saved_file_exists(GameSave::save_exists()), // calls the save_exists() function to check if a game state file exists
+    saved_file_exists(Saving::save_exists()), // calls the save_exists() function to check if a game state file exists
 
     texture_menu(nullptr),
     renderer(_renderer),
@@ -49,13 +49,18 @@ bool page_3b_0t::action_handler(const SDL_Event &event)
     {
         SDL_Point point = {event.button.x, event.button.y};
 
-        if (SDL_PointInRect(&point, &button_start))
+        SDL_Rect adjusted_start = button_start;
+        SDL_Rect adjusted_continue = button_continue;
+        adjusted_start.y += 50;
+        adjusted_continue.y += 50;
+
+        if (SDL_PointInRect(&point, &adjusted_start))
         {
             Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
             start_new_game = true;
             return true;
         }
-        else if (saved_file_exists && SDL_PointInRect(&point, &button_continue))
+        else if (saved_file_exists && SDL_PointInRect(&point, &adjusted_continue))
         {
             continue_game = true;
             Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
@@ -75,24 +80,43 @@ bool page_3b_0t::action_handler(const SDL_Event &event)
     return false;
 }
 
-void page_3b_0t::render_object()
+void page_3b_0t::render_object(int mode, const std::string& highscore_name, int highscore)
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
     SDL_Color text_color = {0, 0, 0, 0};
+    SDL_Color highlight_color = {255, 0, 0, 255};
 
+    // Show high score at the top if it exists
+    if (mode == TWO_PLAYERS_MODE && !highscore_name.empty())
+    {
+        TTF_SetFontStyle(police, TTF_STYLE_BOLD);
+        std::string highScoreText = "High Score: " + std::to_string(highscore) + " by " + highscore_name;
+        SDL_Rect highScoreRect = {WINDOW_HEIGHT / 2 - 100, 20, 400, 50};  // Moved to top
+        Utilities::render_button(renderer, police, highScoreText.c_str(), highScoreRect, highlight_color);
+        
+        // results on the terminal
+        // SDL_Log("Current High Score - Player: %s, Score: %d", highscore_name.c_str(), highscore);
+    }
+
+    // Rest of the menu items moved down slightly to accommodate high score
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    Utilities::render_button(renderer, police, "Start New Game", button_start, text_color);
+
+    SDL_Rect adjusted_start = button_start;
+    SDL_Rect adjusted_continue = button_continue;
+    adjusted_start.y += 50;
+    adjusted_continue.y += 50;
+
+    Utilities::render_button(renderer, police, "Start New Game", adjusted_start, text_color);
 
     TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
-
     if (saved_file_exists)
     {
-        Utilities::render_button(renderer, police, "Continue Game", button_continue, text_color);
+        Utilities::render_button(renderer, police, "Continue Game", adjusted_continue, text_color);
     }
-    TTF_SetFontStyle(police, TTF_STYLE_BOLD);
 
+    TTF_SetFontStyle(police, TTF_STYLE_BOLD);
     Utilities::render_button(renderer, police, "Choose another mode", button_exit, text_color);
 
     SDL_RenderPresent(renderer);

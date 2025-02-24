@@ -299,6 +299,54 @@ game_save.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/game_save.cpp.s
 .PHONY : game_save.cpp.s
 
+gui.o: gui.cpp.o
+.PHONY : gui.o
+
+# target to build an object file
+gui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/gui.cpp.o
+.PHONY : gui.cpp.o
+
+gui.i: gui.cpp.i
+.PHONY : gui.i
+
+# target to preprocess a source file
+gui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/gui.cpp.i
+.PHONY : gui.cpp.i
+
+gui.s: gui.cpp.s
+.PHONY : gui.s
+
+# target to generate assembly for a file
+gui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/gui.cpp.s
+.PHONY : gui.cpp.s
+
+letter.o: letter.cpp.o
+.PHONY : letter.o
+
+# target to build an object file
+letter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/letter.cpp.o
+.PHONY : letter.cpp.o
+
+letter.i: letter.cpp.i
+.PHONY : letter.i
+
+# target to preprocess a source file
+letter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/letter.cpp.i
+.PHONY : letter.cpp.i
+
+letter.s: letter.cpp.s
+.PHONY : letter.s
+
+# target to generate assembly for a file
+letter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/letter.cpp.s
+.PHONY : letter.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -640,6 +688,12 @@ help:
 	@echo "... game_save.o"
 	@echo "... game_save.i"
 	@echo "... game_save.s"
+	@echo "... gui.o"
+	@echo "... gui.i"
+	@echo "... gui.s"
+	@echo "... letter.o"
+	@echo "... letter.i"
+	@echo "... letter.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

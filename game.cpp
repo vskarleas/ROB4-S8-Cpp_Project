@@ -11,6 +11,7 @@
 #include "game_save.hpp"
 #include "page_3b.hpp"
 #include "macros.hpp"
+#include "gui.hpp"
 
 #include <string>
 
@@ -49,7 +50,9 @@ Game::Game()
 
       player1(new User("Player 1")),
       player2(new User("Player 2")),
-      winnerName("")
+      winnerName(""),
+      last_highscore(0),
+      last_highscore_name("")
 
 {
     mBackgroundColor1.r = 0;
@@ -344,6 +347,28 @@ bool Game::initialise()
     // Adding the AI functionality on the PAddle No 2
     mAI = new AI(mPaddle2);
 
+    // Reading the High Score from the file
+    if (Saving::highscore_exists())
+    {
+        HighScore local;
+        if (Saving::load_highscore(local))
+        {
+            last_highscore = local.score;
+            strncpy(last_highscore_name, local.name, 19);
+            last_highscore_name[19] = '\0';
+            SDL_Log("Initialized high score - Name: %s, Score: %d",
+                    last_highscore_name, last_highscore);
+        }
+        else
+        {
+            SDL_Log("Failed to load high score from file during initialisation");
+            // Initialize with defaults if load fails
+            last_highscore = 0;
+            strncpy(last_highscore_name, "None", 19);
+            last_highscore_name[19] = '\0';
+        }
+    }
+
     return true;
 }
 
@@ -396,7 +421,7 @@ void Game::game_logic()
                 {
                     if (mNoticeMenu->get_next_view()) // if we want to move on with this choice
                     {
-                        char name[20];
+                        std::string user_name;
 
                         switch (mNoticeMenu->get_notice_id())
                         {
@@ -407,9 +432,12 @@ void Game::game_logic()
                             printf("What is the name of Player 1 ?\n");
 
                             // Receive the name on the termina
-                            printf("Enter your name: ");
-                            scanf("%s", name);
-                            player1->set_user_name(name);
+                            // printf("Enter your name: ");
+                            // scanf("%s", name);
+                            // player1->set_user_name(name);
+
+                            user_name = GUI::getPlayerNameInput(renderer, police);
+                            player1->set_user_name(user_name);
 
                             mGameState = game_state::Middle_menu;
                             break;
@@ -491,19 +519,28 @@ void Game::game_logic()
             {
                 if (mMenu->action_handler(event))
                 {
-                    char name[20];
+                    std::string user_name;
 
                     if (mMenu->get_started())
                     {
-                        printf("What is the name of Player 1 ?\n");
-                        printf("Enter your name: ");
-                        scanf("%s", name);
-                        player1->set_user_name(name);
+                        // Demander les prénoms des joueurs
+                        user_name = GUI::getPlayerNameInput(renderer, police); // Utiliser la méthode de User pour demander le nom du joueur 1
+                        player1->set_user_name(user_name);
 
-                        printf("\n\nWhat is the name of Player 2 ?\n");
-                        printf("Enter your name: ");
-                        scanf("%s", name);
-                        player2->set_user_name(name);
+                        user_name = GUI::getPlayerNameInput(renderer, police);
+
+                        // Mettre à jour l'objet user2 avec le prénom saisi
+                        player2->set_user_name(user_name);
+
+                        // printf("What is the name of Player 1 ?\n");
+                        // printf("Enter your name: ");
+                        // scanf("%s", name);
+                        // player1->set_user_name(name);
+
+                        // printf("\n\nWhat is the name of Player 2 ?\n");
+                        // printf("Enter your name: ");
+                        // scanf("%s", name);
+                        // player2->set_user_name(name);
 
                         mMiddleMenu->set_mode_type(BALL_TYPE_SELECTION);
                         mGameState = game_state::Middle_menu; // We need to select the ball type before starting a new game
@@ -517,7 +554,7 @@ void Game::game_logic()
                     {
                         // Load saved game state
                         SaveState savedState;
-                        if (GameSave::load_game(savedState, ""))
+                        if (Saving::load_game(savedState))
                         {
                             player1->set_user_score(savedState.score1);
                             player2->set_user_score(savedState.score2);
@@ -532,7 +569,7 @@ void Game::game_logic()
                             mBall->set_velocity(savedState.ball_vel_x, savedState.ball_vel_y);
                             UpdateBackground();
 
-                            GameSave::delete_save(); // Delete the saved game file once we have loaded the game state
+                            Saving::delete_save(); // Delete the saved game file once we have loaded the game state
 
                             mGameState = game_state::Playing;
 
@@ -540,7 +577,6 @@ void Game::game_logic()
                             SDL_Delay(5);
                             Mix_PlayMusic(mBackgroundMusic, -1); // fade in the background music
                             Mix_VolumeMusic(MIX_MAX_VOLUME / 3);
-
                         }
                     }
                 }
@@ -562,7 +598,7 @@ void Game::game_logic()
                     switch (mGameState)
                     {
                     case game_state::Playing:
-                        mPauseMenu->set_mode_type(TWO_PLAYERS_MODE); // essential otherwise we do not know where we are right now on the logic
+                        mPauseMenu->set_mode_type(TWO_PLAYERS_MODE); // essential otherwise we show option sthat we shouldn;t on certain modes of the game
                         break;
                     case game_state::AI_playing:
                         mPauseMenu->set_mode_type(AI_MODE);
@@ -605,7 +641,7 @@ void Game::game_logic()
                         Mix_FadeInMusic(mBackgroundMusic, -1, 500); // Fade in background music
                         Mix_VolumeMusic(MIX_MAX_VOLUME / 3);
                     }
-                    else if (mPauseMenu->ShouldSave())
+                    else if (mPauseMenu->ShouldSave() && mNoticeMenu->get_notice_id() == TWO_PLAYERS_MODE) // it only apears on the TWO PLAYERS MODE - the only supported version
                     {
                         SaveState saveState;
                         saveState.score1 = player1->get_user_score();
@@ -619,11 +655,11 @@ void Game::game_logic()
                         saveState.ball_type = mMiddleMenu->get_selected_option();
 
                         strncpy(saveState.player1_name, player1->get_user_name().c_str(), 19);
-                        saveState.player1_name[19] = '\0';  // Ensuring that the name ends to \0 that is standar for string types
+                        saveState.player1_name[19] = '\0'; // Ensuring that the name ends to \0 that is standar for string types
                         strncpy(saveState.player2_name, player2->get_user_name().c_str(), 19);
-                        saveState.player2_name[19] = '\0'; 
+                        saveState.player2_name[19] = '\0';
 
-                        if (GameSave::save_game(saveState, ""))
+                        if (Saving::save_game(saveState))
                         {
                             SDL_Log("Game saved successfully");
                             mMenu->set_saved_file_exists();
@@ -650,7 +686,15 @@ void Game::game_logic()
 
                         // We update the existens of the save file
                         mMenu->set_saved_file_exists();
-                        mGameState = game_state::Choose_Mode; // We go back to the main menu without saving the progress
+
+                        if (mNoticeMenu->get_notice_id() == TWO_PLAYERS_MODE) // it only appears on the TWO PLAYERS MODE
+                        {
+                            mGameState = game_state::Game_Over;
+                        }
+                        else
+                        {
+                            mGameState = game_state::Choose_Mode;
+                        }
                     }
                     else
                     {
@@ -663,10 +707,22 @@ void Game::game_logic()
                 mMenu->set_saved_file_exists();
                 if (mGameOver->action_handler(event))
                 {
-                    switch (mGameOver->get_game_mode())
+                    switch (mNoticeMenu->get_notice_id())
                     {
                     case TWO_PLAYERS_MODE:
                         mGameState = game_state::Menu;
+
+                        // Saving the High Score
+                        HighScore new_highscore;
+
+                        new_highscore.score = last_highscore;
+
+                        strncpy(new_highscore.name, last_highscore_name, 19);
+                        new_highscore.name[19] = '\0';
+
+                        Saving::delete_highscore(); // In order to have a new fresh file that do not increase in size
+                        Saving::save_highscore(new_highscore);
+
                         break;
 
                     case AI_MODE:
@@ -692,7 +748,7 @@ void Game::game_logic()
                     {
                         if (mNoticeMenu->get_notice_id() == TWO_PLAYERS_MODE)
                         {
-                            GameSave::delete_save(); // delete only in the case that we start a new game
+                            Saving::delete_save(); // delete only in the case that we start a new game
 
                             CreateBall(mMiddleMenu->get_selected_option());
 
@@ -815,38 +871,57 @@ void Game::UpdateGame()
         }
         else
         {
-            SDL_Log("AI object is not initialized and it returning a NILL");
+            SDL_Log("AI object is not initialized and it is returning a NILL");
         }
     }
 
     mBall->update(travel_time, mPaddle1, mPaddle2, player1, player2);
 
     // Check for victory condition
-    if (player1->get_user_score() >= 10 || player2->get_user_score() >= 10)
+    switch (mNoticeMenu->get_notice_id())
     {
-        // Decide who wins
-        winnerName = (player1->get_user_score() >= 10) ? player1->get_user_name() : player2->get_user_name();
-        mGameOver->setWinnerName(winnerName);
-
-        switch (mNoticeMenu->get_notice_id())
+    case TWO_PLAYERS_MODE:
+        // Updating winner for the Game Over renderer page requirements
+        if (player1->get_user_score() != player2->get_user_score())
         {
-        case TWO_PLAYERS_MODE:
-            mGameOver->set_game_mode(TWO_PLAYERS_MODE);
-            break;
+            winnerName = (player1->get_user_score() > player2->get_user_score()) ? player1->get_user_name() : player2->get_user_name();
+        }
+        else
+        {
+            winnerName = "It's a tie!";
+        }
+        mGameOver->setWinnerName(winnerName); // transfering the winner name on the game over page
 
-        case AI_MODE:
+        // High score logic
+        if (player1->get_user_score() >= last_highscore || player2->get_user_score() >= last_highscore)
+        {
+            last_highscore = (player1->get_user_score() >= player2->get_user_score()) ? player1->get_user_score() : player2->get_user_score();
+
+            strncpy(last_highscore_name, ((player1->get_user_score() >= player2->get_user_score()) ? player1->get_user_name() : player2->get_user_name()).c_str(), 19);
+            last_highscore_name[19] = '\0';
+        }
+
+        break;
+
+    case AI_MODE:
+        if (player1->get_user_score() >= 10 || player2->get_user_score() >= 10)
+        {
+            // Decide who wins
+            winnerName = (player1->get_user_score() >= 10) ? player1->get_user_name() : player2->get_user_name();
+            mGameOver->setWinnerName(winnerName);
+
             mGameOver->set_game_mode(AI_MODE);
-            break;
-        default:
+            mGameState = game_state::Game_Over;
+        }
+        else
         {
-            SDL_Log("Invalid notice menu ID when we are at Game Over (before going back to inner menu or Choose mode menu)");
-            break;
+            return; // Nothing to do in that case
         }
-        }
+        break;
 
-        mGameState = game_state::Game_Over;
-
-        return;
+    default:
+        SDL_Log("Invalid notice menu ID when we are at Game Over (before going back to inner menu or Choose mode menu)");
+        break;
     }
 
     // Update background colors based on scores
@@ -938,7 +1013,7 @@ void Game::output()
 
     if (mGameState == game_state::Menu)
     {
-        mMenu->render_object();
+        mMenu->render_object(mNoticeMenu->get_notice_id(), last_highscore_name, last_highscore);
         return;
     }
 

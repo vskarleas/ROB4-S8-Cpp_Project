@@ -43,7 +43,7 @@ void page_3b::render_object()
     {
         Utilities::render_button(renderer, police, "Save", mSaveButton, selected_button == 1 ? text_color_selected : normalColor);
     }
-    Utilities::render_button(renderer, police, "Back to menu", button_exit, selected_button == 2 ? text_color_selected : normalColor);
+    Utilities::render_button(renderer, police, "End the game", button_exit, selected_button == 2 ? text_color_selected : normalColor);
 
     SDL_RenderPresent(renderer);
 }
