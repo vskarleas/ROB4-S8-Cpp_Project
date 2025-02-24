@@ -33,7 +33,7 @@ std::string GUI::player_name_input(SDL_Renderer *renderer, TTF_Font *font, int p
         50
     };
 
-    // Create white background
+    // Initialize background
     SDL_Surface *background_surface = SDL_CreateRGBSurface(0, WINDOW_WIDTH, WINDOW_HEIGHT, 32, 0, 0, 0, 0);
     SDL_FillRect(background_surface, NULL, SDL_MapRGB(background_surface->format, 255, 255, 255));
     SDL_Texture *background_texture = SDL_CreateTextureFromSurface(renderer, background_surface);

@@ -1012,7 +1012,9 @@ CMakeFiles/Pong_lib.dir/game.cpp.o: \
   /opt/homebrew/include/SDL2/begin_code.h \
   /opt/homebrew/include/SDL2/close_code.h \
   /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/gui.hpp \
+  /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/letter.hpp \
   /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/classic_ball.hpp \
   /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/square_ball.hpp \
   /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/triangle_ball.hpp \
-  /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/macros.hpp
+  /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/macros.hpp \
+  /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/sound_effects.hpp

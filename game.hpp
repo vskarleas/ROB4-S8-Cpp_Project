@@ -28,6 +28,7 @@
 #include "network.hpp"
 
 #include "gui.hpp"
+#include "letter.hpp"
 
 enum class game_state {
     Notice_Menu,
@@ -38,7 +39,7 @@ enum class game_state {
     Remote_playing,
     Fun_playing,
     Storytime_playing,
-    Playing, // playing classic with two players (first implementation)
+    Playing, // playing classic with two players (first implementation with high score [the goal])
     Paused,
     Game_Over,
     Set_up
@@ -61,10 +62,10 @@ public:
 
 private:
     void game_logic();
-    void UpdateGame();
+    void game();
     void output();
-    void CreateBall(int type);
-    void UpdateBackground();
+    void ball_creation(int type);
+    void update_background_color();
     
     // SDL objects for the game window and renderer
     SDL_Window* mWindow;
@@ -124,10 +125,12 @@ private:
     
     User* player1;
     User* player2;
-    std::string winnerName;  // To store winner's name
+    std::string winner;  // To store winner's name
 
     int last_highscore;
     char last_highscore_name[20]; // To store the name of the last high score player
+
+    Letter *mletter;
 };
 
 #endif

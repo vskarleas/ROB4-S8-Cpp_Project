@@ -12,8 +12,7 @@ game_over::game_over(SDL_Renderer *_renderer, TTF_Font *font) :
     texture_menu(nullptr),
     renderer(_renderer),
     police(font),
-    go_back(false), //be default we don't go back on the modes menu
-    game_mode(-1) //be default we display the general notice
+    go_back(false) //be default we don't go back on the modes menu
 {
     const int button_width = 200;
     const int button_height = 50;
@@ -68,7 +67,7 @@ void game_over::render_object()
 
     notice_text[0] = "Game is over !";
     notice_text[1] = "";
-    std::string winner = "Winner: " + winnerName + "!";
+    std::string winner = "Winner: " + winner_name + "!";
     notice_text[2] = winner.c_str();
     notice_text[3] = "Feel free to go back to the new menu ";
     text_size = 4;
@@ -91,6 +90,6 @@ void game_over::render_object()
     SDL_RenderPresent(renderer);
 }
 
-void game_over::setWinnerName(const std::string& name) {
-    winnerName = name;
+void game_over::set_winner(const std::string& name) {
+    winner_name = name;
 }

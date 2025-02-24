@@ -33,6 +33,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Pong_lib.dir/renderers.cpp.o.d"
   "CMakeFiles/Pong_lib.dir/setup.cpp.o"
   "CMakeFiles/Pong_lib.dir/setup.cpp.o.d"
+  "CMakeFiles/Pong_lib.dir/sound_effects.cpp.o"
+  "CMakeFiles/Pong_lib.dir/sound_effects.cpp.o.d"
   "CMakeFiles/Pong_lib.dir/square_ball.cpp.o"
   "CMakeFiles/Pong_lib.dir/square_ball.cpp.o.d"
   "CMakeFiles/Pong_lib.dir/triangle_ball.cpp.o"

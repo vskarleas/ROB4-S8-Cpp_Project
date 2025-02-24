@@ -1011,4 +1011,5 @@ CMakeFiles/Pong.dir/main.cpp.o: \
   /opt/homebrew/include/SDL2/SDL_version.h \
   /opt/homebrew/include/SDL2/begin_code.h \
   /opt/homebrew/include/SDL2/close_code.h \
-  /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/gui.hpp
+  /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/gui.hpp \
+  /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/letter.hpp

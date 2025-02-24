@@ -349,6 +349,20 @@ CMakeFiles/Pong_lib.dir/letter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Pong_lib.dir/letter.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/letter.cpp" -o CMakeFiles/Pong_lib.dir/letter.cpp.s
 
+CMakeFiles/Pong_lib.dir/sound_effects.cpp.o: CMakeFiles/Pong_lib.dir/flags.make
+CMakeFiles/Pong_lib.dir/sound_effects.cpp.o: /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/sound_effects.cpp
+CMakeFiles/Pong_lib.dir/sound_effects.cpp.o: CMakeFiles/Pong_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/Pong_lib.dir/sound_effects.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Pong_lib.dir/sound_effects.cpp.o -MF CMakeFiles/Pong_lib.dir/sound_effects.cpp.o.d -o CMakeFiles/Pong_lib.dir/sound_effects.cpp.o -c "/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/sound_effects.cpp"
+
+CMakeFiles/Pong_lib.dir/sound_effects.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Pong_lib.dir/sound_effects.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/sound_effects.cpp" > CMakeFiles/Pong_lib.dir/sound_effects.cpp.i
+
+CMakeFiles/Pong_lib.dir/sound_effects.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Pong_lib.dir/sound_effects.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/sound_effects.cpp" -o CMakeFiles/Pong_lib.dir/sound_effects.cpp.s
+
 # Object files for target Pong_lib
 Pong_lib_OBJECTS = \
 "CMakeFiles/Pong_lib.dir/paddle.cpp.o" \
@@ -370,7 +384,8 @@ Pong_lib_OBJECTS = \
 "CMakeFiles/Pong_lib.dir/setup.cpp.o" \
 "CMakeFiles/Pong_lib.dir/network.cpp.o" \
 "CMakeFiles/Pong_lib.dir/gui.cpp.o" \
-"CMakeFiles/Pong_lib.dir/letter.cpp.o"
+"CMakeFiles/Pong_lib.dir/letter.cpp.o" \
+"CMakeFiles/Pong_lib.dir/sound_effects.cpp.o"
 
 # External object files for target Pong_lib
 Pong_lib_EXTERNAL_OBJECTS =
@@ -395,9 +410,10 @@ libPong_lib.a: CMakeFiles/Pong_lib.dir/setup.cpp.o
 libPong_lib.a: CMakeFiles/Pong_lib.dir/network.cpp.o
 libPong_lib.a: CMakeFiles/Pong_lib.dir/gui.cpp.o
 libPong_lib.a: CMakeFiles/Pong_lib.dir/letter.cpp.o
+libPong_lib.a: CMakeFiles/Pong_lib.dir/sound_effects.cpp.o
 libPong_lib.a: CMakeFiles/Pong_lib.dir/build.make
 libPong_lib.a: CMakeFiles/Pong_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX static library libPong_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/Users/vasilisskarleas/Library/Mobile Documents/com~apple~CloudDocs/Documents/University Sorbonne/4th year/S8/C++ Project/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX static library libPong_lib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/Pong_lib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Pong_lib.dir/link.txt --verbose=$(VERBOSE)
 

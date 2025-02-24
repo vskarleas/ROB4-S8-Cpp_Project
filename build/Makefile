@@ -587,6 +587,30 @@ setup.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/setup.cpp.s
 .PHONY : setup.cpp.s
 
+sound_effects.o: sound_effects.cpp.o
+.PHONY : sound_effects.o
+
+# target to build an object file
+sound_effects.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/sound_effects.cpp.o
+.PHONY : sound_effects.cpp.o
+
+sound_effects.i: sound_effects.cpp.i
+.PHONY : sound_effects.i
+
+# target to preprocess a source file
+sound_effects.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/sound_effects.cpp.i
+.PHONY : sound_effects.cpp.i
+
+sound_effects.s: sound_effects.cpp.s
+.PHONY : sound_effects.s
+
+# target to generate assembly for a file
+sound_effects.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/sound_effects.cpp.s
+.PHONY : sound_effects.cpp.s
+
 square_ball.o: square_ball.cpp.o
 .PHONY : square_ball.o
 
@@ -724,6 +748,9 @@ help:
 	@echo "... setup.o"
 	@echo "... setup.i"
 	@echo "... setup.s"
+	@echo "... sound_effects.o"
+	@echo "... sound_effects.i"
+	@echo "... sound_effects.s"
 	@echo "... square_ball.o"
 	@echo "... square_ball.i"
 	@echo "... square_ball.s"

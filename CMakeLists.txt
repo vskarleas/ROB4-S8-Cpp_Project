@@ -68,6 +68,7 @@ add_library(${PROJECT_NAME}_lib
     network.cpp
     gui.cpp
     letter.cpp
+    sound_effects.cpp
 )
 
 # Create the main executable

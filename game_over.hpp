@@ -20,9 +20,8 @@ private:
     SDL_Rect button_back;
 
     bool go_back; // to go back on the modes menu
-    int game_mode; // check the page_4b_1t.hpp for the for the different notice IDs
 
-    std::string winnerName;
+    std::string winner_name;
 
 public:
 
@@ -34,11 +33,7 @@ public:
 
     bool get_go_back() const { return go_back; }
 
-    // Required for the game lofgic to update the notices tree and remder the correct text every time
-    int get_game_mode() const { return game_mode; }
-    void set_game_mode(int _id) { game_mode = _id; }
-
-    void setWinnerName(const std::string& name);
+    void set_winner(const std::string& name);
 
     void render_object();
 };
