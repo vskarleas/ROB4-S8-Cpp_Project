@@ -5,22 +5,38 @@
 // #############################################################################
 
 #include "gui.hpp"
+#include "macros.hpp"
 
 
-std::string GUI::getPlayerNameInput(SDL_Renderer *renderer, TTF_Font *font)
+std::string GUI::player_name_input(SDL_Renderer *renderer, TTF_Font *font, int player_number)
 {
-    std::string playerName;
+    std::string player_name;
     SDL_Event event;
     bool typing = true;
 
-    // Couleur du texte
+    // Text color (black)
     SDL_Color color = {0, 0, 0, 0};
-    SDL_Rect textRect = {260, 150, 200, 100}; // Position du texte du prenom
-    SDL_Rect textRect2 = {200, 60, 200, 100};
+    
+    // Center positions
+    int center_x = WINDOW_WIDTH / 2;
+    SDL_Rect inputRect = {
+        center_x - 100,  // Center the input field (200px wide)
+        WINDOW_HEIGHT / 2,
+        200,
+        50
+    };
+    
+    SDL_Rect instruction_rectangle = {
+        center_x - 150,  // Center the instruction (300px wide)
+        WINDOW_HEIGHT / 3,
+        300,
+        50
+    };
 
-    SDL_Surface *backgroundSurface = SDL_CreateRGBSurface(0, 800, 600, 32, 0, 0, 0, 0);
-    SDL_Texture *backgroundTexture = SDL_CreateTextureFromSurface(renderer, backgroundSurface);
-    SDL_RenderCopy(renderer, backgroundTexture, nullptr, nullptr); // Ajouter l'écran par-dessus sans effacer
+    // Create white background
+    SDL_Surface *background_surface = SDL_CreateRGBSurface(0, WINDOW_WIDTH, WINDOW_HEIGHT, 32, 0, 0, 0, 0);
+    SDL_FillRect(background_surface, NULL, SDL_MapRGB(background_surface->format, 255, 255, 255));
+    SDL_Texture *background_texture = SDL_CreateTextureFromSurface(renderer, background_surface);
 
     while (typing)
     {
@@ -36,52 +52,70 @@ std::string GUI::getPlayerNameInput(SDL_Renderer *renderer, TTF_Font *font)
                 {
                     typing = false;
                 }
-                else if (event.key.keysym.sym == SDLK_BACKSPACE && playerName.length() > 0)
+                else if (event.key.keysym.sym == SDLK_BACKSPACE && player_name.length() > 0)
                 {
-                    playerName.pop_back();
+                    player_name.pop_back();
                 }
                 else if (event.key.keysym.sym != SDLK_RETURN && event.key.keysym.sym != SDLK_BACKSPACE)
                 {
                     char c = event.key.keysym.sym;
                     if (isprint(c))
                     {
-                        playerName += c;
+                        player_name += c;
                     }
                 }
             }
         }
 
         SDL_RenderClear(renderer);
-        // afficher un message d'instruction
-        const char *instructionText = "Joueur, veuillez entrer votre prenom:";
-        SDL_Surface *instructionSurface = TTF_RenderText_Solid(font, instructionText, color);
-        SDL_Texture *instructionTexture = SDL_CreateTextureFromSurface(renderer, instructionSurface);
+        SDL_RenderCopy(renderer, background_texture, nullptr, nullptr);
 
-        // Positionner le message d'instruction
-        SDL_Rect instructionRect = {textRect2.x, textRect2.y, instructionSurface->w, instructionSurface->h};
+        
+        // Display instruction message
+        TTF_SetFontStyle(font, TTF_STYLE_BOLD);
+        std::string instruction = "Player " + std::to_string(player_number) + ", please enter your name:";
+        const char *instruction_text = instruction.c_str();
+        SDL_Surface *instruction_surface = TTF_RenderText_Solid(font, instruction_text, color);
+        SDL_Texture *instruction_texture = SDL_CreateTextureFromSurface(renderer, instruction_surface);
 
-        // Afficher le message d'instruction
-        SDL_RenderCopy(renderer, instructionTexture, nullptr, &instructionRect);
+        // Center the instruction text
+        SDL_Rect actualinstruction_rectangle = {
+            center_x - (instruction_surface->w / 2),
+            instruction_rectangle.y,
+            instruction_surface->w,
+            instruction_surface->h
+        };
 
-        // Libérer la surface et la texture du message après l'affichage
-        SDL_FreeSurface(instructionSurface);
-        SDL_DestroyTexture(instructionTexture);
+        SDL_RenderCopy(renderer, instruction_texture, nullptr, &actualinstruction_rectangle);
+        SDL_FreeSurface(instruction_surface);
+        SDL_DestroyTexture(instruction_texture);
 
-        // Afficher le texte saisi
-        SDL_Surface *textSurface = TTF_RenderText_Solid(font, playerName.c_str(), color);
-        SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
-        SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
+        // Display input text
+        if (!player_name.empty())
+        {
+            TTF_SetFontStyle(font, TTF_STYLE_NORMAL);
 
-        SDL_FreeSurface(textSurface);
-        SDL_DestroyTexture(textTexture);
+            SDL_Surface *text_surface = TTF_RenderText_Solid(font, player_name.c_str(), color);
+            SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, text_surface);
+            
+            // Center the input text
+            SDL_Rect actualInputRect = {
+                center_x - (text_surface->w / 2),
+                inputRect.y,
+                text_surface->w,
+                text_surface->h
+            };
 
-        // Rafraîchir l'écran
+            SDL_RenderCopy(renderer, textTexture, nullptr, &actualInputRect);
+            SDL_FreeSurface(text_surface);
+            SDL_DestroyTexture(textTexture);
+        }
+
         SDL_RenderPresent(renderer);
     }
 
-    // Libérer la texture de fond et la surface
-    SDL_DestroyTexture(backgroundTexture);
-    SDL_FreeSurface(backgroundSurface);
+    SDL_DestroyTexture(background_texture);
+    SDL_FreeSurface(background_surface);
 
-    return playerName;
+    return player_name;
 }

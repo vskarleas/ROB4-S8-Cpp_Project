@@ -436,7 +436,7 @@ void Game::game_logic()
                             // scanf("%s", name);
                             // player1->set_user_name(name);
 
-                            user_name = GUI::getPlayerNameInput(renderer, police);
+                            user_name = GUI::player_name_input(renderer, police, 1);
                             player1->set_user_name(user_name);
 
                             mGameState = game_state::Middle_menu;
@@ -524,10 +524,10 @@ void Game::game_logic()
                     if (mMenu->get_started())
                     {
                         // Demander les prénoms des joueurs
-                        user_name = GUI::getPlayerNameInput(renderer, police); // Utiliser la méthode de User pour demander le nom du joueur 1
+                        user_name = GUI::player_name_input(renderer, police, 1); // Utiliser la méthode de User pour demander le nom du joueur 1
                         player1->set_user_name(user_name);
 
-                        user_name = GUI::getPlayerNameInput(renderer, police);
+                        user_name = GUI::player_name_input(renderer, police, 2);
 
                         // Mettre à jour l'objet user2 avec le prénom saisi
                         player2->set_user_name(user_name);

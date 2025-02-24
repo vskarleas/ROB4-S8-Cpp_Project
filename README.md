@@ -21,6 +21,7 @@
 * V8.1.0: Added user class, started network codebase, added special effects support for game's actions and buttons click actions, updated saving state to include players names and updated the game's logic to support the definition of the player's names.
 * V8.1.1: Added support for showing player's names when we play
 * V9.0.1: Added high score functionality on two players mode. The game now ends when the users ask for it, so this is what makes a high score. Also added support to add user names on SDL interface
+* V9.1.0: Updated the gui.cpp for better results and cohesion
 
 ## Pages structures
 

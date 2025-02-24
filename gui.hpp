@@ -25,7 +25,7 @@ public:
      * @param font The TTF_Font used to render the text.
      * @return std::string The player's name input.
      */
-    static std::string getPlayerNameInput(SDL_Renderer* renderer, TTF_Font* font);
+    static std::string player_name_input(SDL_Renderer* renderer, TTF_Font* font, int player_number);
 };
 
 #endif

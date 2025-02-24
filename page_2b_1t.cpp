@@ -83,17 +83,18 @@ void page_2b_1t::render_object()
             notice_text[0] = "Default Pong Game instructions";
             notice_text[1] = "";
             notice_text[2] = "Player 1 Controls:";
-            notice_text[3] = "- Use W to move paddle up";
-            notice_text[4] = "- Use S to move paddle down";
-            notice_text[5] = "";
-            notice_text[6] = "Player 2 Controls:";
-            notice_text[7] = "- Use UP ARROW to move paddle up";
-            notice_text[8] = "- Use DOWN ARROW to move paddle down";
-            notice_text[9] = "";
-            notice_text[10] = "Other Controls:";
-            notice_text[11] = "- Press Pause to see the inner game menu";
-            notice_text[12] = "- Click the Save button to save your game in progress";
-            text_size = 13;
+            notice_text[3] = "- Use W/S to move paddle up/down";
+            notice_text[4] = "";
+            notice_text[5] = "Player 2 Controls:";
+            notice_text[6] = "- Use UP/DOWN ARROW to move paddle up/down";
+            notice_text[7] = "";
+            notice_text[8] = "Other Controls:";
+            notice_text[9] = "- Press Pause to see the inner game menu";
+            notice_text[10] = "- Click the Save button to save your game in progress";
+            notice_text[11] = "";
+            notice_text[12] = "THE GOAL IS TO ACHIEVE THE GRETEST SCORE POSSIBLE !";
+            notice_text[13] = "WHO IS GOIG TO BYPASS THE PREVIOYS HIGHSCORE ? ";
+            text_size = 14;
             break;
 
         case AI_MODE:

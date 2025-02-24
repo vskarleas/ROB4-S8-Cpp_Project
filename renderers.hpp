@@ -24,7 +24,7 @@ struct circle_renderer
     void operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size) const;
 
 private:
-    void DrawFilledCircle(SDL_Renderer *renderer, int32_t centerX, int32_t centerY, int32_t radius) const;
+    void DrawFilledCircle(SDL_Renderer *renderer, int32_t center_x, int32_t centerY, int32_t radius) const;
 };
 
 struct square_renderer

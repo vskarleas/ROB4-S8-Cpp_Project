@@ -31,7 +31,7 @@ namespace Utilities {
 }
 
 // Implementation of the circle_renderer class
-void circle_renderer::DrawFilledCircle(SDL_Renderer* renderer, int32_t centerX, int32_t centerY, int32_t radius) const {
+void circle_renderer::DrawFilledCircle(SDL_Renderer* renderer, int32_t center_x, int32_t centerY, int32_t radius) const {
     const int32_t diameter = (radius * 2);
     int32_t x = (radius - 1);
     int32_t y = 0;
@@ -40,10 +40,10 @@ void circle_renderer::DrawFilledCircle(SDL_Renderer* renderer, int32_t centerX, 
     int32_t error = (tx - diameter);
 
     while (x >= y) {
-        SDL_RenderDrawLine(renderer, centerX - x, centerY + y, centerX + x, centerY + y);
-        SDL_RenderDrawLine(renderer, centerX - x, centerY - y, centerX + x, centerY - y);
-        SDL_RenderDrawLine(renderer, centerX - y, centerY + x, centerX + y, centerY + x);
-        SDL_RenderDrawLine(renderer, centerX - y, centerY - x, centerX + y, centerY - x);
+        SDL_RenderDrawLine(renderer, center_x - x, centerY + y, center_x + x, centerY + y);
+        SDL_RenderDrawLine(renderer, center_x - x, centerY - y, center_x + x, centerY - y);
+        SDL_RenderDrawLine(renderer, center_x - y, centerY + x, center_x + y, centerY + x);
+        SDL_RenderDrawLine(renderer, center_x - y, centerY - x, center_x + y, centerY - x);
 
         if (error <= 0) {
             ++y;
