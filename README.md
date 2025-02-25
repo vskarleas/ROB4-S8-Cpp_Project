@@ -24,6 +24,7 @@
 * V9.1.0: Updated the gui.cpp for better results and cohesion
 * V9.2.0: Storymode added. We need to update the instrcutions
 * V9.2.1: Removed setup.cpp and setup.hpp dependecnies
+* V9.2.2: Reoved final depednicies of setup.cpp
 
 ## Pages structures
 
