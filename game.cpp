@@ -166,12 +166,6 @@ Game::~Game()
         police = nullptr;
     }
 
-    if (mSetup)
-    {
-        delete mSetup;
-        mSetup = nullptr;
-    }
-
     // Clean up SDL resources
     if (renderer)
     {
@@ -287,7 +281,6 @@ bool Game::initialise()
     mModeMenu = new page_4b_1t(renderer, police);
     mPauseMenu = new page_3b(renderer, police);
     mGameOver = new game_over(renderer, police);
-    mSetup = new Setup(renderer, police);
     mletter = new Letter(400, 0, 30, renderer, police);
 
     // Creating the different objects of the game
@@ -1090,12 +1083,6 @@ void Game::output()
     if (mGameState == game_state::Game_Over)
     {
         mGameOver->render_object();
-        return;
-    }
-
-    if (mGameState == game_state::Set_up)
-    {
-        mSetup->render_object();
         return;
     }
 

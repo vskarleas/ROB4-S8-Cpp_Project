@@ -563,30 +563,6 @@ renderers.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/renderers.cpp.s
 .PHONY : renderers.cpp.s
 
-setup.o: setup.cpp.o
-.PHONY : setup.o
-
-# target to build an object file
-setup.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/setup.cpp.o
-.PHONY : setup.cpp.o
-
-setup.i: setup.cpp.i
-.PHONY : setup.i
-
-# target to preprocess a source file
-setup.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/setup.cpp.i
-.PHONY : setup.cpp.i
-
-setup.s: setup.cpp.s
-.PHONY : setup.s
-
-# target to generate assembly for a file
-setup.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Pong_lib.dir/build.make CMakeFiles/Pong_lib.dir/setup.cpp.s
-.PHONY : setup.cpp.s
-
 sound_effects.o: sound_effects.cpp.o
 .PHONY : sound_effects.o
 
@@ -745,9 +721,6 @@ help:
 	@echo "... renderers.o"
 	@echo "... renderers.i"
 	@echo "... renderers.s"
-	@echo "... setup.o"
-	@echo "... setup.i"
-	@echo "... setup.s"
 	@echo "... sound_effects.o"
 	@echo "... sound_effects.i"
 	@echo "... sound_effects.s"

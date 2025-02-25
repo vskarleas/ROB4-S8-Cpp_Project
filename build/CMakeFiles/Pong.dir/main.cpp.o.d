@@ -1004,7 +1004,6 @@ CMakeFiles/Pong.dir/main.cpp.o: \
   /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/page_2b_1t.hpp \
   /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/game_over.hpp \
   /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/ai.hpp \
-  /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/setup.hpp \
   /Users/vasilisskarleas/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/University\ Sorbonne/4th\ year/S8/C++\ Project/network.hpp \
   /opt/homebrew/include/SDL2/SDL_net.h /opt/homebrew/include/SDL2/SDL.h \
   /opt/homebrew/include/SDL2/SDL_endian.h \

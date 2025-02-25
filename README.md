@@ -6,8 +6,8 @@
 
 * V4.2.2 Saving the demi correct viwes
 * V4.2.3 The views logic has been completed
-* V5.0.1: Added lamda functions on the paddle.cpp. The reason why we do this is found on the paddle.cpp file and added mutliple notixes support
-* V5.1.1: Functors added for the differet ball shaped renders on the renderers.cpp file (it includes also the explication why we use functors [purposes])
+* V5.0.1: **Added lamda functions** on the paddle.cpp. The reason why we do this is found on the paddle.cpp file and added mutliple notixes support
+* V5.1.1: F**unctors added for the differet ball shaped renders on the renderers.cpp file** (it includes also the explication why we use functors [purposes])
 * V5.1.2: Added getter and setter for the notices (it will be needed on the game's main logic to showcase the correct notices) + on Makefile added the mode_menu implementation
 * V5.1.3: Prepared notices so that we can return back to the mode menu
 * V5.1.4: Added logic for showng the paude button or not on the game

@@ -64,7 +64,6 @@ add_library(${PROJECT_NAME}_lib
     game.cpp
     game_over.cpp
     user.cpp
-    setup.cpp
     network.cpp
     gui.cpp
     letter.cpp
