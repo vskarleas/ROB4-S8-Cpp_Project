@@ -1,0 +1,11 @@
+# VSCode files
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Specific VSCode files to ignore
+.vscode/c_cpp_properties.json
