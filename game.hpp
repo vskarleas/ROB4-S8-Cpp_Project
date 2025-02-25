@@ -24,7 +24,6 @@
 
 #include "ai.hpp"
 #include "user.hpp"
-#include "setup.hpp"
 #include "network.hpp"
 
 #include "gui.hpp"
@@ -98,8 +97,6 @@ private:
     page_3b* mPauseMenu;
     page_3b_1t* mMiddleMenu;
     page_4b_1t* mModeMenu;
-
-    Setup* mSetup; // NOT USED YET
 
     // Network game
     NetworkManager* network; // NOT USED YET

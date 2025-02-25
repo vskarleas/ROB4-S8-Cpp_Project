@@ -23,6 +23,7 @@
 * V9.0.1: Added high score functionality on two players mode. The game now ends when the users ask for it, so this is what makes a high score. Also added support to add user names on SDL interface
 * V9.1.0: Updated the gui.cpp for better results and cohesion
 * V9.2.0: Storymode added. We need to update the instrcutions
+* V9.2.1: Removed setup.cpp and setup.hpp dependecnies
 
 ## Pages structures
 

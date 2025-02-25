@@ -16,7 +16,7 @@ public:
     ~NetworkManager();
     
     bool init_as_host(int port = 1234);
-    bool init_as_client(const char* host, int port = 1234);
+    bool init_as_client(const char* host, int port = 36000);
     void send_paddle_state(const PaddleState& state);
     bool receive_paddle_state(PaddleState& state);
     void close();
