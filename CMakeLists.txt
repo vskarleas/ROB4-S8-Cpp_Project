@@ -68,6 +68,7 @@ add_library(${PROJECT_NAME}_lib
     gui.cpp
     letter.cpp
     sound_effects.cpp
+    power.cpp
 )
 
 # Create the main executable

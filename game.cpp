@@ -55,7 +55,8 @@ Game::Game()
       last_highscore(0),
       last_highscore_name(""),
 
-      mletter(nullptr)
+      mletter(nullptr),
+      mpower(nullptr)
 
 {
     mBackgroundColor1.r = 0;
@@ -128,6 +129,11 @@ Game::~Game()
     {
         delete mBall;
         mBall = nullptr;
+    }
+    if (mpower)
+    {
+        delete mpower;
+        mpower = nullptr;
     }
 
     if (mOnHoldMusic)
@@ -281,8 +287,8 @@ bool Game::initialise()
     mModeMenu = new page_4b_1t(renderer, police);
     mPauseMenu = new page_3b(renderer, police);
     mGameOver = new game_over(renderer, police);
-    mletter = new Letter(400, 0, 30, renderer, police);
-
+    mletter = new Letter(0,400, 0, 30, renderer, police);
+    mpower = new Power(WINDOW_WIDTH,WINDOW_HEIGHT);
     // Creating the different objects of the game
     mPaddle1 = new Paddle(30, true);
     mPaddle2 = new Paddle(770, false);
@@ -455,6 +461,7 @@ void Game::game_logic()
 
                             user_name = GUI::player_name_input(renderer, police, 2);
                             player2->set_user_name(user_name);
+                            // mletter->reset_word(0);
 
                             mMiddleMenu->set_mode_type(BALL_TYPE_SELECTION);
                             mGameState = game_state::Middle_menu;
@@ -462,6 +469,12 @@ void Game::game_logic()
 
                         case FUN_MODE:
                             mGameState = game_state::Fun_playing;
+                            user_name = GUI::player_name_input(renderer, police, 1);
+                            player1->set_user_name(user_name);
+
+                            user_name = GUI::player_name_input(renderer, police, 2);
+                            player2->set_user_name(user_name);
+                            
                             break;
 
                         case GAME_SAVED:
@@ -592,7 +605,7 @@ void Game::game_logic()
                     SDL_Log("Invalid action on Main menu");
                 }
             }
-            else if (mGameState == game_state::Playing || mGameState == game_state::AI_playing || mGameState == game_state::Storytime_playing)
+            else if (mGameState == game_state::Playing || mGameState == game_state::AI_playing || mGameState == game_state::Storytime_playing || mGameState == game_state::Fun_playing )
             {
                 SDL_Point clickPoint = {event.button.x, event.button.y};
                 if (SDL_PointInRect(&clickPoint, &mPauseButtonRect)) // We go to pause menu if the pause button is clicked
@@ -609,6 +622,9 @@ void Game::game_logic()
                         break;
                     case game_state::Storytime_playing:
                         mPauseMenu->set_mode_type(STORYTIME_MODE);
+                        break;
+                    case game_state::Fun_playing:
+                        mPauseMenu->set_mode_type(FUN_MODE);
                         break;
                     default:
                         printf("ERROR: Unhandled pause menu option\n");
@@ -638,6 +654,9 @@ void Game::game_logic()
                             break;
                         case STORYTIME_MODE:
                             mGameState = game_state::Storytime_playing;
+                            break;
+                        case FUN_MODE:
+                            mGameState = game_state::Fun_playing;
                             break;
                         default:
                             printf("ERROR: Unhandled pause menu option\n");
@@ -730,6 +749,9 @@ void Game::game_logic()
                     case STORYTIME_MODE:
                         mGameState = game_state::Choose_Mode;
                         break;
+                    case FUN_MODE:
+                        mGameState = game_state::Choose_Mode;
+                        break;
 
                     default:
                         printf("ERROR: Unhandled game over menu option\n");
@@ -769,7 +791,7 @@ void Game::game_logic()
                             mGameState = game_state::Playing;
                             SDL_Log("New default game started with selected ball type (%d)", mMiddleMenu->get_selected_option());
                         }
-                        else if (mNoticeMenu->get_notice_id() == STORYTIME_MODE)
+                         else if (mNoticeMenu->get_notice_id() == STORYTIME_MODE)
                         {
                             ball_creation(mMiddleMenu->get_selected_option());
 
@@ -790,6 +812,28 @@ void Game::game_logic()
 
                             mGameState = game_state::Storytime_playing;
                             SDL_Log("New Storytime game started with selected ball type (%d)", mMiddleMenu->get_selected_option());
+                        }
+                        else if (mNoticeMenu->get_notice_id() == FUN_MODE)
+                        {
+                            ball_creation(mMiddleMenu->get_selected_option());
+
+                            // Reset game state
+                            player1->reset_score();
+                            player2->reset_score();
+
+                            // Reset paddle positions
+                            mPaddle1->set_pos_y(WINDOW_HEIGHT / 2.0f);
+                            mPaddle2->set_pos_y(WINDOW_HEIGHT / 2.0f);
+
+                            // Reset ball position and give it initial velocity
+                            mBall->set_position(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f);
+                            mBall->set_velocity(200.0f, 235.0f); // Initial ball speed
+
+                            // Reset background colors
+                            update_background_color();
+
+                            mGameState = game_state::Fun_playing;
+                            SDL_Log("New fun_game game started with selected ball type (%d)", mMiddleMenu->get_selected_option());
                         }
                         else if (mNoticeMenu->get_notice_id() == AI_MODE)
                         {
@@ -859,7 +903,7 @@ void Game::game_logic()
 
 void Game::game()
 {
-    if (mGameState != game_state::Playing && mGameState != game_state::AI_playing && mGameState != game_state::Storytime_playing) // There is nothing to update if the game is not in playing state
+    if (mGameState != game_state::Playing && mGameState != game_state::AI_playing && mGameState != game_state::Storytime_playing && mGameState != game_state::Fun_playing) // There is nothing to update if the game is not in playing state
     {
         return;
     }
@@ -895,6 +939,9 @@ void Game::game()
             break;
 
         case game_state::Storytime_playing:
+            mPaddle2->update(travel_time);
+            break;
+        case game_state::Fun_playing:
             mPaddle2->update(travel_time);
             break;
 
@@ -949,6 +996,22 @@ void Game::game()
         // Adding letters logic
         mletter->update_letter(travel_time, WINDOW_HEIGHT,player1, player2, mBall->get_pos_x(), mBall->get_pos_y(),15);
 
+        // Same logic with AI_MODE
+        if (player1->get_user_score() >= 15 || player2->get_user_score() >= 15)
+        {
+            winner = (player1->get_user_score() >= 10) ? player1->get_user_name() : player2->get_user_name();
+            mGameOver->set_winner(winner);
+            mGameState = game_state::Game_Over;
+        }
+        else
+        {
+            return; // Nothing to do in that case
+        }
+        break;
+    case FUN_MODE:
+        
+        //mletter->update_letter(travel_time, WINDOW_HEIGHT,player1, player2, mBall->get_pos_x(), mBall->get_pos_y(),15);
+        mpower->update(travel_time, mPaddle1,mPaddle2, mBall->get_pos_x(),mBall->get_pos_y(),15,renderer);
         // Same logic with AI_MODE
         if (player1->get_user_score() >= 15 || player2->get_user_score() >= 15)
         {
@@ -1117,6 +1180,10 @@ void Game::output()
     {
         mletter->render(renderer);
     }
+    if (mNoticeMenu->get_notice_id() == FUN_MODE)
+    {
+        mpower->render(renderer);
+    }
 
     // Print scores
     SDL_Color white = {255, 255, 255, 255};
@@ -1144,8 +1211,8 @@ void Game::output()
     SDL_DestroyTexture(tex1);
     SDL_DestroyTexture(tex2);
 
-    // Pause menu only on the default Pong game, AI mode or Storytime mode
-    if (mNoticeMenu->get_notice_id() == AI_MODE || mNoticeMenu->get_notice_id() == TWO_PLAYERS_MODE || mNoticeMenu->get_notice_id() == STORYTIME_MODE) // We are rendering the Pause button only in the default Pong game
+    // Pause menu only on the default Pong game, AI mode, Storytime mode or fun_mode  
+    if (mNoticeMenu->get_notice_id() == AI_MODE || mNoticeMenu->get_notice_id() == TWO_PLAYERS_MODE || mNoticeMenu->get_notice_id() == STORYTIME_MODE || mNoticeMenu->get_notice_id() == FUN_MODE) // We are rendering the Pause button only in the default Pong game
     {
         pause_button();
     }

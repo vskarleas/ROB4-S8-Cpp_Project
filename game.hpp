@@ -26,6 +26,8 @@
 #include "user.hpp"
 #include "network.hpp"
 
+#include "power.hpp"
+
 #include "gui.hpp"
 #include "letter.hpp"
 
@@ -128,6 +130,7 @@ private:
     char last_highscore_name[20]; // To store the name of the last high score player
 
     Letter *mletter;
+    Power *mpower;
 };
 
 #endif

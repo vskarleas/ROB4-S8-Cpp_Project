@@ -9,12 +9,18 @@
 #include <vector>
 
 // Constructeur
-Letter::Letter(float startX, float startY, float velocity, SDL_Renderer *renderer, TTF_Font *font)
-    : currentWordIndex(0), currentLetterIndex(0), x(startX), y(startY), speed(velocity), texture(nullptr),
+Letter::Letter(int index, float startX, float startY, float velocity, SDL_Renderer *renderer, TTF_Font *font)
+    : currentWordIndex(index), currentLetterIndex(index), x(startX), y(startY), speed(velocity), texture(nullptr),
       width(0), height(0), renderer(renderer), font(font)
 {
+    
     word = words[currentWordIndex];
     changeToNextLetter();
+}
+
+void Letter::reset_word(int n)
+{   currentLetterIndex=n; 
+    currentWordIndex=n;
 }
 
 // Destructeur
@@ -84,10 +90,11 @@ void Letter::update_letter(float deltaTime, int screenHeight, User *player1, Use
         {
             player2->increment_score();
         }
-
+        lettersAtBottom.push_back(letter);
         // Check if it was the last letter of the word
         if (currentLetterIndex >= word.length())
         {
+            lettersAtBottom.clear();
             setNextWord();
         }
         else
@@ -108,6 +115,29 @@ void Letter::render(SDL_Renderer *renderer)
     {
         SDL_Rect destRect = {static_cast<int>(x), static_cast<int>(y), width * 3, height * 3};
         SDL_RenderCopy(renderer, texture, nullptr, &destRect);
+    }
+     
+        
+    // Afficher les lettres tombées en bas de l'écran
+    int startX = 150; // Position de départ pour afficher les lettres en bas
+    int startY = WINDOW_HEIGHT - 100; // Hauteur fixe en bas de l'écran (à ajuster si nécessaire)
+    int spacing = width * 3 + 10; // Espacement entre les lettres
+
+    for (size_t i = 0; i < lettersAtBottom.size(); ++i)
+    {
+        std::string letterStr(1, lettersAtBottom[i]);
+        SDL_Color color = {255, 105, 180, 255}; // Rose
+        SDL_Surface *textSurface = TTF_RenderText_Solid(font, letterStr.c_str(), color);
+
+        if (textSurface)
+        {
+            SDL_Texture *letterTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+            SDL_Rect letterRect = {startX + static_cast<int>(i) * spacing, startY, width * 4, height * 4};
+            SDL_RenderCopy(renderer, letterTexture, nullptr, &letterRect);
+
+            SDL_FreeSurface(textSurface);
+            SDL_DestroyTexture(letterTexture);
+        }
     }
 }
 
