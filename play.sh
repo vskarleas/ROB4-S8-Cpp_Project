@@ -68,6 +68,7 @@ else
   clear
   echo -e "${PURPLE}Initialising environment..."
   sleep 2
+  mkdir -p build
   cd build
   cmake ..
   cmake --build .
