@@ -68,8 +68,6 @@ void page_2b_1t::render_object()
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
-    SDL_Color text_color = {0, 0, 0, 0};
-
     // Add notice text
     TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
     TTF_SetFontSize(police, 14);
@@ -105,29 +103,35 @@ void page_2b_1t::render_object()
             notice_text[4] = "Controls:";
             notice_text[5] = "- Use W/S keys to move your paddle";
             notice_text[6] = "- The AI will control the other paddle";
-            text_size = 7;
+            notice_text[7] = "";
+            notice_text[8] = "Wins the players that reaches 10 points first!";
+            text_size = 9;
             break;
 
         case STORYTIME_MODE:
             notice_text[0] = "Story Mode Instructions";
             notice_text[1] = "";
-            notice_text[2] = "Complete challenges to unlock new features!";
-            notice_text[3] = "Progress through levels of increasing difficulty";
+            notice_text[2] = "Hit the letters to see the story!";
+            notice_text[3] = "Every letter is an extra point for you.";
             notice_text[4] = "";
-            notice_text[5] = "Complete 5 levels to win the game!";
-            text_size = 6;
+            notice_text[5] = "Wins the player that reaches 12 points first!";
+            notice_text[6] = "The game is completed at 5 rounds";
+            text_size = 7;
             break;
 
         case FUN_MODE:
             notice_text[0] = "Fun Mode Instructions";
             notice_text[1] = "";
-            notice_text[2] = "In this mode, you'll play against the computer!";
-            notice_text[3] = "The ball will change its shape randomly!";
+            notice_text[2] = "There are power cubes that change the rules of the game !";
+            notice_text[3] = "The ball may disappear, the paddle may increase, who know ?";
             notice_text[4] = "";
             notice_text[5] = "Controls:";
-            notice_text[6] = "- Use W/S keys to move your paddle";
-            notice_text[7] = "- The AI will control the other paddle";
-            text_size = 8;
+            notice_text[6] = "- Use W/S keys to move your paddle on the left";
+            notice_text[7] = "- Use UP/DOWN ARROW keys to move your paddle on the right";
+            notice_text[8] = "";
+            notice_text[9] = "Wins the player that reaches 10 points first on the round!";
+            notice_text[10] = "The game is completed after 5 rounds. The player with the most rounds wins!";
+            text_size = 11;
             break;
         case GAME_SAVED:
             notice_text[0] = "Game has been saved! succesfully !";
@@ -166,14 +170,14 @@ void page_2b_1t::render_object()
     for (int i = 0; i < text_size; i++)
     {
         SDL_Rect text_rect = {WINDOW_WIDTH / 4, y_position, 400, 18};
-        Utilities::render_button(renderer, police, notice_text[i], text_rect, text_color);
+        Utilities::render_button(renderer, police, notice_text[i], text_rect, black);
         y_position += 20;
     }
 
     // Render Let's Go button
     TTF_SetFontSize(police, 24);
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    Utilities::render_button(renderer, police,"Alright", button_lets_go, text_color);
+    Utilities::render_button(renderer, police,"Alright", button_lets_go, black);
 
     // if (!(notice_id != -1 || notice_id == GAME_SAVED)) // hide the go back button if we are in the game saved notice
     // {
@@ -184,7 +188,7 @@ void page_2b_1t::render_object()
     if (notice_id != -1 && notice_id != GAME_SAVED) // show the go back button only if we are not in the general notice
     {
         TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
-        Utilities::render_button(renderer, police,"Go back", button_back, text_color);
+        Utilities::render_button(renderer, police,"Go back", button_back, black);
     }
 
     SDL_RenderPresent(renderer);

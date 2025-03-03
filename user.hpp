@@ -22,9 +22,13 @@ public:
     const std::string &get_user_name() const; // It is a contstant since once it is set, it doesn't change afterward
     void set_user_name(const std::string &name);
 
+    void set_round(int _round) { round = _round; }
+    int get_round() const { return round; }
+
 private:
     std::string name;
     int score;
+    int round; // used for story mode, to know how many rounds have been played
 };
 
 #endif

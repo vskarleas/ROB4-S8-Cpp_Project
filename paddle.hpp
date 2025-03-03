@@ -30,6 +30,7 @@ public:
     // Updating the private variables [setters]
     void set_pos_x(float x) { pos_x = x; }
     void set_pos_y(float y) { pos_y = y; }
+    void set_up(float t ){ up = t ;}
     void setRacketHeight(float height) { racket_height = height ; }
     
 
@@ -40,5 +41,6 @@ private:
     const float racket_width;    
     const float racket_speed; 
     bool is_left;
+    float up;
 };
 #endif

@@ -25,6 +25,7 @@
 * V9.2.0: Storymode added. We need to update the instrcutions
 * V9.2.1: Removed setup.cpp and setup.hpp dependecnies
 * V9.2.2: Reoved final depednicies of setup.cpp
+* V10.8.23 : Implemented fun mode with rackets size changing and ball invisibility. Macros were extedned, updated games logic to respond to the new criteria and fixed some bugs on the source code (+ 8 .5 hours for it to work after the modifications of Dounia and Yanis)
 
 ## Pages structures
 
@@ -44,6 +45,7 @@ This game comes with some specific predefined page structures that we use in ord
 * [X] Remove the end of game logic when score is greater than 10 for a user. Instead use the logic of the two previous points (not actually remove, but instead develop the new game mode like game_storytime.cpp). This new mode comes with its new menu_storytime.cpp that doesn't include the continue game functionality (as expected) but there is button that allows to see the high scores table (it opens on a new SDL window). The exit game button is transfored to exit mode button allowing to go back to the SDL window where we can choose the game mode.
 * [X] Have a high scores table where if any time in the future a user has a score greater than the last maximum one, then he is added on top of the Leaderboard. The leaderboard is a file that is always present on the directory of the game and it is also encrypted.
 * [X] Add the AI player
+* [ ] Why there is a Float set_up method on the paddle.hpp ? Ask Yanis and Dounia
 
 ## Usage of the CMake
 

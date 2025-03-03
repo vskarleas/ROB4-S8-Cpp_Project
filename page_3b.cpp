@@ -32,18 +32,17 @@ void page_3b::render_object()
     SDL_RenderClear(renderer);
 
     // Draw buttons
-    SDL_Color normalColor = {0, 0, 0, 0};
     SDL_Color text_color_selected = {0, 255, 255, 255};
 
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    Utilities::render_button(renderer, police, "Resume", mResumeButton, selected_button == 0 ? text_color_selected : normalColor);
+    Utilities::render_button(renderer, police, "Resume", mResumeButton, selected_button == 0 ? text_color_selected : black);
     TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
 
     if (mode_type == TWO_PLAYERS_MODE)
     {
-        Utilities::render_button(renderer, police, "Save", mSaveButton, selected_button == 1 ? text_color_selected : normalColor);
+        Utilities::render_button(renderer, police, "Save", mSaveButton, selected_button == 1 ? text_color_selected : black);
     }
-    Utilities::render_button(renderer, police, "End the game", button_exit, selected_button == 2 ? text_color_selected : normalColor);
+    Utilities::render_button(renderer, police, "End the game", button_exit, selected_button == 2 ? text_color_selected : black);
 
     SDL_RenderPresent(renderer);
 }

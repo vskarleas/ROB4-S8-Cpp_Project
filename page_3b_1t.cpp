@@ -86,28 +86,24 @@ void page_3b_1t::render_object()
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
-    SDL_Color text_color = {0, 0, 0, 0};
-
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
     if (mode_type == BALL_TYPE_SELECTION)
     {
-        Utilities::render_button(renderer, police, "Select Ball Type", SDL_Rect{WINDOW_HEIGHT / 2, 50, 200, 50},
-                                 text_color);
+        Utilities::render_button(renderer, police, "Select Ball Type", SDL_Rect{WINDOW_HEIGHT / 2, 50, 200, 50}, black);
 
         TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
-        Utilities::render_button(renderer, police, "Classic Ball", button_1, text_color);
-        Utilities::render_button(renderer, police, "Square Ball", button_2, text_color);
-        Utilities::render_button(renderer, police, "Triangle Ball", button_3, text_color);
+        Utilities::render_button(renderer, police, "Classic Ball", button_1, black);
+        Utilities::render_button(renderer, police, "Square Ball", button_2, black);
+        Utilities::render_button(renderer, police, "Triangle Ball", button_3, black);
     }
     else if (mode_type == AI_MODE_SELECTION)
     {
-        Utilities::render_button(renderer, police, "Select difficulty level", SDL_Rect{WINDOW_HEIGHT / 2, 50, 200, 50},
-                                 text_color);
+        Utilities::render_button(renderer, police, "Select difficulty level", SDL_Rect{WINDOW_HEIGHT / 2, 50, 200, 50}, black);
 
         TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
-        Utilities::render_button(renderer, police, "Easy", button_1, text_color);
-        Utilities::render_button(renderer, police, "Normal", button_2, text_color);
-        Utilities::render_button(renderer, police, "Hard", button_3, text_color);
+        Utilities::render_button(renderer, police, "Easy", button_1, black);
+        Utilities::render_button(renderer, police, "Normal", button_2, black);
+        Utilities::render_button(renderer, police, "Hard", button_3, black);
     }
 
     SDL_RenderPresent(renderer);

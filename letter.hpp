@@ -18,11 +18,11 @@
 class Letter
 {
 private:
-    std::vector<std::string> words = {"yanis", "dounia", "vasilis"}; // list of storytime words
+    std::vector<std::string> words = {"Polytech", "Sorbonne", "2025"}; // list of storytime words
     std::vector<char> lettersAtBottom;
     std::string word;
-    int currentWordIndex;
-    int currentLetterIndex;
+    int current_word_index;
+    int current_letter_index;
     char letter;
     float x, y;
     float speed; // Movement speed
@@ -38,8 +38,8 @@ public:
     void update_letter(float deltaTime, int screenHeight, User* player1, User* player2, float ballX, float ballY, float ballRadius);
     void render(SDL_Renderer *renderer);
     bool checkCollision(float ballX, float ballY, float ballRadius) const;
-    void changeToNextLetter();
-    void setNextWord();
+    void next_letter();
+    void next_word();
     void reset_word(int n);
 
     float getX() const { return x; }

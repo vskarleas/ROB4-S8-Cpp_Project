@@ -7,7 +7,8 @@
 #include "square_ball.hpp"
 #include "renderers.hpp"
 
-// Rendering the white square ball
-void SquareBall::render_object(SDL_Renderer* renderer) {
-    square_renderer()(renderer, pos_x, pos_y, ball_size);
+// Rendering the square ball type
+void SquareBall::render_object(SDL_Renderer *renderer)
+{
+    square_renderer()(renderer, pos_x, pos_y, ball_size, color);
 }

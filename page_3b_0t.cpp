@@ -85,7 +85,6 @@ void page_3b_0t::render_object(int mode, const std::string& highscore_name, int 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
-    SDL_Color text_color = {0, 0, 0, 0};
     SDL_Color highlight_color = {255, 0, 0, 255};
 
     // Show high score at the top if it exists
@@ -108,16 +107,16 @@ void page_3b_0t::render_object(int mode, const std::string& highscore_name, int 
     adjusted_start.y += 50;
     adjusted_continue.y += 50;
 
-    Utilities::render_button(renderer, police, "Start New Game", adjusted_start, text_color);
+    Utilities::render_button(renderer, police, "Start New Game", adjusted_start, black);
 
     TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
     if (saved_file_exists)
     {
-        Utilities::render_button(renderer, police, "Continue Game", adjusted_continue, text_color);
+        Utilities::render_button(renderer, police, "Continue Game", adjusted_continue, black);
     }
 
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    Utilities::render_button(renderer, police, "Choose another mode", button_exit, text_color);
+    Utilities::render_button(renderer, police, "Choose another mode", button_exit, black);
 
     SDL_RenderPresent(renderer);
 }

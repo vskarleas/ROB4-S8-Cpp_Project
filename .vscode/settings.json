@@ -77,6 +77,17 @@
         "sstream": "cpp",
         "stack": "cpp",
         "iostream": "cpp",
-        "numbers": "cpp"
+        "numbers": "cpp",
+        "__tree": "cpp",
+        "codecvt": "cpp",
+        "complex": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "semaphore": "cpp",
+        "set": "cpp",
+        "shared_mutex": "cpp",
+        "source_location": "cpp",
+        "typeindex": "cpp",
+        "unordered_set": "cpp"
     }
 }

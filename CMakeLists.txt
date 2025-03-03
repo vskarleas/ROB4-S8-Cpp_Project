@@ -69,6 +69,8 @@ add_library(${PROJECT_NAME}_lib
     letter.cpp
     sound_effects.cpp
     power.cpp
+    invisible_power.cpp
+    inverse_power.cpp
 )
 
 # Create the main executable

@@ -68,9 +68,9 @@ void circle_renderer::DrawFilledCircle(SDL_Renderer *renderer, int32_t center_x,
 /* We are using functors to encapsulate teh shapes rendering logic used to show the different ball types. It allows us to add more easily new shape types and also accelerated a lot the different tests because the functors allowed the different renderers to be tested individually */
 
 // Implementation of the circle_renderer class
-void circle_renderer::operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size) const
+void circle_renderer::operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size, SDL_Color color) const
 {
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     DrawFilledCircle(renderer,
                      static_cast<int32_t>(pos_x),
                      static_cast<int32_t>(pos_y),
@@ -78,26 +78,26 @@ void circle_renderer::operator()(SDL_Renderer *renderer, float pos_x, float pos_
 }
 
 // Implementation of the square_renderer class
-void square_renderer::operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size) const
+void square_renderer::operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size, SDL_Color color) const
 {
     SDL_Rect ball = {
         static_cast<int>(pos_x - size / 2.0f),
         static_cast<int>(pos_y - size / 2.0f),
         static_cast<int>(size),
         static_cast<int>(size)};
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &ball);
 }
-
+ 
 // Implementation of the triangle_renderer class
-void triangle_renderer::operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size) const
+void triangle_renderer::operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size, SDL_Color color) const
 {
     SDL_Point points[3] = {
         {static_cast<int>(pos_x), static_cast<int>(pos_y - size / 2)},
         {static_cast<int>(pos_x - size / 2), static_cast<int>(pos_y + size / 2)},
         {static_cast<int>(pos_x + size / 2), static_cast<int>(pos_y + size / 2)}};
 
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 
     int min_y = points[0].y;
     int max_y = points[1].y;

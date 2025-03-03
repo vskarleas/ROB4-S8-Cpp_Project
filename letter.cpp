@@ -5,22 +5,25 @@
 // #############################################################################
 
 #include "letter.hpp"
+#include "macros.hpp"
+
 #include <SDL_image.h>
 #include <vector>
 
 // Constructeur
 Letter::Letter(int index, float startX, float startY, float velocity, SDL_Renderer *renderer, TTF_Font *font)
-    : currentWordIndex(index), currentLetterIndex(index), x(startX), y(startY), speed(velocity), texture(nullptr),
+    : current_word_index(index), current_letter_index(index), x(startX), y(startY), speed(velocity), texture(nullptr),
       width(0), height(0), renderer(renderer), font(font)
 {
-    
-    word = words[currentWordIndex];
-    changeToNextLetter();
+
+    word = words[current_word_index];
+    next_letter();
 }
 
 void Letter::reset_word(int n)
-{   currentLetterIndex=n; 
-    currentWordIndex=n;
+{
+    current_letter_index = n;
+    current_word_index = n;
 }
 
 // Destructeur
@@ -32,13 +35,13 @@ Letter::~Letter()
     }
 }
 
-void Letter::changeToNextLetter()
+void Letter::next_letter()
 {
     // Vérifier s'il y a une lettre suivante
-    if (currentLetterIndex < word.length())
+    if (current_letter_index < word.length())
     {
-        letter = word[currentLetterIndex];
-        currentLetterIndex++;
+        letter = word[current_letter_index];
+        current_letter_index++;
 
         // Supprimer l'ancienne texture
         if (texture)
@@ -48,16 +51,15 @@ void Letter::changeToNextLetter()
         }
 
         // Créer une nouvelle texture pour la lettre actuelle
-        std::string letterStr(1, letter);
-        SDL_Color color = {255, 255, 255, 255}; // Blanc
-        SDL_Surface *textSurface = TTF_RenderText_Solid(font, letterStr.c_str(), color);
+        std::string letter_string(1, letter);
+        SDL_Surface *surface = TTF_RenderText_Solid(font, letter_string.c_str(), white);
 
-        if (textSurface)
+        if (surface)
         {
-            texture = SDL_CreateTextureFromSurface(renderer, textSurface);
-            width = textSurface->w;
-            height = textSurface->h;
-            SDL_FreeSurface(textSurface);
+            texture = SDL_CreateTextureFromSurface(renderer, surface);
+            width = surface->w;
+            height = surface->h;
+            SDL_FreeSurface(surface);
         }
         else
         {
@@ -69,19 +71,19 @@ void Letter::changeToNextLetter()
 void Letter::update_letter(float deltaTime, int screenHeight, User *player1, User *player2,
                            float ballX, float ballY, float ballRadius)
 {
-    // Move the letter
+    // Letters mouvement
     y += speed * deltaTime;
 
-    // Check if letter hits screen boundaries
+    // Check if letter reaches the limits 
     if (y + height >= screenHeight || y <= 0)
     {
-        speed = -speed; // Reverse direction
+        speed = -speed;
     }
 
-    // Check collision with ball
-    if (checkCollision(ballX, ballY, ballRadius))
+    if (checkCollision(ballX, ballY, ballRadius)) // Check collision with ball
     {
-        // Determine which player scores based on ball position
+
+        // Which player should take extra point ?
         if (ballX < x + width / 2)
         {
             player1->increment_score();
@@ -91,15 +93,17 @@ void Letter::update_letter(float deltaTime, int screenHeight, User *player1, Use
             player2->increment_score();
         }
         lettersAtBottom.push_back(letter);
-        // Check if it was the last letter of the word
-        if (currentLetterIndex >= word.length())
+
+
+        // Check if it is the last letter of the word
+        if (current_letter_index >= word.length())
         {
             lettersAtBottom.clear();
-            setNextWord();
+            next_word();
         }
         else
         {
-            changeToNextLetter();
+            next_letter();
         }
 
         // Reset letter position
@@ -108,45 +112,43 @@ void Letter::update_letter(float deltaTime, int screenHeight, User *player1, Use
     }
 }
 
-// Afficher la lettre à l'écran
+/* Showing thhe letters on the screen afetr they have been touched from the ball */
 void Letter::render(SDL_Renderer *renderer)
 {
     if (texture)
     {
-        SDL_Rect destRect = {static_cast<int>(x), static_cast<int>(y), width * 3, height * 3};
-        SDL_RenderCopy(renderer, texture, nullptr, &destRect);
+        SDL_Rect rectangle = {static_cast<int>(x), static_cast<int>(y), width * 3, height * 3};
+        SDL_RenderCopy(renderer, texture, nullptr, &rectangle);
     }
-     
-        
-    // Afficher les lettres tombées en bas de l'écran
-    int startX = 150; // Position de départ pour afficher les lettres en bas
-    int startY = WINDOW_HEIGHT - 100; // Hauteur fixe en bas de l'écran (à ajuster si nécessaire)
-    int spacing = width * 3 + 10; // Espacement entre les lettres
+
+    // Posiotining on the bottom of the screen 
+    int pos_x = 150;              
+    int pos_y = WINDOW_HEIGHT - 100; 
+    int spacing = width * 3 + 10;    
 
     for (size_t i = 0; i < lettersAtBottom.size(); ++i)
     {
-        std::string letterStr(1, lettersAtBottom[i]);
-        SDL_Color color = {255, 105, 180, 255}; // Rose
-        SDL_Surface *textSurface = TTF_RenderText_Solid(font, letterStr.c_str(), color);
+        std::string letter_string(1, lettersAtBottom[i]);
+        SDL_Surface *surface = TTF_RenderText_Solid(font, letter_string.c_str(), orange);
 
-        if (textSurface)
+        if (surface)
         {
-            SDL_Texture *letterTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
-            SDL_Rect letterRect = {startX + static_cast<int>(i) * spacing, startY, width * 4, height * 4};
-            SDL_RenderCopy(renderer, letterTexture, nullptr, &letterRect);
+            SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+            SDL_Rect letterRect = {pos_x + static_cast<int>(i) * spacing, pos_y, width * 4, height * 4};
+            SDL_RenderCopy(renderer, texture, nullptr, &letterRect);
 
-            SDL_FreeSurface(textSurface);
-            SDL_DestroyTexture(letterTexture);
+            SDL_FreeSurface(surface);
+            SDL_DestroyTexture(texture);
         }
     }
 }
 
-void Letter::setNextWord()
+void Letter::next_word()
 {
-    currentWordIndex = (currentWordIndex + 1) % words.size(); // Passer au mot suivant
-    word = words[currentWordIndex];                           // Charger le nouveau mot
-    currentLetterIndex = 0;                                   // Réinitialiser l'index des lettres
-    changeToNextLetter();                                     // Charger la première lettre du mot
+    current_word_index = (current_word_index + 1) % words.size(); // Going to the next word
+    word = words[current_word_index]; 
+    current_letter_index = 0;
+    next_letter();                                     
 }
 
 // Vérifier la collision avec la balle

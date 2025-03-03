@@ -27,6 +27,8 @@
 #include "network.hpp"
 
 #include "power.hpp"
+#include "invisible_power.hpp"
+#include "inverse_power.hpp"
 
 #include "gui.hpp"
 #include "letter.hpp"
@@ -57,9 +59,6 @@ public:
     static Mix_Chunk* mPaddleHitSound;
     static Mix_Chunk* mWallHitSound;
     static Mix_Chunk* mScoreSound;
-
-    static Mix_Music* mPauseMusic;
-    static Mix_Music* mOnHoldMusic;
 
 private:
     void game_logic();
@@ -112,11 +111,15 @@ private:
 
     // For the background music
     Mix_Music* mBackgroundMusic;
+    Mix_Chunk* mNewRoundSound; 
+    Mix_Chunk* mGameOverSound;
+    Mix_Music* mPauseMusic;
+    Mix_Music* mOnHoldMusic;
 
     
     // Background color for the two sides
-    SDL_Color mBackgroundColor1;
-    SDL_Color mBackgroundColor2;
+    SDL_Color background_color_left;
+    SDL_Color background_color_right;
 
     // The pause button object declared here
     SDL_Rect mPauseButtonRect;
@@ -131,6 +134,8 @@ private:
 
     Letter *mletter;
     Power *mpower;
+    InvisiblePower *minvisible;
+    InversiblePower *minverse;
 };
 
 #endif

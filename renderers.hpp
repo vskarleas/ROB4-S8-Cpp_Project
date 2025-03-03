@@ -9,7 +9,6 @@
 
 #include <SDL.h>
 #include <SDL_ttf.h>
-
 #include <algorithm>
 
 /* Rendering an SDL rectangle which plays the role of a button */
@@ -21,7 +20,7 @@ namespace Utilities
 
 struct circle_renderer
 {
-    void operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size) const;
+    void operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size, SDL_Color color) const;
 
 private:
     void DrawFilledCircle(SDL_Renderer *renderer, int32_t center_x, int32_t centerY, int32_t radius) const;
@@ -29,12 +28,12 @@ private:
 
 struct square_renderer
 {
-    void operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size) const;
+    void operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size, SDL_Color color) const;
 };
 
 struct triangle_renderer
 {
-    void operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size) const;
+    void operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size, SDL_Color color) const;
 };
 
 #endif

@@ -6,7 +6,7 @@
 
 #include "user.hpp"
 
-User::User(const std::string &name) : name(name), score(0) {}
+User::User(const std::string &name) : name(name), score(0), round(0) {}
 
 void User::increment_score()
 {

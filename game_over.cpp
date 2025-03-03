@@ -56,8 +56,6 @@ void game_over::render_object()
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
-    SDL_Color text_color = {0, 0, 0, 0};
-
     // Add notice text
     TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
     TTF_SetFontSize(police, 14);
@@ -77,14 +75,14 @@ void game_over::render_object()
     for (int i = 0; i < text_size; i++)
     {
         SDL_Rect text_rect = {WINDOW_WIDTH / 4, y_position, 400, 18};
-        Utilities::render_button(renderer, police, notice_text[i], text_rect, text_color);
+        Utilities::render_button(renderer, police, notice_text[i], text_rect, black);
         y_position += 20;
     }
 
     // Render Let's Go button
     TTF_SetFontSize(police, 24);
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
-    Utilities::render_button(renderer, police,"Back to menu", button_back, text_color);
+    Utilities::render_button(renderer, police,"Back to menu", button_back, black);
 
 
     SDL_RenderPresent(renderer);

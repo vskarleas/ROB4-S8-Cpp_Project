@@ -9,7 +9,8 @@
 
 #include <algorithm>
 
-// Rendering the white triangle ball
-void TriangleBall::render_object(SDL_Renderer* renderer) {
-    triangle_renderer()(renderer, pos_x, pos_y, ball_size);
+// Rendering the triangle ball type
+void TriangleBall::render_object(SDL_Renderer *renderer)
+{
+    triangle_renderer()(renderer, pos_x, pos_y, ball_size, color);
 }

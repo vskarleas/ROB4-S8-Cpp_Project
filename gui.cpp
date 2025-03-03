@@ -1,13 +1,25 @@
-// #############################################################################
-// # File gui.cpp
-// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
-// # Authors: Vasileios Filippos Skarleas, Dounia Bakalem, Yanis Sadoun - All rights reserved.
-// #############################################################################
+/**
+ * @file gui.cpp
+ * @brief Implementation of the GUI class for game interface
+ * @project C++ Project - Polytech Sorbonne - 2024/2025 - S8
+ * @authors Vasileios Filippos Skarleas, Dounia Bakalem, Yanis Sadoun
+ * @copyright All rights reserved.
+ */
 
 #include "gui.hpp"
 #include "macros.hpp"
 
-
+/**
+ * @brief Displays an input field for a player to enter their name
+ * 
+ * This function creates an SDL window with an input field where the player
+ * can type their name. It manages all input events and rendering.
+ * 
+ * @param renderer The SDL renderer to use for drawing
+ * @param font The TTF font to use for text display
+ * @param player_number The player number (for display purposes)
+ * @return std::string The name entered by the player
+ */
 std::string GUI::player_name_input(SDL_Renderer *renderer, TTF_Font *font, int player_number)
 {
     std::string player_name;
@@ -17,7 +29,10 @@ std::string GUI::player_name_input(SDL_Renderer *renderer, TTF_Font *font, int p
     // Text color (black)
     SDL_Color color = {0, 0, 0, 0};
     
-    // Center positions
+    /**
+     * @brief Define UI element positions and dimensions
+     * Centers the input field and instruction text on screen
+     */
     int center_x = WINDOW_WIDTH / 2;
     SDL_Rect inputRect = {
         center_x - 100,  // Center the input field (200px wide)
@@ -33,11 +48,17 @@ std::string GUI::player_name_input(SDL_Renderer *renderer, TTF_Font *font, int p
         50
     };
 
-    // Initialize background
+    /**
+     * @brief Initialize the white background
+     */
     SDL_Surface *background_surface = SDL_CreateRGBSurface(0, WINDOW_WIDTH, WINDOW_HEIGHT, 32, 0, 0, 0, 0);
     SDL_FillRect(background_surface, NULL, SDL_MapRGB(background_surface->format, 255, 255, 255));
     SDL_Texture *background_texture = SDL_CreateTextureFromSurface(renderer, background_surface);
 
+    /**
+     * @brief Main input loop
+     * Processes keyboard events and updates the display
+     */
     while (typing)
     {
         while (SDL_PollEvent(&event))
@@ -70,8 +91,9 @@ std::string GUI::player_name_input(SDL_Renderer *renderer, TTF_Font *font, int p
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer, background_texture, nullptr, nullptr);
 
-        
-        // Display instruction message
+        /**
+         * @brief Render the instruction text
+         */
         TTF_SetFontStyle(font, TTF_STYLE_BOLD);
         std::string instruction = "Player " + std::to_string(player_number) + ", please enter your name:";
         const char *instruction_text = instruction.c_str();
@@ -90,7 +112,9 @@ std::string GUI::player_name_input(SDL_Renderer *renderer, TTF_Font *font, int p
         SDL_FreeSurface(instruction_surface);
         SDL_DestroyTexture(instruction_texture);
 
-        // Display input text
+        /**
+         * @brief Render the input text
+         */
         if (!player_name.empty())
         {
             TTF_SetFontStyle(font, TTF_STYLE_NORMAL);
@@ -114,6 +138,9 @@ std::string GUI::player_name_input(SDL_Renderer *renderer, TTF_Font *font, int p
         SDL_RenderPresent(renderer);
     }
 
+    /**
+     * @brief Cleanup resources before returning
+     */
     SDL_DestroyTexture(background_texture);
     SDL_FreeSurface(background_surface);
 

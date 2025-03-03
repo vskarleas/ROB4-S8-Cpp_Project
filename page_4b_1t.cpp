@@ -99,21 +99,19 @@ void page_4b_1t::render_object()
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
-    SDL_Color text_color = {0, 0, 0, 0};
-
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);
     Utilities::render_button(renderer, police, "Select mode", 
         SDL_Rect{(WINDOW_WIDTH - 200) / 2, 50, 200, 50},
-        text_color);
+        black);
 
     TTF_SetFontStyle(police, TTF_STYLE_NORMAL);
-    Utilities::render_button(renderer, police, "AI mode", button_ai_mode, text_color);
-    Utilities::render_button(renderer, police,"Classic Pong", button_two_players_mode, text_color);
-    Utilities::render_button(renderer, police,"Storytime mode", button_storytime_mode, text_color);
-    Utilities::render_button(renderer, police,"Fun mode", button_fun_mode, text_color);
+    Utilities::render_button(renderer, police, "AI mode", button_ai_mode, black);
+    Utilities::render_button(renderer, police,"Classic Pong", button_two_players_mode, black);
+    Utilities::render_button(renderer, police,"Storytime mode", button_storytime_mode, black);
+    Utilities::render_button(renderer, police,"Fun mode", button_fun_mode, black);
 
     TTF_SetFontStyle(police, TTF_STYLE_BOLD);  // Set bold style for exit button
-    Utilities::render_button(renderer, police, "Exit Game", button_exit, text_color);
+    Utilities::render_button(renderer, police, "Exit Game", button_exit, black);
 
     SDL_RenderPresent(renderer);
 }
