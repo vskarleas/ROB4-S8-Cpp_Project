@@ -26,6 +26,7 @@
 * V9.2.1: Removed setup.cpp and setup.hpp dependecnies
 * V9.2.2: Reoved final depednicies of setup.cpp
 * V10.8.23 : Implemented fun mode with rackets size changing and ball invisibility. Macros were extedned, updated games logic to respond to the new criteria and fixed some bugs on the source code (+ 8 .5 hours for it to work after the modifications of Dounia and Yanis)
+* V10.8.24: Old makefile removed abd gitigonre updated. You will ave to perfom the cmake to compile. You can use directly the play.sh script
 
 ## Pages structures
 
