@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.1</span>
+   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.2</span>
    </div>
    <div id="projectbrief">An interesting implemnettaion of the pong game</div>
   </td>
@@ -93,15 +93,21 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
+<p>Utility class providing user interface functionality.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="gui_8hpp_source.html">gui.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a0e10882e5e10de39c40048f4e2b63457" id="r_a0e10882e5e10de39c40048f4e2b63457"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e10882e5e10de39c40048f4e2b63457">player_name_input</a> (SDL_Renderer *renderer, TTF_Font *font, int player_number)</td></tr>
-<tr class="memdesc:a0e10882e5e10de39c40048f4e2b63457"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the player's name input from the SDL window.  <br /></td></tr>
+<tr class="memdesc:a0e10882e5e10de39c40048f4e2b63457"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the player's name input from the SDL window.  <br /></td></tr>
 <tr class="separator:a0e10882e5e10de39c40048f4e2b63457"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Utility class providing user interface functionality. </p>
+<p>This class contains static methods for handling UI elements and user interactions throughout the game. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0e10882e5e10de39c40048f4e2b63457" name="a0e10882e5e10de39c40048f4e2b63457"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0e10882e5e10de39c40048f4e2b63457">&#9670;&#160;</a></span>player_name_input()</h2>
 
@@ -134,17 +140,18 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the player's name input from the SDL window. </p>
+<p>Gets the player's name input from the SDL window. </p>
 <p>Displays an input field for a player to enter their name.</p>
-<p>This function handles the SDL events to capture the player's name input from the keyboard. It displays the input text on the screen and updates it in real-time as the player types.</p>
+<p>This function handles SDL events to capture the player's name input from the keyboard. It displays the input text on screen and updates it in real-time as the player types.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">renderer</td><td>The SDL_Renderer used to render the text. </td></tr>
-    <tr><td class="paramname">font</td><td>The TTF_Font used to render the text. </td></tr>
+    <tr><td class="paramname">renderer</td><td>The SDL renderer used for drawing </td></tr>
+    <tr><td class="paramname">font</td><td>The TTF font used to render text </td></tr>
+    <tr><td class="paramname">player_number</td><td>The player number (for display purposes) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>std::string The player's name input.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>std::string The name entered by the player</dd></dl>
 <p>This function creates an SDL window with an input field where the player can type their name. It manages all input events and rendering.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

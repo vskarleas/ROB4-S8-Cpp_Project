@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.1</span>
+   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.2</span>
    </div>
    <div id="projectbrief">An interesting implemnettaion of the pong game</div>
   </td>
@@ -94,7 +94,7 @@ $(function(){ initResizable(false); });
 <h1><a class="anchor" id="autotoc_md1"></a>
 Versions</h1>
 <ul>
-<li>V4.2.2 <a class="el" href="class_saving.html">Saving</a> the demi correct viwes</li>
+<li>V4.2.2 <a class="el" href="class_saving.html" title="Utility class for managing save game and high score functionality.">Saving</a> the demi correct viwes</li>
 <li>V4.2.3 The views logic has been completed</li>
 <li>V5.0.1: <b>Added lamda functions</b> on the <a class="el" href="paddle_8cpp.html" title="Implementation of the Paddle class for the game.">paddle.cpp</a>. The reason why we do this is found on the <a class="el" href="paddle_8cpp.html" title="Implementation of the Paddle class for the game.">paddle.cpp</a> file and added mutliple notixes support</li>
 <li>V5.1.1: F**unctors added for the differet ball shaped renders on the <a class="el" href="renderers_8cpp.html" title="Implementation of rendering functions for various game shapes.">renderers.cpp</a> file** (it includes also the explication why we use functors [purposes])</li>
@@ -118,21 +118,23 @@ Versions</h1>
 <li>V10.8.23 : Implemented fun mode with rackets size changing and ball invisibility. Macros were extedned, updated games logic to respond to the new criteria and fixed some bugs on the source code (+ 8 .5 hours for it to work after the modifications of Dounia and Yanis)</li>
 <li>V10.8.24: Old makefile removed abd gitigonre updated. You will ave to perfom the cmake to compile. You can use directly the play.sh script</li>
 <li>V10.9.1: play.sh installer was updated</li>
+<li>V11.0.1: Added documentation structure. Fixed sime issues on the fun mode. We need to reset the padle height at the end of the fun mode manually if the button end game is atpped otherwise we risk to have different size paddles on other game modes</li>
+<li>V11.0.2: Added more comments and incuded inverse mode there is a segmentation fault issue</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Pages structures</h1>
 <p>This game comes with some specific predefined page structures that we use in order to render different content dynamicly or not (depending the extensive usage on the program). Here are the specifications for those files:</p>
 <ul>
-<li><a class="el" href="classpage__3b__1t.html">page_3b_1t</a> : There are three buttons on the center and one title in bold on top (previous middle_menu)</li>
-<li><a class="el" href="classpage__2b__1t.html">page_2b_1t</a> : There are two buttons and one grand part for long text (previous notices)</li>
-<li><a class="el" href="classpage__4b__1t.html">page_4b_1t</a>: There four buttons and 1 title in bold (previous mode_menu)</li>
-<li><a class="el" href="classpage__3b__0t.html">page_3b_0t</a>: There are three buttons, the two on top of the page and the third one close to the end (previous menu)</li>
-<li><a class="el" href="classpage__3b.html">page_3b</a> : There are 3 buttons, all of them centered in the middle of the screen (previous pause menu)</li>
+<li><a class="el" href="classpage__3b__1t.html" title="Middle menu class with 3 buttons and 1 title.">page_3b_1t</a> : There are three buttons on the center and one title in bold on top (previous middle_menu)</li>
+<li><a class="el" href="classpage__2b__1t.html" title="Notice screen with 2 buttons and 1 title.">page_2b_1t</a> : There are two buttons and one grand part for long text (previous notices)</li>
+<li><a class="el" href="classpage__4b__1t.html" title="Defines the mode selection menu with 4 buttons and 1 title.">page_4b_1t</a>: There four buttons and 1 title in bold (previous mode_menu)</li>
+<li><a class="el" href="classpage__3b__0t.html" title="Main menu class with 3 buttons and no title.">page_3b_0t</a>: There are three buttons, the two on top of the page and the third one close to the end (previous menu)</li>
+<li><a class="el" href="classpage__3b.html" title="Pause menu with 3 buttons.">page_3b</a> : There are 3 buttons, all of them centered in the middle of the screen (previous pause menu)</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
 TO-DO list</h1>
 <ul>
-<li>[X] Find a way to prpose an initial SDL window that show cases the instructionsof the game. Then when teh user taps on a button "Let's go", then this SDL windows closes and a new one Appears where a user chooses between the modes of the game that exist. The "Simple" one which is the current version of the game, the "Storytime" one where is the game without the saving functionality, but with the user class and the hisgh score board, and the third one which is "Hardcore" which is the same with the "Storytime" but now there is a single user that plays against an <a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a> on the opposite <a class="el" href="class_paddle.html" title="Represents a player paddle/racket in the game.">Paddle</a>. There is also the exit game button that terminates the game. When a mode is slected this SDL window closes and we are presented with the menu window of the different game modes. (definitely there are modification son the <a class="el" href="main_8cpp.html">main.cpp</a> for this functionaity to take place)</li>
+<li>[X] Find a way to prpose an initial SDL window that show cases the instructionsof the game. Then when teh user taps on a button "Let's go", then this SDL windows closes and a new one Appears where a user chooses between the modes of the game that exist. The "Simple" one which is the current version of the game, the "Storytime" one where is the game without the saving functionality, but with the user class and the hisgh score board, and the third one which is "Hardcore" which is the same with the "Storytime" but now there is a single user that plays against an <a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a> on the opposite <a class="el" href="class_paddle.html" title="Represents a player paddle/racket in the game.">Paddle</a>. There is also the exit game button that terminates the game. When a mode is slected this SDL window closes and we are presented with the menu window of the different game modes. (definitely there are modification son the <a class="el" href="main_8cpp.html" title="Main entry point for the Pong game.">main.cpp</a> for this functionaity to take place)</li>
 <li>[X] Add a message when the game is saved succesfully</li>
 <li>[X] Create a user class and use this to attribute the scores</li>
 <li>[X] Remove the end of game logic when score is greater than 10 for a user. Instead use the logic of the two previous points (not actually remove, but instead develop the new game mode like game_storytime.cpp). This new mode comes with its new menu_storytime.cpp that doesn't include the continue game functionality (as expected) but there is button that allows to see the high scores table (it opens on a new SDL window). The exit game button is transfored to exit mode button allowing to go back to the SDL window where we can choose the game mode.</li>

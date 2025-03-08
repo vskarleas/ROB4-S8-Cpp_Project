@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.1</span>
+   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.2</span>
    </div>
    <div id="projectbrief">An interesting implemnettaion of the pong game</div>
   </td>
@@ -160,6 +160,7 @@ $(function(){ initResizable(false); });
 <li>init_as_client()&#160;:&#160;<a class="el" href="class_network_manager.html#a46dc3073d43e3692b7749a743da6af39">NetworkManager</a></li>
 <li>init_as_host()&#160;:&#160;<a class="el" href="class_network_manager.html#a528afcdfea86a488b0f4d98b570345dc">NetworkManager</a></li>
 <li>initialise()&#160;:&#160;<a class="el" href="class_game.html#a85cc0cbf7372add95aa742fd986220a2">Game</a></li>
+<li>InversiblePower()&#160;:&#160;<a class="el" href="class_inversible_power.html#aa89dc7fb07ac8eba73bde53cc3e7a5e9">InversiblePower</a></li>
 <li>InvisiblePower()&#160;:&#160;<a class="el" href="class_invisible_power.html#ab5a43ceca6dd5c42d1d6fdeb8db70991">InvisiblePower</a></li>
 </ul>
 
@@ -202,9 +203,9 @@ $(function(){ initResizable(false); });
 <li>random_direction_angle()&#160;:&#160;<a class="el" href="class_ball_base.html#a73ee5c12ffe6daf1efdcb39188d555b8">BallBase</a></li>
 <li>receive_paddle_state()&#160;:&#160;<a class="el" href="class_network_manager.html#a7cb5798d7e9df7a1a67dea165ce26813">NetworkManager</a></li>
 <li>rectangle()&#160;:&#160;<a class="el" href="class_paddle.html#ac3cefcb19609195bbaddfe76084a42f6">Paddle</a></li>
-<li>render()&#160;:&#160;<a class="el" href="class_invisible_power.html#a05b535e35825b386a6895bdf9c711d5a">InvisiblePower</a>, <a class="el" href="class_letter.html#a63b09bc901f5af83547fe6b3e461eb29">Letter</a>, <a class="el" href="class_power.html#a4c1cc0ce69b7a89130245a67f3aecd25">Power</a></li>
+<li>render()&#160;:&#160;<a class="el" href="class_inversible_power.html#af6dfa02e3288cb0ca01241fee572e16f">InversiblePower</a>, <a class="el" href="class_invisible_power.html#a05b535e35825b386a6895bdf9c711d5a">InvisiblePower</a>, <a class="el" href="class_letter.html#a63b09bc901f5af83547fe6b3e461eb29">Letter</a>, <a class="el" href="class_power.html#a4c1cc0ce69b7a89130245a67f3aecd25">Power</a></li>
 <li>render_object()&#160;:&#160;<a class="el" href="class_ball_base.html#a08a0f6f379ba1f933272a0745aea72d1">BallBase</a>, <a class="el" href="class_classic_ball.html#a6e80547486ec3d868dc577841a768df0">ClassicBall</a>, <a class="el" href="classgame__over.html#a59cca432d0934e95bb04a7818e11e7ee">game_over</a>, <a class="el" href="class_paddle.html#a56e73de0e9ad05bc6dffcff31e4b6b69">Paddle</a>, <a class="el" href="classpage__2b__1t.html#a2b88c6c4caf29fb7b977914a070277d1">page_2b_1t</a>, <a class="el" href="classpage__3b.html#a75110472269c1c03bfd01fad8ff60cf7">page_3b</a>, <a class="el" href="classpage__3b__0t.html#a2ae11ea986e402dd2eb500f595beec8a">page_3b_0t</a>, <a class="el" href="classpage__3b__1t.html#a2fa24f99532b29aaf711f77cf71034aa">page_3b_1t</a>, <a class="el" href="classpage__4b__1t.html#ac7af12111074b2f595ebf81905f1f1dd">page_4b_1t</a>, <a class="el" href="class_square_ball.html#a411b2c176927ebf04fa47a87c721f22c">SquareBall</a>, <a class="el" href="class_triangle_ball.html#a4b549d3dd4719b97b65c238fccc9157c">TriangleBall</a></li>
-<li>reset()&#160;:&#160;<a class="el" href="class_ball_base.html#a7c80570c2de11838b734cdd97cc21862">BallBase</a>, <a class="el" href="class_power.html#a30d8da189bed6e8eb147af829fb9daa6">Power</a></li>
+<li>reset()&#160;:&#160;<a class="el" href="class_ball_base.html#a7c80570c2de11838b734cdd97cc21862">BallBase</a>, <a class="el" href="class_inversible_power.html#af247eca2f40a6828b2c87b7dde976643">InversiblePower</a>, <a class="el" href="class_power.html#a30d8da189bed6e8eb147af829fb9daa6">Power</a></li>
 <li>reset_score()&#160;:&#160;<a class="el" href="class_user.html#afebfb582737ff29fb227da39f74f6c9a">User</a></li>
 <li>reset_word()&#160;:&#160;<a class="el" href="class_letter.html#aeda4a15092e7fd2c4b059d32cba86418">Letter</a></li>
 </ul>
@@ -243,7 +244,7 @@ $(function(){ initResizable(false); });
 
 
 <h3><a id="index_u" name="index_u"></a>- u -</h3><ul>
-<li>update()&#160;:&#160;<a class="el" href="class_ball_base.html#aa8edf6194d74142acc1a45d917deeadc">BallBase</a>, <a class="el" href="class_invisible_power.html#aa6c8e0a97acd7d7d5aa72ef6d917e8c6">InvisiblePower</a>, <a class="el" href="class_paddle.html#a0327bb8366a37b5cf664d94a3ddcf596">Paddle</a>, <a class="el" href="class_power.html#a07b70efd8a0e444684837d614e6d4aea">Power</a></li>
+<li>update()&#160;:&#160;<a class="el" href="class_ball_base.html#aa8edf6194d74142acc1a45d917deeadc">BallBase</a>, <a class="el" href="class_inversible_power.html#a8cdf158b972b6ced9711ed114ae666d7">InversiblePower</a>, <a class="el" href="class_invisible_power.html#aa6c8e0a97acd7d7d5aa72ef6d917e8c6">InvisiblePower</a>, <a class="el" href="class_paddle.html#a0327bb8366a37b5cf664d94a3ddcf596">Paddle</a>, <a class="el" href="class_power.html#a07b70efd8a0e444684837d614e6d4aea">Power</a></li>
 <li>update_background_color()&#160;:&#160;<a class="el" href="class_game.html#ab610203d28cbd65ef4cc12d72bba28f9">Game</a></li>
 <li>update_letter()&#160;:&#160;<a class="el" href="class_letter.html#ad6e2dbf5e0ca7f29031a8a26da3aed7b">Letter</a></li>
 <li>updateAI()&#160;:&#160;<a class="el" href="class_a_i.html#a9f5099c4aa6fe2108c11bf77b5d746db">AI</a></li>

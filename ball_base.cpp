@@ -1,8 +1,9 @@
-// #############################################################################
-// # File ball_base.cpp
-// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
-// # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
-// #############################################################################
+/**
+ * @file ball_base.cpp
+ * @brief Implementation of the base ball class
+ * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
+ * @copyright All rights reserved.
+ */
 
 #include <cstdlib>
 #include <ctime>
@@ -12,6 +13,14 @@
 #include "ball_base.hpp"
 #include "game.hpp"
 
+/**
+ * @brief Constructor for BallBase
+ * 
+ * Initializes the ball at the center of the screen with a specified size
+ * and randomizes its initial direction
+ * 
+ * @param size The size (diameter) of the ball
+ */
 BallBase::BallBase(float size)
     : pos_x(400.0f), pos_y(300.0f), vel_x(0.0f), vel_y(0.0f), ball_size(size)
 {
@@ -19,8 +28,12 @@ BallBase::BallBase(float size)
     random_direction_angle();
 }
 
-/* Randomize the direction_angle of the ball so that it doesn't
-   start towards the same direction_angle every single time */
+/**
+ * @brief Randomizes the direction of the ball
+ * 
+ * Sets the ball's velocity to move in a random direction
+ * with a random angle between -45 and 45 degrees
+ */
 void BallBase::random_direction_angle()
 {
     // Random angle between -45 and 45 degrees
@@ -35,7 +48,18 @@ void BallBase::random_direction_angle()
     vel_y = speed * std::sin(angle);
 }
 
-// Update the ball's position
+/**
+ * @brief Updates the ball's position and handles collisions
+ * 
+ * Moves the ball according to its velocity, checks for collisions with
+ * walls and paddles, and updates player scores when necessary.
+ * 
+ * @param travel_time Time delta since last update (in seconds)
+ * @param paddle1 Pointer to the first paddle
+ * @param paddle2 Pointer to the second paddle
+ * @param player1 Pointer to the first player's data
+ * @param player2 Pointer to the second player's data
+ */
 void BallBase::update(float travel_time, Paddle *paddle1, Paddle *paddle2, User *player1, User *player2)
 {
     pos_x += vel_x * travel_time; // velocity = position / time => position = velocity * time
@@ -99,7 +123,11 @@ void BallBase::update(float travel_time, Paddle *paddle1, Paddle *paddle2, User 
     }
 }
 
-// Reset the ball's position to the center of the screen and randomize its direction
+/**
+ * @brief Resets the ball to the center of the screen
+ * 
+ * Repositions the ball to the center and randomizes its direction
+ */
 void BallBase::reset()
 {
     pos_x = 400.0f;

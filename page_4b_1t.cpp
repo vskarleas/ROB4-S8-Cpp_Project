@@ -1,8 +1,9 @@
-// #############################################################################
-// # File page_4b_1t.cpp
-// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
-// # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
-// #############################################################################
+/**
+ * @file page_4b_1t.cpp
+ * @brief Implementation of the mode selection menu class
+ * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
+ * @copyright All rights reserved.
+ */
 
 #include "page_4b_1t.hpp"
 #include "macros.hpp"
@@ -13,6 +14,14 @@
 #include <iostream>
 #include <string>
 
+/**
+ * @brief Constructor for the mode menu page
+ * 
+ * Initializes the menu with buttons for different game modes and an exit button
+ * 
+ * @param _renderer The SDL renderer to use for drawing
+ * @param font The TTF font to use for text display
+ */
 page_4b_1t::page_4b_1t(SDL_Renderer *_renderer, TTF_Font *font) :
     mode_id(-1),
     exit_game(false),
@@ -37,7 +46,11 @@ page_4b_1t::page_4b_1t(SDL_Renderer *_renderer, TTF_Font *font) :
     button_exit = SDL_Rect{center_x, start_y + 4 * (button_height + vertical_spacing), button_width, button_height};
 }
 
-
+/**
+ * @brief Destructor for the mode menu page
+ * 
+ * Cleans up allocated resources
+ */
 page_4b_1t::~page_4b_1t()
 {
     if (texture_menu)
@@ -47,6 +60,14 @@ page_4b_1t::~page_4b_1t()
     }
 }
 
+/**
+ * @brief Handles events for the menu buttons
+ * 
+ * Processes SDL events to detect button clicks and set corresponding mode flags
+ * 
+ * @param event The SDL event to process
+ * @return true if a button was clicked, false otherwise
+ */
 bool page_4b_1t::action_handler(const SDL_Event &event)
 {
     // Reinitialising everything sinc ethis is a repeated menu
@@ -94,6 +115,11 @@ bool page_4b_1t::action_handler(const SDL_Event &event)
     return false;
 }
 
+/**
+ * @brief Renders the mode menu
+ * 
+ * Draws the title and all game mode buttons on screen
+ */
 void page_4b_1t::render_object()
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);

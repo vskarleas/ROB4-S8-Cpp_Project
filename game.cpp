@@ -61,7 +61,8 @@ Game::Game()
 
       mletter(nullptr),
       mpower(nullptr),
-      minvisible(nullptr)
+      minvisible(nullptr),
+      minverse(nullptr)
 
 {
     background_color_left = black;
@@ -98,6 +99,12 @@ Game::~Game()
     {
         delete mNoticeMenu;
         mNoticeMenu = nullptr;
+    }
+
+    if (minverse)
+    {
+        delete minverse;
+        minverse = nullptr;
     }
 
     if (mletter)

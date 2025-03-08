@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.1</span>
+   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.2</span>
    </div>
    <div id="projectbrief">An interesting implemnettaion of the pong game</div>
   </td>
@@ -94,27 +94,39 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
+<p>Main menu class with 3 buttons and no title.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="page__3b__0t_8hpp_source.html">page_3b_0t.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae458a6016640457c1ef00d38c9c3941e" id="r_ae458a6016640457c1ef00d38c9c3941e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae458a6016640457c1ef00d38c9c3941e">action_handler</a> (const SDL_Event &amp;event)</td></tr>
+<tr class="memdesc:ae458a6016640457c1ef00d38c9c3941e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles events for the menu buttons.  <br /></td></tr>
 <tr class="separator:ae458a6016640457c1ef00d38c9c3941e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a755654abf6f750f8af7966d43a76153c" id="r_a755654abf6f750f8af7966d43a76153c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a755654abf6f750f8af7966d43a76153c">get_continue_game</a> () const</td></tr>
+<tr class="memdesc:a755654abf6f750f8af7966d43a76153c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the continue game button was pressed.  <br /></td></tr>
 <tr class="separator:a755654abf6f750f8af7966d43a76153c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77f71dff7d28ad3fb3507c6b6dd8a006" id="r_a77f71dff7d28ad3fb3507c6b6dd8a006"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77f71dff7d28ad3fb3507c6b6dd8a006">get_exit_mode</a> () const</td></tr>
+<tr class="memdesc:a77f71dff7d28ad3fb3507c6b6dd8a006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the exit button was pressed.  <br /></td></tr>
 <tr class="separator:a77f71dff7d28ad3fb3507c6b6dd8a006"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4f1609e040b0fa9c6096f7e4abdda92" id="r_ad4f1609e040b0fa9c6096f7e4abdda92"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4f1609e040b0fa9c6096f7e4abdda92">get_saved_file_exists</a> () const</td></tr>
+<tr class="memdesc:ad4f1609e040b0fa9c6096f7e4abdda92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a saved game file exists.  <br /></td></tr>
 <tr class="separator:ad4f1609e040b0fa9c6096f7e4abdda92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a105a1188a6bd8faabe57f28ed6668bad" id="r_a105a1188a6bd8faabe57f28ed6668bad"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a105a1188a6bd8faabe57f28ed6668bad">get_started</a> () const</td></tr>
+<tr class="memdesc:a105a1188a6bd8faabe57f28ed6668bad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the start new game button was pressed.  <br /></td></tr>
 <tr class="separator:a105a1188a6bd8faabe57f28ed6668bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41ae095d89fa77c5718f8030cdbb0354" id="r_a41ae095d89fa77c5718f8030cdbb0354"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41ae095d89fa77c5718f8030cdbb0354">page_3b_0t</a> (SDL_Renderer *_renderer, TTF_Font *font)</td></tr>
+<tr class="memdesc:a41ae095d89fa77c5718f8030cdbb0354"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the main menu page.  <br /></td></tr>
 <tr class="separator:a41ae095d89fa77c5718f8030cdbb0354"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ae11ea986e402dd2eb500f595beec8a" id="r_a2ae11ea986e402dd2eb500f595beec8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2ae11ea986e402dd2eb500f595beec8a">render_object</a> (int mode, const std::string &amp;highscore_name, int highscore)</td></tr>
+<tr class="memdesc:a2ae11ea986e402dd2eb500f595beec8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the main menu.  <br /></td></tr>
 <tr class="separator:a2ae11ea986e402dd2eb500f595beec8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac395f974b06c97dc5654fab952998d39" id="r_ac395f974b06c97dc5654fab952998d39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac395f974b06c97dc5654fab952998d39">set_saved_file_exists</a> ()</td></tr>
+<tr class="memdesc:ac395f974b06c97dc5654fab952998d39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the saved file exists flag.  <br /></td></tr>
 <tr class="separator:ac395f974b06c97dc5654fab952998d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ca26693fb54cc256d6082cf367001f9" id="r_a9ca26693fb54cc256d6082cf367001f9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ca26693fb54cc256d6082cf367001f9">~page_3b_0t</a> ()</td></tr>
+<tr class="memdesc:a9ca26693fb54cc256d6082cf367001f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the main menu page.  <br /></td></tr>
 <tr class="separator:a9ca26693fb54cc256d6082cf367001f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -140,7 +152,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a8d6f9731c5aad845a397cdc6cc76cbf4" id="r_a8d6f9731c5aad845a397cdc6cc76cbf4"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d6f9731c5aad845a397cdc6cc76cbf4">texture_menu</a></td></tr>
 <tr class="separator:a8d6f9731c5aad845a397cdc6cc76cbf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Main menu class with 3 buttons and no title. </p>
+<p>This class implements the main menu screen with options to start a new game, continue a saved game, or exit to the mode selection screen. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a41ae095d89fa77c5718f8030cdbb0354" name="a41ae095d89fa77c5718f8030cdbb0354"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a41ae095d89fa77c5718f8030cdbb0354">&#9670;&#160;</a></span>page_3b_0t()</h2>
 
@@ -160,6 +175,23 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructor for the main menu page. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_renderer</td><td>The SDL renderer to use for drawing </td></tr>
+    <tr><td class="paramname">font</td><td>The TTF font to use for text display</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Initializes the menu with buttons and checks for existing saved games</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_renderer</td><td>The SDL renderer to use for drawing </td></tr>
+    <tr><td class="paramname">font</td><td>The TTF font to use for text display </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a9ca26693fb54cc256d6082cf367001f9" name="a9ca26693fb54cc256d6082cf367001f9"></a>
@@ -176,6 +208,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destructor for the main menu page. </p>
+<p>Cleans up allocated resources </p>
 
 </div>
 </div>
@@ -195,6 +230,23 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Handles events for the menu buttons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The SDL event to process </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if a button was clicked, false otherwise</dd></dl>
+<p>Processes SDL events to detect button clicks</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The SDL event to process </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if a button was clicked, false otherwise </dd></dl>
+
 </div>
 </div>
 <a id="a755654abf6f750f8af7966d43a76153c" name="a755654abf6f750f8af7966d43a76153c"></a>
@@ -211,6 +263,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks if the continue game button was pressed. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if should continue a saved game, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -229,6 +284,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Checks if the exit button was pressed. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if should exit to mode selection, false otherwise </dd></dl>
+
 </div>
 </div>
 <a id="ad4f1609e040b0fa9c6096f7e4abdda92" name="ad4f1609e040b0fa9c6096f7e4abdda92"></a>
@@ -246,6 +304,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Checks if a saved game file exists. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if a saved game exists, false otherwise </dd></dl>
+
 </div>
 </div>
 <a id="a105a1188a6bd8faabe57f28ed6668bad" name="a105a1188a6bd8faabe57f28ed6668bad"></a>
@@ -262,6 +323,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks if the start new game button was pressed. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if a new game should be started, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -289,6 +353,25 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Renders the main menu. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode</td><td>Current game mode </td></tr>
+    <tr><td class="paramname">highscore_name</td><td>Name of the player with highest score </td></tr>
+    <tr><td class="paramname">highscore</td><td>The highest score value</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Displays the menu buttons and high score information if available</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode</td><td>Current game mode </td></tr>
+    <tr><td class="paramname">highscore_name</td><td>Name of the player with highest score </td></tr>
+    <tr><td class="paramname">highscore</td><td>The highest score value </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ac395f974b06c97dc5654fab952998d39" name="ac395f974b06c97dc5654fab952998d39"></a>
@@ -305,6 +388,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Updates the saved file exists flag. </p>
 
 </div>
 </div>
@@ -328,6 +413,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Rectangle for continueing game button </p>
 
 </div>
 </div>
@@ -350,6 +436,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Rectangle for exit </p>
 
 </div>
 </div>
@@ -372,6 +459,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Rectangle for start new game </p>
 
 </div>
 </div>
@@ -394,6 +482,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Flag for continuing a saved game </p>
 
 </div>
 </div>
@@ -416,6 +505,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Flag for exiting to mode selection </p>
 
 </div>
 </div>
@@ -438,6 +528,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Font used for text rendering </p>
 
 </div>
 </div>
@@ -460,6 +551,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Responsible for placing objects on the SDL screen </p>
 
 </div>
 </div>
@@ -482,6 +574,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Whether a saved game file exists </p>
 
 </div>
 </div>
@@ -504,6 +597,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Flag for starting a new game </p>
 
 </div>
 </div>
@@ -526,6 +620,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Texture for the menu background </p>
 
 </div>
 </div>

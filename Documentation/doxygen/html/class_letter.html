@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.1</span>
+   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.2</span>
    </div>
    <div id="projectbrief">An interesting implemnettaion of the pong game</div>
   </td>
@@ -94,29 +94,42 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
+<p>Represents a letter in the storytime game mode.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="letter_8hpp_source.html">letter.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a750a75aec294cc8b371001976983681d" id="r_a750a75aec294cc8b371001976983681d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a750a75aec294cc8b371001976983681d">collision_check</a> (float ball_pos_x, float ball_pos_y, float ball_radius) const</td></tr>
+<tr class="memdesc:a750a75aec294cc8b371001976983681d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the ball collides with the letter.  <br /></td></tr>
 <tr class="separator:a750a75aec294cc8b371001976983681d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9ba49b97b4d97d62507a2ab860fb262" id="r_af9ba49b97b4d97d62507a2ab860fb262"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9ba49b97b4d97d62507a2ab860fb262">getX</a> () const</td></tr>
+<tr class="memdesc:af9ba49b97b4d97d62507a2ab860fb262"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the X position of the letter.  <br /></td></tr>
 <tr class="separator:af9ba49b97b4d97d62507a2ab860fb262"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5d9555f02d4ce60b07999dd4335f5f4" id="r_ae5d9555f02d4ce60b07999dd4335f5f4"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5d9555f02d4ce60b07999dd4335f5f4">getY</a> () const</td></tr>
+<tr class="memdesc:ae5d9555f02d4ce60b07999dd4335f5f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the Y position of the letter.  <br /></td></tr>
 <tr class="separator:ae5d9555f02d4ce60b07999dd4335f5f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7d6b89bf521e852dc85cb658a32f653" id="r_ad7d6b89bf521e852dc85cb658a32f653"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7d6b89bf521e852dc85cb658a32f653">Letter</a> (int index, float startX, float startY, float velocity, SDL_Renderer *<a class="el" href="#ae3a9929c10aad420c861d3ab56467538">renderer</a>, TTF_Font *<a class="el" href="#a0c0f5799d2f56481c6e131e26464e57c">font</a>)</td></tr>
+<tr class="memdesc:ad7d6b89bf521e852dc85cb658a32f653"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="class_letter.html" title="Represents a letter in the storytime game mode.">Letter</a> class.  <br /></td></tr>
 <tr class="separator:ad7d6b89bf521e852dc85cb658a32f653"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14aa1a20cb7103df9b60484a8eac75da" id="r_a14aa1a20cb7103df9b60484a8eac75da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14aa1a20cb7103df9b60484a8eac75da">next_letter</a> ()</td></tr>
+<tr class="memdesc:a14aa1a20cb7103df9b60484a8eac75da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advances to the next letter in the current word.  <br /></td></tr>
 <tr class="separator:a14aa1a20cb7103df9b60484a8eac75da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90732499d71570f1897eb71e53a0294a" id="r_a90732499d71570f1897eb71e53a0294a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90732499d71570f1897eb71e53a0294a">next_word</a> ()</td></tr>
+<tr class="memdesc:a90732499d71570f1897eb71e53a0294a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advances to the next word in the words array.  <br /></td></tr>
 <tr class="separator:a90732499d71570f1897eb71e53a0294a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63b09bc901f5af83547fe6b3e461eb29" id="r_a63b09bc901f5af83547fe6b3e461eb29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63b09bc901f5af83547fe6b3e461eb29">render</a> (SDL_Renderer *<a class="el" href="#ae3a9929c10aad420c861d3ab56467538">renderer</a>)</td></tr>
+<tr class="memdesc:a63b09bc901f5af83547fe6b3e461eb29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the letter on screen.  <br /></td></tr>
 <tr class="separator:a63b09bc901f5af83547fe6b3e461eb29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeda4a15092e7fd2c4b059d32cba86418" id="r_aeda4a15092e7fd2c4b059d32cba86418"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeda4a15092e7fd2c4b059d32cba86418">reset_word</a> (int n)</td></tr>
+<tr class="memdesc:aeda4a15092e7fd2c4b059d32cba86418"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets word and letter indices.  <br /></td></tr>
 <tr class="separator:aeda4a15092e7fd2c4b059d32cba86418"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6e2dbf5e0ca7f29031a8a26da3aed7b" id="r_ad6e2dbf5e0ca7f29031a8a26da3aed7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6e2dbf5e0ca7f29031a8a26da3aed7b">update_letter</a> (float time, int screenHeight, <a class="el" href="class_user.html">User</a> *player1, <a class="el" href="class_user.html">User</a> *player2, float ball_pos_x, float ball_pos_y, float ball_radius)</td></tr>
+<tr class="memdesc:ad6e2dbf5e0ca7f29031a8a26da3aed7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the letter position and checks for collisions.  <br /></td></tr>
 <tr class="separator:ad6e2dbf5e0ca7f29031a8a26da3aed7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acba8ddadd9974473aeb49375cbfe3f43" id="r_acba8ddadd9974473aeb49375cbfe3f43"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acba8ddadd9974473aeb49375cbfe3f43">~Letter</a> ()</td></tr>
+<tr class="memdesc:acba8ddadd9974473aeb49375cbfe3f43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for <a class="el" href="class_letter.html" title="Represents a letter in the storytime game mode.">Letter</a> class.  <br /></td></tr>
 <tr class="separator:acba8ddadd9974473aeb49375cbfe3f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -150,7 +163,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a51c66ffb36540d1b3f1a457c2695fd68" id="r_a51c66ffb36540d1b3f1a457c2695fd68"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51c66ffb36540d1b3f1a457c2695fd68">y</a></td></tr>
 <tr class="separator:a51c66ffb36540d1b3f1a457c2695fd68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents a letter in the storytime game mode. </p>
+<p>This class handles the display and interaction of letters that move across the screen in the story mode. Players can collect these letters by hitting them with the ball. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad7d6b89bf521e852dc85cb658a32f653" name="ad7d6b89bf521e852dc85cb658a32f653"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad7d6b89bf521e852dc85cb658a32f653">&#9670;&#160;</a></span>Letter()</h2>
 
@@ -190,6 +206,31 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructor for <a class="el" href="class_letter.html" title="Represents a letter in the storytime game mode.">Letter</a> class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Initial index for word and letter selection </td></tr>
+    <tr><td class="paramname">startX</td><td>Starting X position </td></tr>
+    <tr><td class="paramname">startY</td><td>Starting Y position </td></tr>
+    <tr><td class="paramname">velocity</td><td>Movement speed </td></tr>
+    <tr><td class="paramname">renderer</td><td>SDL renderer to use </td></tr>
+    <tr><td class="paramname">font</td><td>TTF font to use</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Initializes a letter with position, speed, and selects the initial word and letter</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Initial index for word and letter selection </td></tr>
+    <tr><td class="paramname">startX</td><td>Starting X position </td></tr>
+    <tr><td class="paramname">startY</td><td>Starting Y position </td></tr>
+    <tr><td class="paramname">velocity</td><td>Movement speed </td></tr>
+    <tr><td class="paramname">renderer</td><td>SDL renderer to use </td></tr>
+    <tr><td class="paramname">font</td><td>TTF font to use </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="acba8ddadd9974473aeb49375cbfe3f43" name="acba8ddadd9974473aeb49375cbfe3f43"></a>
@@ -206,6 +247,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destructor for <a class="el" href="class_letter.html" title="Represents a letter in the storytime game mode.">Letter</a> class. </p>
+<p>Cleans up the texture resource </p>
 
 </div>
 </div>
@@ -234,6 +278,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Checks if the ball collides with the letter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ball_pos_x</td><td>Ball's X position </td></tr>
+    <tr><td class="paramname">ball_pos_y</td><td>Ball's Y position </td></tr>
+    <tr><td class="paramname">ball_radius</td><td>Ball's radius </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if collision detected, false otherwise </dd></dl>
+
 </div>
 </div>
 <a id="af9ba49b97b4d97d62507a2ab860fb262" name="af9ba49b97b4d97d62507a2ab860fb262"></a>
@@ -250,6 +305,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Gets the X position of the letter. </p>
+<dl class="section return"><dt>Returns</dt><dd>Current X coordinate </dd></dl>
 
 </div>
 </div>
@@ -268,6 +326,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the Y position of the letter. </p>
+<dl class="section return"><dt>Returns</dt><dd>Current Y coordinate </dd></dl>
+
 </div>
 </div>
 <a id="a14aa1a20cb7103df9b60484a8eac75da" name="a14aa1a20cb7103df9b60484a8eac75da"></a>
@@ -284,6 +345,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Advances to the next letter in the current word. </p>
+<p>Creates a new texture for the next letter or moves to next word if needed </p>
 
 </div>
 </div>
@@ -302,6 +366,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Advances to the next word in the words array. </p>
+
 </div>
 </div>
 <a id="a63b09bc901f5af83547fe6b3e461eb29" name="a63b09bc901f5af83547fe6b3e461eb29"></a>
@@ -319,6 +385,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Renders the letter on screen. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>SDL renderer to use for drawing </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aeda4a15092e7fd2c4b059d32cba86418" name="aeda4a15092e7fd2c4b059d32cba86418"></a>
@@ -335,6 +409,14 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Resets word and letter indices. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>New index to set </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -382,6 +464,20 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Updates the letter position and checks for collisions. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>Time delta since last update </td></tr>
+    <tr><td class="paramname">screenHeight</td><td>Window height for boundary checking </td></tr>
+    <tr><td class="paramname">player1</td><td>Pointer to first player </td></tr>
+    <tr><td class="paramname">player2</td><td>Pointer to second player </td></tr>
+    <tr><td class="paramname">ball_pos_x</td><td>Ball's X position </td></tr>
+    <tr><td class="paramname">ball_pos_y</td><td>Ball's Y position </td></tr>
+    <tr><td class="paramname">ball_radius</td><td>Ball's radius </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -404,6 +500,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Index of current letter in the current word </p>
 
 </div>
 </div>
@@ -426,6 +523,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Index of current word in the words array </p>
 
 </div>
 </div>
@@ -448,6 +546,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>TTF font for rendering text </p>
 
 </div>
 </div>
@@ -470,6 +569,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Dimensions of the letter texture </p>
 
 </div>
 </div>
@@ -492,6 +592,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Current letter being displayed </p>
 
 </div>
 </div>
@@ -514,6 +615,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Letters collected at the bottom of screen </p>
 
 </div>
 </div>
@@ -536,6 +638,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>SDL renderer reference </p>
 
 </div>
 </div>
@@ -558,6 +661,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Movement speed of the letter </p>
 
 </div>
 </div>
@@ -580,6 +684,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Texture for rendering the letter </p>
 
 </div>
 </div>
@@ -624,6 +729,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Current word being displayed </p>
 
 </div>
 </div>
@@ -646,6 +752,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Words to display letter by letter </p>
 
 </div>
 </div>
@@ -690,6 +797,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Position of the letter </p>
 
 </div>
 </div>

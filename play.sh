@@ -73,30 +73,31 @@ else
   cmake ..
   cmake --build .
   clear
-  echo -e "${NORMAL}This software allows you to play the pong game.\n"
-  echo -e "${BLUE}NOTE:${NORMAL} You have the option to play either on 2 or against an AI. More details about the game and its implimentation at https://github.com/vskarleas/ROB4-S8-Cpp_Project.\n"
-  echo -e "++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+  ./Pong
+  # echo -e "${NORMAL}This software allows you to play the pong game.\n"
+  # echo -e "${BLUE}NOTE:${NORMAL} You have the option to play either on 2 or against an AI. More details about the game and its implimentation at https://github.com/vskarleas/ROB4-S8-Cpp_Project.\n"
+  # echo -e "++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 
-  # Infinite loop with user options
-  while true; do
-    clear
-    echo -e "\n- play: You can launch the game."
-    echo -e "- exit: Exits the installer program."
-    echo -e "${BLUE}========================================================\n${NORMAL}Enter a command (play, exit):"
-    read command
+  # # Infinite loop with user options
+  # while true; do
+  #   clear
+  #   echo -e "\n- play: You can launch the game."
+  #   echo -e "- exit: Exits the installer program."
+  #   echo -e "${BLUE}========================================================\n${NORMAL}Enter a command (play, exit):"
+  #   read command
 
-    case "$command" in
-      play)
-        ./Pong
-        ;;
-      exit)
-        break  # Exit the loop
-        ;;
-      *)
-        echo -e "${YELLOW}\nInvalid command. Please try again!${NORMAL}"
-        ;;
-    esac
-  done
+  #   case "$command" in
+  #     play)
+  #       ./Pong
+  #       ;;
+  #     exit)
+  #       break  # Exit the loop
+  #       ;;
+  #     *)
+  #       echo -e "${YELLOW}\nInvalid command. Please try again!${NORMAL}"
+  #       ;;
+  #   esac
+  # done
 
   # Commands to execute after exiting the loop
   echo -e "${GREEN}The NEW Pong Game has been successfully terminated\n"

@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.1</span>
+   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.2</span>
    </div>
    <div id="projectbrief">An interesting implemnettaion of the pong game</div>
   </td>
@@ -94,27 +94,39 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
+<p>Pause menu with 3 buttons.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="page__3b_8hpp_source.html">page_3b.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a95cf3ea630b89a71e421a592fcbba2cc" id="r_a95cf3ea630b89a71e421a592fcbba2cc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95cf3ea630b89a71e421a592fcbba2cc">action_handler</a> (const SDL_Event &amp;event)</td></tr>
+<tr class="memdesc:a95cf3ea630b89a71e421a592fcbba2cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles events for the menu buttons.  <br /></td></tr>
 <tr class="separator:a95cf3ea630b89a71e421a592fcbba2cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28ff03a223f950745f84509ba553f190" id="r_a28ff03a223f950745f84509ba553f190"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28ff03a223f950745f84509ba553f190">get_exit_mode</a> () const</td></tr>
+<tr class="memdesc:a28ff03a223f950745f84509ba553f190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the exit button was pressed.  <br /></td></tr>
 <tr class="separator:a28ff03a223f950745f84509ba553f190"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1b96dbc630bb43021054d9179317d7a" id="r_ab1b96dbc630bb43021054d9179317d7a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1b96dbc630bb43021054d9179317d7a">get_mode_type</a> () const</td></tr>
+<tr class="memdesc:ab1b96dbc630bb43021054d9179317d7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current game mode type.  <br /></td></tr>
 <tr class="separator:ab1b96dbc630bb43021054d9179317d7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab791c31f8d0bcc32dc49a11813f4d0d2" id="r_ab791c31f8d0bcc32dc49a11813f4d0d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab791c31f8d0bcc32dc49a11813f4d0d2">page_3b</a> (SDL_Renderer *<a class="el" href="#a065796c14db9ff612e4aead9ace6cc8e">renderer</a>, TTF_Font *font)</td></tr>
+<tr class="memdesc:ab791c31f8d0bcc32dc49a11813f4d0d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for pause menu.  <br /></td></tr>
 <tr class="separator:ab791c31f8d0bcc32dc49a11813f4d0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75110472269c1c03bfd01fad8ff60cf7" id="r_a75110472269c1c03bfd01fad8ff60cf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a75110472269c1c03bfd01fad8ff60cf7">render_object</a> ()</td></tr>
+<tr class="memdesc:a75110472269c1c03bfd01fad8ff60cf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the pause menu.  <br /></td></tr>
 <tr class="separator:a75110472269c1c03bfd01fad8ff60cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a977fe0c63631c5dd4d270299a67335" id="r_a2a977fe0c63631c5dd4d270299a67335"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a977fe0c63631c5dd4d270299a67335">set_mode_type</a> (int type)</td></tr>
+<tr class="memdesc:a2a977fe0c63631c5dd4d270299a67335"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current game mode type.  <br /></td></tr>
 <tr class="separator:a2a977fe0c63631c5dd4d270299a67335"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86e13ce068a806196b89deed21d1df14" id="r_a86e13ce068a806196b89deed21d1df14"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86e13ce068a806196b89deed21d1df14">ShouldResume</a> () const</td></tr>
+<tr class="memdesc:a86e13ce068a806196b89deed21d1df14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the resume button was pressed.  <br /></td></tr>
 <tr class="separator:a86e13ce068a806196b89deed21d1df14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acea12939cb180aaf9334749fa170b1d0" id="r_acea12939cb180aaf9334749fa170b1d0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acea12939cb180aaf9334749fa170b1d0">ShouldSave</a> () const</td></tr>
+<tr class="memdesc:acea12939cb180aaf9334749fa170b1d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the save button was pressed.  <br /></td></tr>
 <tr class="separator:acea12939cb180aaf9334749fa170b1d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f9d1513473ec89eba1a268f7d29704a" id="r_a2f9d1513473ec89eba1a268f7d29704a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f9d1513473ec89eba1a268f7d29704a">~page_3b</a> ()</td></tr>
+<tr class="memdesc:a2f9d1513473ec89eba1a268f7d29704a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for pause menu.  <br /></td></tr>
 <tr class="separator:a2f9d1513473ec89eba1a268f7d29704a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -140,7 +152,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:aa922aa0d118575c75c7d3c4668b8a01d" id="r_aa922aa0d118575c75c7d3c4668b8a01d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa922aa0d118575c75c7d3c4668b8a01d">selected_button</a></td></tr>
 <tr class="separator:aa922aa0d118575c75c7d3c4668b8a01d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Pause menu with 3 buttons. </p>
+<p>This class implements the pause menu that appears during gameplay, allowing players to resume the game, save their progress, or exit. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab791c31f8d0bcc32dc49a11813f4d0d2" name="ab791c31f8d0bcc32dc49a11813f4d0d2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab791c31f8d0bcc32dc49a11813f4d0d2">&#9670;&#160;</a></span>page_3b()</h2>
 
@@ -160,6 +175,23 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructor for pause menu. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>The SDL renderer to use for drawing </td></tr>
+    <tr><td class="paramname">font</td><td>The TTF font to use for text display</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Initializes the pause menu with resume, save and exit buttons</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>The SDL renderer to use for drawing </td></tr>
+    <tr><td class="paramname">font</td><td>The TTF font to use for text display </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a2f9d1513473ec89eba1a268f7d29704a" name="a2f9d1513473ec89eba1a268f7d29704a"></a>
@@ -176,6 +208,8 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destructor for pause menu. </p>
 
 </div>
 </div>
@@ -195,6 +229,23 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Handles events for the menu buttons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The SDL event to process </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if a button was clicked, false otherwise</dd></dl>
+<p>Processes SDL events to detect button hovers and clicks</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The SDL event to process </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if a button was clicked, false otherwise </dd></dl>
+
 </div>
 </div>
 <a id="a28ff03a223f950745f84509ba553f190" name="a28ff03a223f950745f84509ba553f190"></a>
@@ -211,6 +262,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks if the exit button was pressed. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the game should exit, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -229,6 +283,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the current game mode type. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current game mode type ID </dd></dl>
+
 </div>
 </div>
 <a id="a75110472269c1c03bfd01fad8ff60cf7" name="a75110472269c1c03bfd01fad8ff60cf7"></a>
@@ -245,6 +302,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Renders the pause menu. </p>
+<p>Draws the background and buttons with appropriate styling </p>
 
 </div>
 </div>
@@ -263,6 +323,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sets the current game mode type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The game mode type ID </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a86e13ce068a806196b89deed21d1df14" name="a86e13ce068a806196b89deed21d1df14"></a>
@@ -280,6 +348,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Checks if the resume button was pressed. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the game should resume, false otherwise </dd></dl>
+
 </div>
 </div>
 <a id="acea12939cb180aaf9334749fa170b1d0" name="acea12939cb180aaf9334749fa170b1d0"></a>
@@ -296,6 +367,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks if the save button was pressed. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the game should be saved, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -319,6 +393,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Rectangle for exit button </p>
 
 </div>
 </div>
@@ -341,6 +416,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Flag for exit button </p>
 
 </div>
 </div>
@@ -363,6 +439,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Current game mode type </p>
 
 </div>
 </div>
@@ -385,6 +462,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Flag for resume button </p>
 
 </div>
 </div>
@@ -407,6 +485,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Rectangle for resume button </p>
 
 </div>
 </div>
@@ -429,6 +508,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Flag for save button </p>
 
 </div>
 </div>
@@ -451,6 +531,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Rectangle for save button </p>
 
 </div>
 </div>
@@ -473,6 +554,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Font used for text rendering </p>
 
 </div>
 </div>
@@ -495,6 +577,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Renderer for drawing elements </p>
 
 </div>
 </div>
@@ -517,6 +600,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Currently selected/highlighted button </p>
 
 </div>
 </div>

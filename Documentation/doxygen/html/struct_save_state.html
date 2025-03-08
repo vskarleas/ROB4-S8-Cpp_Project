@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.1</span>
+   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.2</span>
    </div>
    <div id="projectbrief">An interesting implemnettaion of the pong game</div>
   </td>
@@ -93,6 +93,9 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
+<p>Structure representing the complete game state for saving/loading.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="game__save_8hpp_source.html">game_save.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -120,7 +123,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:afec7e73c9b0a2f6b09d1da09525ef3b9" id="r_afec7e73c9b0a2f6b09d1da09525ef3b9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afec7e73c9b0a2f6b09d1da09525ef3b9">score2</a></td></tr>
 <tr class="separator:afec7e73c9b0a2f6b09d1da09525ef3b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Structure representing the complete game state for saving/loading. </p>
+<p>Contains all data required to reconstruct the state of a game session when loading a saved game. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a9596e3c384422cac33695a7f11a3b7b5" name="a9596e3c384422cac33695a7f11a3b7b5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9596e3c384422cac33695a7f11a3b7b5">&#9670;&#160;</a></span>ball_type</h2>
 
@@ -132,6 +138,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ball type (0=classic, 1=square, 2=triangle) </p>
 
 </div>
 </div>
@@ -146,6 +153,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ball's x velocity </p>
 
 </div>
 </div>
@@ -160,6 +168,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ball's y velocity </p>
 
 </div>
 </div>
@@ -174,6 +183,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ball's x position </p>
 
 </div>
 </div>
@@ -188,6 +198,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ball's y position </p>
 
 </div>
 </div>
@@ -202,6 +213,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Position of paddle 1 (only y-coordinate since x is fixed) </p>
 
 </div>
 </div>
@@ -216,6 +228,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Position of paddle 2 (only y-coordinate since x is fixed) </p>
 
 </div>
 </div>
@@ -230,6 +243,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Player 1's name </p>
 
 </div>
 </div>
@@ -244,6 +258,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Player 2's name </p>
 
 </div>
 </div>
@@ -258,6 +273,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Player 1's score </p>
 
 </div>
 </div>
@@ -272,6 +288,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Player 2's score </p>
 
 </div>
 </div>

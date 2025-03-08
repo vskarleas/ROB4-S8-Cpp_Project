@@ -29,6 +29,7 @@
 * V10.8.24: Old makefile removed abd gitigonre updated. You will ave to perfom the cmake to compile. You can use directly the play.sh script
 * V10.9.1: play.sh installer was updated
 * V11.0.1: Added documentation structure. Fixed sime issues on the fun mode. We need to reset the padle height at the end of the fun mode manually if the button end game is atpped otherwise we risk to have different size paddles on other game modes
+* V11.0.2: Added more comments and incuded inverse mode there is a segmentation fault issue
 
 ## Pages structures
 

@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.1</span>
+   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.2</span>
    </div>
    <div id="projectbrief">An interesting implemnettaion of the pong game</div>
   </td>
@@ -91,15 +91,23 @@ $(function(){ initResizable(false); });
   <div class="headertitle"><div class="title">classic_ball.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Implementation of the classic circular ball class.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="classic__ball_8hpp_source.html">classic_ball.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="renderers_8hpp_source.html">renderers.hpp</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a52fcd52462df50ac472b562f30698e84" id="r_a52fcd52462df50ac472b562f30698e84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52fcd52462df50ac472b562f30698e84">DrawFilledCircle</a> (SDL_Renderer *renderer, int32_t center_x, int32_t centerY, int32_t radius)</td></tr>
+<tr class="memdesc:a52fcd52462df50ac472b562f30698e84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function to draw a filled circle.  <br /></td></tr>
 <tr class="separator:a52fcd52462df50ac472b562f30698e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implementation of the classic circular ball class. </p>
+<dl class="section author"><dt>Authors</dt><dd>Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>All rights reserved. </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a52fcd52462df50ac472b562f30698e84" name="a52fcd52462df50ac472b562f30698e84"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a52fcd52462df50ac472b562f30698e84">&#9670;&#160;</a></span>DrawFilledCircle()</h2>
 
@@ -128,6 +136,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Helper function to draw a filled circle. </p>
+<p>Uses the midpoint circle algorithm to efficiently render a filled circle</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>The SDL renderer to use for drawing </td></tr>
+    <tr><td class="paramname">center_x</td><td>The x coordinate of the circle's center </td></tr>
+    <tr><td class="paramname">centerY</td><td>The y coordinate of the circle's center </td></tr>
+    <tr><td class="paramname">radius</td><td>The radius of the circle </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

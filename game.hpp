@@ -28,6 +28,7 @@
 
 #include "power.hpp"
 #include "invisible_power.hpp"
+#include "inverse_power.hpp"
 
 #include "gui.hpp"
 #include "letter.hpp"
@@ -134,6 +135,7 @@ private:
     Letter *mletter;
     Power *mpower;
     InvisiblePower *minvisible;
+    InversiblePower *minverse;
 };
 
 #endif

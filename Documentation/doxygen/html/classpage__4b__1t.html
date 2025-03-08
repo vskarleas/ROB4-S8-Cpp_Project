@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.1</span>
+   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.2</span>
    </div>
    <div id="projectbrief">An interesting implemnettaion of the pong game</div>
   </td>
@@ -94,21 +94,30 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
+<p>Defines the mode selection menu with 4 buttons and 1 title.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="page__4b__1t_8hpp_source.html">page_4b_1t.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0371f7120e929633af52f0a3389fcfa1" id="r_a0371f7120e929633af52f0a3389fcfa1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0371f7120e929633af52f0a3389fcfa1">action_handler</a> (const SDL_Event &amp;event)</td></tr>
+<tr class="memdesc:a0371f7120e929633af52f0a3389fcfa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles events for the menu buttons.  <br /></td></tr>
 <tr class="separator:a0371f7120e929633af52f0a3389fcfa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a386abd37b58d22f3c23dcf3c80f9ed3f" id="r_a386abd37b58d22f3c23dcf3c80f9ed3f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a386abd37b58d22f3c23dcf3c80f9ed3f">get_exit_game</a> () const</td></tr>
+<tr class="memdesc:a386abd37b58d22f3c23dcf3c80f9ed3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the exit game flag is set.  <br /></td></tr>
 <tr class="separator:a386abd37b58d22f3c23dcf3c80f9ed3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e226fd4ea1ba280c22cf83a609f48a4" id="r_a7e226fd4ea1ba280c22cf83a609f48a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e226fd4ea1ba280c22cf83a609f48a4">get_mode_id</a> () const</td></tr>
+<tr class="memdesc:a7e226fd4ea1ba280c22cf83a609f48a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the selected game mode ID.  <br /></td></tr>
 <tr class="separator:a7e226fd4ea1ba280c22cf83a609f48a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7748d2d608cebe828dc8219c061e6d4d" id="r_a7748d2d608cebe828dc8219c061e6d4d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7748d2d608cebe828dc8219c061e6d4d">page_4b_1t</a> (SDL_Renderer *_renderer, TTF_Font *font)</td></tr>
+<tr class="memdesc:a7748d2d608cebe828dc8219c061e6d4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the mode menu page.  <br /></td></tr>
 <tr class="separator:a7748d2d608cebe828dc8219c061e6d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7af12111074b2f595ebf81905f1f1dd" id="r_ac7af12111074b2f595ebf81905f1f1dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7af12111074b2f595ebf81905f1f1dd">render_object</a> ()</td></tr>
+<tr class="memdesc:ac7af12111074b2f595ebf81905f1f1dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the mode menu.  <br /></td></tr>
 <tr class="separator:ac7af12111074b2f595ebf81905f1f1dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acdd2a8badd9425e24b52362ae2a0f4fb" id="r_acdd2a8badd9425e24b52362ae2a0f4fb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdd2a8badd9425e24b52362ae2a0f4fb">~page_4b_1t</a> ()</td></tr>
+<tr class="memdesc:acdd2a8badd9425e24b52362ae2a0f4fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the mode menu page.  <br /></td></tr>
 <tr class="separator:acdd2a8badd9425e24b52362ae2a0f4fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
@@ -134,7 +143,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a8dbf4a0c4b9ca33752eccf40628634ab" id="r_a8dbf4a0c4b9ca33752eccf40628634ab"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dbf4a0c4b9ca33752eccf40628634ab">texture_menu</a></td></tr>
 <tr class="separator:a8dbf4a0c4b9ca33752eccf40628634ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Defines the mode selection menu with 4 buttons and 1 title. </p>
+<p>This class handles the mode selection screen where players can choose between different game modes (<a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a> mode, Two players mode, etc.) </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7748d2d608cebe828dc8219c061e6d4d" name="a7748d2d608cebe828dc8219c061e6d4d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7748d2d608cebe828dc8219c061e6d4d">&#9670;&#160;</a></span>page_4b_1t()</h2>
 
@@ -154,6 +166,23 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructor for the mode menu page. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_renderer</td><td>The SDL renderer to use for drawing </td></tr>
+    <tr><td class="paramname">font</td><td>The TTF font to use for text display</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Initializes the menu with buttons for different game modes and an exit button</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_renderer</td><td>The SDL renderer to use for drawing </td></tr>
+    <tr><td class="paramname">font</td><td>The TTF font to use for text display </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="acdd2a8badd9425e24b52362ae2a0f4fb" name="acdd2a8badd9425e24b52362ae2a0f4fb"></a>
@@ -170,6 +199,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Destructor for the mode menu page. </p>
+<p>Cleans up allocated resources </p>
 
 </div>
 </div>
@@ -189,6 +221,23 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Handles events for the menu buttons. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The SDL event to process </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if a button was clicked, false otherwise</dd></dl>
+<p>Processes SDL events to detect button clicks and set corresponding mode flags</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The SDL event to process </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if a button was clicked, false otherwise </dd></dl>
+
 </div>
 </div>
 <a id="a386abd37b58d22f3c23dcf3c80f9ed3f" name="a386abd37b58d22f3c23dcf3c80f9ed3f"></a>
@@ -205,6 +254,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks if the exit game flag is set. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the game should exit, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -223,6 +275,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the selected game mode ID. </p>
+<dl class="section return"><dt>Returns</dt><dd>The selected mode ID for redirecting to the correct view </dd></dl>
+
 </div>
 </div>
 <a id="ac7af12111074b2f595ebf81905f1f1dd" name="ac7af12111074b2f595ebf81905f1f1dd"></a>
@@ -239,6 +294,9 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Renders the mode menu. </p>
+<p>Draws the title and all game mode buttons on screen </p>
 
 </div>
 </div>
@@ -262,6 +320,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Rectangle for <a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a> mode button </p>
 
 </div>
 </div>
@@ -284,6 +343,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Rectangle for exit button </p>
 
 </div>
 </div>
@@ -306,6 +366,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Rectangle for fun mode button </p>
 
 </div>
 </div>
@@ -328,6 +389,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Rectangle for storytime mode button </p>
 
 </div>
 </div>
@@ -350,6 +412,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Rectangle for two players mode button </p>
 
 </div>
 </div>
@@ -372,6 +435,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Flag to exit the game </p>
 
 </div>
 </div>
@@ -394,6 +458,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Selected game mode ID </p>
 
 </div>
 </div>
@@ -416,6 +481,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Font used for text rendering </p>
 
 </div>
 </div>
@@ -438,6 +504,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Responsible for placing the objects on the SDL screen </p>
 
 </div>
 </div>
@@ -460,6 +527,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>mode = 1 -&gt; <a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a> mode mode = 2 -&gt; Two players mode mode = 3 -&gt; Storytime mode mode = 4 -&gt; Fun mode</p>
+<p>Check <a class="el" href="macros_8hpp.html" title="Defines macros and constants used throughout the project.">macros.hpp</a> for more information Texture for the menu background </p>
 
 </div>
 </div>

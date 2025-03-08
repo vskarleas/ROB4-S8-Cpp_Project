@@ -1,8 +1,10 @@
-// #############################################################################
-// # File game_save.cpp
-// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
-// # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
-// #############################################################################
+/**
+ * @file game_save.cpp
+ * @brief Implementation of save game functionality
+ * @project C++ Project - Polytech Sorbonne - 2024/2025 - S8
+ * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
+ * @copyright All rights reserved.
+ */
 
 #include <fstream>
 #include <ctime>
@@ -12,31 +14,53 @@
 
 #include "game_save.hpp"
 
-/* SAVE_FILENAME and KEY are acceesible only in this specific source file
-    where the namespace is included for security purposes*/
+/**
+ * @namespace
+ * @brief Anonymous namespace for file-specific constants and utility functions
+ *
+ * Contains constants and helper functions for encoding and decoding save data.
+ * These are kept private to this file for security purposes.
+ */
 namespace
 {
-    const unsigned char KEY = 0x83;
-    const char *SAVE_FILENAME = "game_pong-save_849374.txt"; // we always save the gam'es state on this prticular file
-    const char *HIGHSCCORE_FILENAME = "game_pong-highscore_849216.txt";
+    const unsigned char KEY = 0x83;                      /**< XOR encryption key */
+    const char *SAVE_FILENAME = "game_pong-save_849374.txt";  /**< Save game file name */
+    const char *HIGHSCCORE_FILENAME = "game_pong-highscore_849216.txt"; /**< High score file name */
 
-    /* Encrypting a byte (unsigned 8 bits) - Inspired from https://www.101computing.net/xor-encryption-algorithm/
-       It allows fusing the same operation to retrieve the encrypted data */
+    /**
+     * @brief Encrypts/decrypts a single byte using XOR
+     * 
+     * Inspired from https://www.101computing.net/xor-encryption-algorithm/
+     * Using XOR allows the same operation to both encrypt and decrypt
+     * 
+     * @param byte The byte to encode/decode
+     * @return The encoded/decoded byte
+     */
     unsigned char codec_byte(unsigned char byte)
     {
         return byte ^ KEY; // XOR operation
     }
 
+    /**
+     * @brief Encrypts/decrypts a float value
+     * 
+     * @param value The float value to encode/decode (modified in-place)
+     */
     void codec_float(float &value)
     {
-        unsigned char *bytes = reinterpret_cast<unsigned char *>(&value); // casting to return a float value to byte representation (interprentation)
+        unsigned char *bytes = reinterpret_cast<unsigned char *>(&value); // casting to return a float value to byte representation
         for (size_t i = 0; i < sizeof(float); ++i)
         {
             bytes[i] = codec_byte(bytes[i]);
         }
     }
 
-    void codec_int(int &value) // same approche as seen for float values above
+    /**
+     * @brief Encrypts/decrypts an integer value
+     * 
+     * @param value The integer value to encode/decode (modified in-place)
+     */
+    void codec_int(int &value)
     {
         unsigned char *bytes = reinterpret_cast<unsigned char *>(&value);
         for (size_t i = 0; i < sizeof(int); ++i)
@@ -45,6 +69,12 @@ namespace
         }
     }
 
+    /**
+     * @brief Encrypts/decrypts a character string
+     * 
+     * @param str The string to encode/decode (modified in-place)
+     * @param length The length of the string
+     */
     void codec_string(char *str, size_t length)
     {
         for (size_t i = 0; i < length; ++i)
@@ -54,20 +84,33 @@ namespace
     }
 }
 
-/* Deleting the save file */
+/**
+ * @brief Deletes the save game file
+ */
 void Saving::delete_save()
 {
     std::remove(SAVE_FILENAME);
 }
 
+/**
+ * @brief Deletes the high score file
+ */
 void Saving::delete_highscore()
 {
     std::remove(HIGHSCCORE_FILENAME);
 }
 
+/**
+ * @brief Saves the current high score to a file
+ * 
+ * Appends the high score to the file in binary format after encoding
+ * 
+ * @param score HighScore structure containing the score data to save
+ * @return true if save was successful, false otherwise
+ */
 bool Saving::save_highscore(const HighScore &score)
 {
-    std::ofstream file(HIGHSCCORE_FILENAME, std::ios::binary | std::ios::app); // open the file in binary mode and append mode
+    std::ofstream file(HIGHSCCORE_FILENAME, std::ios::binary | std::ios::app); // open the file in binary and append mode
 
     if (!file)
     {
@@ -87,7 +130,14 @@ bool Saving::save_highscore(const HighScore &score)
     return file.good();
 }
 
-/* Creates or rewrites a save file with encrypted informations using the XOR algorithm */
+/**
+ * @brief Saves the current game state to a file
+ * 
+ * Creates or overwrites the save file with the current game state in binary format after encoding
+ * 
+ * @param state SaveState structure containing the game state to save
+ * @return true if save was successful, false otherwise
+ */
 bool Saving::save_game(const SaveState &state)
 {
     std::ofstream file(SAVE_FILENAME, std::ios::binary);
@@ -97,7 +147,7 @@ bool Saving::save_game(const SaveState &state)
         return false;
     }
 
-    // Create a copy of the state to encode. The state can be
+    // Create a copy of the state to encode
     SaveState encode_state = state;
 
     // Encrypting the ints and floats of the SaveState structure
@@ -119,6 +169,14 @@ bool Saving::save_game(const SaveState &state)
     return file.good(); // returns true if write operation was successful
 }
 
+/**
+ * @brief Loads a game state from file
+ * 
+ * Reads and decodes the saved game state from the save file
+ * 
+ * @param state SaveState structure to populate with the loaded data
+ * @return true if load was successful, false otherwise
+ */
 bool Saving::load_game(SaveState &state)
 {
     std::ifstream file(SAVE_FILENAME, std::ios::binary); // opening the file in binary mode
@@ -159,6 +217,14 @@ bool Saving::load_game(SaveState &state)
     }
 }
 
+/**
+ * @brief Loads high score data from file
+ * 
+ * Reads and decodes the latest high score from the high score file
+ * 
+ * @param score HighScore structure to populate with the loaded data
+ * @return true if load was successful, false otherwise
+ */
 bool Saving::load_highscore(HighScore &score)
 {
     std::ifstream file(HIGHSCCORE_FILENAME, std::ios::binary);
@@ -195,13 +261,22 @@ bool Saving::load_highscore(HighScore &score)
     return true;
 }
 
-/* Check if a save file exists or not (the idea is that it has been generated previously) */
+/**
+ * @brief Checks if a save file exists
+ * 
+ * @return true if a save file exists, false otherwise
+ */
 bool Saving::save_exists()
 {
     std::ifstream file(SAVE_FILENAME);
     return file.good();
 }
 
+/**
+ * @brief Checks if a high score file exists
+ * 
+ * @return true if a high score file exists, false otherwise
+ */
 bool Saving::highscore_exists()
 {
     std::ifstream file(HIGHSCCORE_FILENAME);

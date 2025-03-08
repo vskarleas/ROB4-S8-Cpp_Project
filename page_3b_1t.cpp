@@ -1,8 +1,9 @@
-// #############################################################################
-// # File page_3b_1t.cpp
-// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
-// # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
-// #############################################################################
+/**
+ * @file page_3b_1t.cpp
+ * @brief Implementation of the middle menu class
+ * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
+ * @copyright All rights reserved.
+ */
 
 #include "page_3b_1t.hpp"
 #include "macros.hpp"
@@ -12,17 +13,30 @@
 #include <iostream>
 #include <string>
 
+/**
+ * @brief Constructor for the middle menu page
+ * 
+ * Initializes the menu with three buttons and default settings
+ * 
+ * @param _renderer The SDL renderer to use for drawing
+ * @param font The TTF font to use for text display
+ */
 page_3b_1t::page_3b_1t(SDL_Renderer *_renderer, TTF_Font *font) : selected_button(-1),
                                                                   mode_type(-1),
                                                                   texture_middle_menu(nullptr),
                                                                   renderer(_renderer),
                                                                   police(font)
 {
-    button_1 = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 500, 200, 40}; // The tree following buttons willbe closer to each other
+    button_1 = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 500, 200, 40}; // The three following buttons will be closer to each other
     button_2 = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 450, 200, 40};
     button_3 = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 400, 200, 40};
 }
 
+/**
+ * @brief Destructor for the middle menu page
+ * 
+ * Cleans up allocated resources
+ */
 page_3b_1t::~page_3b_1t()
 {
     // Deallocate menu texture
@@ -33,6 +47,14 @@ page_3b_1t::~page_3b_1t()
     }
 }
 
+/**
+ * @brief Handles events for the menu buttons
+ * 
+ * Processes SDL events to detect button hovers and clicks
+ * 
+ * @param event The SDL event to process
+ * @return true if a button was clicked, false otherwise
+ */
 bool page_3b_1t::action_handler(const SDL_Event &event)
 {
     // Reinitialisations
@@ -81,6 +103,11 @@ bool page_3b_1t::action_handler(const SDL_Event &event)
     return false;
 }
 
+/**
+ * @brief Renders the middle menu
+ * 
+ * Displays different options based on the current mode_type value
+ */
 void page_3b_1t::render_object()
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);

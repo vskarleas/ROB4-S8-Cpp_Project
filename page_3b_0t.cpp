@@ -1,8 +1,9 @@
-// #############################################################################
-// # File page_3b_0t.cpp
-// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
-// # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
-// #############################################################################
+/**
+ * @file page_3b_0t.cpp
+ * @brief Implementation of the main menu class
+ * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
+ * @copyright All rights reserved.
+ */
 
 #include <string>
 
@@ -12,7 +13,15 @@
 #include "renderers.hpp"
 #include "game.hpp"
 
-page_3b_0t::page_3b_0t(SDL_Renderer *_renderer, TTF_Font *font) : /* Follwoing the order in the class declaration*/
+/**
+ * @brief Constructor for the main menu page
+ *
+ * Initializes the menu with buttons and checks for existing saved games
+ *
+ * @param _renderer The SDL renderer to use for drawing
+ * @param font The TTF font to use for text display
+ */
+page_3b_0t::page_3b_0t(SDL_Renderer *_renderer, TTF_Font *font) : /* Following the order in the class declaration. We obsereved issues if we do not do that */
                                                                   start_new_game(false),
                                                                   exit_mode(false),
                                                                   continue_game(false),
@@ -28,6 +37,11 @@ page_3b_0t::page_3b_0t(SDL_Renderer *_renderer, TTF_Font *font) : /* Follwoing t
     button_exit = SDL_Rect{WINDOW_HEIGHT / 2, WINDOW_WIDTH - 300, 200, 50}; // Keep space before exit
 }
 
+/**
+ * @brief Destructor for the main menu page
+ *
+ * Cleans up allocated resources
+ */
 page_3b_0t::~page_3b_0t()
 {
     // Deallocate menu texture
@@ -38,6 +52,14 @@ page_3b_0t::~page_3b_0t()
     }
 }
 
+/**
+ * @brief Handles events for the menu buttons
+ *
+ * Processes SDL events to detect button clicks
+ *
+ * @param event The SDL event to process
+ * @return true if a button was clicked, false otherwise
+ */
 bool page_3b_0t::action_handler(const SDL_Event &event)
 {
     // Reset the flags for new game, continue game and exit game, otherwise the logic is not triggered correctly
@@ -80,6 +102,15 @@ bool page_3b_0t::action_handler(const SDL_Event &event)
     return false;
 }
 
+/**
+ * @brief Renders the main menu
+ *
+ * Displays the menu buttons and high score information if available
+ *
+ * @param mode Current game mode
+ * @param highscore_name Name of the player with highest score
+ * @param highscore The highest score value
+ */
 void page_3b_0t::render_object(int mode, const std::string &highscore_name, int highscore)
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -94,9 +125,6 @@ void page_3b_0t::render_object(int mode, const std::string &highscore_name, int 
         std::string highScoreText = "High Score: " + std::to_string(highscore) + " by " + highscore_name;
         SDL_Rect highScoreRect = {WINDOW_HEIGHT / 2 - 100, 20, 400, 50}; // Moved to top
         Utilities::render_button(renderer, police, highScoreText.c_str(), highScoreRect, highlight_color);
-
-        // results on the terminal
-        // SDL_Log("Current High Score - Player: %s, Score: %d", highscore_name.c_str(), highscore);
     }
 
     // Rest of the menu items moved down slightly to accommodate high score

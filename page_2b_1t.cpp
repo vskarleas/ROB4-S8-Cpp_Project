@@ -1,14 +1,23 @@
-// #############################################################################
-// # File page_2b_1t.cpp
-// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
-// # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
-// #############################################################################
+/**
+ * @file page_2b_1t.cpp
+ * @brief Implementation of the notice screen class
+ * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
+ * @copyright All rights reserved.
+ */
 
 #include "page_2b_1t.hpp"
 #include "renderers.hpp"
 #include "macros.hpp"
 #include "game.hpp"
 
+/**
+ * @brief Constructor for the notice page
+ * 
+ * Initializes the notice screen with navigation buttons
+ * 
+ * @param _renderer The SDL renderer to use for drawing
+ * @param font The TTF font to use for text display
+ */
 page_2b_1t::page_2b_1t(SDL_Renderer *_renderer, TTF_Font *font) : 
     texture_menu(nullptr),
     renderer(_renderer),
@@ -27,6 +36,11 @@ page_2b_1t::page_2b_1t(SDL_Renderer *_renderer, TTF_Font *font) :
     button_lets_go = SDL_Rect{center_x, base_y + 70, button_width, button_height};
 }
 
+/**
+ * @brief Destructor for the notice page
+ * 
+ * Cleans up allocated resources
+ */
 page_2b_1t::~page_2b_1t()
 {
     if (texture_menu)
@@ -36,6 +50,14 @@ page_2b_1t::~page_2b_1t()
     }
 }
 
+/**
+ * @brief Handles events for the notice screen buttons
+ * 
+ * Processes SDL events to detect button clicks
+ * 
+ * @param event The SDL event to process
+ * @return true if a button was clicked, false otherwise
+ */
 bool page_2b_1t::action_handler(const SDL_Event &event)
 {
     next_view = false;
@@ -62,7 +84,12 @@ bool page_2b_1t::action_handler(const SDL_Event &event)
     return false;
 }
 
-
+/**
+ * @brief Renders the notice screen
+ * 
+ * Displays different notice text based on the current notice_id
+ * and renders the navigation buttons
+ */
 void page_2b_1t::render_object()
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -75,6 +102,12 @@ void page_2b_1t::render_object()
     const char* notice_text[20]; // Define a fixed size array
     int text_size = 0; // To keep track of array size
 
+    /**
+     * @brief Select notice text based on notice_id 
+     * 
+     * Different game modes have different instructions that are displayed
+     * based on the currently selected notice_id
+     */
     switch(notice_id) // a great way to add more notices without creatign new files for the same fuctionality
     {
         case TWO_PLAYERS_MODE:

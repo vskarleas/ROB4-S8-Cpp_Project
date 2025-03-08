@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.1</span>
+   <div id="projectname">The NEW Pong Game<span id="projectnumber">&#160;V11.0.2</span>
    </div>
    <div id="projectbrief">An interesting implemnettaion of the pong game</div>
   </td>
@@ -94,6 +94,9 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
+<p>Abstract base class for all ball types in the game.  
+ <a href="#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ball__base_8hpp_source.html">ball_base.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for BallBase:</div>
@@ -103,7 +106,7 @@ $(function(){ initResizable(false); });
  <div class="center">
   <img src="class_ball_base.png" usemap="#BallBase_map" alt=""/>
   <map id="BallBase_map" name="BallBase_map">
-<area href="class_classic_ball.html" alt="ClassicBall" shape="rect" coords="0,56,79,80"/>
+<area href="class_classic_ball.html" title="Classic circular ball implementation inheriting from BallBase." alt="ClassicBall" shape="rect" coords="0,56,79,80"/>
 <area href="class_square_ball.html" title="Square shaped ball implementation inheriting from BallBase." alt="SquareBall" shape="rect" coords="89,56,168,80"/>
 <area href="class_triangle_ball.html" title="Triangle shaped ball implementation inheriting from BallBase." alt="TriangleBall" shape="rect" coords="178,56,257,80"/>
   </map>
@@ -112,34 +115,49 @@ $(function(){ initResizable(false); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac4cc7b37b72fc5be1c72904b04603774" id="r_ac4cc7b37b72fc5be1c72904b04603774"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4cc7b37b72fc5be1c72904b04603774">BallBase</a> (float size=15.0f)</td></tr>
+<tr class="memdesc:ac4cc7b37b72fc5be1c72904b04603774"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a>.  <br /></td></tr>
 <tr class="separator:ac4cc7b37b72fc5be1c72904b04603774"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7752a1243323640e95acffa90d0ef908" id="r_a7752a1243323640e95acffa90d0ef908"><td class="memItemLeft" align="right" valign="top">virtual SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7752a1243323640e95acffa90d0ef908">boundaries</a> () const</td></tr>
+<tr class="memdesc:a7752a1243323640e95acffa90d0ef908"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the collision boundaries of the ball.  <br /></td></tr>
 <tr class="separator:a7752a1243323640e95acffa90d0ef908"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedf9429d5247a27d1e88ab47551b1416" id="r_aedf9429d5247a27d1e88ab47551b1416"><td class="memItemLeft" align="right" valign="top">SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedf9429d5247a27d1e88ab47551b1416">get_color</a> () const</td></tr>
+<tr class="memdesc:aedf9429d5247a27d1e88ab47551b1416"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the color of the ball.  <br /></td></tr>
 <tr class="separator:aedf9429d5247a27d1e88ab47551b1416"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb1e0d37b45485d975501c7e677468ed" id="r_afb1e0d37b45485d975501c7e677468ed"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb1e0d37b45485d975501c7e677468ed">get_pos_x</a> () const</td></tr>
+<tr class="memdesc:afb1e0d37b45485d975501c7e677468ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the x-coordinate of the ball.  <br /></td></tr>
 <tr class="separator:afb1e0d37b45485d975501c7e677468ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1246b7be2fb9e4786c1525b50b3445ea" id="r_a1246b7be2fb9e4786c1525b50b3445ea"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1246b7be2fb9e4786c1525b50b3445ea">get_pos_y</a> () const</td></tr>
+<tr class="memdesc:a1246b7be2fb9e4786c1525b50b3445ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the y-coordinate of the ball.  <br /></td></tr>
 <tr class="separator:a1246b7be2fb9e4786c1525b50b3445ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05d73d008f12204c777f91c19f6d5931" id="r_a05d73d008f12204c777f91c19f6d5931"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05d73d008f12204c777f91c19f6d5931">get_vel_x</a> () const</td></tr>
+<tr class="memdesc:a05d73d008f12204c777f91c19f6d5931"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the x-velocity component of the ball.  <br /></td></tr>
 <tr class="separator:a05d73d008f12204c777f91c19f6d5931"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4afbd5f1b284ecb846a8c8fc987e832" id="r_aa4afbd5f1b284ecb846a8c8fc987e832"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4afbd5f1b284ecb846a8c8fc987e832">get_vel_y</a> () const</td></tr>
+<tr class="memdesc:aa4afbd5f1b284ecb846a8c8fc987e832"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the y-velocity component of the ball.  <br /></td></tr>
 <tr class="separator:aa4afbd5f1b284ecb846a8c8fc987e832"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73ee5c12ffe6daf1efdcb39188d555b8" id="r_a73ee5c12ffe6daf1efdcb39188d555b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73ee5c12ffe6daf1efdcb39188d555b8">random_direction_angle</a> ()</td></tr>
+<tr class="memdesc:a73ee5c12ffe6daf1efdcb39188d555b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Randomizes the direction of the ball.  <br /></td></tr>
 <tr class="separator:a73ee5c12ffe6daf1efdcb39188d555b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08a0f6f379ba1f933272a0745aea72d1" id="r_a08a0f6f379ba1f933272a0745aea72d1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08a0f6f379ba1f933272a0745aea72d1">render_object</a> (SDL_Renderer *renderer)=0</td></tr>
+<tr class="memdesc:a08a0f6f379ba1f933272a0745aea72d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual method to render the ball.  <br /></td></tr>
 <tr class="separator:a08a0f6f379ba1f933272a0745aea72d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c80570c2de11838b734cdd97cc21862" id="r_a7c80570c2de11838b734cdd97cc21862"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c80570c2de11838b734cdd97cc21862">reset</a> ()</td></tr>
+<tr class="memdesc:a7c80570c2de11838b734cdd97cc21862"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the ball to the center of the screen.  <br /></td></tr>
 <tr class="separator:a7c80570c2de11838b734cdd97cc21862"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44dcf8667fe2e9bb44e620cc5b8a4b19" id="r_a44dcf8667fe2e9bb44e620cc5b8a4b19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44dcf8667fe2e9bb44e620cc5b8a4b19">set_color</a> (const SDL_Color &amp;new_color)</td></tr>
+<tr class="memdesc:a44dcf8667fe2e9bb44e620cc5b8a4b19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the color of the ball.  <br /></td></tr>
 <tr class="separator:a44dcf8667fe2e9bb44e620cc5b8a4b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ad02837d04b3187ad30f0fa9a5ccf97" id="r_a5ad02837d04b3187ad30f0fa9a5ccf97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ad02837d04b3187ad30f0fa9a5ccf97">set_position</a> (float x, float y)</td></tr>
+<tr class="memdesc:a5ad02837d04b3187ad30f0fa9a5ccf97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the position of the ball.  <br /></td></tr>
 <tr class="separator:a5ad02837d04b3187ad30f0fa9a5ccf97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac49745d3f9c66acdc568f55180769bfa" id="r_ac49745d3f9c66acdc568f55180769bfa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac49745d3f9c66acdc568f55180769bfa">set_velocity</a> (float velX, float velY)</td></tr>
+<tr class="memdesc:ac49745d3f9c66acdc568f55180769bfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the velocity of the ball.  <br /></td></tr>
 <tr class="separator:ac49745d3f9c66acdc568f55180769bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8edf6194d74142acc1a45d917deeadc" id="r_aa8edf6194d74142acc1a45d917deeadc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8edf6194d74142acc1a45d917deeadc">update</a> (float travel_time, class <a class="el" href="class_paddle.html">Paddle</a> *paddle1, class <a class="el" href="class_paddle.html">Paddle</a> *paddle2, <a class="el" href="class_user.html">User</a> *player1, <a class="el" href="class_user.html">User</a> *player2)</td></tr>
+<tr class="memdesc:aa8edf6194d74142acc1a45d917deeadc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the ball's position and handles collisions.  <br /></td></tr>
 <tr class="separator:aa8edf6194d74142acc1a45d917deeadc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ee6b4db63a0982e43c106dc4a618d46" id="r_a3ee6b4db63a0982e43c106dc4a618d46"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ee6b4db63a0982e43c106dc4a618d46">~BallBase</a> ()</td></tr>
+<tr class="memdesc:a3ee6b4db63a0982e43c106dc4a618d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup in derived classes.  <br /></td></tr>
 <tr class="separator:a3ee6b4db63a0982e43c106dc4a618d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -157,7 +175,10 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a07891facd75799611e8ba9e33160d8a7" id="r_a07891facd75799611e8ba9e33160d8a7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07891facd75799611e8ba9e33160d8a7">vel_y</a></td></tr>
 <tr class="separator:a07891facd75799611e8ba9e33160d8a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Abstract base class for all ball types in the game. </p>
+<p>This class defines the common interface and functionality for all types of balls in the game. It handles movement, collision detection, and score updates. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac4cc7b37b72fc5be1c72904b04603774" name="ac4cc7b37b72fc5be1c72904b04603774"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac4cc7b37b72fc5be1c72904b04603774">&#9670;&#160;</a></span>BallBase()</h2>
 
@@ -172,6 +193,21 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructor for <a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>The size (diameter) of the ball, defaults to 15.0f</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Initializes the ball at the center of the screen with a specified size and randomizes its initial direction</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>The size (diameter) of the ball </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -197,6 +233,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Virtual destructor for proper cleanup in derived classes. </p>
 
 </div>
 </div>
@@ -224,6 +262,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Gets the collision boundaries of the ball. </p>
+<p>Returns a rectangle representing the ball's position and size for collision detection purposes.</p>
+<dl class="section return"><dt>Returns</dt><dd>SDL_Rect representing the ball's boundaries </dd></dl>
+
 </div>
 </div>
 <a id="aedf9429d5247a27d1e88ab47551b1416" name="aedf9429d5247a27d1e88ab47551b1416"></a>
@@ -240,6 +282,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Gets the color of the ball. </p>
+<dl class="section return"><dt>Returns</dt><dd>The ball's color as an SDL_Color structure </dd></dl>
 
 </div>
 </div>
@@ -258,6 +303,9 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the x-coordinate of the ball. </p>
+<dl class="section return"><dt>Returns</dt><dd>The ball's x position </dd></dl>
+
 </div>
 </div>
 <a id="a1246b7be2fb9e4786c1525b50b3445ea" name="a1246b7be2fb9e4786c1525b50b3445ea"></a>
@@ -274,6 +322,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Gets the y-coordinate of the ball. </p>
+<dl class="section return"><dt>Returns</dt><dd>The ball's y position </dd></dl>
 
 </div>
 </div>
@@ -292,6 +343,9 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the x-velocity component of the ball. </p>
+<dl class="section return"><dt>Returns</dt><dd>The ball's velocity along the x-axis </dd></dl>
+
 </div>
 </div>
 <a id="aa4afbd5f1b284ecb846a8c8fc987e832" name="aa4afbd5f1b284ecb846a8c8fc987e832"></a>
@@ -309,6 +363,9 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Gets the y-velocity component of the ball. </p>
+<dl class="section return"><dt>Returns</dt><dd>The ball's velocity along the y-axis </dd></dl>
+
 </div>
 </div>
 <a id="a73ee5c12ffe6daf1efdcb39188d555b8" name="a73ee5c12ffe6daf1efdcb39188d555b8"></a>
@@ -325,6 +382,10 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Randomizes the direction of the ball. </p>
+<p>Changes the ball's velocity to move in a random direction</p>
+<p>Sets the ball's velocity to move in a random direction with a random angle between -45 and 45 degrees </p>
 
 </div>
 </div>
@@ -350,6 +411,15 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Pure virtual method to render the ball. </p>
+<p>Must be implemented by derived classes to draw their specific ball shape</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>The SDL renderer to use for drawing </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p>Implemented in <a class="el" href="class_classic_ball.html#a6e80547486ec3d868dc577841a768df0">ClassicBall</a>, <a class="el" href="class_square_ball.html#a411b2c176927ebf04fa47a87c721f22c">SquareBall</a>, and <a class="el" href="class_triangle_ball.html#a4b549d3dd4719b97b65c238fccc9157c">TriangleBall</a>.</p>
 
@@ -378,6 +448,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Resets the ball to the center of the screen. </p>
+<p>Repositions the ball and randomizes its direction</p>
+<p>Repositions the ball to the center and randomizes its direction </p>
+
 </div>
 </div>
 <a id="a44dcf8667fe2e9bb44e620cc5b8a4b19" name="a44dcf8667fe2e9bb44e620cc5b8a4b19"></a>
@@ -394,6 +468,14 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets the color of the ball. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_color</td><td>The new color as an SDL_Color </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -416,6 +498,15 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sets the position of the ball. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The new x-coordinate </td></tr>
+    <tr><td class="paramname">y</td><td>The new y-coordinate </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ac49745d3f9c66acdc568f55180769bfa" name="ac49745d3f9c66acdc568f55180769bfa"></a>
@@ -436,6 +527,15 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets the velocity of the ball. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">velX</td><td>The new x-velocity component </td></tr>
+    <tr><td class="paramname">velY</td><td>The new y-velocity component </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -481,6 +581,19 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Updates the ball's position and handles collisions. </p>
+<p>Moves the ball according to its velocity, checks for collisions with walls and paddles, and updates player scores when necessary.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">travel_time</td><td>Time delta since last update (in seconds) </td></tr>
+    <tr><td class="paramname">paddle1</td><td>Pointer to the first paddle </td></tr>
+    <tr><td class="paramname">paddle2</td><td>Pointer to the second paddle </td></tr>
+    <tr><td class="paramname">player1</td><td>Pointer to the first player's data </td></tr>
+    <tr><td class="paramname">player2</td><td>Pointer to the second player's data </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -503,6 +616,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Ball's size (diameter by default) </p>
 
 </div>
 </div>
@@ -525,6 +639,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Ball's color </p>
 
 </div>
 </div>
@@ -547,6 +662,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Ball's x position </p>
 
 </div>
 </div>
@@ -569,6 +685,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Ball's y position </p>
 
 </div>
 </div>
@@ -591,6 +708,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Ball's x velocity </p>
 
 </div>
 </div>
@@ -613,6 +731,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Ball's y velocity </p>
 
 </div>
 </div>

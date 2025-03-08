@@ -1,14 +1,23 @@
-// #############################################################################
-// # File page_3b.cpp
-// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
-// # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
-// #############################################################################
+/**
+ * @file page_3b.cpp
+ * @brief Implementation of the pause menu class
+ * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
+ * @copyright All rights reserved.
+ */
 
 #include "page_3b.hpp"
 #include "renderers.hpp"
 #include "macros.hpp"
 #include "game.hpp"
 
+/**
+ * @brief Constructor for pause menu
+ * 
+ * Initializes the pause menu with resume, save and exit buttons
+ * 
+ * @param renderer The SDL renderer to use for drawing
+ * @param font The TTF font to use for text display
+ */
 page_3b::page_3b(SDL_Renderer *renderer, TTF_Font *font)
     : renderer(renderer), police(font), mResume(false), mSave(false), mExit(false), selected_button(-1), mode_type(-1)
 {
@@ -18,8 +27,16 @@ page_3b::page_3b(SDL_Renderer *renderer, TTF_Font *font)
     button_exit = {300, 360, 200, 50};
 }
 
+/**
+ * @brief Destructor for pause menu
+ */
 page_3b::~page_3b() {}
 
+/**
+ * @brief Renders the pause menu
+ * 
+ * Draws the background and buttons with appropriate styling
+ */
 void page_3b::render_object()
 {
     // Semi-transparent background
@@ -47,6 +64,14 @@ void page_3b::render_object()
     SDL_RenderPresent(renderer);
 }
 
+/**
+ * @brief Handles events for the menu buttons
+ * 
+ * Processes SDL events to detect button hovers and clicks
+ * 
+ * @param event The SDL event to process
+ * @return true if a button was clicked, false otherwise
+ */
 bool page_3b::action_handler(const SDL_Event &event)
 {
     // We reinitialise the state of the buttons after each event

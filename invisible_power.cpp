@@ -1,33 +1,51 @@
-// #############################################################################
-// # File invisible_power.cpp
-// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
-// # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
-// #############################################################################
+/**
+ * @file invisible_power.cpp
+ * @brief Implementation of the InvisiblePower class
+ * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
+ * @copyright All rights reserved.
+ */
 
 #include "invisible_power.hpp"
 #include "macros.hpp"
 
 #include <SDL.h>
 
+/**
+ * @brief Constructor for the InvisiblePower class
+ * 
+ * Initializes the star-shaped power at a random position
+ * 
+ * @param screen_width The width of the game screen
+ * @param screenHeight The height of the game screen
+ */
 InvisiblePower::InvisiblePower(int screen_width, int screenHeight)
 {
     x = 150 + rand() % (550);
     y = 0;
-    width = 30 + rand() % 20; // size between 30 and 50 pixels
+    width = 30 + rand() % 20; // Size between 30 and 50 pixels
     height = 30 + rand() % 20;
     speed = 80.0f;
     is_active = true;
 }
 
+/**
+ * @brief Updates the power's position and handles ball visibility effects
+ * 
+ * Manages the star's movement, collision detection, and ball invisibility timing
+ * 
+ * @param time Time delta since last update
+ * @param ball Pointer to the ball object
+ * @param renderer SDL renderer for drawing
+ */
 void InvisiblePower::update(float time, BallBase *ball, SDL_Renderer *renderer)
 {
-    if (initialisation) // only once, otherwise the ball will be invisible all the time
+    if (initialisation) // Only once, otherwise the ball will be invisible all the time
     {
         initialisation = false;
         ball->set_color(white);
     }
 
-    // Star mouvement
+    // Star movement
     if (is_active)
     {
         y += speed * time;
@@ -36,12 +54,12 @@ void InvisiblePower::update(float time, BallBase *ball, SDL_Renderer *renderer)
         {
             is_active = false;
             invisible_ball = true;
-            ball->set_color(black);
-            invisibility_duration = 0.0f; // reinitialisation
+            ball->set_color(black); // Make ball blend with background
+            invisibility_duration = 0.0f; // Reset timer
             repeat = 0.0f;
         }
 
-        if (y + height >= 600 || y <= -40) // inverting the mouvement of the star
+        if (y + height >= 600 || y <= -40) // Reverse star movement at screen edges
         {
             speed = -speed;
         }
@@ -53,7 +71,7 @@ void InvisiblePower::update(float time, BallBase *ball, SDL_Renderer *renderer)
 
         if (invisibility_duration >= 3.0)
         {
-            // Return to original color after 3 seconds
+            // Return ball to original color after 3 seconds
             ball->set_color(white);
             invisibility_duration = 3.0f;
         }
@@ -68,7 +86,13 @@ void InvisiblePower::update(float time, BallBase *ball, SDL_Renderer *renderer)
     }
 }
 
-/* Rendere for the star object */
+/**
+ * @brief Renders the star-shaped power on screen
+ * 
+ * Draws a star shape using SDL rendering functions
+ * 
+ * @param renderer SDL renderer for drawing
+ */
 void InvisiblePower::render(SDL_Renderer *renderer)
 {
     if (!is_active)
@@ -112,6 +136,12 @@ void InvisiblePower::render(SDL_Renderer *renderer)
     }
 }
 
+/**
+ * @brief Checks for collision between the power and the ball
+ * 
+ * @param ball_type Pointer to the ball object
+ * @return true if collision detected, false otherwise
+ */
 bool InvisiblePower::check_collision(BallBase *ball_type) const
 {
     if (!is_active)
