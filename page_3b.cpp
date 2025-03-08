@@ -74,22 +74,22 @@ bool page_3b::action_handler(const SDL_Event &event)
 
         if (SDL_PointInRect(&point, &mResumeButton))
         {
-            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+            Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
             mResume = true;
             return true;
         }
         else if (SDL_PointInRect(&point, &button_exit))
         {
-            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+            Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
             mExit = true;
             return true;
         }
 
-        if (mode_type == TWO_PLAYERS_MODE) // detect this only for two players mode 
+        if (mode_type == TWO_PLAYERS_MODE) // detect this only for two players mode
         {
             if (SDL_PointInRect(&point, &mSaveButton))
             {
-                Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+                Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
                 mSave = true;
                 return true;
             }

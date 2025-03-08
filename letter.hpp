@@ -32,12 +32,12 @@ private:
     TTF_Font *font;
 
 public:
-    Letter(int index,float startX, float startY, float velocity, SDL_Renderer *renderer, TTF_Font *font);
+    Letter(int index, float startX, float startY, float velocity, SDL_Renderer *renderer, TTF_Font *font);
     ~Letter();
 
-    void update_letter(float deltaTime, int screenHeight, User* player1, User* player2, float ballX, float ballY, float ballRadius);
+    void update_letter(float time, int screenHeight, User *player1, User *player2, float ball_pos_x, float ball_pos_y, float ball_radius);
     void render(SDL_Renderer *renderer);
-    bool checkCollision(float ballX, float ballY, float ballRadius) const;
+    bool collision_check(float ball_pos_x, float ball_pos_y, float ball_radius) const;
     void next_letter();
     void next_word();
     void reset_word(int n);

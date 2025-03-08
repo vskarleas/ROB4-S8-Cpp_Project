@@ -19,7 +19,8 @@ BallBase::BallBase(float size)
     random_direction_angle();
 }
 
-// Select a random direction for the ball on a fresh start
+/* Randomize the direction_angle of the ball so that it doesn't
+   start towards the same direction_angle every single time */
 void BallBase::random_direction_angle()
 {
     // Random angle between -45 and 45 degrees
@@ -35,7 +36,7 @@ void BallBase::random_direction_angle()
 }
 
 // Update the ball's position
-void BallBase::update(float travel_time, Paddle *paddle1, Paddle *paddle2,  User* player1, User* player2)
+void BallBase::update(float travel_time, Paddle *paddle1, Paddle *paddle2, User *player1, User *player2)
 {
     pos_x += vel_x * travel_time; // velocity = position / time => position = velocity * time
     pos_y += vel_y * travel_time;
@@ -66,7 +67,7 @@ void BallBase::update(float travel_time, Paddle *paddle1, Paddle *paddle2,  User
         if (pos_x <= 0.0f)
         {
             player2->increment_score();
-            reset(); // starting the new round 
+            reset(); // starting the new round
         }
         else if (pos_x >= 800.0f)
         {
@@ -75,31 +76,28 @@ void BallBase::update(float travel_time, Paddle *paddle1, Paddle *paddle2,  User
         }
     }
 
-    
-
     SDL_Rect ballRect = {
         static_cast<int>(pos_x - ball_size / 2.0f),
         static_cast<int>(pos_y - ball_size / 2.0f),
         static_cast<int>(ball_size),
         static_cast<int>(ball_size)};
 
-    SDL_Rect paddle1Rect = paddle1->GetRect();
-    SDL_Rect paddle2Rect = paddle2->GetRect();
+    SDL_Rect paddle1Rect = paddle1->rectangle();
+    SDL_Rect paddle2Rect = paddle2->rectangle();
 
     if (SDL_HasIntersection(&ballRect, &paddle1Rect))
     {
-        Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+        Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
         pos_x = paddle1Rect.x + paddle1Rect.w + ball_size / 2.0f;
         vel_x *= -1.1f;
     }
     else if (SDL_HasIntersection(&ballRect, &paddle2Rect))
     {
-        Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+        Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
         pos_x = paddle2Rect.x - ball_size / 2.0f;
         vel_x *= -1.1f;
     }
 }
-
 
 // Reset the ball's position to the center of the screen and randomize its direction
 void BallBase::reset()

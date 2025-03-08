@@ -9,47 +9,47 @@
 
 #include <SDL.h>
 
-InvisiblePower::InvisiblePower(int screenWidth, int screenHeight)
+InvisiblePower::InvisiblePower(int screen_width, int screenHeight)
 {
     x = 150 + rand() % (550);
     y = 0;
     width = 30 + rand() % 20; // size between 30 and 50 pixels
     height = 30 + rand() % 20;
-    speed = 80.0f;              
-    isActive = true;            
+    speed = 80.0f;
+    is_active = true;
 }
 
-void InvisiblePower::update(float deltaTime, BallBase *ball, SDL_Renderer *renderer)
+void InvisiblePower::update(float time, BallBase *ball, SDL_Renderer *renderer)
 {
-    if (initialisation) //only once, otherwise the ball will be invisible all the time
+    if (initialisation) // only once, otherwise the ball will be invisible all the time
     {
         initialisation = false;
         ball->set_color(white);
     }
 
     // Star mouvement
-    if (isActive)
+    if (is_active)
     {
-        y += speed * deltaTime;
+        y += speed * time;
 
         if (check_collision(ball))
         {
-            isActive = false;
+            is_active = false;
             invisible_ball = true;
             ball->set_color(black);
             invisibility_duration = 0.0f; // reinitialisation
             repeat = 0.0f;
         }
 
-        if (y + height >= 600 || y <= -40) //inverting the mouvement of the star
+        if (y + height >= 600 || y <= -40) // inverting the mouvement of the star
         {
             speed = -speed;
         }
     }
     else if (invisible_ball)
     {
-        invisibility_duration += deltaTime;
-        repeat += deltaTime;
+        invisibility_duration += time;
+        repeat += time;
 
         if (invisibility_duration >= 3.0)
         {
@@ -61,7 +61,7 @@ void InvisiblePower::update(float deltaTime, BallBase *ball, SDL_Renderer *rende
         if (repeat >= 13.0)
         {
             // Star reappears after 13 seconds
-            isActive = true;
+            is_active = true;
             invisible_ball = false;
             y = 0; // Reset star position
         }
@@ -71,7 +71,7 @@ void InvisiblePower::update(float deltaTime, BallBase *ball, SDL_Renderer *rende
 /* Rendere for the star object */
 void InvisiblePower::render(SDL_Renderer *renderer)
 {
-    if (!isActive)
+    if (!is_active)
         return;
 
     // Use yellow color from macros.hpp
@@ -112,17 +112,17 @@ void InvisiblePower::render(SDL_Renderer *renderer)
     }
 }
 
-bool InvisiblePower::check_collision(BallBase* ball_type) const
+bool InvisiblePower::check_collision(BallBase *ball_type) const
 {
-    if (!isActive) return false;
+    if (!is_active)
+        return false;
 
     SDL_Rect star = {
         static_cast<int>(x),
         static_cast<int>(y),
         static_cast<int>(width),
-        static_cast<int>(height)
-    };
-    
+        static_cast<int>(height)};
+
     SDL_Rect ball = ball_type->boundaries();
     return SDL_HasIntersection(&star, &ball);
 }

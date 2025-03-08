@@ -1,50 +1,70 @@
-// #############################################################################
-// # File ai.cpp
-// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
-// # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
-// #############################################################################
-
-// #############################################################################
-// # File ai.cpp
-// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
-// # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
-// #############################################################################
+/**
+ * @file ai.cpp
+ * @brief Implementation of the AI class for computer-controlled paddle
+ * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
+ * @copyright All rights reserved.
+ */
 
 #include "ai.hpp"
 #include "macros.hpp"
 
 #include <cmath> // pour fabs si besoin
 
-/* Constructeur */
+/**
+ * @brief Constructor for AI class
+ * 
+ * Initializes the AI controller with a pointer to the paddle it will control
+ * and sets default difficulty to normal
+ * 
+ * @param controlledPaddle Pointer to the paddle to be controlled by the AI
+ */
 AI::AI(Paddle* controlledPaddle)
-    : mPaddle(controlledPaddle),
-      mDifficulty(1) // Niveau normal par défaut
+    : racket(controlledPaddle),
+      ai_difficulty(1) // Niveau normal par défaut
 {
 }
 
-/* Ajuste la difficulté de l'IA (0=facile, 1=normal, 2=difficile) */
-void AI::setDifficulty(int difficulty)
+/**
+ * @brief Sets the AI difficulty level
+ * 
+ * @param difficulty The difficulty level (0=easy, 1=normal, 2=hard)
+ */
+void AI::set_difficulty(int difficulty)
 {
-    mDifficulty = difficulty;
+    ai_difficulty = difficulty;
 }
 
-/* Mise à jour de la raquette contrôlée par l'IA selon la balle */
+/**
+ * @brief Updates the AI-controlled paddle's position based on the ball
+ * 
+ * This method calculates where to move the paddle based on the ball's position
+ * and the current difficulty setting. Higher difficulty makes the AI react faster.
+ * 
+ * @param ball Pointer to the ball to track
+ * @param dt Time delta since last update (in seconds)
+ */
 void AI::updateAI(BallBase* ball, float dt)
 {
-    if (!mPaddle || !ball)
+    if (!racket || !ball)
         return; // sécurité
 
     // On récupère la position de la raquette et de la balle
-    float paddleY = mPaddle->get_pos_y();
-    float ballY   = ball->get_pos_y();
-    float speed   = mPaddle->get_racket_speed(); // ex: 300
+    float paddleY = racket->get_pos_y();
+    float ball_pos_y = ball->get_pos_y();
+    float speed = racket->get_racket_speed(); // ex: 300
 
     // offset : pour ne pas être parfait
     float offset = 10.0f;
 
-    // On règle la vitesse de réaction selon la difficulté
+    /**
+     * @brief Adjust reaction speed based on difficulty level
+     * 
+     * Easy: 60% speed - easier for player to win
+     * Normal: 100% speed - balanced
+     * Hard: 140% speed - more challenging for the player
+     */
     float reactionFactor = 1.0f;
-    switch (mDifficulty)
+    switch (ai_difficulty)
     {
     case AI_MODE_EASY: // facile
         reactionFactor = 0.6f; // plus lent => plus simple de passer
@@ -57,25 +77,30 @@ void AI::updateAI(BallBase* ball, float dt)
         break;
     }
 
+    /**
+     * @brief Move the paddle based on ball position
+     */
     // Si la balle est au-dessus de la raquette, on monte
-    if (ballY < paddleY - offset)
+    if (ball_pos_y < paddleY - offset)
     {
-        mPaddle->set_pos_y(paddleY - speed * reactionFactor * dt);
+        racket->set_pos_y(paddleY - speed * reactionFactor * dt);
     }
     // Si la balle est en dessous, on descend
-    else if (ballY > paddleY + offset)
+    else if (ball_pos_y > paddleY + offset)
     {
-        mPaddle->set_pos_y(paddleY + speed * reactionFactor * dt);
+        racket->set_pos_y(paddleY + speed * reactionFactor * dt);
     }
 
-    // Empêche la raquette de sortir de l'écran (0..600)
-    float halfH = mPaddle->get_racket_height() / 2.0f;
-    if (mPaddle->get_pos_y() < halfH)
+    /**
+     * @brief Keep the paddle within screen bounds
+     */
+    float halfH = racket->get_racket_height() / 2.0f;
+    if (racket->get_pos_y() < halfH)
     {
-        mPaddle->set_pos_y(halfH);
+        racket->set_pos_y(halfH);
     }
-    else if (mPaddle->get_pos_y() > (600.0f - halfH))
+    else if (racket->get_pos_y() > (600.0f - halfH))
     {
-        mPaddle->set_pos_y(600.0f - halfH);
+        racket->set_pos_y(600.0f - halfH);
     }
 }

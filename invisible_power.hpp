@@ -8,33 +8,34 @@
 #define INVISIBLE_POWER_HPP
 #include <SDL.h>
 #include <SDL_ttf.h>
-#include <cstdlib>  // Pour rand() et srand()
-#include <ctime>    // Pour time()
+#include <cstdlib> // Pour rand() et srand()
+#include <ctime>   // Pour time()
 #include "classic_ball.hpp"
 #include <cmath>
 
-class InvisiblePower{
+class InvisiblePower
+{
 public:
-    InvisiblePower(int screenWidth, int screenHeight);
+    InvisiblePower(int screen_width, int screenHeight);
 
-    void update(float deltaTime, BallBase *Ball, SDL_Renderer* renderer);
-    void render(SDL_Renderer* renderer);
+    void update(float time, BallBase *Ball, SDL_Renderer *renderer);
+    void render(SDL_Renderer *renderer);
     SDL_Color previousColor; // Sauvegarde la couleur de la balle avant invisibilité
-    bool isActive;
-    bool check_collision(BallBase* ball) const;
+    bool is_active;
+    bool check_collision(BallBase *ball) const;
 
     void set_initialisation(bool init) { initialisation = init; }
 
 private:
-    float x=0;
-    float y=0;
-    bool joueur;
+    float x = 0;
+    float y = 0;
+    bool play;
     int width;
     int height;
     float speed;
     float invisibility_duration = 0.0f; // Temps restant avant la fin de l'effet
     float repeat;
-    bool invisible_ball = false;   // Indique si l'effet est en cours
+    bool invisible_ball = false; // Indique si l'effet est en cours
     bool initialisation;
 };
 

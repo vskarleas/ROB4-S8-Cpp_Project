@@ -28,6 +28,7 @@
 * V10.8.23 : Implemented fun mode with rackets size changing and ball invisibility. Macros were extedned, updated games logic to respond to the new criteria and fixed some bugs on the source code (+ 8 .5 hours for it to work after the modifications of Dounia and Yanis)
 * V10.8.24: Old makefile removed abd gitigonre updated. You will ave to perfom the cmake to compile. You can use directly the play.sh script
 * V10.9.1: play.sh installer was updated
+* V11.0.1: Added documentation structure. Fixed sime issues on the fun mode. We need to reset the padle height at the end of the fun mode manually if the button end game is atpped otherwise we risk to have different size paddles on other game modes
 
 ## Pages structures
 
@@ -147,7 +148,7 @@ Le jeu utilise SDL_mixer pour gérer différents effets sonores :
 - Musique de fond
 
 ```cpp
-Mix_Chunk* mPaddleHitSound;
+Mix_Chunk* racket_hit_sound;
 Mix_Music* mBackgroundMusic;
 ```
 
@@ -256,7 +257,7 @@ Voici queques implementations pour ceux cas spécifiques:
 
 1. Gestionnaire d'Événements
    auto handleCollision = [this](const Ball* ball, const Paddle* paddle) -> bool {
-   return CheckCollision(ball->GetBounds(), paddle->GetBounds());
+   return collision_check(ball->GetBounds(), paddle->GetBounds());
    };
 2. Validation des Entrées
    auto validateScore = [](int score) -> bool {

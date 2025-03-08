@@ -1,16 +1,27 @@
-// #############################################################################
-// # File renderers.cpp
-// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
-// # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
-// #############################################################################
+/**
+ * @file renderers.cpp
+ * @brief Implementation of rendering functions for various game shapes
+ * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
+ * @copyright All rights reserved.
+ */
 
 #include "renderers.hpp"
 #include <iostream>
 
 namespace Utilities
 {
-
-    // Function to render the text on the SDL screen as a button
+    /**
+     * @brief Renders a text button on screen
+     *
+     * Creates a text surface, converts it to a texture, and renders it
+     * centered on the provided button rectangle.
+     *
+     * @param renderer The SDL renderer used for drawing
+     * @param font The TTF font used for rendering text
+     * @param text The text to display on the button
+     * @param button The rectangle defining the button's position and size
+     * @param color The color of the text
+     */
     void render_button(SDL_Renderer *renderer, TTF_Font *font, const char *text,
                        const SDL_Rect &button, const SDL_Color &color)
     {
@@ -33,7 +44,16 @@ namespace Utilities
     }
 }
 
-// Implementation of the circle_renderer class
+/**
+ * @brief Helper method to draw a filled circle
+ *
+ * Uses the midpoint circle algorithm to efficiently render a filled circle.
+ *
+ * @param renderer The SDL renderer used for drawing
+ * @param center_x The x coordinate of the circle's center
+ * @param centerY The y coordinate of the circle's center
+ * @param radius The radius of the circle
+ */
 void circle_renderer::DrawFilledCircle(SDL_Renderer *renderer, int32_t center_x, int32_t centerY, int32_t radius) const
 {
     const int32_t diameter = (radius * 2);
@@ -65,9 +85,22 @@ void circle_renderer::DrawFilledCircle(SDL_Renderer *renderer, int32_t center_x,
     }
 }
 
-/* We are using functors to encapsulate teh shapes rendering logic used to show the different ball types. It allows us to add more easily new shape types and also accelerated a lot the different tests because the functors allowed the different renderers to be tested individually */
+/**
+ * @brief Functors encapsulate the shape rendering logic
+ * 
+ * Using functors allows us to easily add new shape types and test them individually.
+ * This approach greatly accelerated development by enabling isolated testing of renderers.
+ */
 
-// Implementation of the circle_renderer class
+/**
+ * @brief Renders a circular shape at the specified position
+ *
+ * @param renderer The SDL renderer used for drawing
+ * @param pos_x The x coordinate of the circle's center
+ * @param pos_y The y coordinate of the circle's center
+ * @param size The diameter of the circle
+ * @param color The color to fill the circle with
+ */
 void circle_renderer::operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size, SDL_Color color) const
 {
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
@@ -77,7 +110,15 @@ void circle_renderer::operator()(SDL_Renderer *renderer, float pos_x, float pos_
                      static_cast<int32_t>(size / 2.0f));
 }
 
-// Implementation of the square_renderer class
+/**
+ * @brief Renders a square shape at the specified position
+ *
+ * @param renderer The SDL renderer used for drawing
+ * @param pos_x The x coordinate of the square's center
+ * @param pos_y The y coordinate of the square's center
+ * @param size The side length of the square
+ * @param color The color to fill the square with
+ */
 void square_renderer::operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size, SDL_Color color) const
 {
     SDL_Rect ball = {
@@ -88,8 +129,18 @@ void square_renderer::operator()(SDL_Renderer *renderer, float pos_x, float pos_
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderFillRect(renderer, &ball);
 }
- 
-// Implementation of the triangle_renderer class
+
+/**
+ * @brief Renders a triangle shape at the specified position
+ *
+ * Uses scan-line algorithm to fill the triangle efficiently.
+ *
+ * @param renderer The SDL renderer used for drawing
+ * @param pos_x The x coordinate of the triangle's center
+ * @param pos_y The y coordinate of the triangle's center
+ * @param size The size of the triangle (height)
+ * @param color The color to fill the triangle with
+ */
 void triangle_renderer::operator()(SDL_Renderer *renderer, float pos_x, float pos_y, float size, SDL_Color color) const
 {
     SDL_Point points[3] = {

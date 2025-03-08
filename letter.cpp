@@ -68,23 +68,23 @@ void Letter::next_letter()
     }
 }
 
-void Letter::update_letter(float deltaTime, int screenHeight, User *player1, User *player2,
-                           float ballX, float ballY, float ballRadius)
+void Letter::update_letter(float time, int screenHeight, User *player1, User *player2,
+                           float ball_pos_x, float ball_pos_y, float ball_radius)
 {
     // Letters mouvement
-    y += speed * deltaTime;
+    y += speed * time;
 
-    // Check if letter reaches the limits 
+    // Check if letter reaches the limits
     if (y + height >= screenHeight || y <= 0)
     {
         speed = -speed;
     }
 
-    if (checkCollision(ballX, ballY, ballRadius)) // Check collision with ball
+    if (collision_check(ball_pos_x, ball_pos_y, ball_radius)) // Check collision with ball
     {
 
         // Which player should take extra point ?
-        if (ballX < x + width / 2)
+        if (ball_pos_x < x + width / 2)
         {
             player1->increment_score();
         }
@@ -93,7 +93,6 @@ void Letter::update_letter(float deltaTime, int screenHeight, User *player1, Use
             player2->increment_score();
         }
         lettersAtBottom.push_back(letter);
-
 
         // Check if it is the last letter of the word
         if (current_letter_index >= word.length())
@@ -121,10 +120,10 @@ void Letter::render(SDL_Renderer *renderer)
         SDL_RenderCopy(renderer, texture, nullptr, &rectangle);
     }
 
-    // Posiotining on the bottom of the screen 
-    int pos_x = 150;              
-    int pos_y = WINDOW_HEIGHT - 100; 
-    int spacing = width * 3 + 10;    
+    // Posiotining on the bottom of the screen
+    int pos_x = 150;
+    int pos_y = WINDOW_HEIGHT - 100;
+    int spacing = width * 3 + 10;
 
     for (size_t i = 0; i < lettersAtBottom.size(); ++i)
     {
@@ -146,22 +145,22 @@ void Letter::render(SDL_Renderer *renderer)
 void Letter::next_word()
 {
     current_word_index = (current_word_index + 1) % words.size(); // Going to the next word
-    word = words[current_word_index]; 
+    word = words[current_word_index];
     current_letter_index = 0;
-    next_letter();                                     
+    next_letter();
 }
 
 // Vérifier la collision avec la balle
-bool Letter::checkCollision(float ballX, float ballY, float ballRadius) const
+bool Letter::collision_check(float ball_pos_x, float ball_pos_y, float ball_radius) const
 {
     // Vérifier si le centre de la balle est dans la zone de la lettre
-    float closestX = (ballX < x) ? x : (ballX > x + width * 3) ? x + width * 3
-                                                               : ballX;
-    float closestY = (ballY < y) ? y : (ballY > y + height * 3) ? y + height * 3
-                                                                : ballY;
+    float closestX = (ball_pos_x < x) ? x : (ball_pos_x > x + width * 3) ? x + width * 3
+                                                               : ball_pos_x;
+    float closestY = (ball_pos_y < y) ? y : (ball_pos_y > y + height * 3) ? y + height * 3
+                                                                : ball_pos_y;
 
-    float distanceX = ballX - closestX;
-    float distanceY = ballY - closestY;
+    float distanceX = ball_pos_x - closestX;
+    float distanceY = ball_pos_y - closestY;
 
-    return (distanceX * distanceX + distanceY * distanceY) < (ballRadius * ballRadius);
+    return (distanceX * distanceX + distanceY * distanceY) < (ball_radius * ball_radius);
 }

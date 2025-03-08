@@ -9,25 +9,26 @@
 
 #include <SDL.h>
 #include <SDL_ttf.h>
-#include <SDL_mixer.h> 
+#include <SDL_mixer.h>
 
-class page_3b {
+class page_3b
+{
 public:
-    page_3b(SDL_Renderer* renderer, TTF_Font* font);
+    page_3b(SDL_Renderer *renderer, TTF_Font *font);
     ~page_3b();
-    
+
     void render_object();
-    bool action_handler(const SDL_Event& event);
+    bool action_handler(const SDL_Event &event);
     bool ShouldResume() const { return mResume; }
     bool ShouldSave() const { return mSave; }
     bool get_exit_mode() const { return mExit; }
 
     void set_mode_type(int type) { mode_type = type; } // update the mode type from the outside
-    int get_mode_type() const { return mode_type; } // allow to get the mode type for decision making on the game's logic
+    int get_mode_type() const { return mode_type; }    // allow to get the mode type for decision making on the game's logic
 
 private:
-    SDL_Renderer* renderer;
-    TTF_Font* police;
+    SDL_Renderer *renderer;
+    TTF_Font *police;
     bool mResume;
     bool mSave;
     bool mExit;

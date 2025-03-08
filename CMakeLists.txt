@@ -70,7 +70,6 @@ add_library(${PROJECT_NAME}_lib
     sound_effects.cpp
     power.cpp
     invisible_power.cpp
-    inverse_power.cpp
 )
 
 # Create the main executable

@@ -1,9 +1,15 @@
+// #############################################################################
+// # File power.hpp
+// # Project in C++ - Polytech Sorbonne - 2024/2025 - S8
+// # Authors: Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem - All rights reserved.
+// #############################################################################
+
 #ifndef POWER_HPP
 #define POWER_HPP
 
 #include <SDL.h>
-#include <cstdlib> // Pour rand() et srand()
-#include <ctime>   // Pour time()
+#include <cstdlib>
+#include <ctime>
 
 #include "paddle.hpp"
 #include "macros.hpp"
@@ -11,23 +17,26 @@
 class Power
 {
 public:
-    Power(int screenWidth, int screenHeight); // Constructeur
+    Power(int screen_width, int screenHeight); // Constructeur
 
-    virtual void update(float deltaTime, Paddle *racket1, Paddle *racket2, float ballX, float ballY, float ballRadius, SDL_Renderer *renderer); // Fait descendre le bonus
-    virtual void render(SDL_Renderer *renderer);                                                                                                // Affiche le bonus
-    bool checkCollision(float ballX, float ballY, float ballRadius) const;                                                                      // Vérifie la collision avec la balle
-    virtual void reset(int screenWidth);                                                                                                        // Réapparaît avec une nouvelle couleur et position
+    // Virtual method that updates the game's parameters based on the powers impact
+    virtual void update(float time, Paddle *racket1, Paddle *racket2, float ball_pos_x, float ball_pos_y, float ball_radius, SDL_Renderer *renderer);
+    virtual void render(SDL_Renderer *renderer);
 
-    bool isActive; // Indique si le bonus est actif ou pas
+    // Checks if the ball has hit one of the powers elements
+    bool collision_check(float ball_pos_x, float ball_pos_y, float ball_radius) const;
+    virtual void reset(int screen_width);
+
+    bool is_active; // Used to determine game's reaction. It updates the effect_is_active boolean
 
 protected:
     float x = 0;
     float y = 0;
-    bool joueur;
+    bool play;
     int width, height;
     float speed;
-    float effectDuration = 0.0f; // Temps restant avant la fin de l'effet
-    bool effectActive = false;   // Indique si l'effet est en cours
+    float duration_effect = 0.0f; // Temps restant avant la fin de l'effet
+    bool effect_is_active = false;   // Global variable that saves if the effect is active or not
     SDL_Color color;
 };
 

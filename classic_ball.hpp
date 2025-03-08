@@ -9,11 +9,10 @@
 
 #include "ball_base.hpp"
 
-
 class ClassicBall : public BallBase
 {
 public:
-    // Constructor with default size of 15.0f for a circle object (specified)
+    // Constructor with default size of 15.0f for a circle ball (specified)
     ClassicBall() : BallBase(15.0f) {}
 
     // Rendering the square ball

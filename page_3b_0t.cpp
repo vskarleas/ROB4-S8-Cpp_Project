@@ -13,14 +13,14 @@
 #include "game.hpp"
 
 page_3b_0t::page_3b_0t(SDL_Renderer *_renderer, TTF_Font *font) : /* Follwoing the order in the class declaration*/
-    start_new_game(false),
-    exit_mode(false),
-    continue_game(false),
-    saved_file_exists(Saving::save_exists()), // calls the save_exists() function to check if a game state file exists
+                                                                  start_new_game(false),
+                                                                  exit_mode(false),
+                                                                  continue_game(false),
+                                                                  saved_file_exists(Saving::save_exists()), // calls the save_exists() function to check if a game state file exists
 
-    texture_menu(nullptr),
-    renderer(_renderer),
-    police(font)
+                                                                  texture_menu(nullptr),
+                                                                  renderer(_renderer),
+                                                                  police(font)
 {
     // Buttons positioning on the main menu page
     button_start = SDL_Rect{WINDOW_HEIGHT / 2, 100, 200, 50};
@@ -56,20 +56,20 @@ bool page_3b_0t::action_handler(const SDL_Event &event)
 
         if (SDL_PointInRect(&point, &adjusted_start))
         {
-            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+            Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
             start_new_game = true;
             return true;
         }
         else if (saved_file_exists && SDL_PointInRect(&point, &adjusted_continue))
         {
             continue_game = true;
-            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+            Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
             return true;
         }
         else if (SDL_PointInRect(&point, &button_exit))
         {
             exit_mode = true;
-            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+            Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
             // SDL_Event quitEvent;
             // quitEvent.type = SDL_QUIT;
             // SDL_PushEvent(&quitEvent);
@@ -80,7 +80,7 @@ bool page_3b_0t::action_handler(const SDL_Event &event)
     return false;
 }
 
-void page_3b_0t::render_object(int mode, const std::string& highscore_name, int highscore)
+void page_3b_0t::render_object(int mode, const std::string &highscore_name, int highscore)
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
@@ -92,9 +92,9 @@ void page_3b_0t::render_object(int mode, const std::string& highscore_name, int 
     {
         TTF_SetFontStyle(police, TTF_STYLE_BOLD);
         std::string highScoreText = "High Score: " + std::to_string(highscore) + " by " + highscore_name;
-        SDL_Rect highScoreRect = {WINDOW_HEIGHT / 2 - 100, 20, 400, 50};  // Moved to top
+        SDL_Rect highScoreRect = {WINDOW_HEIGHT / 2 - 100, 20, 400, 50}; // Moved to top
         Utilities::render_button(renderer, police, highScoreText.c_str(), highScoreRect, highlight_color);
-        
+
         // results on the terminal
         // SDL_Log("Current High Score - Player: %s, Score: %d", highscore_name.c_str(), highscore);
     }

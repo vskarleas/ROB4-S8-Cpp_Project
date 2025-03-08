@@ -1,7 +1,6 @@
 /**
  * @file gui.cpp
  * @brief Implementation of the GUI class for game interface
- * @project C++ Project - Polytech Sorbonne - 2024/2025 - S8
  * @authors Vasileios Filippos Skarleas, Dounia Bakalem, Yanis Sadoun
  * @copyright All rights reserved.
  */

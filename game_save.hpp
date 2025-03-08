@@ -37,21 +37,25 @@ public:
     // Deleting the file including the game's state (save)
     static void delete_save();
 
+    // Deleting the file including the highscore data 
     static void delete_highscore();
 
-    // Generating the game's state (save) to a file 
+    // Generating the game's state (save) to a file
     static bool save_game(const SaveState &state);
 
-    // Loading the game's state from the file 
+    // Loading the game's state from the file
     static bool load_game(SaveState &state);
 
     // Check if a save file exists or not
     static bool save_exists();
 
+    // Saving the highscore to a file
     static bool save_highscore(const HighScore &score);
 
+    // Loading the highscore from the file
     static bool load_highscore(HighScore &score);
 
+    // Check if a highscore file exists or not
     static bool highscore_exists();
 };
 

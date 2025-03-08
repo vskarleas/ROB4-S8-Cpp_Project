@@ -16,16 +16,16 @@ class GUI
 public:
     /**
      * @brief Get the player's name input from the SDL window.
-     * 
+     *
      * This function handles the SDL events to capture the player's name input
      * from the keyboard. It displays the input text on the screen and updates
      * it in real-time as the player types.
-     * 
+     *
      * @param renderer The SDL_Renderer used to render the text.
      * @param font The TTF_Font used to render the text.
      * @return std::string The player's name input.
      */
-    static std::string player_name_input(SDL_Renderer* renderer, TTF_Font* font, int player_number);
+    static std::string player_name_input(SDL_Renderer *renderer, TTF_Font *font, int player_number);
 };
 
 #endif

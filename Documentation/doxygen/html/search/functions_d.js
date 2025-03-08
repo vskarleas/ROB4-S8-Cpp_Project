@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['save_5fexists_0',['save_exists',['../class_saving.html#aac1d26ab963ad6aa4d8febaa58434630',1,'Saving']]],
+  ['save_5fgame_1',['save_game',['../class_saving.html#a7700708d302d5e0571fd926a1f4d475d',1,'Saving']]],
+  ['save_5fhighscore_2',['save_highscore',['../class_saving.html#ac1a7a1f3fe41d0828af1a22f1e824e77',1,'Saving']]],
+  ['send_5fpaddle_5fstate_3',['send_paddle_state',['../class_network_manager.html#a65e2fa27a6a69fb183d748fc61904700',1,'NetworkManager']]],
+  ['set_5fcolor_4',['set_color',['../class_ball_base.html#a44dcf8667fe2e9bb44e620cc5b8a4b19',1,'BallBase']]],
+  ['set_5fdifficulty_5',['set_difficulty',['../class_a_i.html#a208ff40ecd739032d801bbe156892fae',1,'AI']]],
+  ['set_5finitialisation_6',['set_initialisation',['../class_invisible_power.html#a7214249499a037bcfd624c9976447a7d',1,'InvisiblePower']]],
+  ['set_5fmode_5ftype_7',['set_mode_type',['../classpage__3b.html#a2a977fe0c63631c5dd4d270299a67335',1,'page_3b::set_mode_type()'],['../classpage__3b__1t.html#a990114b7a575e9b0fb390c618fc87045',1,'page_3b_1t::set_mode_type()']]],
+  ['set_5fnotice_5fid_8',['set_notice_id',['../classpage__2b__1t.html#ad51c8562f701868ac4003a6a20453d8d',1,'page_2b_1t']]],
+  ['set_5fpos_5fx_9',['set_pos_x',['../class_paddle.html#a58d2734fac63617c018b6f0946bf728a',1,'Paddle']]],
+  ['set_5fpos_5fy_10',['set_pos_y',['../class_paddle.html#afb04f538703eb3741b14605fdbc72de2',1,'Paddle']]],
+  ['set_5fposition_11',['set_position',['../class_ball_base.html#a5ad02837d04b3187ad30f0fa9a5ccf97',1,'BallBase']]],
+  ['set_5fracket_5fheight_12',['set_racket_height',['../class_paddle.html#a37f09cae59686368f35b9e62f2fb5a46',1,'Paddle']]],
+  ['set_5fround_13',['set_round',['../class_user.html#a6a21fe42c88ad84675b2b40f73475a0b',1,'User']]],
+  ['set_5fsaved_5ffile_5fexists_14',['set_saved_file_exists',['../classpage__3b__0t.html#ac395f974b06c97dc5654fab952998d39',1,'page_3b_0t']]],
+  ['set_5fup_15',['set_up',['../class_paddle.html#a3053eef40b08bf961dfcbb3dcc1fd832',1,'Paddle']]],
+  ['set_5fuser_5fname_16',['set_user_name',['../class_user.html#a8a5fbe24dd60d9e3feae83539e6aa054',1,'User']]],
+  ['set_5fuser_5fscore_17',['set_user_score',['../class_user.html#aa73c294b3cdf8ea34d0ebac4a22e83c3',1,'User']]],
+  ['set_5fvelocity_18',['set_velocity',['../class_ball_base.html#ac49745d3f9c66acdc568f55180769bfa',1,'BallBase']]],
+  ['set_5fwinner_19',['set_winner',['../classgame__over.html#ac63a946134b3dcac2e85b5052f0c8718',1,'game_over']]],
+  ['shouldresume_20',['ShouldResume',['../classpage__3b.html#a86e13ce068a806196b89deed21d1df14',1,'page_3b']]],
+  ['shouldsave_21',['ShouldSave',['../classpage__3b.html#acea12939cb180aaf9334749fa170b1d0',1,'page_3b']]],
+  ['squareball_22',['SquareBall',['../class_square_ball.html#a2da9a6b0b5e013427ab926236a657ac6',1,'SquareBall']]]
+];

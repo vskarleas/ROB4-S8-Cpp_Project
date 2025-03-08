@@ -45,8 +45,10 @@ namespace
         }
     }
 
-    void codec_string(char* str, size_t length) {
-        for (size_t i = 0; i < length; ++i) {
+    void codec_string(char *str, size_t length)
+    {
+        for (size_t i = 0; i < length; ++i)
+        {
             str[i] = codec_byte(str[i]);
         }
     }
@@ -151,7 +153,6 @@ bool Saving::load_game(SaveState &state)
         codec_string(encode_state.player1_name, 20);
         codec_string(encode_state.player2_name, 20);
 
-        
         state = encode_state; // Copy decoded state back
 
         return true;
@@ -189,7 +190,7 @@ bool Saving::load_highscore(HighScore &score)
     codec_string(encode_score.name, 20);
 
     score = encode_score;
-    
+
     SDL_Log("Loaded high score - Name: %s, Score: %d", score.name, score.score);
     return true;
 }

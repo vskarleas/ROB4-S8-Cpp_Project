@@ -28,12 +28,12 @@
 
 #include "power.hpp"
 #include "invisible_power.hpp"
-#include "inverse_power.hpp"
 
 #include "gui.hpp"
 #include "letter.hpp"
 
-enum class game_state {
+enum class game_state
+{
     Notice_Menu,
     Menu,
     Middle_menu,
@@ -48,7 +48,8 @@ enum class game_state {
     Set_up
 };
 
-class Game {
+class Game
+{
 public:
     Game();
     ~Game();
@@ -56,9 +57,9 @@ public:
     void loop();
     void close();
 
-    static Mix_Chunk* mPaddleHitSound;
-    static Mix_Chunk* mWallHitSound;
-    static Mix_Chunk* mScoreSound;
+    static Mix_Chunk *racket_hit_sound;
+    static Mix_Chunk *mWallHitSound;
+    static Mix_Chunk *mScoreSound;
 
 private:
     void game_logic();
@@ -66,10 +67,10 @@ private:
     void output();
     void ball_creation(int type);
     void update_background_color();
-    
+
     // SDL objects for the game window and renderer
-    SDL_Window* mWindow;
-    SDL_Renderer* renderer;
+    SDL_Window *mWindow;
+    SDL_Renderer *renderer;
 
     // Game loop variable allowing to control either if we stay on the modes loop or not
     bool mIsRunning;
@@ -77,57 +78,55 @@ private:
     // This is used to track the time since the last frame was drawn
     /* We need that to calculate velocities and position */
     Uint32 mTicksCount;
-    
-    // Every game needs two paddles and one ball as expected
-    Paddle* mPaddle1;
-    Paddle* mPaddle2;
-    BallBase* mBall;
 
-    AI* mAI; // the AI player
-    
+    // Every game needs two paddles and one ball as expected
+    Paddle *racket1;
+    Paddle *racket2;
+    BallBase *mBall;
+
+    AI *mAI; // the AI player
+
     // The scores of the two players
     // int mScore1;
     // int mScore2;
 
     // The font used on the whole game
-    TTF_Font* police;
-    
+    TTF_Font *police;
+
     // Adding the different page structures on the app
-    page_2b_1t* mNoticeMenu;
-    page_3b_0t* mMenu;
-    page_3b* mPauseMenu;
-    page_3b_1t* mMiddleMenu;
-    page_4b_1t* mModeMenu;
+    page_2b_1t *mNoticeMenu;
+    page_3b_0t *mMenu;
+    page_3b *mPauseMenu;
+    page_3b_1t *mMiddleMenu;
+    page_4b_1t *mModeMenu;
 
     // Network game
-    NetworkManager* network; // NOT USED YET
+    NetworkManager *network; // NOT USED YET
     bool is_network_game;
 
-    game_over* mGameOver; // This is used when the game is over
-
+    game_over *mGameOver; // This is used when the game is over
 
     // This allows us to control on which state we are and make the appropriate UI and action decisons
     game_state mGameState;
 
     // For the background music
-    Mix_Music* mBackgroundMusic;
-    Mix_Chunk* mNewRoundSound; 
-    Mix_Chunk* mGameOverSound;
-    Mix_Music* mPauseMusic;
-    Mix_Music* mOnHoldMusic;
+    Mix_Music *mBackgroundMusic;
+    Mix_Chunk *mNewRoundSound;
+    Mix_Chunk *mGameOverSound;
+    Mix_Music *mPauseMusic;
+    Mix_Music *mOnHoldMusic;
 
-    
     // Background color for the two sides
     SDL_Color background_color_left;
     SDL_Color background_color_right;
 
     // The pause button object declared here
     SDL_Rect mPauseButtonRect;
-    bool pause_button();   
-    
-    User* player1;
-    User* player2;
-    std::string winner;  // To store winner's name
+    bool pause_button();
+
+    User *player1;
+    User *player2;
+    std::string winner; // To store winner's name
 
     int last_highscore;
     char last_highscore_name[20]; // To store the name of the last high score player
@@ -135,7 +134,6 @@ private:
     Letter *mletter;
     Power *mpower;
     InvisiblePower *minvisible;
-    InversiblePower *minverse;
 };
 
 #endif

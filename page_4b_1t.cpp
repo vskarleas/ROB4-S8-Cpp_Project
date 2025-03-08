@@ -60,25 +60,25 @@ bool page_4b_1t::action_handler(const SDL_Event &event)
         // Ball selection menu clicks
         if (SDL_PointInRect(&point, &button_ai_mode))
         {
-            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+            Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
             mode_id = AI_MODE;
             return true;
         }
         else if (SDL_PointInRect(&point, &button_two_players_mode))
         {
-            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+            Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
             mode_id = TWO_PLAYERS_MODE;
             return true;
         }
         else if (SDL_PointInRect(&point, &button_storytime_mode))
         {
-            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+            Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
             mode_id = STORYTIME_MODE;
             return true;
         }
         else if (SDL_PointInRect(&point, &button_fun_mode))
         {
-            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+            Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
             mode_id = FUN_MODE;
             return true;
         }

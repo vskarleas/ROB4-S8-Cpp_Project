@@ -46,14 +46,14 @@ bool page_2b_1t::action_handler(const SDL_Event &event)
 
         if (SDL_PointInRect(&point, &button_lets_go))
         {
-            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+            Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
             next_view = true;
             return true;
         }
 
         if (SDL_PointInRect(&point, &button_back))
         {
-            Mix_PlayChannel(-1, Game::mPaddleHitSound, 0);
+            Mix_PlayChannel(-1, Game::racket_hit_sound, 0);
             go_back = true;
             return true;
         }

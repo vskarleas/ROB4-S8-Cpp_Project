@@ -16,7 +16,7 @@
 
 #include <string>
 
-Mix_Chunk *Game::mPaddleHitSound = nullptr;
+Mix_Chunk *Game::racket_hit_sound = nullptr;
 Mix_Chunk *Game::mWallHitSound = nullptr;
 Mix_Chunk *Game::mScoreSound = nullptr;
 
@@ -27,8 +27,8 @@ Game::Game()
       mIsRunning(true),
       mTicksCount(0),
 
-      mPaddle1(nullptr),
-      mPaddle2(nullptr),
+      racket1(nullptr),
+      racket2(nullptr),
       mBall(nullptr),
 
       mAI(nullptr),
@@ -61,8 +61,7 @@ Game::Game()
 
       mletter(nullptr),
       mpower(nullptr),
-      minvisible(nullptr),
-      minverse(nullptr)
+      minvisible(nullptr)
 
 {
     background_color_left = black;
@@ -87,12 +86,6 @@ Game::~Game()
     {
         delete mPauseMenu;
         mPauseMenu = nullptr;
-    }
-
-    if (minverse)
-    {
-        delete minverse;
-        minverse = nullptr;
     }
 
     if (minvisible)
@@ -126,15 +119,15 @@ Game::~Game()
     }
 
     // Delete game objects
-    if (mPaddle1)
+    if (racket1)
     {
-        delete mPaddle1;
-        mPaddle1 = nullptr;
+        delete racket1;
+        racket1 = nullptr;
     }
-    if (mPaddle2)
+    if (racket2)
     {
-        delete mPaddle2;
-        mPaddle2 = nullptr;
+        delete racket2;
+        racket2 = nullptr;
     }
     if (mBall)
     {
@@ -160,10 +153,10 @@ Game::~Game()
         Mix_FreeMusic(mBackgroundMusic);
         mBackgroundMusic = nullptr;
     }
-    if (mPaddleHitSound)
+    if (racket_hit_sound)
     {
-        Mix_FreeChunk(mPaddleHitSound);
-        mPaddleHitSound = nullptr;
+        Mix_FreeChunk(racket_hit_sound);
+        racket_hit_sound = nullptr;
     }
     if (mWallHitSound)
     {
@@ -312,18 +305,17 @@ bool Game::initialise()
     mletter = new Letter(0, 400, 0, 30, renderer, police);
     mpower = new Power(WINDOW_WIDTH, WINDOW_HEIGHT);
     minvisible = new InvisiblePower(WINDOW_WIDTH, WINDOW_HEIGHT);
-    minverse = new InversiblePower(WINDOW_WIDTH, WINDOW_HEIGHT);
 
     // Creating the different objects of the game
-    mPaddle1 = new Paddle(30, true);
-    mPaddle2 = new Paddle(770, false);
+    racket1 = new Paddle(30, true);
+    racket2 = new Paddle(770, false);
 
     // Start with classic ball then it is updated over the choices at MiddleMenu
     ball_creation(0);
 
     // Load audio files (make sure these files exist in your project directory)
     mBackgroundMusic = Mix_LoadMUS("assets/background.wav");
-    mPaddleHitSound = Mix_LoadWAV("assets/paddle_hit.wav");
+    racket_hit_sound = Mix_LoadWAV("assets/paddle_hit.wav");
     mWallHitSound = Mix_LoadWAV("assets/wall_hit.wav");
     mScoreSound = Mix_LoadWAV("assets/score.wav");
     mPauseMusic = Mix_LoadMUS("assets/pause.wav");
@@ -347,7 +339,7 @@ bool Game::initialise()
         SDL_Log("Failed to load game over sound: %s", Mix_GetError());
     }
 
-    if (!mPaddleHitSound)
+    if (!racket_hit_sound)
     {
         SDL_Log("Failed to load paddle hit sound: %s", Mix_GetError());
     }
@@ -395,15 +387,15 @@ bool Game::initialise()
         Mix_VolumeMusic(MIX_MAX_VOLUME / 3);
     }
 
-    if (mPaddleHitSound)
-        Mix_VolumeChunk(mPaddleHitSound, MIX_MAX_VOLUME / 2);
+    if (racket_hit_sound)
+        Mix_VolumeChunk(racket_hit_sound, MIX_MAX_VOLUME / 2);
     if (mWallHitSound)
         Mix_VolumeChunk(mWallHitSound, MIX_MAX_VOLUME / 4);
     if (mScoreSound)
         Mix_VolumeChunk(mScoreSound, MIX_MAX_VOLUME / 2);
 
     // Adding the AI functionality on the PAddle No 2
-    mAI = new AI(mPaddle2);
+    mAI = new AI(racket2);
 
     // Reading the High Score from the file
     if (Saving::highscore_exists())
@@ -517,7 +509,7 @@ void Game::game_logic()
                             break;
 
                         case FUN_MODE:
-                            
+
                             user_name = GUI::player_name_input(renderer, police, 1);
                             player1->set_user_name(user_name);
 
@@ -527,7 +519,7 @@ void Game::game_logic()
                             mMiddleMenu->set_mode_type(BALL_TYPE_SELECTION);
                             mGameState = game_state::Middle_menu;
 
-                            minvisible->set_initialisation(true); // redefining colour initilisation 
+                            minvisible->set_initialisation(true); // redefining colour initilisation
 
                             break;
 
@@ -639,8 +631,8 @@ void Game::game_logic()
                             player1->set_user_name(savedState.player1_name);
                             player2->set_user_name(savedState.player2_name);
 
-                            mPaddle1->set_pos_y(savedState.paddle1_y);
-                            mPaddle2->set_pos_y(savedState.paddle2_y);
+                            racket1->set_pos_y(savedState.paddle1_y);
+                            racket2->set_pos_y(savedState.paddle2_y);
                             ball_creation(savedState.ball_type);
                             mBall->set_position(savedState.ball_x, savedState.ball_y);
                             mBall->set_velocity(savedState.ball_vel_x, savedState.ball_vel_y);
@@ -723,8 +715,8 @@ void Game::game_logic()
                         SaveState saveState;
                         saveState.score1 = player1->get_user_score();
                         saveState.score2 = player2->get_user_score();
-                        saveState.paddle1_y = mPaddle1->get_pos_y();
-                        saveState.paddle2_y = mPaddle2->get_pos_y();
+                        saveState.paddle1_y = racket1->get_pos_y();
+                        saveState.paddle2_y = racket2->get_pos_y();
                         saveState.ball_x = mBall->get_pos_x();
                         saveState.ball_y = mBall->get_pos_y();
                         saveState.ball_vel_x = mBall->get_vel_x();
@@ -832,8 +824,8 @@ void Game::game_logic()
                             player2->reset_score();
 
                             // Reset paddle positions
-                            mPaddle1->set_pos_y(WINDOW_HEIGHT / 2.0f);
-                            mPaddle2->set_pos_y(WINDOW_HEIGHT / 2.0f);
+                            racket1->set_pos_y(WINDOW_HEIGHT / 2.0f);
+                            racket2->set_pos_y(WINDOW_HEIGHT / 2.0f);
 
                             // Reset ball position and give it initial velocity
                             mBall->set_position(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f);
@@ -854,8 +846,8 @@ void Game::game_logic()
                             player2->reset_score();
 
                             // Reset paddle positions
-                            mPaddle1->set_pos_y(WINDOW_HEIGHT / 2.0f);
-                            mPaddle2->set_pos_y(WINDOW_HEIGHT / 2.0f);
+                            racket1->set_pos_y(WINDOW_HEIGHT / 2.0f);
+                            racket2->set_pos_y(WINDOW_HEIGHT / 2.0f);
 
                             // Reset ball position and give it initial velocity
                             mBall->set_position(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f);
@@ -884,8 +876,8 @@ void Game::game_logic()
                             player1->reset_score();
                             player2->reset_score();
 
-                            mPaddle1->set_pos_y(WINDOW_HEIGHT / 2.0f);
-                            mPaddle2->set_pos_y(WINDOW_HEIGHT / 2.0f);
+                            racket1->set_pos_y(WINDOW_HEIGHT / 2.0f);
+                            racket2->set_pos_y(WINDOW_HEIGHT / 2.0f);
 
                             ball_creation(mMiddleMenu->get_selected_option());
 
@@ -908,15 +900,15 @@ void Game::game_logic()
                         {
                         case AI_MODE_EASY:
 
-                            mAI->setDifficulty(AI_MODE_EASY);
+                            mAI->set_difficulty(AI_MODE_EASY);
                             break;
 
                         case AI_MODE_NORMAL:
-                            mAI->setDifficulty(AI_MODE_NORMAL);
+                            mAI->set_difficulty(AI_MODE_NORMAL);
                             break;
 
                         case AI_MODE_HARD:
-                            mAI->setDifficulty(AI_MODE_HARD);
+                            mAI->set_difficulty(AI_MODE_HARD);
                             break;
 
                         default:
@@ -969,7 +961,7 @@ void Game::game()
 
     mTicksCount = SDL_GetTicks();
 
-    mPaddle1->update(travel_time);
+    racket1->update(travel_time);
 
     switch (mGameState)
     {
@@ -985,11 +977,11 @@ void Game::game()
         break;
 
     default:
-        mPaddle2->update(travel_time);
+        racket2->update(travel_time);
         break;
     }
 
-    mBall->update(travel_time, mPaddle1, mPaddle2, player1, player2);
+    mBall->update(travel_time, racket1, racket2, player1, player2);
 
     // Check for victory condition
     switch (mNoticeMenu->get_notice_id())
@@ -1073,9 +1065,9 @@ void Game::game()
 
     case FUN_MODE:
 
-        minvisible->update(travel_time, mBall,renderer);
-        mpower->update(travel_time, mPaddle1, mPaddle2, mBall->get_pos_x(), mBall->get_pos_y(), 15, renderer);
-        minverse->update(travel_time, mPaddle1, mPaddle2, mBall->get_pos_x(), mBall->get_pos_y(), 15, renderer);
+        minvisible->update(travel_time, mBall, renderer);
+        mpower->update(travel_time, racket1, racket2, mBall->get_pos_x(), mBall->get_pos_y(), 15, renderer);
+        // minverse->update(travel_time, racket1, racket2, mBall->get_pos_x(), mBall->get_pos_y(), 15, renderer);
 
         if (player1->get_user_score() >= 10 || player2->get_user_score() >= 10)
         {
@@ -1228,8 +1220,8 @@ void Game::output()
         SDL_RenderFillRect(renderer, &dash);
     }
 
-    mPaddle1->render_object(renderer);
-    mPaddle2->render_object(renderer);
+    racket1->render_object(renderer);
+    racket2->render_object(renderer);
     mBall->render_object(renderer);
 
     if (mNoticeMenu->get_notice_id() == STORYTIME_MODE || mNoticeMenu->get_notice_id() == FUN_MODE)
@@ -1242,7 +1234,7 @@ void Game::output()
         case FUN_MODE:
             mpower->render(renderer);
             minvisible->render(renderer);
-            minverse->render(renderer);
+            // minverse->render(renderer);
             break;
         default:
             SDL_Log("Invalid notice menu ID when we are at Storytime Mode or Fun Mode specific rendering features");
