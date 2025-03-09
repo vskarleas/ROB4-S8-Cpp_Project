@@ -1,6 +1,6 @@
 /**
  * @file classic_ball.cpp
- * @brief Implementation of the classic circular ball class
+ * @brief Implementation of the classic circular ball ClassicBall class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */

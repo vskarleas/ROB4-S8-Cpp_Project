@@ -74,6 +74,8 @@ private:
     float repeat;                /**< Timer for power-up respawn */
     bool invisible_ball = false; /**< Whether the ball is currently invisible */
     bool initialisation;         /**< Flag for first-time initialization */
+    SDL_Color color;
+    float color_change_timer = 0.0f; /**< Timer for color change */
 };
 
 #endif

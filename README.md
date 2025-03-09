@@ -1,8 +1,428 @@
-# Projet Pong Multijoueur C++
+# Projet Multijoueur en C++
 
 ###### Auters: Dounia Bakalem, Yanis Sadoun, Vasileios Filippos Skarleas
 
+## Le projet
+
+Dans le cadre du projet en C++ pour ce semestre, on etait demandés de creer un jeu. Le but principal est de mettre en ouvre les differents notions que nous avons vue en cours. Plus particulierement:
+
+* L'hesitage
+* Le polymorphisme
+* L'abstraction
+* Les foncteurs
+* Les fonctions lamdas
+* CMake
+* Les fonctions virtuels
+
+## Le jeu
+
+Nous avons decidé de developer et implementer le Pong, un des premiers jeux vidéo d'arcade et le premier jeu vidéo d'arcade de sport. Cependant nous souhaitons ajouter des fonctionalites et le personaliser pour qu'il deviens encore plus intersant que la version orifinal du jeu. C'est pourquoi nous avons introduit 4 differents modes de jeu:
+
+1. AI mode
+2. Classic
+3. Storytime mode
+4. Fun mode
+
+![The NEW Pong Logo](https://i.postimg.cc/PxwwTPMy/Whats-App-Image-2025-03-08-at-20-05-54.jpg)
+
+Nous avons inclus des instructions dans le jeu avec tous les details que vous allez trouver dans la partie **Les differentes modes**.
+
+## Compilation
+
+Nous aons integré un fichier CMakeLists.txt qui permet la compilation aux differents systèmes d'exploitation majeures telles que Mac et Linux sans aucun soucis. Cependant, il y a plusieurs dependances pour que l'interface graphique fonctione.
+
+Donc, pous simplifier tous ceux demarches nous avons crée un script bash qui automatiquement va detecter si tou sles dependenances sont respectés. Si ils sont pas respectés, il va telecharger automatiquement les bibiotheques manquantes. Pour votre information, vous allez trouver tous les dependances du jeu dans la partie **Dependances**.
+
+### Istructions de lancement
+
+Pour démarrer le programme automatique, veuillez suivre les instructions d'installation automatique :
+
+1. Faire un clone du projet
+2. Ouvrez un terminal
+3. Saisissez `chmod 777 play.sh` dans le terminal, puis lancez le script avec `bash play.sh`.
+
+### Notes
+
+> Dans le cas de Linux, il telecharge sans auucn soucis les bibliotheques SDL, mais si une bibliotheotheque a une autre dependance, il faut que vous telechargez manuelment cette dependance. Apres, il suffit de re-lacer le script avec `bash play.sh`.
+
+## Documentation
+
+Vous pouvez visiter le website [https://pong.madebyvasilis.site](https://pong.madebyvasilis.site) qui inclus tous les details des differents class, structures et fonctions.
+
+## Dependances
+
+Voici les dépendances du programme principal
+
+* `SDL2` - La bibliothèque principale SDL2
+* `SDL2_ttf` - Bibliothèque pour le rendu de texte (polices TrueType)
+* `SDL2_mixer` - Bibliothèque pour la gestion du son/musique
+* `SDL2_image` - Bibliothèque pour le chargement d'images
+* `SDL2_net` - Bibliothèque réseau pour SDL2
+
+## Les differents modes
+
+### Classic
+
+Le concept original de Pong est un simulateur simple de ping-pong. Une petite boule, se déplace à travers l'écran, rebondissant sur les rebords du haut et du bas, et le joueur commande un « paddle », qui glisse de en haut en bas à travers les extrémités de l'écran. Si la boule frappe la palette, elle rebondit vers l'autre joueur. Si elle manque la palette, l'ordinateur marque un point. La boule rebondit de différentes manières selon la façon dont la boule touche la palette.
+
+Dans ce mode vous allez trouver les fonctionalites suivantes. Plus des infrmations pour chaque une sont disponibles dans la section Fonctionalites:
+
+* High Score
+* Game Save
+
+Nous avons decidé que pour cette partie, au lieu de ficer un score maximum qui pourrait signaler le fin du jeu, dasn notre version les joueurs peuvent tout simplement decider un score entre euc en oral et commencer de joeur. Pour arreter il suffit de chosir "End the game".
+
+La motivation essentiel dans ce mode est "qui va depaser le derniere high score ?".
+
+### AI mode
+
+Le principe est le meme comme au mode classic sauf que ici, pong ne peut être joué que par un joueur seul, avec la palette opposée commandée par l'ordinateur.
+
+### Storytime mode
+
+Dans ce mode, les deux joueurs vont joeur 5 tours. Le gagnant et le joueur qui a gagné le plus grand nombre de tours. Chaque tous est composé de 12 parties. Le gagnant d'un tout est le joueur qui atteint 12 points en premier.
+
+Ici, nous allons voir de lettrer de tomber par le haut de l'ecran. Si vous ciblez de toucher les lettrer, vous ganez un point en extra.
+
+Quand vous touchez les lettre, petit à pettit, un mot va etre construire et comme ca vous pouvez lire la phrase secret.
+
+### Fun mode
+
+Vous allez trouver les memes regles comme au storytime mode en ce qui concerne qui gagne. Ce mode est assez particulier car nous avons introduits des easter eggs pour les jouers. Par exemple:
+
+* Si qeulqun'un touche le cube qui tombe, son paddle ava ggrandit temporrement
+* Si vous touchez un etoile, la balle va etre disparu pour une periode temps courts
+
+## Fonctionalites
+
+### Hish Score
+
+Cette fonctionalite est disponible seulment en mode classique du jeu. La logique du jeu verifier a chaque instant sii jamais quelqu'un arrive de faire un score superieur par le max qui est sauvegardé avant.
+
+La sauvegarde est fait sur un ficher nomé game_pong-highscore_849216.txt qui est chiffré, don cc'est impossible pour qulun de modifier le contenu s'il connait pas comment il est chiffré. Les informations qui sont stockés sont bien evidement le dernier high score et le nom du joueur.
+
+Voici l'algorothme qui determine si quelqu'un a fait un nouveau hishscore:
+
+```cpp
+// High score logic
+        if (player1->get_user_score() >= last_highscore || player2->get_user_score() >= last_highscore)
+        {
+            last_highscore = (player1->get_user_score() >= player2->get_user_score()) ? player1->get_user_score() : player2->get_user_score();
+
+            strncpy(last_highscore_name, ((player1->get_user_score() >= player2->get_user_score()) ? player1->get_user_name() : player2->get_user_name()).c_str(), 19);
+            last_highscore_name[19] = '\0';
+        }
+```
+
+### Game Save
+
+*Est que vous souhaitez faire une pause, et continuer plus tard pour essayer depasser le dernier high score ?*
+
+Vous avez l'option de sauvagarder l'etat de votre jeu et revenir quand vous le souhaitez. Comme attendu, le chiffrement est prise en compte dans cette fonctionalité aussi.
+
+#### Game save logic
+
+```cpp
+SaveState saveState;
+saveState.score1 = player1->get_user_score();
+saveState.score2 = player2->get_user_score();
+saveState.paddle1_y = racket1->get_pos_y();
+saveState.paddle2_y = racket2->get_pos_y();
+saveState.ball_x = mBall->get_pos_x();
+saveState.ball_y = mBall->get_pos_y();
+saveState.ball_vel_x = mBall->get_vel_x();
+saveState.ball_vel_y = mBall->get_vel_y();
+saveState.ball_type = mMiddleMenu->get_selected_option();
+
+strncpy(saveState.player1_name, player1->get_user_name().c_str(), 19);
+saveState.player1_name[19] = '\0'; // Ensuring that the name ends to \0 that is standar for string types
+strncpy(saveState.player2_name, player2->get_user_name().c_str(), 19);
+saveState.player2_name[19] = '\0';
+
+if (Saving::save_game(saveState))
+{
+  SDL_Log("Game saved successfully");
+  mMenu->set_saved_file_exists();
+  mNoticeMenu->set_notice_id(GAME_SAVED);
+  mGameState = game_state::Notice_Menu; // We go back to the main menu
+}
+else
+{
+   SDL_Log("Failed to save game");
+   mIsRunning = false;
+}
+```
+
+> La sauvegarde est fait aussi sur un fichier qui est stocké sous le nom game_pong-save_849374.txt. Meme si on ferme completment le jeu, le ficher reste sur le repertoire. Il est supprimé si et sulemnt si quelqu'un viens de continuer par le jeu qui etait sauvegardé ou s'il choisit de commencer un nouveau jeu.
+
+#### Game retrieve logic
+
+```cpp
+SaveState savedState;
+if (Saving::load_game(savedState))
+{
+    player1->set_user_score(savedState.score1);
+    player2->set_user_score(savedState.score2);
+
+    player1->set_user_name(savedState.player1_name);
+    player2->set_user_name(savedState.player2_name);
+
+    racket1->set_pos_y(savedState.paddle1_y);
+    racket2->set_pos_y(savedState.paddle2_y);
+    ball_creation(savedState.ball_type);
+    mBall->set_position(savedState.ball_x, savedState.ball_y);
+    mBall->set_velocity(savedState.ball_vel_x, savedState.ball_vel_y);
+    update_background_color();
+
+    Saving::delete_save(); // Delete the saved game file once we have loaded the game state
+
+    mGameState = game_state::Playing;
+
+    SoundEffects::change_music_track(mBackgroundMusic);
+}
+```
+
+### Choisir le type de la balle
+
+Par defaut, le pong viens avec la balle classique circulaire, mais si quelqu'un souhaite un peu de personalisation, nous offre cette option.
+
+Au debut de chaque mode, vous etes demandé quel est le type de la balle que vous souhaitez. Nous avons integré 3 formes basqiues:
+
+* circle avec une image graphique [SDL forme utilisé pour decter les collisions]
+* triangle
+* caré
+
+Il s'agit tout simplement d'une preuve de concept qui nous indique que nous sommes libres de designer et intgrer tous qu'on souhaite dans l'interface graphique.
+
+### Changement de la musique
+
+Nous avons reussi d'implemneter correctement la bibliotheque de SDL Mixer qui nous permet de fade-in et fade-out differents sons (musique) et differents effets de son.
+
+Voici l'implementation:
+
+```cpp
+void SoundEffects::change_music_track(Mix_Music *music_file,
+                                      int fade_out_duration,
+                                      int fade_in_duration,
+                                      int volume)
+{
+    Mix_FadeOutMusic(fade_out_duration);
+    // SDL_Delay(5);
+    Mix_FadeInMusic(music_file, -1, fade_in_duration);
+    Mix_VolumeMusic(volume);
+}
+```
+
+## Chiffrement des données
+
+La sauvegarde des données utilise un système de chiffrement XOR simple avec une clé rotative :
+
+```cpp
+class SavingEncryption {
+private:
+    static const std::vector<uint8_t> KEY;
+  
+    static void encryptData(std::vector<uint8_t>& data) {
+        for (size_t i = 0; i < data.size(); ++i) {
+            data[i] ^= KEY[i % KEY.size()];
+        }
+    }
+};
+```
+
+Les données sont chiffrées avant l'écriture sur le disque et déchiffrées lors de la lecture, assurant une protection basique des sauvegardes.
+
+> Inspiré de [https://www.101computing.net/xor-encryption-algorithm/](https://www.101computing.net/xor-encryption-algorithm/)
+> L'utilisation de XOR permet à la même opération de chiffrer et de déchiffrer
+
+## Les objets
+
+Dans le cadre ce projet en programmation orienté objets, nous avons crée des objets qui representent des elements du jeu pong. Il faut noter comme meme que tous les fonctionaltes sont codé comme s'il etait des objets, pour assurer la modualbilite du code et la bonne organisation des fichiers. Voici les differents class qui nos avons crée:
+
+| Class                 | Description                                                                                                                                    | Fichier             |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| AI                    | Intelligence artificielle pour contrôler une raquette automatiquement                                                                         | ai.cpp              |
+| BallBase              | Classe de base abstraite pour tous les types de balles dans le jeu car nous proposons differents types de balls à chosiir avant lancer le jeu | ball_base.pp        |
+| ClassicBall           | Implémentation classique de balle circulaire héritant de BallBase                                                                            | classic_ball.cpp    |
+| Game                  | Il contiennent tous les parametres principaux, surtout les references des tous les autres objets mentionés dans cette liste                   | game.cpp            |
+| GameOver              | Gère l'écran de fin de partie lorsqu'une partie est terminée ou si on choisit de terminer manuelment une partie                             | game_over.cpp       |
+| GUI                   | Classe utilitaire fournissant des fonctionnalités d'interface utilisateur (donner notre prenom via SDL))                                      | gui.cpp             |
+| HighScore [structure] | Structure représentant un record de score élevé. Il gere la sauvegarde de ces données specifiques                                          | game_save.cpp       |
+| InvisiblePower        | Rend la balle temporairement invisible. Il herite par la classe Power                                                                          | invisible_power.cpp |
+| Power                 | Représenteles éléments de power-up qui affectent le gameplay comme le changement de la taille de la racket, ou rendre la balle invisible    | power.cpp           |
+| Letter                | Représente une lettre dans le mode de jeu Storytime. Contient tout la fonctionalite pour gerer les mots dans ce mode Storytime                | letter.cpp          |
+| Paddle                | Représente une raquette (paddle)de joueur                                                                                                     | paddle.cpp          |
+| SaveState [structure] | Structure représentant l'état complet du jeu pour la sauvegarde/le chargement                                                                | game_save.cpp       |
+| Saving                | Classe utilitaire de sauvegarde pour gérer la sauvegarde de la partie et la fonctionnalité de score élevé                                  | game_save.cpp       |
+| SoundEffects          | Classe pour gérer les effets sonores et la musique dans le jeu                                                                               | sound_effects.cpp   |
+| SquareBall            | Implémentation de la balle en forme de carré héritant de BallBase                                                                           | square_ball.cpp     |
+| TriangleBall          | Implémentation de la balle en forme de triangle héritant de BallBase                                                                         | triangle_ball.cpp   |
+| User                  | Représente un joueur dans le jeu avec son nom et le suivi du score                                                                            | user.cpp            |
+| page_2b_1t            | Écran d'avis avec 2 boutons et 1 titre                                                                                                        | page_2b_1t.cpp      |
+| page_3b               | Menu de pause avec 3 boutons                                                                                                                   | page_3b.cpp         |
+| page_3b_0t            | Classe de menu principal avec 3 boutons et aucun titre                                                                                         | page_3b_0t.cpp      |
+| page_3b_1t            | Classe de menu intermédiaire avec 3 boutons et 1 titre                                                                                        | page_3b_1t.cpp      |
+| page_4b_1t            | Définit le menu de sélection de mode avec 4 boutons et 1 titre                                                                               | page_4b_1t.cpp      |
+
+## Les foncteurs
+
+| Foncteur          | Descriptions                                    | Fichier       |
+| ----------------- | ----------------------------------------------- | ------------- |
+| triangle_renderer | Foncteur pour le rendu des formes triangulaires | renderers.cpp |
+| square_renderer   | Foncteur de rendu de formes carrées            | renderers.cpp |
+
+L'utilisation de foncteurs nous permet d'ajouter facilement de nouveaux types de formes et de les tester individuellement.
+
+> Cette approche nous a permet d'accélérer le développement en permettant des tests isolés des differentes SDL renderers.
+
+## Structure des pages
+
+Ce jeu est fourni avec des structures de page prédéfinies spécifiques que nous utilisons pour restituer différents contenus de manière dynamique ou non. Voici les spécifications de ces fichiers :
+
+- page_3b_1t : Il y a trois boutons au centre et un titre en gras en haut (menu du milieu précédent)
+- page_2b_1t : Il y a deux boutons et une grande partie pour le texte long (avis précédents)
+- page_4b_1t : Il y a quatre boutons et 1 titre en gras (menu mode précédent)
+- page_3b_0t : Il y a trois boutons, les deux en haut de la page et le troisième près de la fin (menu précédent)
+- page_3b : Il y a 3 boutons, tous centrés au milieu de l'écran (menu pause précédent)
+
+## La logique du jeu
+
+### L'interface graphique
+
+Maintenant que nous avons une image plus claire concerant les differents pages qui contiennent des elements pour interagir avec le logiciel, nous allons analyser comment l'interface graphique est realisé.
+
+Nous utilisons SDL pour render et afficher tous les differets formes dans un fenetre avec des dimmensiosn predefinies dans le fichier macros.hpp (plus dinformation sur la partie **Pourquoi macros.hpp**). Le programe principale, demande la creation de la classe `game` qui inclut les trois methodes suivantes:
+
+1. Initialise
+2. Loop
+3. Close
+
+Les methodes `initialise` et `close` permet l'initialisation de tous les differentes parametres et variables tandis que loop tourne en parmanence. La methode loop est une boucle while avec un boolean qui va arreter de se repeter si jamais le boolean si mis à false par la logique, comme on peut constater ci-dessous:
+
+```cpp
+void Game::loop()
+{
+    while (mIsRunning) // set to false when we either tap on the X to close the SDL window or when we tap on the Exit game button
+    {
+        game_logic();
+        game();
+        output();
+    }
+}
+```
+
+### Loop
+
+Dans cette boucle alors, il y a la logique du jeu `game_logic()` qui est resposable de nous redireiger vers les differentes pages, messages et menus. En plus, nou sallons trouver, le `game()` qui est la mise à jour des differentes etats selon lesquelles on decide par exemple si une partie est terminé ou pas, et il y a aussi `output()` lequel selon les parametres qui sont fixés par la logique, va nous rendre les objets visuelles sur l'interface SDL.
+
+### Heritage
+
+...
+
+### Polymorphisme
+
+...
+
+### Abstraction
+
+...
+
+### Fonctions lamda
+
+Nous utilisons de fonctions lamda pour verfier les limites physiques de l'objet paddle. Cette approche nous permet d'avour un code qui modulale et qui nous permetrra de mettre à jour la fonctionalite de changeemnt de position et les conditions de l'objet paddle pour facilement.
+
+Plus precisement, à notre cas les fonctions lamda etait parfait car ils nou spermet définir un objet de fonction anonyme tout en gerant le typage automtiquement pour nous.
+
+Vou sallez trouver deux fonctions:
+
+* `auto move_paddle = [this](float delta, float time)` responsable pour bouger l'objet paddle (la racket)
+* `auto adjust_boundaries = [this]()` responsable pour verifier et ajuste rles limites de la racket
+
+```cpp
+auto move_paddle = [this](float delta, float time)
+    {
+        this->set_pos_y(this->get_pos_y() + delta * this->get_racket_speed() * time);
+    };
+
+  
+auto adjust_boundaries = [this]()
+    {
+        if (this->get_pos_y() < this->get_racket_height() / 2.0f)
+        {
+            this->set_pos_y(this->get_racket_height() / 2.0f);
+        }
+        else if (this->get_pos_y() > 600.0f - this->get_racket_height() / 2.0f)
+        {
+            this->set_pos_y(600.0f - this->get_racket_height() / 2.0f);
+        }
+    };
+```
+
+### Encapsulation
+
+#### Namespace
+
+Nous utilisons un namespace anonyme dans le fichier game_save.cpp. Ce mécanisme permet d'encapsuler les constantes sensibles (comme la clé de chiffrement XOR) et les fonctions utilitaires de codage/décodage dans une portée strictement limitée au fichier d'implémentation. Voici les differentes avantages de cette choix:
+
+1. Le namespace empêche l'accès externe aux mécanismes de sécurité du système de sauvegarde
+2. réduit les risques de collision de noms avec d'autres parties du code
+3. structure logiquement les éléments qui travaillent ensemble.
+
+```cpp
+namespace
+{
+    unsigned char codec_byte(unsigned char byte)
+    {
+        return byte ^ KEY; // XOR operation
+    }
+
+    void codec_float(float &value)
+    {
+        unsigned char *bytes = reinterpret_cast<unsigned char *>(&value); // casting to return a float value to byte representation
+        for (size_t i = 0; i < sizeof(float); ++i)
+        {
+            bytes[i] = codec_byte(bytes[i]);
+        }
+    }
+
+    void codec_int(int &value)
+    {
+        unsigned char *bytes = reinterpret_cast<unsigned char *>(&value);
+        for (size_t i = 0; i < sizeof(int); ++i)
+        {
+            bytes[i] = codec_byte(bytes[i]);
+        }
+    }
+
+    void codec_string(char *str, size_t length)
+    {
+        for (size_t i = 0; i < length; ++i)
+        {
+            str[i] = codec_byte(str[i]);
+        }
+    }
+}
+```
+
+Cette organisation du code incarne le principe d'encapsulation, fondamental en programmation orientée objet, tout en contribuant à la robustesse globale du système de sauvegarde du jeu.
+
+> Pour des raisons de diminuation du longeur du rapport, nous avons enleve les commenatires des differentes fonctions. Pour voir tous les fonctions en details visiter game_save.cpp
+
+#### Autres cas
+
+Toute au long du projet, nous faisons une choix si on va inclure des variables comme `private` ou `publique` aux differnetes classes. En plus, nous faisons attention à la bonne utilisation de mot clés de l'encapsulation telles que `static` et `virtual`.
+
+## Pourquoi macros.hpp
+
+Le fichier macros.hpp joue un rôle fondamental dans notre projet en servant de point central pour toutes les constantes du jeu. À travers ce fichier, nous définissons les dimensions de la fenêtre de jeu, les identifiants des différents modes de jeu (comme les modes IA ou deux joueurs), ainsi que les constantes utilisées pour la sélection des menus et les niveaux de difficulté - elements qui nou soermets de naviguer aux differents pages du jeu.
+
+## Pour aller plus loin
+
+...
+
 ## Versions
+
+Le versioning est un élément clé en programmation, assurant la cohérence des modifications et facilitant la collaboration. Il est aussi primordial pour la récupération de données en cas de perte ou corruption. Au fil du projet, nous avons créé différentes versions de notre code, chacune marquant une étape importante de son évolution. Cela nous a permis de suivre les progrès, d'intégrer de nouvelles fonctionnalités et d'effectuer des corrections de manière structurée.
 
 * V4.2.2 Saving the demi correct viwes
 * V4.2.3 The views logic has been completed
@@ -30,16 +450,9 @@
 * V10.9.1: play.sh installer was updated
 * V11.0.1: Added documentation structure. Fixed sime issues on the fun mode. We need to reset the padle height at the end of the fun mode manually if the button end game is atpped otherwise we risk to have different size paddles on other game modes
 * V11.0.2: Added more comments and incuded inverse mode there is a segmentation fault issue
+* V11.1.2: Resolved segmentation fault issue. Corrected some logic bugs and updated the documentation
 
-## Pages structures
-
-This game comes with some specific predefined page structures that we use in order to render different content dynamicly or not (depending the extensive usage on the program). Here are the specifications for those files:
-
-- page_3b_1t : There are three buttons on the center and one title in bold on top (previous middle_menu)
-- page_2b_1t : There are two buttons and one grand part for long text (previous notices)
-- page_4b_1t: There four buttons and 1 title in bold (previous mode_menu)
-- page_3b_0t: There are three buttons, the two on top of the page and the third one close to the end (previous menu)
-- page_3b : There are 3 buttons, all of them centered in the middle of the screen (previous pause menu)
+---
 
 ## TO-DO list
 
@@ -50,224 +463,3 @@ This game comes with some specific predefined page structures that we use in ord
 * [X] Have a high scores table where if any time in the future a user has a score greater than the last maximum one, then he is added on top of the Leaderboard. The leaderboard is a file that is always present on the directory of the game and it is also encrypted.
 * [X] Add the AI player
 * [ ] Why there is a Float set_up method on the paddle.hpp ? Ask Yanis and Dounia
-
-## Usage of the CMake
-
-### First time setup
-
-mkdir build
-cd build
-cmake ..
-cmake --build .
-
-### For subsequent code changes, just run
-
-cmake --build .
-
-## Guide de Démarrage
-
-### Prérequis
-
-```bash
-# macOS avec Homebrew
-brew install sdl2 sdl2_mixer sdl2_ttf sdl2_image
-
-# Ubuntu/Debian
-sudo apt-get update
-sudo apt-get install libsdl2-dev libsdl2-mixer-dev libsdl2-ttf-dev libsdl2-image-dev
-
-```
-
-## Compilation
-
-Pour compiler le codebase du jeu, vous pouvez tout simplement sur le repertoire build une fois que vous avez installé les Prérequis. Il faut suivre les instructions suivantes:
-
-1. `cd build`
-2. `cmake ..`
-3. `cmake --build .`
-
-Donc, pour lancer le jeu il suffit de faire `./Pong`
-
-For your convinience, we are including on the codebase a launch file that will automaticly process everything for you. You simply need to do make sure that this file has the right to execute on your computer. This installer will make sure that you have all the dependencies installed and it will prepare all the executables for you.
-
-1. `chmod 777 play.sh`
-2. `bash play.sh`
-
-## Dépendances et Structure
-
-### Structure des Includes
-
-```
-game.cpp
-├── game.hpp
-├── ClassicBall.hpp
-├── SquareBall.hpp
-├── TriangleBall.hpp
-├── GameStateHandler.hpp
-└── SDL headers (SDL.h, SDL_mixer.h, SDL_ttf.h)
-
-
-ball_base.cpp (classes dérivées)
-├── BallBase.hpp
-├── paddle.hpp
-└── SDL headers
-
-paddle.cpp
-├── paddle.hpp
-└── SDL headers
-```
-
-## Sécurité et Sauvegarde de l'état du jeu
-
-### Chiffrement des Données
-
-La sauvegarde des données utilise un système de chiffrement XOR simple avec une clé rotative :
-
-```cpp
-class SavingEncryption {
-private:
-    static const std::vector<uint8_t> KEY;
-  
-    static void encryptData(std::vector<uint8_t>& data) {
-        for (size_t i = 0; i < data.size(); ++i) {
-            data[i] ^= KEY[i % KEY.size()];
-        }
-    }
-};
-```
-
-Les données sont chiffrées avant l'écriture sur le disque et déchiffrées lors de la lecture, assurant une protection basique des sauvegardes.
-
-## Système Audio et Graphique
-
-### Gestion Audio avec SDL_mixer
-
-Le jeu utilise SDL_mixer pour gérer différents effets sonores :
-
-- Collision balle-raquette
-- Points marqués
-- Musique de fond
-
-```cpp
-Mix_Chunk* racket_hit_sound;
-Mix_Music* mBackgroundMusic;
-```
-
-### Système de Couleurs Dynamique
-
-Les couleurs évoluent en fonction du score :
-
-- Score > 3 : Bleu (Début de progression)
-- Score > 5 : Rouge (Progression intermédiaire)
-- Score > 7 : Vert (Proche de la victoire)
-- Score Max : 10 points
-
-## Modes de Jeu
-
-1. Mode Classique
-
-Score maximum : 10 points
-Changements de couleur aux scores 3, 5 et 7
-Sauvegarde automatique
-Mode Sans Limite (à venir)
-
-2. Pas de score maximum
-   Table des meilleurs scores
-   Sauvegarde des records
-   Mode IA (à venir)
-3. Intelligence artificielle pour joueur 2
-   Plusieurs niveaux de difficulté
-
-## Améliorations Futures
-
-### Instructions du Jeu
-
-Implémentation prévue d'un écran d'instructions au démarrage :
-
-```cpp
-class GameInstructions {
-public:
-    void Display();
-    bool HandleInput();
-private:
-    std::vector<std::string> mInstructions;
-};
-```
-
-### Système de Noms d'Utilisateur
-
-Ajout d'une interface de saisie des noms :
-
-```cpp
-class PlayerManager {
-public:
-    void RequestUsernames();
-    std::string GetPlayer1Name();
-    std::string GetPlayer2Name();
-private:
-    std::string mPlayer1Name;
-    std::string mPlayer2Name;
-};
-```
-
-### Mode High Score
-
-Nouveau mode de jeu sans limite de points :
-
-```cpp
-class HighScoreManager {
-public:
-    void AddScore(const std::string& player, int score);
-    std::vector<std::pair<std::string, int>> GetTopScores(int limit = 10);
-private:
-    std::vector<std::pair<std::string, int>> mHighScores;
-};
-```
-
-## L'algorithme de l'IA
-
-L'algorithme de l'IA pour le joueur 2 utilisera une approche prédictive :
-
-```cpp
-class AIPlayer {
-public:
-    float DecideMovement(const Ball* ball, const Paddle* paddle) {
-        // Prédiction de la position future de la balle
-        float predictedY = Predictball_y(ball);
-        float currentY = paddle->get_pos_y();
-  
-        // Décision de mouvement avec une marge d'erreur pour simulation humaine
-        return (predictedY > currentY + ERROR_MARGIN) ? 1.0f : 
-               (predictedY < currentY - ERROR_MARGIN) ? -1.0f : 0.0f;
-    }
-private:
-    const float ERROR_MARGIN = 10.0f;
-    float Predictball_y(const Ball* ball);
-};
-```
-
-## L'utilisation des Lambda Functions
-
-Les lambda functions sont utilisées pour plusieurs raisons :
-
-- Callbacks d'événements menu
-- Validation des entrées
-- Menu callbacks
-
-Voici queques implementations pour ceux cas spécifiques:
-
-1. Gestionnaire d'Événements
-   auto handleCollision = [this](const Ball* ball, const Paddle* paddle) -> bool {
-   return collision_check(ball->GetBounds(), paddle->GetBounds());
-   };
-2. Validation des Entrées
-   auto validateScore = [](int score) -> bool {
-   return score >= 0 && score <= 10;
-   };
-3. Callbacks du Menu
-   mMenu->SetStartCallback(this {
-   mGameState = game_state::Playing;
-   resetGame();
-   });
-
-Les lambda functions permettent une syntaxe plus claire pour les callbacks et une maintenance simplifiée. En plus, l'utilisation des lambda functions est particulièrement pertinente pour le mode IA où elles permettent de définir différentes stratégies de jeu de manière concise et modulaire.

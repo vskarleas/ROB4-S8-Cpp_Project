@@ -20,7 +20,7 @@
  * the winner's name, and providing a navigation button to return to the
  * main menu.
  */
-class game_over
+class GameOver
 {
 private:
     SDL_Texture *texture_menu;   /**< Texture for the menu background */
@@ -34,8 +34,8 @@ private:
     std::string winner_name;     /**< Name of the winning player to display */
 
 public:
-    game_over(SDL_Renderer *_renderer, TTF_Font *font);
-    ~game_over();
+    GameOver(SDL_Renderer *_renderer, TTF_Font *font);
+    ~GameOver();
 
     // Handles the events from the SDL window and returns true if the back button is pressed
     bool action_handler(const SDL_Event &event);

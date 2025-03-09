@@ -1,6 +1,6 @@
 /**
  * @file page_3b_0t.cpp
- * @brief Implementation of the main menu class
+ * @brief Implementation of the main menu page_3b_0t class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */

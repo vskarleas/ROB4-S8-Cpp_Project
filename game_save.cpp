@@ -1,7 +1,6 @@
 /**
  * @file game_save.cpp
- * @brief Implementation of save game functionality
- * @project C++ Project - Polytech Sorbonne - 2024/2025 - S8
+ * @brief Implementation of save game functionality from the Saving class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */

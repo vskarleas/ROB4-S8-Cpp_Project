@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['c_0',['Projet Pong Multijoueur C++',['../index.html',1,'']]]
+  ['c_0',['Projet Multijoueur en C++',['../index.html',1,'']]]
 ];

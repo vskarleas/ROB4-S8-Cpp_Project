@@ -308,10 +308,11 @@ bool Game::initialise()
     mMiddleMenu = new page_3b_1t(renderer, police);
     mModeMenu = new page_4b_1t(renderer, police);
     mPauseMenu = new page_3b(renderer, police);
-    mGameOver = new game_over(renderer, police);
+    mGameOver = new GameOver(renderer, police);
     mletter = new Letter(0, 400, 0, 30, renderer, police);
     mpower = new Power(WINDOW_WIDTH, WINDOW_HEIGHT);
     minvisible = new InvisiblePower(WINDOW_WIDTH, WINDOW_HEIGHT);
+    minverse = new InversiblePower(WINDOW_WIDTH, WINDOW_HEIGHT);
 
     // Creating the different objects of the game
     racket1 = new Paddle(30, true);
@@ -327,7 +328,7 @@ bool Game::initialise()
     mScoreSound = Mix_LoadWAV("assets/score.wav");
     mPauseMusic = Mix_LoadMUS("assets/pause.wav");
     mNewRoundSound = Mix_LoadWAV("assets/new_round.mp3");
-    mGameOverSound = Mix_LoadWAV("assets/game_over.mp3");
+    mGameOverSound = Mix_LoadWAV("assets/GameOver.mp3");
 
     mOnHoldMusic = Mix_LoadMUS("assets/onhold.wav");
 
@@ -759,7 +760,7 @@ void Game::game_logic()
 
                         if (mNoticeMenu->get_notice_id() == TWO_PLAYERS_MODE) // it only appears on the TWO PLAYERS MODE
                         {
-                            mGameState = game_state::Game_Over;
+                            mGameState = game_state::GameOver;
                         }
                         else // on the other modes we go back to the main menu that allow to choose the game mode that we desire
                         {
@@ -772,7 +773,7 @@ void Game::game_logic()
                     }
                 }
             }
-            else if (mGameState == game_state::Game_Over)
+            else if (mGameState == game_state::GameOver)
             {
                 mMenu->set_saved_file_exists();
                 if (mGameOver->action_handler(event))
@@ -1022,7 +1023,7 @@ void Game::game()
             // Decide who wins
             winner = (player1->get_user_score() >= 10) ? player1->get_user_name() : player2->get_user_name();
             mGameOver->set_winner(winner);
-            mGameState = game_state::Game_Over;
+            mGameState = game_state::GameOver;
 
             Mix_HaltMusic();
             Mix_PlayChannel(-1, mGameOverSound, 0);
@@ -1062,7 +1063,7 @@ void Game::game()
             {
                 winner = (player1->get_round() > player2->get_round()) ? player1->get_user_name() : player2->get_user_name();
                 mGameOver->set_winner(winner);
-                mGameState = game_state::Game_Over;
+                mGameState = game_state::GameOver;
 
                 Mix_HaltMusic();
                 Mix_PlayChannel(-1, mGameOverSound, 0);
@@ -1074,7 +1075,7 @@ void Game::game()
 
         minvisible->update(travel_time, mBall, renderer);
         mpower->update(travel_time, racket1, racket2, mBall->get_pos_x(), mBall->get_pos_y(), 15, renderer);
-        // minverse->update(travel_time, racket1, racket2, mBall->get_pos_x(), mBall->get_pos_y(), 15, renderer);
+        minverse->update(travel_time, racket1, racket2, mBall->get_pos_x(), mBall->get_pos_y(), 15, renderer);
 
         if (player1->get_user_score() >= 10 || player2->get_user_score() >= 10)
         {
@@ -1099,7 +1100,7 @@ void Game::game()
             {
                 winner = (player1->get_round() > player2->get_round()) ? player1->get_user_name() : player2->get_user_name();
                 mGameOver->set_winner(winner);
-                mGameState = game_state::Game_Over;
+                mGameState = game_state::GameOver;
 
                 Mix_HaltMusic();
                 Mix_PlayChannel(-1, mGameOverSound, 0);
@@ -1198,7 +1199,7 @@ void Game::output()
         return;
     }
 
-    if (mGameState == game_state::Game_Over)
+    if (mGameState == game_state::GameOver)
     {
         mGameOver->render_object();
         return;
@@ -1241,7 +1242,7 @@ void Game::output()
         case FUN_MODE:
             mpower->render(renderer);
             minvisible->render(renderer);
-            // minverse->render(renderer);
+            minverse->render(renderer);
             break;
         default:
             SDL_Log("Invalid notice menu ID when we are at Storytime Mode or Fun Mode specific rendering features");

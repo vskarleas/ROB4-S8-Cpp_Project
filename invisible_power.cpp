@@ -12,9 +12,9 @@
 
 /**
  * @brief Constructor for the InvisiblePower class
- * 
+ *
  * Initializes the star-shaped power at a random position
- * 
+ *
  * @param screen_width The width of the game screen
  * @param screenHeight The height of the game screen
  */
@@ -26,13 +26,18 @@ InvisiblePower::InvisiblePower(int screen_width, int screenHeight)
     height = 30 + rand() % 20;
     speed = 80.0f;
     is_active = true;
+
+    color = {static_cast<Uint8>(rand() % 256),
+             static_cast<Uint8>(rand() % 256),
+             static_cast<Uint8>(rand() % 256), 255};
+    color_change_timer = 0.0f;
 }
 
 /**
  * @brief Updates the power's position and handles ball visibility effects
- * 
+ *
  * Manages the star's movement, collision detection, and ball invisibility timing
- * 
+ *
  * @param time Time delta since last update
  * @param ball Pointer to the ball object
  * @param renderer SDL renderer for drawing
@@ -50,11 +55,21 @@ void InvisiblePower::update(float time, BallBase *ball, SDL_Renderer *renderer)
     {
         y += speed * time;
 
+        color_change_timer += time;
+        if (color_change_timer >= 0.5f) // Change color every half second
+        {
+            // Generate new random color
+            color.r = static_cast<Uint8>(rand() % 256);
+            color.g = static_cast<Uint8>(rand() % 256);
+            color.b = static_cast<Uint8>(rand() % 256);
+            color_change_timer = 0.0f;
+        }
+
         if (check_collision(ball))
         {
             is_active = false;
             invisible_ball = true;
-            ball->set_color(black); // Make ball blend with background
+            ball->set_color(black);       // Make ball blend with background
             invisibility_duration = 0.0f; // Reset timer
             repeat = 0.0f;
         }
@@ -88,9 +103,9 @@ void InvisiblePower::update(float time, BallBase *ball, SDL_Renderer *renderer)
 
 /**
  * @brief Renders the star-shaped power on screen
- * 
+ *
  * Draws a star shape using SDL rendering functions
- * 
+ *
  * @param renderer SDL renderer for drawing
  */
 void InvisiblePower::render(SDL_Renderer *renderer)
@@ -99,7 +114,7 @@ void InvisiblePower::render(SDL_Renderer *renderer)
         return;
 
     // Use yellow color from macros.hpp
-    SDL_SetRenderDrawColor(renderer, yellow.r, yellow.g, yellow.b, yellow.a);
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 
     float centerX = x + width / 2.0f;
     float centerY = y + height / 2.0f;
@@ -138,7 +153,7 @@ void InvisiblePower::render(SDL_Renderer *renderer)
 
 /**
  * @brief Checks for collision between the power and the ball
- * 
+ *
  * @param ball_type Pointer to the ball object
  * @return true if collision detected, false otherwise
  */

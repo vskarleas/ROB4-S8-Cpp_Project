@@ -1,6 +1,6 @@
 /**
  * @file page_3b.cpp
- * @brief Implementation of the pause menu class
+ * @brief Implementation of the pause menu page_3b class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */

@@ -1,6 +1,6 @@
 /**
  * @file page_3b.hpp
- * @brief Header defining the pause menu class
+ * @brief Header defining the pause menu page_3b class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */

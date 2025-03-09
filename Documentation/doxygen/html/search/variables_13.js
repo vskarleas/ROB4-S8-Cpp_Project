@@ -5,7 +5,7 @@ var searchData=
   ['window_5fheight_2',['WINDOW_HEIGHT',['../macros_8hpp.html#ab76d138fa589df9a65fc05eb3bd56073',1,'macros.hpp']]],
   ['window_5fwidth_3',['WINDOW_WIDTH',['../macros_8hpp.html#a5e6ce0dd58078611570510dc4b8d81f3',1,'macros.hpp']]],
   ['winner_4',['winner',['../class_game.html#aeda5b50e1b856dddd2cee76fcf302c44',1,'Game']]],
-  ['winner_5fname_5',['winner_name',['../classgame__over.html#a0d2039c7441e5b432686633acdb95bec',1,'game_over']]],
+  ['winner_5fname_5',['winner_name',['../class_game_over.html#a57b056ca2ce46b74de6d162e6ba4519a',1,'GameOver']]],
   ['word_6',['word',['../class_letter.html#a13a33e7c660219afda09b0570d0f8f6d',1,'Letter']]],
   ['words_7',['words',['../class_letter.html#a2f0b061aaa4d9d7988d0bdfe5180afc4',1,'Letter']]]
 ];

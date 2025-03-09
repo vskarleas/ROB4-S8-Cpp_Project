@@ -17,7 +17,7 @@
  * @param _renderer The SDL renderer to use for drawing
  * @param font The TTF font to use for text display
  */
-game_over::game_over(SDL_Renderer *_renderer, TTF_Font *font) : texture_menu(nullptr),
+GameOver::GameOver(SDL_Renderer *_renderer, TTF_Font *font) : texture_menu(nullptr),
                                                                 renderer(_renderer),
                                                                 police(font),
                                                                 go_back(false) // be default we don't go back on the modes menu
@@ -36,7 +36,7 @@ game_over::game_over(SDL_Renderer *_renderer, TTF_Font *font) : texture_menu(nul
  * 
  * Cleans up allocated resources
  */
-game_over::~game_over()
+GameOver::~GameOver()
 {
     if (texture_menu)
     {
@@ -53,7 +53,7 @@ game_over::~game_over()
  * @param event The SDL event to process
  * @return true if the back button is pressed, false otherwise
  */
-bool game_over::action_handler(const SDL_Event &event)
+bool GameOver::action_handler(const SDL_Event &event)
 {
     go_back = false; // Reset the flag for going back on the choose menu
 
@@ -76,7 +76,7 @@ bool game_over::action_handler(const SDL_Event &event)
  * 
  * Displays the game over message, the winner's name, and the back button
  */
-void game_over::render_object()
+void GameOver::render_object()
 {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
@@ -116,7 +116,7 @@ void game_over::render_object()
  * 
  * @param name The name of the winner to be displayed
  */
-void game_over::set_winner(const std::string &name)
+void GameOver::set_winner(const std::string &name)
 {
     winner_name = name;
 }

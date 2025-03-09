@@ -1,6 +1,6 @@
 /**
  * @file page_2b_1t.cpp
- * @brief Implementation of the notice screen class
+ * @brief Implementation of the notice screen page_2b_1t class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */

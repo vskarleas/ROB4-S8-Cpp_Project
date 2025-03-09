@@ -1,6 +1,6 @@
 /**
  * @file ball_base.cpp
- * @brief Implementation of the base ball class
+ * @brief Implementation of the BallBase class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */

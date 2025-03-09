@@ -4,7 +4,7 @@ var searchData=
   ['mbackgroundmusic_1',['mBackgroundMusic',['../class_game.html#aec90c6d83da823681f5f7eeeaedb8b3a',1,'Game']]],
   ['mball_2',['mBall',['../class_game.html#a8660fb6a1ffd482d1c03c009b6072c0f',1,'Game']]],
   ['mexit_3',['mExit',['../classpage__3b.html#ad378a8b4ecb2d13353f1d13dcf747294',1,'page_3b']]],
-  ['mgameover_4',['mGameOver',['../class_game.html#a5187b40282d2431ac083cf9dec5f6568',1,'Game']]],
+  ['mgameover_4',['mGameOver',['../class_game.html#a0d8334c515223094764143d89235f857',1,'Game']]],
   ['mgameoversound_5',['mGameOverSound',['../class_game.html#aeb4e24fa74651b35fde2efcb38350139',1,'Game']]],
   ['mgamestate_6',['mGameState',['../class_game.html#a1d50bd90b5bc5a9db1b72d1299cc4db6',1,'Game']]],
   ['minverse_7',['minverse',['../class_game.html#a029fbe30b8caf78a70da1d00b724f763',1,'Game']]],

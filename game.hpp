@@ -45,7 +45,7 @@ enum class game_state
     Storytime_playing,
     Playing, // playing classic with two players (first implementation with high score [the goal])
     Paused,
-    Game_Over,
+    GameOver,
     Set_up
 };
 
@@ -105,7 +105,7 @@ private:
     NetworkManager *network; // NOT USED YET
     bool is_network_game;
 
-    game_over *mGameOver; // This is used when the game is over
+    GameOver *mGameOver; // This is used when the game is over
 
     // This allows us to control on which state we are and make the appropriate UI and action decisons
     game_state mGameState;

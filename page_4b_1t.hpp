@@ -1,6 +1,6 @@
 /**
  * @file page_4b_1t.hpp
- * @brief Header defining the mode selection menu class
+ * @brief Header defining the mode selection menu page_4b_1t class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */

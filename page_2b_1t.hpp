@@ -1,6 +1,6 @@
 /**
  * @file page_2b_1t.hpp
- * @brief Header defining the notice screen class
+ * @brief Header defining the notice screen page_2b_1t class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */

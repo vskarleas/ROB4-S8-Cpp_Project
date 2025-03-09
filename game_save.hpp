@@ -1,6 +1,6 @@
 /**
  * @file game_save.hpp
- * @brief Header defining the save game functionality
+ * @brief Header defining the save game and highscore functionaloty from the Saving class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */

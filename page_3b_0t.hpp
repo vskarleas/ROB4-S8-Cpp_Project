@@ -1,6 +1,6 @@
 /**
  * @file page_3b_0t.hpp
- * @brief Header defining the main menu class with 3 buttons and no title
+ * @brief Header defining the main menu class with 3 buttons and no title of the page_3b_0t class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */

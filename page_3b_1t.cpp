@@ -1,6 +1,6 @@
 /**
  * @file page_3b_1t.cpp
- * @brief Implementation of the middle menu class
+ * @brief Implementation of the middle menu page_3b_1t class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */

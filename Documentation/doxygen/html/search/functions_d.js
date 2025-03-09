@@ -19,7 +19,7 @@ var searchData=
   ['set_5fuser_5fname_16',['set_user_name',['../class_user.html#a8a5fbe24dd60d9e3feae83539e6aa054',1,'User']]],
   ['set_5fuser_5fscore_17',['set_user_score',['../class_user.html#aa73c294b3cdf8ea34d0ebac4a22e83c3',1,'User']]],
   ['set_5fvelocity_18',['set_velocity',['../class_ball_base.html#ac49745d3f9c66acdc568f55180769bfa',1,'BallBase']]],
-  ['set_5fwinner_19',['set_winner',['../classgame__over.html#ac63a946134b3dcac2e85b5052f0c8718',1,'game_over']]],
+  ['set_5fwinner_19',['set_winner',['../class_game_over.html#a80c588d50e08a6d641b80b158ae4a640',1,'GameOver']]],
   ['shouldresume_20',['ShouldResume',['../classpage__3b.html#a86e13ce068a806196b89deed21d1df14',1,'page_3b']]],
   ['shouldsave_21',['ShouldSave',['../classpage__3b.html#acea12939cb180aaf9334749fa170b1d0',1,'page_3b']]],
   ['squareball_22',['SquareBall',['../class_square_ball.html#a2da9a6b0b5e013427ab926236a657ac6',1,'SquareBall']]]

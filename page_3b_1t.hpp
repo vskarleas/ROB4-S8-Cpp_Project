@@ -1,6 +1,6 @@
 /**
  * @file page_3b_1t.hpp
- * @brief Header defining the middle menu class with 3 buttons and 1 title
+ * @brief Header defining the middle menu class with 3 buttons and 1 title of page_3b_1t class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */
