@@ -1,6 +1,6 @@
 /**
  * @file game_save.cpp
- * @brief Implementation of save game functionality from the Saving class
+ * @brief Implementation of save game functionality for Saving class
  * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
  * @copyright All rights reserved.
  */
