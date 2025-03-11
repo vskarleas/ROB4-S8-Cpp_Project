@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>The NEW Pong Game: Projet Multijoueur en C++</title>
+<title>The NEW Pong Game: Projet Multijoueur en C++ : The New Pong</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,41 +86,43 @@ $(function(){ initResizable(false); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Projet Multijoueur en C++ </div></div>
+  <div class="headertitle"><div class="title">Projet Multijoueur en C++ : The New Pong </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
 <h5>Auteurs: Dounia Bakalem, Yanis Sadoun, Vasileios Filippos Skarleas</h5>
 <h1><a class="anchor" id="autotoc_md1"></a>
-Le projet</h1>
-<p>Dans le cadre du projet en C++ pour ce semestre, nous étions demandés de créer un jeu. Le but principal est de mettre en œuvre les différentes notions que nous avons vues en cours. Plus particulièrement:</p>
+L'objectif</h1>
+<p>Puisqu’il n’y a rien de plus amusant pour découvrir un langage que de créer son propre jeu, nous vous présentons <b>The New Pong</b> , un jeu multijoueur développé dans le cadre du module de programmation en langage objet pour la spécialité Robotique à Polytech Sorbonne.</p>
+<p>Dans ce projet, il nous était demandé de choisir un jeu à programmer en C++, afin de mettre en pratique les notions étudiées en cours tels que:</p>
 <ul>
-<li>L'héritage</li>
+<li>L’héritage</li>
 <li>Le polymorphisme</li>
-<li>L'abstraction</li>
+<li>L’abstraction</li>
 <li>Les foncteurs</li>
 <li>Les fonctions lambdas</li>
 <li>CMake</li>
 <li>Les fonctions virtuelles</li>
 </ul>
+<p>Nous avons donc opté pour un grand classique : Pong. Préparez-vous à renvoyer la balle, tout en perfectionnant vos compétences en C++ !</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Le jeu</h1>
-<p>Nous avons décidé de développer et implémenter le Pong, un des premiers jeux vidéo d'arcade et le premier jeu vidéo d'arcade de sport. Cependant nous souhaitons ajouter des fonctionnalités et le personnaliser pour qu'il devienne encore plus intéressant que la version originale du jeu. C'est pourquoi nous avons introduit 4 différents modes de jeu:</p>
+<p>Afin de revisiter l’expérience Pong, l’un des tout premiers jeux vidéo d’arcade et pionnier des jeux de sport, nous avons décidé d’en développer notre propre version. Au-delà d’un simple hommage, nous y avons ajouté de nouvelles fonctionnalités pour rendre ce Pong encore plus captivant que l’original. Pour cela, quatre modes de jeu distincts ont été introduits :</p>
 <ol type="1">
-<li><a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a> mode</li>
-<li>Classic</li>
-<li>Storytime mode</li>
-<li>Fun mode</li>
+<li><b><a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a> mode</b></li>
+<li><b>Classic</b></li>
+<li><b>Storytime mode</b></li>
+<li><b>Fun mode</b></li>
 </ol>
+<p>Toutes les instructions relatives à ces modes et leurs spécificités sont détaillées dans la section: <b>Les différents modes</b> . Bonne lecture et bon amusement !</p>
 <p><img src="https://i.postimg.cc/PxwwTPMy/Whats-App-Image-2025-03-08-at-20-05-54.jpg" alt="The NEW Pong Logo" class="inline"/></p>
-<p>Nous avons inclus des instructions dans le jeu avec tous les détails que vous allez trouver dans la partie <b>Les différents modes</b>.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Compilation</h1>
-<p>Nous avons intégré un fichier CMakeLists.txt qui permet la compilation aux différents systèmes d'exploitation majeurs tels que Mac et Linux sans aucun souci. Cependant, il y a plusieurs dépendances pour que l'interface graphique fonctionne.</p>
-<p>Donc, pour simplifier toutes ces démarches nous avons créé un script bash qui automatiquement va détecter si toutes les dépendances sont respectées. Si elles ne sont pas respectées, il va télécharger automatiquement les bibliothèques manquantes. Pour votre information, vous allez trouver toutes les dépendances du jeu dans la partie <b>Dépendances</b>.</p>
+<p>Nous avons intégré un fichier <b>CMakeLists.txt</b> afin de faciliter la compilation du projet sur les principaux systèmes d’exploitation tels que macOS et Linux. Toutefois, l’interface graphique nécessite plusieurs dépendances spécifiques.</p>
+<p>Pour simplifier cette étape, nous avons également créé un script Bash qui vérifie automatiquement si toutes les dépendances sont installées. Si ce n’est pas le cas, il se charge de télécharger et d’installer ce qui manque. Vous trouverez la liste exhaustive de ces dépendances dans la section <b>Dépendances</b> .</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Instructions de lancement</h2>
-<p>Pour démarrer le programme automatique, veuillez suivre les instructions d'installation automatique :</p>
+<p>Pour démarrer le programme en mode automatique, suivez les étapes suivantes :</p>
 <ol type="1">
 <li>Faire un clone du projet</li>
 <li>Ouvrez un terminal</li>
@@ -129,54 +131,56 @@ Instructions de lancement</h2>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Notes</h2>
 <blockquote class="doxtable">
-<p>&zwj;Dans le cas de Linux, il télécharge sans aucun souci les bibliothèques SDL, mais si une bibliothèque a une autre dépendance, il faut que vous téléchargiez manuellement cette dépendance. Après, il suffit de relancer le script avec <code>bash play.sh</code>. </p>
+<p>&zwj;Sur Linux, le script télécharge et installe automatiquement les bibliothèques SDL nécessaires. Toutefois, si l’une d’entre elles requiert une autre dépendance spécifique, vous devrez l’installer manuellement. Une fois la dépendance installée, relancez simplement le script avec la commande <code>bash play.sh</code>. </p>
 </blockquote>
 <h1><a class="anchor" id="autotoc_md6"></a>
 Documentation</h1>
-<p>Vous pouvez visiter le website <a href="https://pong.madebyvasilis.site">https://pong.madebyvasilis.site</a> qui inclut tous les détails des différentes classes, structures et fonctions.</p>
+<p>Pour plus de détails sur la structure du projet (classes, fonctions, etc.), rendez-vous sur : <a href="https://pong.madebyvasilis.site/">https://pong.madebyvasilis.site</a></p>
 <h1><a class="anchor" id="autotoc_md7"></a>
 Dépendances</h1>
-<p>Voici les dépendances du programme principal</p>
+<p>Voici la liste des dépendances indispensables au bon fonctionnement du programme :</p>
 <ul>
-<li><code>SDL2</code> - La bibliothèque principale SDL2</li>
-<li><code>SDL2_ttf</code> - Bibliothèque pour le rendu de texte (polices TrueType)</li>
-<li><code>SDL2_mixer</code> - Bibliothèque pour la gestion du son/musique</li>
-<li><code>SDL2_image</code> - Bibliothèque pour le chargement d'images</li>
-<li><code>SDL2_net</code> - Bibliothèque réseau pour SDL2</li>
+<li><b>SDL2</b> : Bibliothèque principale pour la gestion de la fenêtre et des événements</li>
+<li><b>SDL2_ttf</b> : Bibliothèque pour le rendu du texte (polices TrueType)</li>
+<li><b>SDL2_mixer</b> : Bibliothèque pour la gestion du son et de la musique</li>
+<li><b>SDL2_image</b> : Bibliothèque pour le chargement d’images (formats multiples)</li>
+<li><b>SDL2_net</b> : Bibliothèque pour les fonctionnalités réseau</li>
 </ul>
+<p><em>(Assurez-vous que ces bibliothèques sont installées ou que le script les télécharge correctement.)</em></p>
 <h1><a class="anchor" id="autotoc_md8"></a>
 Les différents modes</h1>
 <h2><a class="anchor" id="autotoc_md9"></a>
 Classic</h2>
-<p>Le concept original de Pong est un simulateur simple de ping-pong. Une petite boule, se déplace à travers l'écran, rebondissant sur les rebords du haut et du bas, et le joueur commande un « paddle », qui glisse de haut en bas à travers les extrémités de l'écran. Si la boule frappe la palette, elle rebondit vers l'autre joueur. Si elle manque la palette, l'ordinateur marque un point. La boule rebondit de différentes manières selon la façon dont la boule touche la palette.</p>
-<p>Dans ce mode vous allez trouver les fonctionnalités suivantes. Plus des informations pour chacune sont disponibles dans la section Fonctionnalités:</p>
+<p>Le concept originel de Pong s’apparente à un simulateur de ping-pong minimaliste : une balle se déplace de part et d’autre de l’écran en rebondissant sur les bords supérieur et inférieur. Chaque joueur contrôle une raquette coulissant verticalement le long du bord de l’écran. La balle rebondit différemment selon la partie de la raquette qu’elle touche.</p>
 <ul>
-<li>High Score</li>
-<li><a class="el" href="class_game.html">Game</a> Save</li>
+<li><b>Fonctionnalités incluses</b> :<ul>
+<li><b>High Score</b></li>
+<li><b><a class="el" href="class_game.html">Game</a> Save</b></li>
 </ul>
-<p>Nous avons décidé que pour cette partie, au lieu de fixer un score maximum qui pourrait signaler la fin du jeu, dans notre version les joueurs peuvent tout simplement décider un score entre eux à l'oral et commencer à jouer. Pour arrêter il suffit de choisir "End the game".</p>
-<p>La motivation essentielle dans ce mode est "qui va dépasser le dernier high score ?".</p>
+</li>
+</ul>
+<p>Dans notre version, il n’y a pas de score maximum prédéfini ; les joueurs peuvent simplement s’entendre oralement sur un objectif à atteindre. Lorsqu’ils souhaitent arrêter, il suffit de choisir « End the game ». Ici, la motivation ultime est : <em><b>qui fera exploser le compteur du high score et revendiquera le titre de meilleur pongiste ?</b></em></p>
 <h2><a class="anchor" id="autotoc_md10"></a>
 AI mode</h2>
-<p>Le principe est le même comme au mode classic sauf que ici, pong ne peut être joué que par un joueur seul, avec la palette opposée commandée par l'ordinateur.</p>
+<p>Ce mode reprend les règles du <b>Classic</b> , à la différence qu’il ne peut être joué que par un seul joueur : la raquette adverse est contrôlée par l’ordinateur. <b>Préparez-vous à affronter une IA tenace.</b> <b>Arriverez-vous à la battre, ou rejoindrez-vous la longue liste de ses victimes ?</b></p>
 <h2><a class="anchor" id="autotoc_md11"></a>
 Storytime mode</h2>
-<p>Dans ce mode, les deux joueurs vont jouer 5 tours. Le gagnant est le joueur qui a gagné le plus grand nombre de tours. Chaque tour est composé de 12 parties. Le gagnant d'un tour est le joueur qui atteint 12 points en premier.</p>
-<p>Ici, nous allons voir des lettres tomber par le haut de l'écran. Si vous ciblez et touchez les lettres, vous gagnez un point en extra.</p>
-<p>Quand vous touchez les lettres, petit à petit, un mot va être construit et comme ça vous pouvez lire la phrase secrète.</p>
+<p>Dans ce mode, deux joueurs s’affrontent sur <b>3 tours.</b> Le vainqueur est celui qui remporte le plus de tours . Chaque tour se compose de <b>8 points</b> , et c’est le premier joueur à atteindre 8 points qui gagne le tour.</p>
+<p>Une nouveauté pimentera votre partie : des lettres tombent depuis le haut de l’écran. En les touchant, vous obtenez un point supplémentaire et vous contribuez à former un mot caché, révélant peu à peu une phrase secrète.</p>
 <h2><a class="anchor" id="autotoc_md12"></a>
-Fun mode</h2>
-<p>Vous allez trouver les mêmes règles comme au storytime mode en ce qui concerne qui gagne. Ce mode est assez particulier car nous avons introduit des easter eggs pour les joueurs. Par exemple:</p>
+<b>Fun mode</b></h2>
+<p>Ce mode s’inspire des règles du <b>Storytime Mode</b> , avec un format de <b>3 parties</b> où l’objectif est d’atteindre 5 points pour remporter chaque partie. Toutefois, nous y avons glissé plusieurs surprises et easter eggs destinés à dynamiser la compétition.</p>
+<p>Puisque nous sommes de futurs roboticiens, nous ne pouvions pas résister à ajouter une petite touche de robotique : vous verrez ainsi de mystérieux robots apparaître au cours de la partie. En les touchant, vous déclencherez des effets inédits :</p>
 <ul>
-<li>Si quelqu'un touche le cube qui tombe, son paddle va grandir temporairement</li>
-<li>Si vous touchez une étoile, la balle va disparaître pour une période de temps courte</li>
+<li>Raquette géante : votre raquette gagne temporairement en taille.</li>
+<li>Balle invisible : la balle disparaît momentanément, rendant la partie plus chaotique.</li>
+<li>Contrôles inversés : les touches de votre adversaire se retrouvent soudainement inversées.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md13"></a>
-Fonctionnalités</h1>
-<h2><a class="anchor" id="autotoc_md14"></a>
-High Score</h2>
-<p>Cette fonctionnalité est disponible seulement en mode classique du jeu. La logique du jeu vérifie à chaque instant si jamais quelqu'un arrive à faire un score supérieur au max qui est sauvegardé avant.</p>
-<p>La sauvegarde est faite sur un fichier nommé game_pong-highscore_849216.txt qui est chiffré, donc c'est impossible pour quelqu'un de modifier le contenu s'il ne connaît pas comment il est chiffré. Les informations qui sont stockées sont bien évidemment le dernier high score et le nom du joueur.</p>
+<p><b>Saurez-vous exploiter ces bonus (et pièges) pour devenir le champion incontesté du Fun Mode ?</b></p>
+<h2><a class="anchor" id="autotoc_md13"></a>
+<b>High Score</b></h2>
+<p>Cette fonctionnalité est disponible uniquement en mode Classic . Le jeu vérifie en permanence si un joueur atteint un score supérieur au record actuel. Lorsque c’est le cas, le record est immédiatement mis à jour.</p>
+<p>La sauvegarde est effectuée dans un fichier nommé <code>game_pong-highscore_849216.txt</code>, dont le contenu est chiffré afin de garantir l'intégrité des données et d'empêcher toute modification non autorisée. Ce fichier contient uniquement le dernier high score ainsi que le nom du joueur correspondant.</p>
 <p>Voici l'algorithme qui détermine si quelqu'un a fait un nouveau highscore:</p>
 <div class="fragment"><div class="line"><span class="comment">// High score logic</span></div>
 <div class="line">        <span class="keywordflow">if</span> (player1-&gt;get_user_score() &gt;= last_highscore || player2-&gt;get_user_score() &gt;= last_highscore)</div>
@@ -186,12 +190,11 @@ High Score</h2>
 <div class="line">            strncpy(last_highscore_name, ((player1-&gt;get_user_score() &gt;= player2-&gt;get_user_score()) ? player1-&gt;get_user_name() : player2-&gt;get_user_name()).c_str(), 19);</div>
 <div class="line">            last_highscore_name[19] = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line">        }</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
-Game Save</h2>
-<p><em>Est-ce que vous souhaitez faire une pause, et continuer plus tard pour essayer de dépasser le dernier high score ?</em></p>
-<p>Vous avez l'option de sauvegarder l'état de votre jeu et revenir quand vous le souhaitez. Comme attendu, le chiffrement est pris en compte dans cette fonctionnalité aussi.</p>
-<h3><a class="anchor" id="autotoc_md16"></a>
-Game save logic</h3>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
+<b>Game Save</b></h2>
+<p>Envie de faire une pause et de retenter de battre le record un peu plus tard ? Avec la fonctionnalité de <a class="el" href="class_game.html">Game</a> Save , vous pouvez sauvegarder l’état de votre partie et la reprendre quand vous le souhaitez. Là encore, le chiffrement est appliqué pour garantir l’intégrité des données.</p>
+<h3><a class="anchor" id="autotoc_md15"></a>
+<b>Game save logic</b></h3>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="struct_save_state.html">SaveState</a> saveState;</div>
 <div class="line">saveState.<a class="code hl_variable" href="struct_save_state.html#a18a1f7e9ebf0510f78a43fce96d7baa5">score1</a> = player1-&gt;get_user_score();</div>
 <div class="line">saveState.<a class="code hl_variable" href="struct_save_state.html#afec7e73c9b0a2f6b09d1da09525ef3b9">score2</a> = player2-&gt;get_user_score();</div>
@@ -236,10 +239,10 @@ Game save logic</h3>
 <div class="ttc" id="astruct_save_state_html_afa9018a3098b98b699b61e95ce92e064"><div class="ttname"><a href="struct_save_state.html#afa9018a3098b98b699b61e95ce92e064">SaveState::ball_vel_x</a></div><div class="ttdeci">float ball_vel_x</div><div class="ttdef"><b>Definition</b> game_save.hpp:28</div></div>
 <div class="ttc" id="astruct_save_state_html_afec7e73c9b0a2f6b09d1da09525ef3b9"><div class="ttname"><a href="struct_save_state.html#afec7e73c9b0a2f6b09d1da09525ef3b9">SaveState::score2</a></div><div class="ttdeci">int score2</div><div class="ttdef"><b>Definition</b> game_save.hpp:23</div></div>
 </div><!-- fragment --><blockquote class="doxtable">
-<p>&zwj;La sauvegarde est faite aussi sur un fichier qui est stocké sous le nom game_pong-save_849374.txt. Même si on ferme complètement le jeu, le fichier reste sur le répertoire. Il est supprimé si et seulement si quelqu'un vient de continuer par le jeu qui était sauvegardé ou s'il choisit de commencer un nouveau jeu. </p>
+<p>&zwj;La sauvegarde du jeu est réalisée dans un fichier nommé <code>game_pong-save_849374.txt</code>. Ce fichier reste disponible jusqu’à ce que le joueur reprenne la partie sauvegardée ou choisisse de démarrer une nouvelle partie, auquel cas il sera automatiquement supprimé. Ainsi, votre progression est préservée même après avoir quitté le jeu. </p>
 </blockquote>
-<h3><a class="anchor" id="autotoc_md17"></a>
-Game retrieve logic</h3>
+<h3><a class="anchor" id="autotoc_md16"></a>
+<b>Game retrieve logic</b></h3>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="struct_save_state.html">SaveState</a> savedState;</div>
 <div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="class_saving.html#ab71b9324583e823beda155c1f84ff95d">Saving::load_game</a>(savedState))</div>
 <div class="line">{</div>
@@ -266,19 +269,18 @@ Game retrieve logic</h3>
 <div class="ttc" id="aclass_saving_html_ab71b9324583e823beda155c1f84ff95d"><div class="ttname"><a href="class_saving.html#ab71b9324583e823beda155c1f84ff95d">Saving::load_game</a></div><div class="ttdeci">static bool load_game(SaveState &amp;state)</div><div class="ttdoc">Loads a game state from file.</div><div class="ttdef"><b>Definition</b> game_save.cpp:179</div></div>
 <div class="ttc" id="aclass_sound_effects_html_ad94ae51e4e6ffb41b3e718a2a16107a3"><div class="ttname"><a href="class_sound_effects.html#ad94ae51e4e6ffb41b3e718a2a16107a3">SoundEffects::change_music_track</a></div><div class="ttdeci">static void change_music_track(Mix_Music *music_file, int fade_out_duration=500, int fade_in_duration=500, int volume=MIX_MAX_VOLUME/3)</div><div class="ttdoc">Changes background music with fade effect.</div><div class="ttdef"><b>Definition</b> sound_effects.cpp:24</div></div>
 <div class="ttc" id="agame_8hpp_html_ad0ed1832dd134806ad335cdcc1a59ad2ac9dbb2b7c84159b632d71e512eba8428"><div class="ttname"><a href="game_8hpp.html#ad0ed1832dd134806ad335cdcc1a59ad2ac9dbb2b7c84159b632d71e512eba8428">game_state::Playing</a></div><div class="ttdeci">@ Playing</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
-Choisir le type de la balle</h2>
-<p>Par défaut, le pong vient avec la balle classique circulaire, mais si quelqu'un souhaite un peu de personnalisation, nous offrons cette option.</p>
-<p>Au début de chaque mode, vous êtes demandé quel est le type de la balle que vous souhaitez. Nous avons intégré 3 formes basiques:</p>
-<ul>
-<li>cercle avec une image graphique [SDL forme utilisée pour détecter les collisions]</li>
-<li>triangle</li>
-<li>carré</li>
-</ul>
-<p>Il s'agit tout simplement d'une preuve de concept qui nous indique que nous sommes libres de designer et intégrer tout ce qu'on souhaite dans l'interface graphique.</p>
-<h2><a class="anchor" id="autotoc_md19"></a>
-Changement de la musique</h2>
-<p>Nous avons réussi à implémenter correctement la bibliothèque de SDL Mixer qui nous permet de fade-in et fade-out différents sons (musique) et différents effets de son.</p>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
+<b>Choisir le type de la balle</b></h2>
+<p>Par défaut, la balle du Pong est de forme circulaire, mais pourquoi ne pas la personnaliser ? À chaque début de partie, vous pouvez sélectionner l’une des 3 formes proposées :</p>
+<ol type="1">
+<li>Cercle : avec une image graphique pour la détection de collision [SDL forme utilisée pour détecter les collisions].</li>
+<li>Triangle</li>
+<li>Carré</li>
+</ol>
+<p>Ce n’est qu’une preuve de concept : rien ne vous empêche d’imaginer et d’intégrer des formes plus originales dans l’interface graphique.</p>
+<h2><a class="anchor" id="autotoc_md18"></a>
+<b>Changement de la musique</b></h2>
+<p>Grâce à la bibliothèque SDL Mixer , nous pouvons gérer différents effets sonores et musiques avec des fonctions de fade-in et fade-out . Chaque mode peut ainsi avoir sa propre ambiance sonore, pour rendre l’expérience de jeu encore plus immersive.</p>
 <p>Voici l'implémentation:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="class_sound_effects.html#ad94ae51e4e6ffb41b3e718a2a16107a3">SoundEffects::change_music_track</a>(Mix_Music *music_file,</div>
 <div class="line">                                      <span class="keywordtype">int</span> fade_out_duration,</div>
@@ -290,8 +292,8 @@ Changement de la musique</h2>
 <div class="line">    Mix_FadeInMusic(music_file, -1, fade_in_duration);</div>
 <div class="line">    Mix_VolumeMusic(volume);</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md20"></a>
-Chiffrement des données</h1>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md19"></a>
+<b>Chiffrement des données</b></h1>
 <p>La sauvegarde des données utilise un système de chiffrement XOR simple avec une clé rotative :</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>SavingEncryption {</div>
 <div class="line"><span class="keyword">private</span>:</div>
@@ -307,26 +309,27 @@ Chiffrement des données</h1>
 <blockquote class="doxtable">
 <p>&zwj;Inspiré de <a href="https://www.101computing.net/xor-encryption-algorithm/">https://www.101computing.net/xor-encryption-algorithm/</a> L'utilisation de XOR permet à la même opération de chiffrer et de déchiffrer </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md21"></a>
-Les objets</h1>
-<p>Dans le cadre ce projet en programmation orientée objets, nous avons créé des objets qui représentent des éléments du jeu pong. Il faut noter quand même que toutes les fonctionnalités sont codées comme si c'était des objets, pour assurer la modularité du code et la bonne organisation des fichiers. Voici les différentes classes que nous avons créées:</p>
+<h1><a class="anchor" id="autotoc_md20"></a>
+<b>Les objets</b></h1>
+<p>Dans ce projet, toutes les fonctionnalités ont été implémentées sous la forme d’objets, garantissant ainsi la modularité, la flexibilité et une organisation claire du code. Chaque élément du jeu Pong est représenté par une classe spécifique, ce qui permet une maintenance aisée et une évolutivité simplifiée du programme.</p>
+<p>Voici les différentes classes que nous avons définies :</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Class   </th><th class="markdownTableHeadNone">Description   </th><th class="markdownTableHeadNone">Fichier    </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a>   </td><td class="markdownTableBodyNone">Intelligence artificielle pour contrôler une raquette automatiquement   </td><td class="markdownTableBodyNone"><a class="el" href="ai_8cpp.html" title="Implementation of the AI class for computer-controlled paddle.">ai.cpp</a>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a>   </td><td class="markdownTableBodyNone">Classe de base abstraite pour tous les types de balles dans le jeu car nous proposons différents types de balles à choisir avant lancer le jeu   </td><td class="markdownTableBodyNone">ball_base.pp    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a>   </td><td class="markdownTableBodyNone">Classe de base abstraite pour tous les types de balles dans le jeu car nous proposons différents types de balles à choisir avant de lancer le jeu   </td><td class="markdownTableBodyNone">ball_base.pp    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><a class="el" href="class_classic_ball.html" title="Classic circular ball implementation inheriting from BallBase.">ClassicBall</a>   </td><td class="markdownTableBodyNone">Implémentation classique de balle circulaire héritant de <a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a>   </td><td class="markdownTableBodyNone"><a class="el" href="classic__ball_8cpp.html" title="Implementation of the classic circular ball ClassicBall class.">classic_ball.cpp</a>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="class_game.html">Game</a>   </td><td class="markdownTableBodyNone">Il contient tous les paramètres principaux, surtout les références de tous les autres objets mentionnés dans cette liste   </td><td class="markdownTableBodyNone"><a class="el" href="game_8cpp.html">game.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_game.html">Game</a>   </td><td class="markdownTableBodyNone">Contient tous les paramètres principaux, surtout les références de tous les autres objets mentionnés dans cette liste   </td><td class="markdownTableBodyNone"><a class="el" href="game_8cpp.html">game.cpp</a>    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><a class="el" href="class_game_over.html">GameOver</a>   </td><td class="markdownTableBodyNone">Gère l'écran de fin de partie lorsqu'une partie est terminée ou si on choisit de terminer manuellement une partie   </td><td class="markdownTableBodyNone"><a class="el" href="game__over_8cpp.html" title="Implementation of the game_over screen class.">game_over.cpp</a>    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a class="el" href="class_g_u_i.html" title="Utility class providing user interface functionality.">GUI</a>   </td><td class="markdownTableBodyNone">Classe utilitaire fournissant des fonctionnalités d'interface utilisateur (donner notre prénom via SDL))   </td><td class="markdownTableBodyNone"><a class="el" href="gui_8cpp.html" title="Implementation of the GUI class for game interface.">gui.cpp</a>    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="struct_high_score.html" title="Structure representing a high score record.">HighScore</a> [structure]   </td><td class="markdownTableBodyNone">Structure représentant un record de score élevé. Il gère la sauvegarde de ces données spécifiques   </td><td class="markdownTableBodyNone"><a class="el" href="game__save_8cpp.html" title="Implementation of save game functionality for Saving class.">game_save.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="struct_high_score.html" title="Structure representing a high score record.">HighScore</a> [structure]   </td><td class="markdownTableBodyNone">Structure représentant un record de score . Il gère la sauvegarde de ces données spécifiques   </td><td class="markdownTableBodyNone"><a class="el" href="game__save_8cpp.html" title="Implementation of save game functionality for Saving class.">game_save.cpp</a>    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a class="el" href="class_invisible_power.html" title="Power-up that makes the ball temporarily invisible.">InvisiblePower</a>   </td><td class="markdownTableBodyNone">Rend la balle temporairement invisible. Il hérite de la classe <a class="el" href="class_power.html" title="Class representing power-up items that affect gameplay.">Power</a>   </td><td class="markdownTableBodyNone"><a class="el" href="invisible__power_8cpp.html" title="Implementation of the InvisiblePower class.">invisible_power.cpp</a>    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -358,8 +361,8 @@ Les objets</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a class="el" href="classpage__4b__1t.html" title="Defines the mode selection menu with 4 buttons and 1 title.">page_4b_1t</a>   </td><td class="markdownTableBodyNone">Définit le menu de sélection de mode avec 4 boutons et 1 titre   </td><td class="markdownTableBodyNone"><a class="el" href="page__4b__1t_8cpp.html" title="Implementation of the mode selection menu page_4b_1t class.">page_4b_1t.cpp</a>   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md22"></a>
-Les foncteurs</h1>
+<h1><a class="anchor" id="autotoc_md21"></a>
+<b>Les foncteurs</b></h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Foncteur   </th><th class="markdownTableHeadNone">Descriptions   </th><th class="markdownTableHeadNone">Fichier    </th></tr>
@@ -372,28 +375,31 @@ Les foncteurs</h1>
 <blockquote class="doxtable">
 <p>&zwj;Cette approche nous a permis d'accélérer le développement en permettant des tests isolés des différents SDL renderers. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md23"></a>
-Structure des pages</h1>
-<p>Ce jeu est fourni avec des structures de page prédéfinies spécifiques que nous utilisons pour restituer différents contenus de manière dynamique ou non. Voici les spécifications de ces fichiers :</p>
+<h1><a class="anchor" id="autotoc_md22"></a>
+<b>Structure des pages</b></h1>
+<p>Afin de garantir une interface utilisateur claire, fluide et facilement adaptable, nous avons défini plusieurs structures prédéfinies pour l’affichage des différentes pages du jeu. Chaque modèle est conçu pour répondre à des besoins spécifiques et assurer une navigation intuitive.</p>
+<p>Voici les spécifications précises de chaque modèle :</p>
 <ul>
-<li><a class="el" href="classpage__3b__1t.html" title="Middle menu class with 3 buttons and 1 title.">page_3b_1t</a> : Il y a trois boutons au centre et un titre en gras en haut (menu du milieu précédent)</li>
-<li><a class="el" href="classpage__2b__1t.html" title="Notice screen with 2 buttons and 1 title.">page_2b_1t</a> : Il y a deux boutons et une grande partie pour le texte long (avis précédents)</li>
-<li><a class="el" href="classpage__4b__1t.html" title="Defines the mode selection menu with 4 buttons and 1 title.">page_4b_1t</a> : Il y a quatre boutons et 1 titre en gras (menu mode précédent)</li>
-<li><a class="el" href="classpage__3b__0t.html" title="Main menu class with 3 buttons and no title.">page_3b_0t</a> : Il y a trois boutons, les deux en haut de la page et le troisième près de la fin (menu précédent)</li>
-<li><a class="el" href="classpage__3b.html" title="Pause menu with 3 buttons.">page_3b</a> : Il y a 3 boutons, tous centrés au milieu de l'écran (menu pause précédent)</li>
+<li><code><a class="el" href="classpage__3b__1t.html" title="Middle menu class with 3 buttons and 1 title.">page_3b_1t</a></code> : Trois boutons centrés verticalement, accompagnés d’un titre en gras en haut de la page (utilisé pour les menus principaux).</li>
+<li><code><a class="el" href="classpage__2b__1t.html" title="Notice screen with 2 buttons and 1 title.">page_2b_1t</a></code> : Deux boutons et une large section dédiée à un texte explicatif (idéal pour l’affichage d’avis ou d’instructions détaillées).</li>
+<li><code><a class="el" href="classpage__4b__1t.html" title="Defines the mode selection menu with 4 buttons and 1 title.">page_4b_1t</a></code> : Quatre boutons répartis sur la page, avec un titre en gras en haut (utilisé pour la sélection des modes de jeu).</li>
+<li><code><a class="el" href="classpage__3b__0t.html" title="Main menu class with 3 buttons and no title.">page_3b_0t</a></code> : Trois boutons répartis de manière spécifique : deux placés en haut et un troisième positionné vers le bas de la page (permettant de mettre en avant une option particulière).</li>
+<li><code><a class="el" href="classpage__3b.html" title="Pause menu with 3 buttons.">page_3b</a></code> : Trois boutons alignés verticalement et centrés au milieu de l’écran (structure utilisée pour le menu pause).</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md24"></a>
-La logique du jeu</h1>
-<h2><a class="anchor" id="autotoc_md25"></a>
-L'interface graphique</h2>
-<p>Maintenant que nous avons une image plus claire concernant les différentes pages qui contiennent des éléments pour interagir avec le logiciel, nous allons analyser comment l'interface graphique est réalisée.</p>
-<p>Nous utilisons SDL pour rendre et afficher toutes les différentes formes dans une fenêtre avec des dimensions prédéfinies dans le fichier <a class="el" href="macros_8hpp.html" title="Defines macros and constants used throughout the project.">macros.hpp</a> (plus d'information sur la partie <b>Pourquoi <a class="el" href="macros_8hpp.html" title="Defines macros and constants used throughout the project.">macros.hpp</a></b>). Le programme principal, demande la création de la classe <code>game</code> qui inclut les trois méthodes suivantes:</p>
+<p>Ces structures offrent une navigation cohérente, garantissant une meilleure expérience utilisateur tout au long du jeu.</p>
+<h1><a class="anchor" id="autotoc_md23"></a>
+<b>La logique du jeu</b></h1>
+<h2><a class="anchor" id="autotoc_md24"></a>
+<b>L'interface graphique</b></h2>
+<p>Maintenant que nous avons une vue d’ensemble des différentes pages et des éléments interactifs du jeu, intéressons-nous à la façon dont l’interface graphique est conçue et gérée.</p>
+<p>Nous utilisons <b>SDL</b> pour afficher et rendre toutes les formes et objets du jeu dans une fenêtre aux dimensions prédéfinies dans le fichier <code><a class="el" href="macros_8hpp.html" title="Defines macros and constants used throughout the project.">macros.hpp</a></code> (plus de détails dans la section <em><b>Pourquoi <a class="el" href="macros_8hpp.html" title="Defines macros and constants used throughout the project.">macros.hpp</a></b></em>).</p>
+<p>Le programme principal repose sur la classe <code><a class="el" href="class_game.html">Game</a></code> , qui orchestre l’ensemble du jeu à travers trois méthodes clés :</p>
 <ol type="1">
-<li>Initialise</li>
-<li>Loop</li>
-<li>Close</li>
+<li><b><code>initialise()</code></b> – Initialise tous les paramètres et variables nécessaires au jeu.</li>
+<li><b><code>loop()</code></b> – Gère la boucle principale du jeu.</li>
+<li><b><code>close()</code></b> – Libère les ressources et termine proprement l’exécution.</li>
 </ol>
-<p>Les méthodes <code>initialise</code> et <code>close</code> permettent l'initialisation de tous les différents paramètres et variables tandis que loop tourne en permanence. La méthode loop est une boucle while avec un booléen qui va arrêter de se répéter si jamais le booléen est mis à false par la logique, comme on peut constater ci-dessous:</p>
+<p>La méthode <code>loop()</code> constitue le cœur du jeu : il s’agit d’une boucle while qui tourne en continu tant que le jeu est actif. Cette boucle s’arrête uniquement si la variable booléenne <code>mIsRunning</code> est définie sur <code>false</code>, soit lorsque le joueur ferme la fenêtre SDL, soit lorsqu'il sélectionne "**Exit Game**"</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="class_game.html#a7ad92b77b596d7882a7ae76eb18b5e6c">Game::loop</a>()</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordflow">while</span> (<a class="code hl_variable" href="class_game.html#a2eb4260096c6438208a539063506af92">mIsRunning</a>) <span class="comment">// set to false when we either tap on the X to close the SDL window or when we tap on the Exit game button</span></div>
@@ -406,28 +412,60 @@ L'interface graphique</h2>
 <div class="ttc" id="aclass_game_html_a2eb4260096c6438208a539063506af92"><div class="ttname"><a href="class_game.html#a2eb4260096c6438208a539063506af92">Game::mIsRunning</a></div><div class="ttdeci">bool mIsRunning</div><div class="ttdef"><b>Definition</b> game.hpp:77</div></div>
 <div class="ttc" id="aclass_game_html_a7ad92b77b596d7882a7ae76eb18b5e6c"><div class="ttname"><a href="class_game.html#a7ad92b77b596d7882a7ae76eb18b5e6c">Game::loop</a></div><div class="ttdeci">void loop()</div><div class="ttdef"><b>Definition</b> game.cpp:435</div></div>
 <div class="ttc" id="aclass_game_html_a8beca5e773f8b5ca761122a187945654"><div class="ttname"><a href="class_game.html#a8beca5e773f8b5ca761122a187945654">Game::game_logic</a></div><div class="ttdeci">void game_logic()</div><div class="ttdef"><b>Definition</b> game.cpp:445</div></div>
-<div class="ttc" id="aclass_game_html_ac09ebf3830ea755d3e931eefe7e3d846"><div class="ttname"><a href="class_game.html#ac09ebf3830ea755d3e931eefe7e3d846">Game::output</a></div><div class="ttdeci">void output()</div><div class="ttdef"><b>Definition</b> game.cpp:1172</div></div>
-<div class="ttc" id="aclass_game_html_acf184c63253cc802dad8d2b1e06b636c"><div class="ttname"><a href="class_game.html#acf184c63253cc802dad8d2b1e06b636c">Game::game</a></div><div class="ttdeci">void game()</div><div class="ttdef"><b>Definition</b> game.cpp:950</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md26"></a>
+<div class="ttc" id="aclass_game_html_ac09ebf3830ea755d3e931eefe7e3d846"><div class="ttname"><a href="class_game.html#ac09ebf3830ea755d3e931eefe7e3d846">Game::output</a></div><div class="ttdeci">void output()</div><div class="ttdef"><b>Definition</b> game.cpp:1195</div></div>
+<div class="ttc" id="aclass_game_html_acf184c63253cc802dad8d2b1e06b636c"><div class="ttname"><a href="class_game.html#acf184c63253cc802dad8d2b1e06b636c">Game::game</a></div><div class="ttdeci">void game()</div><div class="ttdef"><b>Definition</b> game.cpp:973</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
 Loop</h2>
-<p>Dans cette boucle alors, il y a la logique du jeu <code>game_logic()</code> qui est responsable de nous rediriger vers les différentes pages, messages et menus. En plus, nous allons trouver, le <code>game()</code> qui est la mise à jour des différentes états selon lesquelles on décide par exemple si une partie est terminée ou pas, et il y a aussi <code>output()</code> lequel selon les paramètres qui sont fixés par la logique, va nous rendre les objets visuels sur l'interface SDL.</p>
-<h2><a class="anchor" id="autotoc_md27"></a>
-Héritage</h2>
-<p>...</p>
-<h2><a class="anchor" id="autotoc_md28"></a>
-Polymorphisme</h2>
-<p>...</p>
-<h2><a class="anchor" id="autotoc_md29"></a>
-Abstraction</h2>
-<p>...</p>
-<h2><a class="anchor" id="autotoc_md30"></a>
-Fonctions lambda</h2>
-<p>Nous utilisons des fonctions lambda pour vérifier les limites physiques de l'objet paddle. Cette approche nous permet d'avoir un code qui est modulaire et qui nous permettra de mettre à jour la fonctionnalité de changement de position et les conditions de l'objet paddle facilement.</p>
-<p>Plus précisément, dans notre cas les fonctions lambda étaient parfaites car elles nous permettent de définir un objet de fonction anonyme tout en gérant le typage automatiquement pour nous.</p>
-<p>Vous allez trouver deux fonctions:</p>
+<p>Dans cette boucle, trois fonctions essentielles assurent le bon déroulement du jeu :</p>
 <ul>
-<li><code>auto move_paddle = [this](float delta, float time)</code> responsable pour bouger l'objet paddle (la raquette)</li>
-<li><code>auto adjust_boundaries = [this]()</code> responsable pour vérifier et ajuster les limites de la raquette</li>
+<li><code>game_logic()</code> : Gère la logique principale et décide des transitions entre les pages, menus et événements du jeu.</li>
+<li><code>game()</code> : Met à jour l’état du jeu en fonction des actions du joueur, détermine si une partie est terminée et applique les règles.</li>
+<li><code>output()</code> : Génère et affiche les éléments visuels sur l’interface SDL en fonction des paramètres définis par la logique du jeu.</li>
+</ul>
+<p>Ces trois fonctions fonctionnent en synergie pour offrir une expérience fluide et dynamique, assurant que le jeu réagit de manière cohérente aux interactions du joueur.</p>
+<h2><a class="anchor" id="autotoc_md26"></a>
+Héritage</h2>
+<p>L'héritage est largement utilisé pour étendre la fonctionnalité des classes de base. Les trois types de balles (<code><a class="el" href="class_classic_ball.html" title="Classic circular ball implementation inheriting from BallBase.">ClassicBall</a></code>, <code><a class="el" href="class_square_ball.html" title="Square shaped ball implementation inheriting from BallBase.">SquareBall</a></code> et <code><a class="el" href="class_triangle_ball.html" title="Triangle shaped ball implementation inheriting from BallBase.">TriangleBall</a></code>) héritent tous de la classe abstraite <code><a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a></code>. Par exemple, dans <code><a class="el" href="classic__ball_8hpp.html" title="Header defining the classic circular ball ClassicBall class.">classic_ball.hpp</a></code>, nous voyons :</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_class" href="class_classic_ball.html">ClassicBall</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_ball_base.html">BallBase</a> {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <a class="code hl_function" href="class_classic_ball.html#a45bf271d7abeee37a8a729150dc1b41d">ClassicBall</a>() : <a class="code hl_class" href="class_ball_base.html">BallBase</a>(24.0f) {}</div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code hl_function" href="class_classic_ball.html#a6e80547486ec3d868dc577841a768df0">render_object</a>(SDL_Renderer *renderer) <span class="keyword">override</span>;</div>
+<div class="line">    <span class="comment">// ...</span></div>
+<div class="line">};</div>
+<div class="ttc" id="aclass_ball_base_html"><div class="ttname"><a href="class_ball_base.html">BallBase</a></div><div class="ttdoc">Abstract base class for all ball types in the game.</div><div class="ttdef"><b>Definition</b> ball_base.hpp:23</div></div>
+<div class="ttc" id="aclass_classic_ball_html"><div class="ttname"><a href="class_classic_ball.html">ClassicBall</a></div><div class="ttdoc">Classic circular ball implementation inheriting from BallBase.</div><div class="ttdef"><b>Definition</b> classic_ball.hpp:21</div></div>
+<div class="ttc" id="aclass_classic_ball_html_a45bf271d7abeee37a8a729150dc1b41d"><div class="ttname"><a href="class_classic_ball.html#a45bf271d7abeee37a8a729150dc1b41d">ClassicBall::ClassicBall</a></div><div class="ttdeci">ClassicBall()</div><div class="ttdoc">Constructor for ClassicBall.</div><div class="ttdef"><b>Definition</b> classic_ball.hpp:28</div></div>
+<div class="ttc" id="aclass_classic_ball_html_a6e80547486ec3d868dc577841a768df0"><div class="ttname"><a href="class_classic_ball.html#a6e80547486ec3d868dc577841a768df0">ClassicBall::render_object</a></div><div class="ttdeci">void render_object(SDL_Renderer *renderer) override</div><div class="ttdoc">Renders the classic ball on screen.</div><div class="ttdef"><b>Definition</b> classic_ball.cpp:71</div></div>
+</div><!-- fragment --><p>Dans le domaine des power-ups, nous avons également une hiérarchie d'héritage. Les classes <code><a class="el" href="class_invisible_power.html" title="Power-up that makes the ball temporarily invisible.">InvisiblePower</a></code> et <code>InversePower</code> héritent de la classe <code><a class="el" href="class_power.html" title="Class representing power-up items that affect gameplay.">Power</a></code>, comme on peut le voir dans <code><a class="el" href="invisible__power_8hpp.html" title="Header defining the InvisiblePower class for ball visibility effects.">invisible_power.hpp</a></code> et <code><a class="el" href="inverse__power_8hpp.html" title="Implementation of the InversiblePower class.">inverse_power.hpp</a></code>. Cela permet de partager le comportement commun tout en spécialisant certaines fonctionnalités</p>
+<h2><a class="anchor" id="autotoc_md27"></a>
+Polymorphisme</h2>
+<p>Le polymorphisme est implémenté à travers l'utilisation de méthodes virtuelles et leur redéfinition dans les classes dérivées. Un exemple clair se trouve dans la hiérarchie des balles, où la méthode <code>render_object()</code> est définie différemment dans chaque type de balle :</p>
+<ul>
+<li>Dans <code><a class="el" href="classic__ball_8cpp.html" title="Implementation of the classic circular ball ClassicBall class.">classic_ball.cpp</a></code>, elle dessine un cercle.</li>
+<li>Dans <code><a class="el" href="square__ball_8cpp.html" title="Implementation of the SquareBall class.">square_ball.cpp</a></code>, elle dessine un carré.</li>
+<li>Dans <code><a class="el" href="triangle__ball_8cpp.html" title="Implementation of the TriangleBall class.">triangle_ball.cpp</a></code>, elle dessine un triangle.</li>
+</ul>
+<p>Le jeu peut manipuler n'importe quel objet dérivé de <code><a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a></code> de manière uniforme, en appelant <code>mBall-&gt;render_object(renderer)</code> dans <code><a class="el" href="game_8cpp.html">game.cpp</a></code>, sans se soucier du type spécifique de balle utilisé.</p>
+<p>De même, les power-ups démontrent le polymorphisme avec leurs méthodes <code>update()</code> et <code>render()</code> qui sont appelées de manière générique mais exécutent un comportement spécifique à chaque type de power-up.</p>
+<h2><a class="anchor" id="autotoc_md28"></a>
+Abstraction</h2>
+<p>L'abstraction est implémentée principalement à travers les classes abstraites du projet. La classe <code><a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a></code> est un excellent exemple d'abstraction. Dans le fichier <code><a class="el" href="ball__base_8hpp.html" title="Base class for all ball types in the game.">ball_base.hpp</a></code>, nous définissons une interface commune pour tous les types de balles avec des méthodes abstraites comme <code>render_object()</code>. Cette méthode est déclarée virtuelle pure (<code>= 0</code>), obligeant toutes les classes dérivées à fournir leur propre implémentation.</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_class" href="class_ball_base.html">BallBase</a> {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <span class="comment">// ...</span></div>
+<div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_ball_base.html#a08a0f6f379ba1f933272a0745aea72d1">render_object</a>(SDL_Renderer *renderer) = 0;</div>
+<div class="line">    <span class="comment">// ...</span></div>
+<div class="line">};</div>
+<div class="ttc" id="aclass_ball_base_html_a08a0f6f379ba1f933272a0745aea72d1"><div class="ttname"><a href="class_ball_base.html#a08a0f6f379ba1f933272a0745aea72d1">BallBase::render_object</a></div><div class="ttdeci">virtual void render_object(SDL_Renderer *renderer)=0</div><div class="ttdoc">Pure virtual method to render the ball.</div></div>
+</div><!-- fragment --><p>De même, la classe <code><a class="el" href="class_power.html" title="Class representing power-up items that affect gameplay.">Power</a></code> dans <code><a class="el" href="power_8hpp.html" title="Header defining the Power class for special game effects.">power.hpp</a></code> fournit une abstraction pour les différents types de power-ups du jeu, avec des méthodes virtuelles qui peuvent être redéfinies par les classes dérivées comme <code><a class="el" href="class_invisible_power.html" title="Power-up that makes the ball temporarily invisible.">InvisiblePower</a></code> et <code>InversePower</code>.</p>
+<h2><a class="anchor" id="autotoc_md29"></a>
+Fonctions lambda</h2>
+<p>Nous utilisons des fonctions lambda pour contrôler les limites physiques de la raquette (paddle). Cette approche nous permet d'obtenir un code modulaire, facilitant la mise à jour des fonctionnalités liées au déplacement et aux contraintes de position de la raquette.</p>
+<p>Les lambdas sont particulièrement adaptées à notre cas, car elles nous permettent de définir des fonctions anonymes tout en bénéficiant d’un typage automatique, simplifiant ainsi l'écriture du code.</p>
+<p>Les deux fonctions lambda utilisées sont:</p>
+<ul>
+<li><code>auto move_paddle = [this](float delta, float time)</code> utiliser pour bouger l'objet paddle (la raquette)</li>
+<li><code>auto adjust_boundaries = [this]()</code> responsable de vérifier et ajuster les limites de la raquette</li>
 </ul>
 <div class="fragment"><div class="line"><span class="keyword">auto</span> move_paddle = [<span class="keyword">this</span>](<span class="keywordtype">float</span> delta, <span class="keywordtype">float</span> time)</div>
 <div class="line">    {</div>
@@ -446,16 +484,47 @@ Fonctions lambda</h2>
 <div class="line">            this-&gt;set_pos_y(600.0f - this-&gt;get_racket_height() / 2.0f);</div>
 <div class="line">        }</div>
 <div class="line">    };</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md31"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md30"></a>
 Encapsulation</h2>
-<h3><a class="anchor" id="autotoc_md32"></a>
+<p>L'encapsulation est présente dans presque toutes les classes du projet, avec une distinction claire entre les interfaces publiques et les détails d'implémentation privés. Par exemple, la classe <code><a class="el" href="class_user.html" title="Represents a player in the game with name and score tracking.">User</a></code> dans <code><a class="el" href="user_8hpp.html" title="Header defining the User class for player management.">user.hpp</a></code> encapsule les données relatives au joueur :</p>
+<div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_class" href="class_user.html">User</a> {</div>
+<div class="line"><span class="keyword">private</span>:</div>
+<div class="line">    std::string <a class="code hl_variable" href="class_user.html#a085d8d69282b6298964eab8351584536">name</a>;  <span class="comment">// Le nom de l&#39;utilisateur</span></div>
+<div class="line">    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_user.html#a2abd31b5758f4a62d50426846cb51e6d">score</a>;         <span class="comment">// Le score actuel de l&#39;utilisateur</span></div>
+<div class="line">    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_user.html#aa2ef528ff4e28b247c91aaa0ecfb5307">round</a>;         <span class="comment">// Le numéro de round actuel</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <span class="comment">// Méthodes pour interagir avec les données encapsulées</span></div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code hl_function" href="class_user.html#acec41fe4a1d3445c65b5105043dca336">increment_score</a>();</div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code hl_function" href="class_user.html#afebfb582737ff29fb227da39f74f6c9a">reset_score</a>();</div>
+<div class="line">    <span class="keywordtype">int</span> <a class="code hl_function" href="class_user.html#a03c7ab35e1e4ba092cbc155bd37eb218">get_user_score</a>() <span class="keyword">const</span>;</div>
+<div class="line">    <span class="comment">// ...</span></div>
+<div class="line">};</div>
+<div class="ttc" id="aclass_user_html"><div class="ttname"><a href="class_user.html">User</a></div><div class="ttdoc">Represents a player in the game with name and score tracking.</div><div class="ttdef"><b>Definition</b> user.hpp:23</div></div>
+<div class="ttc" id="aclass_user_html_a03c7ab35e1e4ba092cbc155bd37eb218"><div class="ttname"><a href="class_user.html#a03c7ab35e1e4ba092cbc155bd37eb218">User::get_user_score</a></div><div class="ttdeci">int get_user_score() const</div><div class="ttdoc">Gets the current score of the user.</div><div class="ttdef"><b>Definition</b> user.cpp:44</div></div>
+<div class="ttc" id="aclass_user_html_a085d8d69282b6298964eab8351584536"><div class="ttname"><a href="class_user.html#a085d8d69282b6298964eab8351584536">User::name</a></div><div class="ttdeci">std::string name</div><div class="ttdef"><b>Definition</b> user.hpp:80</div></div>
+<div class="ttc" id="aclass_user_html_a2abd31b5758f4a62d50426846cb51e6d"><div class="ttname"><a href="class_user.html#a2abd31b5758f4a62d50426846cb51e6d">User::score</a></div><div class="ttdeci">int score</div><div class="ttdef"><b>Definition</b> user.hpp:81</div></div>
+<div class="ttc" id="aclass_user_html_aa2ef528ff4e28b247c91aaa0ecfb5307"><div class="ttname"><a href="class_user.html#aa2ef528ff4e28b247c91aaa0ecfb5307">User::round</a></div><div class="ttdeci">int round</div><div class="ttdef"><b>Definition</b> user.hpp:82</div></div>
+<div class="ttc" id="aclass_user_html_acec41fe4a1d3445c65b5105043dca336"><div class="ttname"><a href="class_user.html#acec41fe4a1d3445c65b5105043dca336">User::increment_score</a></div><div class="ttdeci">void increment_score()</div><div class="ttdoc">Increments the user's score by 1.</div><div class="ttdef"><b>Definition</b> user.cpp:24</div></div>
+<div class="ttc" id="aclass_user_html_afebfb582737ff29fb227da39f74f6c9a"><div class="ttname"><a href="class_user.html#afebfb582737ff29fb227da39f74f6c9a">User::reset_score</a></div><div class="ttdeci">void reset_score()</div><div class="ttdoc">Resets the user's score to 0.</div><div class="ttdef"><b>Definition</b> user.cpp:34</div></div>
+</div><!-- fragment --><p>Un autre exemple d'encapsulation se trouve dans le fichier <code><a class="el" href="game__save_8cpp.html" title="Implementation of save game functionality for Saving class.">game_save.cpp</a></code>, où un namespace anonyme est utilisé pour encapsuler les constantes sensibles (comme la clé de chiffrement) et les fonctions utilitaires :</p>
+<div class="fragment"><div class="line"><span class="keyword">namespace </span>{</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> KEY = 0x83;</div>
+<div class="line">    <span class="comment">// ...</span></div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> codec_byte(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <span class="keywordtype">byte</span>) { <span class="comment">/* ... */</span> }</div>
+<div class="line">    <span class="comment">// ...</span></div>
+<div class="line">}</div>
+</div><!-- fragment --><p>Cette approche garantit que ces éléments ne sont accessibles que depuis ce fichier, renforçant ainsi la sécurité du mécanisme de sauvegarde.</p>
+<h3><a class="anchor" id="autotoc_md31"></a>
 Namespace</h3>
-<p>Nous utilisons un namespace anonyme dans le fichier <a class="el" href="game__save_8cpp.html" title="Implementation of save game functionality for Saving class.">game_save.cpp</a>. Ce mécanisme permet d'encapsuler les constantes sensibles (comme la clé de chiffrement XOR) et les fonctions utilitaires de codage/décodage dans une portée strictement limitée au fichier d'implémentation. Voici les différents avantages de ce choix:</p>
+<p>Dans le fichier <a class="el" href="game__save_8cpp.html" title="Implementation of save game functionality for Saving class.">game_save.cpp</a>, nous utilisons un namespace anonyme afin d'encapsuler les constantes sensibles (comme la clé de chiffrement XOR) ainsi que les fonctions utilitaires dédiées au codage et au décodage des données de sauvegarde.</p>
+<p>Ce choix présente plusieurs avantages :</p>
 <ol type="1">
-<li>Le namespace empêche l'accès externe aux mécanismes de sécurité du système de sauvegarde</li>
-<li>réduit les risques de collision de noms avec d'autres parties du code</li>
-<li>structure logiquement les éléments qui travaillent ensemble.</li>
+<li><b>Sécurité renforcée</b> : empêche tout accès externe aux mécanismes internes du système de sauvegarde.</li>
+<li><b>Prévention des conflits</b> : réduit les risques de collision de noms avec d'autres parties du code.</li>
+<li><b>Organisation claire</b> : regroupe logiquement les éléments qui interagissent ensemble, améliorant ainsi la lisibilité et la maintenabilité du code.</li>
 </ol>
+<p>L'utilisation d’un namespace anonyme garantit donc une encapsulation stricte et protège les données critiques du jeu contre toute manipulation involontaire ou non autorisée.</p>
 <div class="fragment"><div class="line"><span class="keyword">namespace</span></div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> codec_byte(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <span class="keywordtype">byte</span>)</div>
@@ -489,19 +558,29 @@ Namespace</h3>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>Cette organisation du code incarne le principe d'encapsulation, fondamental en programmation orientée objet, tout en contribuant à la robustesse globale du système de sauvegarde du jeu.</p>
+</div><!-- fragment --><p>Cette organisation du code illustre parfaitement le principe d’encapsulation, un pilier fondamental de la programmation orientée objet. En limitant l’accès aux éléments internes du système de sauvegarde, nous renforçons la sécurité, l’isolation et la robustesse globale du jeu.</p>
 <blockquote class="doxtable">
-<p>&zwj;Pour des raisons de diminution de la longueur du rapport, nous avons enlevé les commentaires des différentes fonctions. Pour voir toutes les fonctions en détail visitez <a class="el" href="game__save_8cpp.html" title="Implementation of save game functionality for Saving class.">game_save.cpp</a> </p>
+<p>&zwj;Afin de réduire la longueur du rapport, nous avons retiré les commentaires détaillés des différentes fonctions. Pour une explication complète et une vue d’ensemble du code, vous pouvez consulter directement <a class="el" href="game__save_8cpp.html" title="Implementation of save game functionality for Saving class.">game_save.cpp</a>. </p>
 </blockquote>
-<h3><a class="anchor" id="autotoc_md33"></a>
-Autres cas</h3>
-<p>Tout au long du projet, nous faisons un choix si on va inclure des variables comme <code>private</code> ou <code>publique</code> aux différentes classes. En plus, nous faisons attention à la bonne utilisation de mots clés de l'encapsulation tels que <code>static</code> et <code>virtual</code>.</p>
-<h1><a class="anchor" id="autotoc_md34"></a>
+<h1><a class="anchor" id="autotoc_md32"></a>
+Autres aspects du développement</h1>
+<p>Tout au long du projet, nous avons soigneusement choisi les niveaux de visibilité des variables dans nos classes, en décidant de les déclarer <code>private</code> ou <code>public</code>en fonction de leur usage. De plus, nous avons veillé à utiliser de manière appropriée les mots-clés <code>static</code>et <code>virtual</code>, garantissant ainsi une encapsulation efficace et une meilleure organisation du code.</p>
+<h1><a class="anchor" id="autotoc_md33"></a>
 Pourquoi macros.hpp</h1>
-<p>Le fichier <a class="el" href="macros_8hpp.html" title="Defines macros and constants used throughout the project.">macros.hpp</a> joue un rôle fondamental dans notre projet en servant de point central pour toutes les constantes du jeu. À travers ce fichier, nous définissons les dimensions de la fenêtre de jeu, les identifiants des différents modes de jeu (comme les modes IA ou deux joueurs), ainsi que les constantes utilisées pour la sélection des menus et les niveaux de difficulté - éléments qui nous permettent de naviguer aux différentes pages du jeu.</p>
-<h1><a class="anchor" id="autotoc_md35"></a>
+<p>Le fichier <a class="el" href="macros_8hpp.html" title="Defines macros and constants used throughout the project.">macros.hpp</a> joue un rôle central dans notre projet en servant de référentiel unique pour toutes les constantes globales du jeu. Il permet de centraliser et de faciliter la gestion des paramètres essentiels, tels que :</p>
+<p>Les dimensions de la fenêtre du jeu Les identifiants des modes de jeu (ex. : mode IA, mode 2 joueurs) Les constantes associées à la navigation dans les menus Les niveaux de difficulté</p>
+<p>Grâce à ce fichier, nous avons assuré une meilleure lisibilité et une maintenance simplifiée, en évitant la dispersion des constantes dans l’ensemble du code.</p>
+<h1><a class="anchor" id="autotoc_md34"></a>
 Pour aller plus loin</h1>
-<p>...</p>
+<p>Initialement, nous avons tenté d'implémenter un mode multijoueur en réseau via TCP avec une architecture client-serveur. Cependant, nous nous sommes rapidement heurtés à la complexité de cette intégration.</p>
+<p>En effet, cette fonctionnalité aurait dû être pensée dès le début du projet afin d’être intégrée naturellement dans l’architecture existante. L’ajout tardif d’un mode réseau implique de lourdes modifications sur la structure actuelle du code, ce qui s’avère être un défi technique conséquent.</p>
+<p>Malgré ces difficultés, nous avons commencé le développement de cette partie dans les fichiers <code><a class="el" href="network_8cpp.html">network.cpp</a></code>et <code><a class="el" href="network_8hpp.html">network.hpp</a></code>, en nous concentrant sur les aspects suivants :</p>
+<ul>
+<li>Le contrôle des raquettes à distance</li>
+<li>La réception et la synchronisation des positions des différents éléments (balle, raquettes, etc.)</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md35"></a>
+Conclusion</h1>
 <h1><a class="anchor" id="autotoc_md36"></a>
 Versions</h1>
 <p>Le versioning est un élément clé en programmation, assurant la cohérence des modifications et facilitant la collaboration. Il est aussi primordial pour la récupération de données en cas de perte ou corruption. Au fil du projet, nous avons créé différentes versions de notre code, chacune marquant une étape importante de son évolution. Cela nous a permis de suivre les progrès, d'intégrer de nouvelles fonctionnalités et d'effectuer des corrections de manière structurée.</p>
@@ -536,18 +615,7 @@ Versions</h1>
 <li>V12.0.1: <a class="el" href="class_game.html">Game</a> has been completed. Some comments are missing on the inversible power file</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md38"></a>
-TO-DO list</h1>
-<ul>
-<li>[X] Find a way to propose an initial SDL window that showcases the instructions of the game. Then when the user taps on a button "Let's go", then this SDL window closes and a new one Appears where a user chooses between the modes of the game that exist. The "Simple" one which is the current version of the game, the "Storytime" one where is the game without the saving functionality, but with the user class and the high score board, and the third one which is "Hardcore" which is the same with the "Storytime" but now there is a single user that plays against an <a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a> on the opposite <a class="el" href="class_paddle.html" title="Represents a player paddle/racket in the game.">Paddle</a>. There is also the exit game button that terminates the game. When a mode is selected this SDL window closes and we are presented with the menu window of the different game modes. (definitely there are modifications on the <a class="el" href="main_8cpp.html" title="Main entry point for the Pong game.">main.cpp</a> for this functionality to take place)</li>
-<li>[X] Add a message when the game is saved successfully</li>
-<li>[X] Create a user class and use this to attribute the scores</li>
-<li>[X] Remove the end of game logic when score is greater than 10 for a user. Instead use the logic of the two previous points (not actually remove, but instead develop the new game mode like game_storytime.cpp). This new mode comes with its new menu_storytime.cpp that doesn't include the continue game functionality (as expected) but there is button that allows to see the high scores table (it opens on a new SDL window). The exit game button is transformed to exit mode button allowing to go back to the SDL window where we can choose the game mode.</li>
-<li>[X] Have a high scores table where if any time in the future a user has a score greater than the last maximum one, then he is added on top of the Leaderboard. The leaderboard is a file that is always present on the directory of the game and it is also encrypted.</li>
-<li>[X] Add the <a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a> player</li>
-<li>[ ] Why there is a Float set_up method on the <a class="el" href="paddle_8hpp.html" title="Header defining the Paddle class for the game.">paddle.hpp</a> ? Ask Yanis and Dounia </li>
-</ul>
-</div></div><!-- PageDoc -->
+ </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->
 

@@ -1,30 +1,5 @@
 var searchData=
 [
-  ['l_20interface_20graphique_0',['L&apos;interface graphique',['../index.html#autotoc_md25',1,'']]],
-  ['la_20balle_1',['Choisir le type de la balle',['../index.html#autotoc_md18',1,'']]],
-  ['la_20logique_20du_20jeu_2',['La logique du jeu',['../index.html#autotoc_md24',1,'']]],
-  ['la_20musique_3',['Changement de la musique',['../index.html#autotoc_md19',1,'']]],
-  ['lambda_4',['Fonctions lambda',['../index.html#autotoc_md30',1,'']]],
-  ['lancement_5',['Instructions de lancement',['../index.html#autotoc_md4',1,'']]],
-  ['last_5fhighscore_6',['last_highscore',['../class_game.html#a39428b5c8de846dbdd5efb1be52c9066',1,'Game']]],
-  ['last_5fhighscore_5fname_7',['last_highscore_name',['../class_game.html#aeedf815028a7cfc54159f05ee2de7ec4',1,'Game']]],
-  ['le_20jeu_8',['Le jeu',['../index.html#autotoc_md2',1,'']]],
-  ['le_20projet_9',['Le projet',['../index.html#autotoc_md1',1,'']]],
-  ['le_20type_20de_20la_20balle_10',['Choisir le type de la balle',['../index.html#autotoc_md18',1,'']]],
-  ['les_20différents_20modes_11',['Les différents modes',['../index.html#autotoc_md8',1,'']]],
-  ['les_20foncteurs_12',['Les foncteurs',['../index.html#autotoc_md22',1,'']]],
-  ['les_20objets_13',['Les objets',['../index.html#autotoc_md21',1,'']]],
-  ['letter_14',['Letter',['../class_letter.html',1,'Letter'],['../class_letter.html#ad7d6b89bf521e852dc85cb658a32f653',1,'Letter::Letter(int index, float startX, float startY, float velocity, SDL_Renderer *renderer, TTF_Font *font)']]],
-  ['letter_15',['letter',['../class_letter.html#add29e231aa209f890a891ea202dbff4a',1,'Letter']]],
-  ['letter_2ecpp_16',['letter.cpp',['../letter_8cpp.html',1,'']]],
-  ['letter_2ehpp_17',['letter.hpp',['../letter_8hpp.html',1,'']]],
-  ['lettersatbottom_18',['lettersAtBottom',['../class_letter.html#a11286b566cff395d9f92b6184ca6bc1f',1,'Letter']]],
-  ['list_19',['TO-DO list',['../index.html#autotoc_md38',1,'']]],
-  ['load_5fgame_20',['load_game',['../class_saving.html#ab71b9324583e823beda155c1f84ff95d',1,'Saving']]],
-  ['load_5fhighscore_21',['load_highscore',['../class_saving.html#aca0f68abac367530e21ec0140ed50cb8',1,'Saving']]],
-  ['logic_22',['logic',['../index.html#autotoc_md17',1,'Game retrieve logic'],['../index.html#autotoc_md16',1,'Game save logic']]],
-  ['logique_20du_20jeu_23',['La logique du jeu',['../index.html#autotoc_md24',1,'']]],
-  ['loin_24',['Pour aller plus loin',['../index.html#autotoc_md35',1,'']]],
-  ['loop_25',['Loop',['../index.html#autotoc_md26',1,'']]],
-  ['loop_26',['loop',['../class_game.html#a7ad92b77b596d7882a7ae76eb18b5e6c',1,'Game']]]
+  ['jeu_0',['Le jeu',['../index.html#autotoc_md2',1,'']]],
+  ['jeu_20strong_1',['&lt;strong&gt;La logique du jeu&lt;/strong&gt;',['../index.html#autotoc_md23',1,'']]]
 ];

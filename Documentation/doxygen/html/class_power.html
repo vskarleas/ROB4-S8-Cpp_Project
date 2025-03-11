@@ -88,7 +88,6 @@ $(function(){ initResizable(false); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_power-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Power Class Reference</div></div>
@@ -126,14 +125,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a30d8da189bed6e8eb147af829fb9daa6" id="r_a30d8da189bed6e8eb147af829fb9daa6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30d8da189bed6e8eb147af829fb9daa6">reset</a> (int screen_width)</td></tr>
 <tr class="memdesc:a30d8da189bed6e8eb147af829fb9daa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the power-up to a new random position.  <br /></td></tr>
 <tr class="separator:a30d8da189bed6e8eb147af829fb9daa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30359060f793dd6ceb64999d056e04e5" id="r_a30359060f793dd6ceb64999d056e04e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30359060f793dd6ceb64999d056e04e5">set_effect_is_active</a> (bool active)</td></tr>
+<tr class="separator:a30359060f793dd6ceb64999d056e04e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a3306b5c7b5e6c27210cf102d08a778" id="r_a8a3306b5c7b5e6c27210cf102d08a778"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a3306b5c7b5e6c27210cf102d08a778">set_is_active</a> (bool active)</td></tr>
+<tr class="memdesc:a8a3306b5c7b5e6c27210cf102d08a778"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the active state of the power-up.  <br /></td></tr>
+<tr class="separator:a8a3306b5c7b5e6c27210cf102d08a778"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2826de81bb9d687daef49ebd8a7e0821" id="r_a2826de81bb9d687daef49ebd8a7e0821"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2826de81bb9d687daef49ebd8a7e0821">update</a> (float time, <a class="el" href="class_paddle.html">Paddle</a> *racket1, <a class="el" href="class_paddle.html">Paddle</a> *racket2, SDL_Renderer *renderer, <a class="el" href="class_ball_base.html">BallBase</a> *ball)</td></tr>
 <tr class="memdesc:a2826de81bb9d687daef49ebd8a7e0821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the power's position and effect.  <br /></td></tr>
 <tr class="separator:a2826de81bb9d687daef49ebd8a7e0821"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:ae69eacf26d02cfbd4f42f69756a29980" id="r_ae69eacf26d02cfbd4f42f69756a29980"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae69eacf26d02cfbd4f42f69756a29980">is_active</a></td></tr>
-<tr class="separator:ae69eacf26d02cfbd4f42f69756a29980"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -145,8 +144,12 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a1acb27b2b5928ea9ffdea911ffacf001"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a075c28a2d2ce07e4ea2a3ccb1f5abbd9" id="r_a075c28a2d2ce07e4ea2a3ccb1f5abbd9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a075c28a2d2ce07e4ea2a3ccb1f5abbd9">height</a></td></tr>
 <tr class="separator:a075c28a2d2ce07e4ea2a3ccb1f5abbd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae69eacf26d02cfbd4f42f69756a29980" id="r_ae69eacf26d02cfbd4f42f69756a29980"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae69eacf26d02cfbd4f42f69756a29980">is_active</a> = false</td></tr>
+<tr class="separator:ae69eacf26d02cfbd4f42f69756a29980"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f0cdc8f298ad92e219e4cbc11fda378" id="r_a5f0cdc8f298ad92e219e4cbc11fda378"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f0cdc8f298ad92e219e4cbc11fda378">play</a> = true</td></tr>
 <tr class="separator:a5f0cdc8f298ad92e219e4cbc11fda378"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80847784be60e93e9592597a31c65d0e" id="r_a80847784be60e93e9592597a31c65d0e"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80847784be60e93e9592597a31c65d0e">power_texture</a> = nullptr</td></tr>
+<tr class="separator:a80847784be60e93e9592597a31c65d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9493e1d63ea529f7766f1011331b0f8f" id="r_a9493e1d63ea529f7766f1011331b0f8f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9493e1d63ea529f7766f1011331b0f8f">speed</a></td></tr>
 <tr class="separator:a9493e1d63ea529f7766f1011331b0f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21c6d9fc890e7acdefdaf8ae2c9c487d" id="r_a21c6d9fc890e7acdefdaf8ae2c9c487d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21c6d9fc890e7acdefdaf8ae2c9c487d">width</a></td></tr>
@@ -307,6 +310,48 @@ Protected Attributes</h2></td></tr>
 </dl>
 
 <p>Reimplemented in <a class="el" href="class_inversible_power.html#ad6964565a11f8f018da31a116d5bc6e1">InversiblePower</a>, and <a class="el" href="class_invisible_power.html#a51226a50670bb7acc98b273738c33ec5">InvisiblePower</a>.</p>
+
+</div>
+</div>
+<a id="a30359060f793dd6ceb64999d056e04e5" name="a30359060f793dd6ceb64999d056e04e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30359060f793dd6ceb64999d056e04e5">&#9670;&#160;</a></span>set_effect_is_active()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Power::set_effect_is_active </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>active</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8a3306b5c7b5e6c27210cf102d08a778" name="a8a3306b5c7b5e6c27210cf102d08a778"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a3306b5c7b5e6c27210cf102d08a778">&#9670;&#160;</a></span>set_is_active()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Power::set_is_active </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>active</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the active state of the power-up. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">active</td><td>The new active state </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -481,11 +526,19 @@ Protected Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Power::is_active</td>
+          <td class="memname">bool Power::is_active = false</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 <p>Used to determine if the power is currently visible and active </p>
 
@@ -511,6 +564,29 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Flag to determine which player gets the effect. It is used only on <a class="el" href="power_8cpp.html" title="Implementation of the Power class for special game effects.">power.cpp</a> but not on the herited classes </p>
+
+</div>
+</div>
+<a id="a80847784be60e93e9592597a31c65d0e" name="a80847784be60e93e9592597a31c65d0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80847784be60e93e9592597a31c65d0e">&#9670;&#160;</a></span>power_texture</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Texture* Power::power_texture = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Texture of the power-up as an image </p>
 
 </div>
 </div>

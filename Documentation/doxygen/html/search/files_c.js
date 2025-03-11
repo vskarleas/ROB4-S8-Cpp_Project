@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['user_2ecpp_0',['user.cpp',['../user_8cpp.html',1,'']]],
-  ['user_2ehpp_1',['user.hpp',['../user_8hpp.html',1,'']]]
+  ['triangle_5fball_2ecpp_0',['triangle_ball.cpp',['../triangle__ball_8cpp.html',1,'']]],
+  ['triangle_5fball_2ehpp_1',['triangle_ball.hpp',['../triangle__ball_8hpp.html',1,'']]]
 ];

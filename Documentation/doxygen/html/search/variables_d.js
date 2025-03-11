@@ -11,5 +11,6 @@ var searchData=
   ['police_8',['police',['../class_game.html#a0757b14dc763e0c11a9b593a1feb9762',1,'Game::police'],['../class_game_over.html#ab96d4260f1ad1b649c43ea7f8d28d7d1',1,'GameOver::police'],['../classpage__2b__1t.html#a45aa826ca76fc979a2958d10e6f56aa8',1,'page_2b_1t::police'],['../classpage__3b.html#a37262d946bad6da22cbfa2ac24039e10',1,'page_3b::police'],['../classpage__3b__0t.html#ae48d737e0ca714a709a651c4ee78d139',1,'page_3b_0t::police'],['../classpage__3b__1t.html#a67c74020a7ef4ee1c93943c003e138ab',1,'page_3b_1t::police'],['../classpage__4b__1t.html#a5f6f085fc089ceba09be0b9a2b25fe74',1,'page_4b_1t::police']]],
   ['pos_5fx_9',['pos_x',['../class_ball_base.html#a2a2b953536e65698795f7637fff57ec6',1,'BallBase::pos_x'],['../class_paddle.html#ac46d62438dcf8fb4d2124ee0c4707643',1,'Paddle::pos_x']]],
   ['pos_5fy_10',['pos_y',['../class_ball_base.html#a9982be2d85a80451307addd5279aa0b7',1,'BallBase::pos_y'],['../class_paddle.html#a67b1783d61e223424da82ecebeeb702b',1,'Paddle::pos_y']]],
-  ['purple_11',['purple',['../macros_8hpp.html#ab33673453f69c3e5700c05934ef4d096',1,'macros.hpp']]]
+  ['power_5ftexture_11',['power_texture',['../class_power.html#a80847784be60e93e9592597a31c65d0e',1,'Power']]],
+  ['purple_12',['purple',['../macros_8hpp.html#ab33673453f69c3e5700c05934ef4d096',1,'macros.hpp']]]
 ];
