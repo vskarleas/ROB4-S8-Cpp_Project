@@ -20,6 +20,7 @@ InversiblePower::InversiblePower(int screen_width, int screen_height)
     : Power(screen_width, screen_height)
 {
     is_active = true;
+    speed = 120.0f;
     reset(screen_width);
 }
 
