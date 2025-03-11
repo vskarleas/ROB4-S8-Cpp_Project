@@ -309,7 +309,7 @@ bool Game::initialise()
     mModeMenu = new page_4b_1t(renderer, police);
     mPauseMenu = new page_3b(renderer, police);
     mGameOver = new GameOver(renderer, police);
-    
+
     mletter = new Letter(0, 400, 0, 30, renderer, police);
 
     mpower = new Power(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -644,6 +644,10 @@ void Game::game_logic()
                             racket1->set_pos_y(savedState.paddle1_y);
                             racket2->set_pos_y(savedState.paddle2_y);
                             ball_creation(savedState.ball_type);
+
+                            mBall->set_game_mode(mNoticeMenu->get_notice_id());
+                            SDL_Log("Ball game mode(%d)", mBall->get_game_mode());
+
                             mBall->set_position(savedState.ball_x, savedState.ball_y);
                             mBall->set_velocity(savedState.ball_vel_x, savedState.ball_vel_y);
                             update_background_color();
@@ -755,6 +759,19 @@ void Game::game_logic()
                     }
                     else if (mPauseMenu->get_exit_mode())
                     {
+                        /* Putting fun mode effects back to default */
+                        // Rackets inversing 
+                        racket1->set_inverse_power_active(false);
+                        racket2->set_inverse_power_active(false);
+
+                        // Ball invisibility 
+                        mBall->set_color(white);
+
+                        // Rackets size
+                        racket1->set_racket_height(100.0f);
+                        racket2->set_racket_height(100.0f);
+                        // ===================================
+
                         SoundEffects::change_music_track(mOnHoldMusic);
 
                         // We update the existens of the save file
@@ -828,6 +845,8 @@ void Game::game_logic()
                             Saving::delete_save(); // delete only in the case that we start a new game
 
                             ball_creation(mMiddleMenu->get_selected_option());
+                            mBall->set_game_mode(mNoticeMenu->get_notice_id());
+                            SDL_Log("Ball game mode(%d)", mBall->get_game_mode());
 
                             // Reset game state
                             player1->reset_score();
@@ -850,6 +869,8 @@ void Game::game_logic()
                         else if (mNoticeMenu->get_notice_id() == STORYTIME_MODE || mNoticeMenu->get_notice_id() == FUN_MODE)
                         {
                             ball_creation(mMiddleMenu->get_selected_option());
+                            mBall->set_game_mode(mNoticeMenu->get_notice_id());
+                            SDL_Log("Ball game mode(%d)", mBall->get_game_mode());
 
                             // Reset game state
                             player1->reset_score();
@@ -890,6 +911,8 @@ void Game::game_logic()
                             racket2->set_pos_y(WINDOW_HEIGHT / 2.0f);
 
                             ball_creation(mMiddleMenu->get_selected_option());
+                            mBall->set_game_mode(mNoticeMenu->get_notice_id());
+                            SDL_Log("Ball game mode(%d)", mBall->get_game_mode());
 
                             mBall->set_position(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f);
                             mBall->set_velocity(200.0f, 235.0f);
@@ -1041,7 +1064,7 @@ void Game::game()
         mletter->update_letter(travel_time, WINDOW_HEIGHT, player1, player2, mBall->get_pos_x(), mBall->get_pos_y(), 15);
 
         // Adding round logic
-        if (player1->get_user_score() >= 12 || player2->get_user_score() >= 12)
+        if (player1->get_user_score() >= 8 || player2->get_user_score() >= 8)
         {
             if (player1->get_user_score() > player2->get_user_score())
             {
@@ -1061,7 +1084,7 @@ void Game::game()
         else
         {
             // Similar with the AI logic
-            if (player1->get_round() + player2->get_round() == 5) // after 5 rounds has been completed
+            if (player1->get_round() + player2->get_round() == 3) // after 5 rounds has been completed
             {
                 winner = (player1->get_round() > player2->get_round()) ? player1->get_user_name() : player2->get_user_name();
                 mGameOver->set_winner(winner);
@@ -1079,7 +1102,7 @@ void Game::game()
         mpower->update(travel_time, racket1, racket2, renderer, mBall);
         minverse->update(travel_time, racket1, racket2, renderer, mBall);
 
-        if (player1->get_user_score() >= 10 || player2->get_user_score() >= 10)
+        if (player1->get_user_score() >= 5 || player2->get_user_score() >= 5)
         {
             if (player1->get_user_score() > player2->get_user_score())
             {
@@ -1098,7 +1121,7 @@ void Game::game()
         }
         else
         {
-            if (player1->get_round() + player2->get_round() == 5) // after 5 rounds has been completed
+            if (player1->get_round() + player2->get_round() == 3) // after 5 rounds has been completed
             {
                 winner = (player1->get_round() > player2->get_round()) ? player1->get_user_name() : player2->get_user_name();
                 mGameOver->set_winner(winner);
@@ -1252,7 +1275,7 @@ void Game::output()
 
         // Display current round information
         int current_round = player1->get_round() + player2->get_round() + 1;
-        std::string roundText = "Round: " + std::to_string(current_round) + "/5";
+        std::string roundText = "Round: " + std::to_string(current_round) + "/3";
 
         TTF_SetFontStyle(police, TTF_STYLE_BOLD);
         TTF_SetFontSize(police, 28);

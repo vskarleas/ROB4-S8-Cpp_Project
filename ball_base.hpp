@@ -26,7 +26,7 @@ public:
      * @brief Constructor for BallBase
      * @param size The size (diameter) of the ball, defaults to 15.0f
      */
-    BallBase(float size = 15.0f);
+    BallBase(float size = 35.0f);
     
     /**
      * @brief Virtual destructor for proper cleanup in derived classes
@@ -148,6 +148,9 @@ public:
      */
     SDL_Color get_color() const { return color; }
 
+    void set_game_mode (int mode ) { game_mode = mode; }
+    int get_game_mode() const { return game_mode; }
+
 protected:
     float pos_x;           /**< Ball's x position */
     float pos_y;           /**< Ball's y position */
@@ -155,6 +158,7 @@ protected:
     float vel_y;           /**< Ball's y velocity */
     const float ball_size; /**< Ball's size (diameter by default) */
     SDL_Color color;       /**< Ball's color */
+    int game_mode = -1;
 };
 
 #endif

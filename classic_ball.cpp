@@ -7,12 +7,16 @@
 
 #include "classic_ball.hpp"
 #include "renderers.hpp"
+#include "macros.hpp"
+
+#include <SDL_image.h>
+#include <iostream>
 
 /**
  * @brief Helper function to draw a filled circle
- * 
+ *
  * Uses the midpoint circle algorithm to efficiently render a filled circle
- * 
+ *
  * @param renderer The SDL renderer to use for drawing
  * @param center_x The x coordinate of the circle's center
  * @param centerY The y coordinate of the circle's center
@@ -53,13 +57,65 @@ void DrawFilledCircle(SDL_Renderer *renderer, int32_t center_x, int32_t centerY,
 
 /**
  * @brief Renders the classic ball on screen
- * 
+ *
  * Uses the circle_renderer function to draw a circular shape
  * at the ball's current position with the specified size and color
- * 
+ *
  * @param renderer The SDL renderer used for drawing
  */
+// void ClassicBall::render_object(SDL_Renderer *renderer)
+// {
+//     circle_renderer()(renderer, pos_x, pos_y, ball_size, color);
+// }
+
 void ClassicBall::render_object(SDL_Renderer *renderer)
 {
-    circle_renderer()(renderer, pos_x, pos_y, ball_size, color);
+
+    if (game_mode == FUN_MODE)
+    {
+        circle_renderer()(renderer, pos_x, pos_y, 15.0f, color); // passing the size manually in order to differentate the size for image or no image rendering that can impact the visuals
+    }
+    else
+    {
+        if (!ball_texture)
+        {
+            SDL_Surface *surface = IMG_Load("assets/ball.png");
+            if (!surface)
+            {
+                std::cerr << "Failed to load ball image: " << IMG_GetError() << std::endl;
+
+                // Fall back to circle rendering if image fails to load
+                circle_renderer()(renderer, pos_x, pos_y, ball_size, color);
+                return;
+            }
+
+            // Create texture from surface
+            ball_texture = SDL_CreateTextureFromSurface(renderer, surface);
+            SDL_FreeSurface(surface);
+
+            if (!ball_texture)
+            {
+                std::cerr << "Failed to create texture: " << SDL_GetError() << std::endl;
+                // Fall back to circle rendering if texture creation fails
+                circle_renderer()(renderer, pos_x, pos_y, ball_size, color);
+                return;
+            }
+
+            // Set color modulation to match current ball color
+            SDL_SetTextureColorMod(ball_texture, color.r, color.g, color.b);
+        }
+
+        // Update texture color modulation if color has changed
+        SDL_SetTextureColorMod(ball_texture, color.r, color.g, color.b);
+
+        // Calculate render destination
+        SDL_Rect dest = {
+            static_cast<int>(pos_x - ball_size / 2),
+            static_cast<int>(pos_y - ball_size / 2),
+            static_cast<int>(ball_size),
+            static_cast<int>(ball_size)};
+
+        // Render the ball texture
+        SDL_RenderCopy(renderer, ball_texture, NULL, &dest);
+    }
 }

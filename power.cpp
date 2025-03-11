@@ -53,7 +53,7 @@ void Power::update(float time, Paddle *racket1, Paddle *racket2, SDL_Renderer *r
             // Apply the paddle size effect
             affected_paddle->set_racket_height(affected_paddle->get_racket_height() * 2);
             
-            // Setup effect duration tracking
+            
             duration_effect = 0.0f; // it is using a time to determine if we need to stop the effect
             effect_is_active = true;
             is_active = false;

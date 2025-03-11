@@ -67,7 +67,7 @@ void InvisiblePower::update(float time, BallBase *ball, SDL_Renderer *renderer)
             repeat = 0.0f;
         }
 
-        if (y + height >= 600 || y <= -40) // Reverse star movement at screen edges
+        if (y + height >= WINDOW_HEIGHT || y <= -40) // Reverse star movement at screen edges
         {
             speed = -speed;
         }

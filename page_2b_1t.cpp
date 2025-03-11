@@ -147,8 +147,8 @@ void page_2b_1t::render_object()
             notice_text[2] = "Hit the letters to see the story!";
             notice_text[3] = "Every letter is an extra point for you.";
             notice_text[4] = "";
-            notice_text[5] = "Wins the player that reaches 12 points first!";
-            notice_text[6] = "The game is completed at 5 rounds";
+            notice_text[5] = "Wins the player that reaches 8 points first!";
+            notice_text[6] = "The game is completed at 3 rounds";
             text_size = 7;
             break;
 
@@ -162,8 +162,8 @@ void page_2b_1t::render_object()
             notice_text[6] = "- Use W/S keys to move your paddle on the left";
             notice_text[7] = "- Use UP/DOWN ARROW keys to move your paddle on the right";
             notice_text[8] = "";
-            notice_text[9] = "Wins the player that reaches 10 points first on the round!";
-            notice_text[10] = "The game is completed after 5 rounds. The player with the most rounds wins!";
+            notice_text[9] = "Wins the player that reaches 5 points first on the round!";
+            notice_text[10] = "The game is completed after 3 rounds. The player with the most rounds wins!";
             text_size = 11;
             break;
         case GAME_SAVED:

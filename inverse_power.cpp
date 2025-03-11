@@ -53,11 +53,11 @@ void InversiblePower::update(float time, Paddle *racket1, Paddle *racket2, SDL_R
             // Deciding which paddle's controls to invert based on ball position
             if (ball->get_pos_x() < x + width / 2)
             {
-                racket1->set_inverse_power_active(true);
+                racket2->set_inverse_power_active(true);
             }
             else
             {
-                racket2->set_inverse_power_active(true);
+                racket1->set_inverse_power_active(true);
             }
         }
 

@@ -67,8 +67,18 @@ public:
      * @param screen_width The width of the game screen
      */
     virtual void reset(int screen_width);
+    
+    /**
+     * @brief Sets the active state of the power-up
+     * @param active The new active state
+     */
+    void set_is_active(bool active) { is_active = active; }
 
-    bool is_active; /**< Used to determine if the power is currently visible and active */
+    /**
+     * @brief 
+     * 
+     */
+    void set_effect_is_active(bool active) { effect_is_active = active; }
     
 
 protected:
@@ -80,6 +90,7 @@ protected:
     float duration_effect = 0.0f; /**< Time remaining until effect ends */
     bool effect_is_active = false;/**< Whether the power's effect is currently active */
     SDL_Color color;              /**< Color of the power-up */
+    bool is_active = false; /**< Used to determine if the power is currently visible and active */
 };
 
 #endif

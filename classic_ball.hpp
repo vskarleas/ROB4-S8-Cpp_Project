@@ -25,7 +25,7 @@ public:
      * 
      * Initializes a classic circular ball with a default size of 15.0f
      */
-    ClassicBall() : BallBase(15.0f) {}
+    ClassicBall() : BallBase(24.0f) {}
 
     /**
      * @brief Renders the classic ball on screen
@@ -36,6 +36,9 @@ public:
      * @param renderer The SDL renderer to use for drawing
      */
     void render_object(SDL_Renderer *renderer) override;
+
+    private:
+        SDL_Texture* ball_texture = nullptr;
 };
 
 #endif
