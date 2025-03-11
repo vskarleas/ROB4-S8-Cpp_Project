@@ -14,6 +14,7 @@
 
 #include "paddle.hpp"
 #include "macros.hpp"
+#include "ball_base.hpp"
 
 /**
  * @class Power
@@ -28,9 +29,9 @@ public:
     /**
      * @brief Constructor for the Power class
      * @param screen_width The width of the game screen
-     * @param screenHeight The height of the game screen
+     * @param screen_height The height of the game screen
      */
-    Power(int screen_width, int screenHeight);
+    Power(int screen_width, int screen_height);
 
     /**
      * @brief Updates the power's position and effect
@@ -45,7 +46,7 @@ public:
      * @param ball_radius Ball's radius
      * @param renderer SDL renderer for drawing
      */
-    virtual void update(float time, Paddle *racket1, Paddle *racket2, float ball_pos_x, float ball_pos_y, float ball_radius, SDL_Renderer *renderer);
+    virtual void update(float time, Paddle *racket1, Paddle *racket2, SDL_Renderer *renderer, BallBase *ball);
     
     /**
      * @brief Renders the power on screen
@@ -54,14 +55,12 @@ public:
     virtual void render(SDL_Renderer *renderer);
 
     /**
-     * @brief Checks if the ball has hit this power-up
+     * @brief Checks for collision between the power and the ball
      * 
-     * @param ball_pos_x Ball's X position
-     * @param ball_pos_y Ball's Y position
-     * @param ball_radius Ball's radius
+     * @param ball_type The ball object
      * @return true if collision detected, false otherwise
      */
-    bool collision_check(float ball_pos_x, float ball_pos_y, float ball_radius) const;
+    bool collision(BallBase *ball_type) const;
     
     /**
      * @brief Resets the power-up to a new random position
@@ -70,11 +69,12 @@ public:
     virtual void reset(int screen_width);
 
     bool is_active; /**< Used to determine if the power is currently visible and active */
+    
 
 protected:
     float x = 0;                  /**< X position of the power-up */
     float y = 0;                  /**< Y position of the power-up */
-    bool play;                    /**< Flag to determine which player gets the effect */
+    bool play = true;                    /**< Flag to determine which player gets the effect. It is used only on power.cpp but not on the herited classes */
     int width, height;            /**< Dimensions of the power-up */
     float speed;                  /**< Movement speed */
     float duration_effect = 0.0f; /**< Time remaining until effect ends */

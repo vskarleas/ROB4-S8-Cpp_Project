@@ -60,14 +60,14 @@ public:
     /**
      * @brief Updates the letter position and checks for collisions
      * @param time Time delta since last update
-     * @param screenHeight Window height for boundary checking
+     * @param screen_height Window height for boundary checking
      * @param player1 Pointer to first player
      * @param player2 Pointer to second player
      * @param ball_pos_x Ball's X position
      * @param ball_pos_y Ball's Y position
      * @param ball_radius Ball's radius
      */
-    void update_letter(float time, int screenHeight, User *player1, User *player2, float ball_pos_x, float ball_pos_y, float ball_radius);
+    void update_letter(float time, int screen_height, User *player1, User *player2, float ball_pos_x, float ball_pos_y, float ball_radius);
     
     /**
      * @brief Renders the letter on screen

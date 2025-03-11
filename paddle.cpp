@@ -63,26 +63,35 @@ void Paddle::update(float travel_time)
     };
 
     // The mouvement
+    if (Paddle::get_inverse_power_active())
+    {
+        multiplier = -1.0f;
+    }
+    else
+    {
+        multiplier = 1.0f;
+    }
+
     if (Paddle::get_is_left())
     {
         if (state[SDL_SCANCODE_W])
         {
-            move_paddle(-1.0f, travel_time);
+            move_paddle(-1.0f * multiplier, travel_time);
         }
         if (state[SDL_SCANCODE_S])
         {
-            move_paddle(1.0f, travel_time);
+            move_paddle(1.0f * multiplier, travel_time);
         }
     }
     else
     {
         if (state[SDL_SCANCODE_UP])
         {
-            move_paddle(-1.0f, travel_time);
+            move_paddle(-1.0f * multiplier, travel_time);
         }
         if (state[SDL_SCANCODE_DOWN])
         {
-            move_paddle(1.0f, travel_time);
+            move_paddle(1.0f * multiplier, travel_time);
         }
     }
 

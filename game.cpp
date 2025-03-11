@@ -309,7 +309,9 @@ bool Game::initialise()
     mModeMenu = new page_4b_1t(renderer, police);
     mPauseMenu = new page_3b(renderer, police);
     mGameOver = new GameOver(renderer, police);
+    
     mletter = new Letter(0, 400, 0, 30, renderer, police);
+
     mpower = new Power(WINDOW_WIDTH, WINDOW_HEIGHT);
     minvisible = new InvisiblePower(WINDOW_WIDTH, WINDOW_HEIGHT);
     minverse = new InversiblePower(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -1074,8 +1076,8 @@ void Game::game()
     case FUN_MODE:
 
         minvisible->update(travel_time, mBall, renderer);
-        mpower->update(travel_time, racket1, racket2, mBall->get_pos_x(), mBall->get_pos_y(), 15, renderer);
-        minverse->update(travel_time, racket1, racket2, mBall->get_pos_x(), mBall->get_pos_y(), 15, renderer);
+        mpower->update(travel_time, racket1, racket2, renderer, mBall);
+        minverse->update(travel_time, racket1, racket2, renderer, mBall);
 
         if (player1->get_user_score() >= 10 || player2->get_user_score() >= 10)
         {

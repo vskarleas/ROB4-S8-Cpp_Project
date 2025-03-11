@@ -11,8 +11,10 @@
 #include <SDL_ttf.h>
 #include <cstdlib>
 #include <ctime>
-#include "classic_ball.hpp"
 #include <cmath>
+
+#include "ball_base.hpp"
+#include "power.hpp"
 
 /**
  * @class InvisiblePower
@@ -21,15 +23,15 @@
  * This class implements a special star-shaped power-up that, when collected,
  * makes the ball invisible for a period of time.
  */
-class InvisiblePower
+class InvisiblePower : public Power
 {
 public:
     /**
      * @brief Constructor for the InvisiblePower class
      * @param screen_width The width of the game screen
-     * @param screenHeight The height of the game screen
+     * @param screen_height The height of the game screen
      */
-    InvisiblePower(int screen_width, int screenHeight);
+    InvisiblePower(int screen_width, int screen_height);
 
     /**
      * @brief Updates the power's position and the ball's visibility
@@ -38,24 +40,19 @@ public:
      * @param Ball Pointer to the ball object
      * @param renderer SDL renderer for drawing
      */
-    void update(float time, BallBase *Ball, SDL_Renderer *renderer);
+    void update(float time, BallBase *Ball, SDL_Renderer *renderer); // no need for override becase the declaration is completly different (do not share the same arguments structure)
     
     /**
      * @brief Renders the power as a star on screen
      * @param renderer SDL renderer for drawing
      */
-    void render(SDL_Renderer *renderer);
-    
-    SDL_Color previousColor; /**< Stores the ball's color before invisibility effect */
-    bool is_active;          /**< Whether the power is currently visible and active */
+    void render(SDL_Renderer *renderer) override;
     
     /**
-     * @brief Checks for collision between the power and the ball
-     * 
-     * @param ball Pointer to the ball object
-     * @return true if collision detected, false otherwise
+     * @brief Resets the power to a new random position
+     * @param screen_width The width of the game screen
      */
-    bool check_collision(BallBase *ball) const;
+    void reset(int screen_width) override;
 
     /**
      * @brief Sets the initialization flag
@@ -64,18 +61,8 @@ public:
     void set_initialisation(bool init) { initialisation = init; }
 
 private:
-    float x = 0;                 /**< X position of the power-up */
-    float y = 0;                 /**< Y position of the power-up */
-    bool play;                   /**< Flag indicating which player is affected */
-    int width;                   /**< Width of the power-up */
-    int height;                  /**< Height of the power-up */
-    float speed;                 /**< Movement speed */
-    float invisibility_duration = 0.0f; /**< Time remaining for invisibility effect */
     float repeat;                /**< Timer for power-up respawn */
-    bool invisible_ball = false; /**< Whether the ball is currently invisible */
     bool initialisation;         /**< Flag for first-time initialization */
-    SDL_Color color;
-    float color_change_timer = 0.0f; /**< Timer for color change */
 };
 
 #endif

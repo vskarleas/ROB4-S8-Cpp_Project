@@ -80,6 +80,8 @@ public:
      */
     float get_racket_width() const { return racket_width; }
 
+    bool get_inverse_power_active() const { return inverse_power_active; }
+
     /**
      * @brief Sets the paddle's x-coordinate
      * @param x The new x position
@@ -91,18 +93,18 @@ public:
      * @param y The new y position
      */
     void set_pos_y(float y) { pos_y = y; }
-    
-    /**
-     * @brief Sets the paddle's up direction value
-     * @param t The up direction value
-     */
-    void set_up(float t) { up = t; }
 
     /**
      * @brief Sets the paddle's height
      * @param height The new height for the paddle
      */
     void set_racket_height(float height) { racket_height = height; }
+
+    /**
+     * @brief Sets the inverse_power_active boolean
+     * @param power_active Declaration of the state for the inverse_power_active boolean
+     */
+    void set_inverse_power_active(bool power_active) { inverse_power_active = power_active; }
 
 private:
     float pos_y;         /**< The paddle's y position */
@@ -111,6 +113,7 @@ private:
     const float racket_width;  /**< The paddle's width (constant) */
     const float racket_speed;  /**< The paddle's movement speed (constant) */
     bool is_left;        /**< Whether this paddle is on the left side */
-    float up;            /**< Up direction value for paddle movement */
+    bool inverse_power_active; /**< Whether this paddle is affected by the inverse power-up */
+    float multiplier; /**< multiplier for the paddle's direction mouvement using the keyboard */
 };
 #endif

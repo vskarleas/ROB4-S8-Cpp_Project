@@ -93,14 +93,14 @@ void Letter::next_letter()
     }
 }
 
-void Letter::update_letter(float time, int screenHeight, User *player1, User *player2,
+void Letter::update_letter(float time, int screen_height, User *player1, User *player2,
                            float ball_pos_x, float ball_pos_y, float ball_radius)
 {
     // Letters mouvement
     y += speed * time;
 
     // Check if letter reaches the limits
-    if (y + height >= screenHeight || y <= 0)
+    if (y + height >= screen_height || y <= 0)
     {
         speed = -speed;
     }

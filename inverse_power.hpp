@@ -6,11 +6,17 @@
 
 class InversiblePower : public Power {
     public:
-        InversiblePower(int screenWidth, int screenHeight);
+        InversiblePower(int screen_width, int screen_height);
         
-        void update(float deltaTime, Paddle* racket1, Paddle* racket2, float ballX, float ballY, float ballRadius, SDL_Renderer* renderer) override;
+        void update(float time, Paddle* racket1, Paddle* racket2, SDL_Renderer* renderer, BallBase *ball) override;
         void render(SDL_Renderer* renderer) override;
-        void reset(int screenWidth) override;
+        void reset(int screen_width) override;
+
+    private:
+        bool inverse_paddle = false; /**< Whether the power is currently active for a specific paddle */
+        float repeat;               /**< Timer for power-up respawn */
     };
+
+
 
 #endif

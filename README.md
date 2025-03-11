@@ -239,30 +239,30 @@ Les données sont chiffrées avant l'écriture sur le disque et déchiffrées lo
 
 Dans le cadre ce projet en programmation orientée objets, nous avons créé des objets qui représentent des éléments du jeu pong. Il faut noter quand même que toutes les fonctionnalités sont codées comme si c'était des objets, pour assurer la modularité du code et la bonne organisation des fichiers. Voici les différentes classes que nous avons créées:
 
-| Class                 | Description                                                                                                                                    | Fichier             |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| AI                    | Intelligence artificielle pour contrôler une raquette automatiquement                                                                         | ai.cpp              |
+| Class                 | Description                                                                                                                                      | Fichier             |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------- |
+| AI                    | Intelligence artificielle pour contrôler une raquette automatiquement                                                                           | ai.cpp              |
 | BallBase              | Classe de base abstraite pour tous les types de balles dans le jeu car nous proposons différents types de balles à choisir avant lancer le jeu | ball_base.pp        |
-| ClassicBall           | Implémentation classique de balle circulaire héritant de BallBase                                                                            | classic_ball.cpp    |
+| ClassicBall           | Implémentation classique de balle circulaire héritant de BallBase                                                                              | classic_ball.cpp    |
 | Game                  | Il contient tous les paramètres principaux, surtout les références de tous les autres objets mentionnés dans cette liste                     | game.cpp            |
-| GameOver              | Gère l'écran de fin de partie lorsqu'une partie est terminée ou si on choisit de terminer manuellement une partie                           | game_over.cpp       |
-| GUI                   | Classe utilitaire fournissant des fonctionnalités d'interface utilisateur (donner notre prénom via SDL))                                      | gui.cpp             |
+| GameOver              | Gère l'écran de fin de partie lorsqu'une partie est terminée ou si on choisit de terminer manuellement une partie                             | game_over.cpp       |
+| GUI                   | Classe utilitaire fournissant des fonctionnalités d'interface utilisateur (donner notre prénom via SDL))                                       | gui.cpp             |
 | HighScore [structure] | Structure représentant un record de score élevé. Il gère la sauvegarde de ces données spécifiques                                          | game_save.cpp       |
-| InvisiblePower        | Rend la balle temporairement invisible. Il hérite de la classe Power                                                                          | invisible_power.cpp |
+| InvisiblePower        | Rend la balle temporairement invisible. Il hérite de la classe Power                                                                            | invisible_power.cpp |
 | Power                 | Représente les éléments de power-up qui affectent le gameplay comme le changement de la taille de la raquette, ou rendre la balle invisible   | power.cpp           |
-| Letter                | Représente une lettre dans le mode de jeu Storytime. Contient toute la fonctionnalité pour gérer les mots dans ce mode Storytime               | letter.cpp          |
-| Paddle                | Représente une raquette (paddle) de joueur                                                                                                    | paddle.cpp          |
-| SaveState [structure] | Structure représentant l'état complet du jeu pour la sauvegarde/le chargement                                                                | game_save.cpp       |
-| Saving                | Classe utilitaire de sauvegarde pour gérer la sauvegarde de la partie et la fonctionnalité de score élevé                                  | game_save.cpp       |
-| SoundEffects          | Classe pour gérer les effets sonores et la musique dans le jeu                                                                               | sound_effects.cpp   |
-| SquareBall            | Implémentation de la balle en forme de carré héritant de BallBase                                                                           | square_ball.cpp     |
-| TriangleBall          | Implémentation de la balle en forme de triangle héritant de BallBase                                                                         | triangle_ball.cpp   |
-| User                  | Représente un joueur dans le jeu avec son nom et le suivi du score                                                                            | user.cpp            |
-| page_2b_1t            | Écran d'avis avec 2 boutons et 1 titre                                                                                                        | page_2b_1t.cpp      |
-| page_3b               | Menu de pause avec 3 boutons                                                                                                                   | page_3b.cpp         |
-| page_3b_0t            | Classe de menu principal avec 3 boutons et aucun titre                                                                                         | page_3b_0t.cpp      |
-| page_3b_1t            | Classe de menu intermédiaire avec 3 boutons et 1 titre                                                                                        | page_3b_1t.cpp      |
-| page_4b_1t            | Définit le menu de sélection de mode avec 4 boutons et 1 titre                                                                               | page_4b_1t.cpp      |
+| Letter                | Représente une lettre dans le mode de jeu Storytime. Contient toute la fonctionnalité pour gérer les mots dans ce mode Storytime              | letter.cpp          |
+| Paddle                | Représente une raquette (paddle) de joueur                                                                                                      | paddle.cpp          |
+| SaveState [structure] | Structure représentant l'état complet du jeu pour la sauvegarde/le chargement                                                                  | game_save.cpp       |
+| Saving                | Classe utilitaire de sauvegarde pour gérer la sauvegarde de la partie et la fonctionnalité de score élevé                                    | game_save.cpp       |
+| SoundEffects          | Classe pour gérer les effets sonores et la musique dans le jeu                                                                                  | sound_effects.cpp   |
+| SquareBall            | Implémentation de la balle en forme de carré héritant de BallBase                                                                             | square_ball.cpp     |
+| TriangleBall          | Implémentation de la balle en forme de triangle héritant de BallBase                                                                           | triangle_ball.cpp   |
+| User                  | Représente un joueur dans le jeu avec son nom et le suivi du score                                                                              | user.cpp            |
+| page_2b_1t            | Écran d'avis avec 2 boutons et 1 titre                                                                                                          | page_2b_1t.cpp      |
+| page_3b               | Menu de pause avec 3 boutons                                                                                                                     | page_3b.cpp         |
+| page_3b_0t            | Classe de menu principal avec 3 boutons et aucun titre                                                                                           | page_3b_0t.cpp      |
+| page_3b_1t            | Classe de menu intermédiaire avec 3 boutons et 1 titre                                                                                          | page_3b_1t.cpp      |
+| page_4b_1t            | Définit le menu de sélection de mode avec 4 boutons et 1 titre                                                                                 | page_4b_1t.cpp      |
 
 ## Les foncteurs
 
@@ -451,6 +451,7 @@ Le versioning est un élément clé en programmation, assurant la cohérence des
 * V11.0.1: Added documentation structure. Fixed some issues on the fun mode. We need to reset the paddle height at the end of the fun mode manually if the button end game is tapped otherwise we risk to have different size paddles on other game modes
 * V11.0.2: Added more comments and included inverse mode there is a segmentation fault issue
 * V11.1.2: Resolved segmentation fault issue. Corrected some logic bugs and updated the documentation
+* V12.0.1: Game has been completed. Some comments are missing on the inversible power file
 
 ---
 

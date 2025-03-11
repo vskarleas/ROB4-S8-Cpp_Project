@@ -11,103 +11,99 @@
 
 /**
  * @brief Constructor for the Power class
- * 
+ *
  * Initializes the power with random size and position
- * 
+ *
  * @param screen_width The width of the game screen
- * @param screenHeight The height of the game screen
+ * @param screen_height The height of the game screen
  */
-Power::Power(int screen_width, int screenHeight)
+Power::Power(int screen_width, int screen_height)
 {
     width = 30 + rand() % 20; // Size between 30 and 50 pixels
     height = 30 + rand() % 20;
-    speed = 50.0f;            // Movement speed of 50 pixels/sec
-    srand(time(nullptr));     // Initialize random colors
+    speed = 50.0f;        // Movement speed of 50 pixels/sec
+    srand(time(nullptr)); // Initialize random colors
     reset(screen_width);
 }
 
 /**
  * @brief Updates the power's position and checks for collision with the ball
- * 
+ *
  * Handles power movement, collision detection, and effect application/duration
- * 
+ *
  * @param time Time delta since last update
  * @param racket1 Pointer to first paddle
  * @param racket2 Pointer to second paddle
- * @param ball_pos_x Ball's X position
- * @param ball_pos_y Ball's Y position
- * @param ball_radius Ball's radius
+ * @param ball The ball object
  * @param renderer SDL renderer for drawing
  */
-void Power::update(float time, Paddle *racket1, Paddle *racket2, float ball_pos_x, float ball_pos_y, float ball_radius, SDL_Renderer *renderer)
+void Power::update(float time, Paddle *racket1, Paddle *racket2, SDL_Renderer *renderer, BallBase *ball)
 {
+    // Power is visible and moving on screen
     if (is_active)
     {
         y += speed * time;
-        // Check for collision with ball
-        if (collision_check(ball_pos_x, ball_pos_y, ball_radius))
+
+        if (collision(ball))
         {
-            if (ball_pos_x < x + width / 2)
-            {
-                racket1->set_racket_height(racket1->get_racket_height() * 2); // Increase paddle size
-                duration_effect = 0.0f;                                       
-                effect_is_active = true;                                      
-                is_active = false;
-                racket1->render_object(renderer);
-                play = true;
-            }
-            else
-            {
-                racket2->set_racket_height(racket2->get_racket_height() * 2); // Increase paddle size
-                duration_effect = 0.0f;                                       
-                effect_is_active = true;                                     
-                is_active = false;
-                racket2->render_object(renderer);
-                play = false;
-            }
+            bool affects_player_one = (ball->get_pos_x() < x + width / 2);
+            Paddle* affected_paddle = affects_player_one ? racket1 : racket2;
+            
+
+            // Apply the paddle size effect
+            affected_paddle->set_racket_height(affected_paddle->get_racket_height() * 2);
+            
+            // Setup effect duration tracking
+            duration_effect = 0.0f; // it is using a time to determine if we need to stop the effect
+            effect_is_active = true;
+            is_active = false;
+            
+            // Render the updated paddle
+            affected_paddle->render_object(renderer);
+            
+            // Remember which player was affected
+            play = affects_player_one;
         }
 
-        // If power goes off screen, reverse direction
+        // Handle screen boundaries - bounce at edges
         if (y + height >= WINDOW_HEIGHT || y <= 0)
         {
-            is_active = true;
             speed = -speed;
+            
+            // Ensure power stays on screen
+            if (y <= 0) y = 5;
+            if (y + height >= WINDOW_HEIGHT) y = WINDOW_HEIGHT - height - 5;
         }
     }
-    else
+
+    else if (effect_is_active)
     {
-        if (effect_is_active)
+        duration_effect += time;
+        
+        if (duration_effect >= 10.0)
         {
-            duration_effect += time;
-            if (duration_effect >= 10.0)
-            {
-                // Deactivate effect after 10 seconds
-                if (play)
-                {
-                    racket1->set_racket_height(racket1->get_racket_height() / 2); // Return to normal size
-                    effect_is_active = false;
-                    racket1->render_object(renderer);
-                    is_active = true;
-                    reset(WINDOW_HEIGHT);
-                }
-                else if (!play)
-                {
-                    racket2->set_racket_height(racket2->get_racket_height() / 2); // Return to normal size
-                    effect_is_active = false;
-                    racket2->render_object(renderer);
-                    is_active = true;
-                    reset(WINDOW_HEIGHT);
-                }
-            }
+            Paddle* affected_paddle = play ? racket1 : racket2;
+            
+            // Return paddle to normal size
+            affected_paddle->set_racket_height(affected_paddle->get_racket_height() / 2);
+            
+            // Reseting the flags otherwise we are lost on the logic
+            effect_is_active = false;
+            is_active = true;
+    
+
+            affected_paddle->render_object(renderer);
+            
+            reset(WINDOW_HEIGHT);
         }
     }
 }
 
 /**
  * @brief Renders the power on screen
- * 
+ *
  * Draws a colored rectangle representing the power if it's active
- * 
+ *
  * @param renderer SDL renderer for drawing
  */
 void Power::render(SDL_Renderer *renderer)
@@ -121,43 +117,40 @@ void Power::render(SDL_Renderer *renderer)
 }
 
 /**
- * @brief Checks if the ball has hit this power-up
- * 
- * Uses circle-rectangle collision detection
- * 
- * @param ball_pos_x Ball's X position
- * @param ball_pos_y Ball's Y position
- * @param ball_radius Ball's radius
+ * @brief Checks for collision between the power and the ball
+ *
+ * @param ball_type Pointer to the ball object
  * @return true if collision detected, false otherwise
  */
-bool Power::collision_check(float ball_pos_x, float ball_pos_y, float ball_radius) const
+bool Power::collision(BallBase *ball_type) const
 {
     if (!is_active)
         return false;
 
-    // Circle-rectangle collision detection
-    float closestX = (ball_pos_x < x) ? x : (ball_pos_x > x + width) ? x + width
-                                                                     : ball_pos_x;
-    float closestY = (ball_pos_y < y) ? y : (ball_pos_y > y + height) ? y + height
-                                                                      : ball_pos_y;
+    SDL_Rect power_object = {
+        static_cast<int>(x),
+        static_cast<int>(y),
+        static_cast<int>(width),
+        static_cast<int>(height)};
 
-    float distanceX = ball_pos_x - closestX;
-    float distanceY = ball_pos_y - closestY;
+    SDL_Rect ball = ball_type->boundaries();
 
-    return (distanceX * distanceX + distanceY * distanceY) < (ball_radius * ball_radius);
+    return SDL_HasIntersection(&power_object, &ball);
 }
 
 /**
  * @brief Resets the power to a new random position
- * 
+ *
  * @param screen_width The width of the game screen
  */
 void Power::reset(int screen_width)
 {
-    // New random position
-    x = 100 + rand() % (600);
-    y = 1; // Start above the screen
-    // Random color
+    int margin = screen_width * 0.1; // 10% margin from edges
+    int available_width = screen_width - 2 * margin;
+    x = margin + rand() % available_width;
+
+    y = 1; // Allows to start from above the screen
+
     color = {static_cast<Uint8>(rand() % 256), static_cast<Uint8>(rand() % 256), static_cast<Uint8>(rand() % 256), 255};
     is_active = true; // Activate the power
 }

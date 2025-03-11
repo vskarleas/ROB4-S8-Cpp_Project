@@ -105,7 +105,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a022dbcac23de506520465bd4d469fa16" id="r_a022dbcac23de506520465bd4d469fa16"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a022dbcac23de506520465bd4d469fa16">check_collision</a> (<a class="el" href="class_ball_base.html">BallBase</a> *ball) const</td></tr>
 <tr class="memdesc:a022dbcac23de506520465bd4d469fa16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for collision between the power and the ball.  <br /></td></tr>
 <tr class="separator:a022dbcac23de506520465bd4d469fa16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5a43ceca6dd5c42d1d6fdeb8db70991" id="r_ab5a43ceca6dd5c42d1d6fdeb8db70991"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5a43ceca6dd5c42d1d6fdeb8db70991">InvisiblePower</a> (int screen_width, int screenHeight)</td></tr>
+<tr class="memitem:ab5a43ceca6dd5c42d1d6fdeb8db70991" id="r_ab5a43ceca6dd5c42d1d6fdeb8db70991"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5a43ceca6dd5c42d1d6fdeb8db70991">InvisiblePower</a> (int screen_width, int screen_height)</td></tr>
 <tr class="memdesc:ab5a43ceca6dd5c42d1d6fdeb8db70991"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="class_invisible_power.html" title="Power-up that makes the ball temporarily invisible.">InvisiblePower</a> class.  <br /></td></tr>
 <tr class="separator:ab5a43ceca6dd5c42d1d6fdeb8db70991"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05b535e35825b386a6895bdf9c711d5a" id="r_a05b535e35825b386a6895bdf9c711d5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05b535e35825b386a6895bdf9c711d5a">render</a> (SDL_Renderer *renderer)</td></tr>
@@ -135,9 +135,9 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a68ab25b588de135608b119c0b0097b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84811f12566aeb4cffac940532941b4a" id="r_a84811f12566aeb4cffac940532941b4a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84811f12566aeb4cffac940532941b4a">initialisation</a></td></tr>
 <tr class="separator:a84811f12566aeb4cffac940532941b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02d055b37869e1e9ca9447cfc7fb4ea5" id="r_a02d055b37869e1e9ca9447cfc7fb4ea5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02d055b37869e1e9ca9447cfc7fb4ea5">invisibility_duration</a> = 0.0f</td></tr>
+<tr class="memitem:a02d055b37869e1e9ca9447cfc7fb4ea5" id="r_a02d055b37869e1e9ca9447cfc7fb4ea5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02d055b37869e1e9ca9447cfc7fb4ea5">duration_effect</a> = 0.0f</td></tr>
 <tr class="separator:a02d055b37869e1e9ca9447cfc7fb4ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade696713de373c7f7a99a070eec35848" id="r_ade696713de373c7f7a99a070eec35848"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade696713de373c7f7a99a070eec35848">invisible_ball</a> = false</td></tr>
+<tr class="memitem:ade696713de373c7f7a99a070eec35848" id="r_ade696713de373c7f7a99a070eec35848"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade696713de373c7f7a99a070eec35848">effect_is_active</a> = false</td></tr>
 <tr class="separator:ade696713de373c7f7a99a070eec35848"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51177d06343d29ea52c62031c5462b4d" id="r_a51177d06343d29ea52c62031c5462b4d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51177d06343d29ea52c62031c5462b4d">play</a></td></tr>
 <tr class="separator:a51177d06343d29ea52c62031c5462b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,7 +170,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>screenHeight</em></span>&#160;)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>screen_height</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -179,7 +179,7 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">screen_width</td><td>The width of the game screen </td></tr>
-    <tr><td class="paramname">screenHeight</td><td>The height of the game screen</td></tr>
+    <tr><td class="paramname">screen_height</td><td>The height of the game screen</td></tr>
   </table>
   </dd>
 </dl>
@@ -187,7 +187,7 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">screen_width</td><td>The width of the game screen </td></tr>
-    <tr><td class="paramname">screenHeight</td><td>The height of the game screen </td></tr>
+    <tr><td class="paramname">screen_height</td><td>The height of the game screen </td></tr>
   </table>
   </dd>
 </dl>
@@ -425,7 +425,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a02d055b37869e1e9ca9447cfc7fb4ea5" name="a02d055b37869e1e9ca9447cfc7fb4ea5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02d055b37869e1e9ca9447cfc7fb4ea5">&#9670;&#160;</a></span>invisibility_duration</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a02d055b37869e1e9ca9447cfc7fb4ea5">&#9670;&#160;</a></span>duration_effect</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -434,7 +434,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float InvisiblePower::invisibility_duration = 0.0f</td>
+          <td class="memname">float InvisiblePower::duration_effect = 0.0f</td>
         </tr>
       </table>
   </td>
@@ -448,7 +448,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <a id="ade696713de373c7f7a99a070eec35848" name="ade696713de373c7f7a99a070eec35848"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade696713de373c7f7a99a070eec35848">&#9670;&#160;</a></span>invisible_ball</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ade696713de373c7f7a99a070eec35848">&#9670;&#160;</a></span>effect_is_active</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -457,7 +457,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool InvisiblePower::invisible_ball = false</td>
+          <td class="memname">bool InvisiblePower::effect_is_active = false</td>
         </tr>
       </table>
   </td>

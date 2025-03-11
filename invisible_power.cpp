@@ -16,21 +16,14 @@
  * Initializes the star-shaped power at a random position
  *
  * @param screen_width The width of the game screen
- * @param screenHeight The height of the game screen
+ * @param screen_height The height of the game screen
  */
-InvisiblePower::InvisiblePower(int screen_width, int screenHeight)
+InvisiblePower::InvisiblePower(int screen_width, int screen_height) : Power(screen_width, screen_height)
 {
-    x = 150 + rand() % (550);
-    y = 0;
-    width = 30 + rand() % 20; // Size between 30 and 50 pixels
-    height = 30 + rand() % 20;
     speed = 80.0f;
     is_active = true;
 
-    color = {static_cast<Uint8>(rand() % 256),
-             static_cast<Uint8>(rand() % 256),
-             static_cast<Uint8>(rand() % 256), 255};
-    color_change_timer = 0.0f;
+    reset(WINDOW_HEIGHT);
 }
 
 /**
@@ -55,22 +48,22 @@ void InvisiblePower::update(float time, BallBase *ball, SDL_Renderer *renderer)
     {
         y += speed * time;
 
-        color_change_timer += time;
-        if (color_change_timer >= 0.5f) // Change color every half second
-        {
-            // Generate new random color
-            color.r = static_cast<Uint8>(rand() % 256);
-            color.g = static_cast<Uint8>(rand() % 256);
-            color.b = static_cast<Uint8>(rand() % 256);
-            color_change_timer = 0.0f;
-        }
+        // color_change_timer += time;
+        // if (color_change_timer >= 0.5f) // Change color every half second
+        // {
+        //     // Generate new random color
+        //     color.r = static_cast<Uint8>(rand() % 256);
+        //     color.g = static_cast<Uint8>(rand() % 256);
+        //     color.b = static_cast<Uint8>(rand() % 256);
+        //     color_change_timer = 0.0f;
+        // }
 
-        if (check_collision(ball))
+        if (collision(ball))
         {
             is_active = false;
-            invisible_ball = true;
+            effect_is_active = true;
             ball->set_color(black);       // Make ball blend with background
-            invisibility_duration = 0.0f; // Reset timer
+            duration_effect = 0.0f; // Reset timer
             repeat = 0.0f;
         }
 
@@ -79,24 +72,26 @@ void InvisiblePower::update(float time, BallBase *ball, SDL_Renderer *renderer)
             speed = -speed;
         }
     }
-    else if (invisible_ball)
+    else if (effect_is_active)
     {
-        invisibility_duration += time;
+        duration_effect += time;
         repeat += time;
 
-        if (invisibility_duration >= 3.0)
+        if (duration_effect >= 3.0)
         {
             // Return ball to original color after 3 seconds
             ball->set_color(white);
-            invisibility_duration = 3.0f;
+            duration_effect = 3.0f;
         }
 
         if (repeat >= 13.0)
         {
             // Star reappears after 13 seconds
             is_active = true;
-            invisible_ball = false;
-            y = 0; // Reset star position
+            effect_is_active = false;
+            // y = 0; // Reset star position
+
+            reset(WINDOW_HEIGHT);
         }
     }
 }
@@ -113,7 +108,6 @@ void InvisiblePower::render(SDL_Renderer *renderer)
     if (!is_active)
         return;
 
-    // Use yellow color from macros.hpp
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 
     float centerX = x + width / 2.0f;
@@ -151,23 +145,15 @@ void InvisiblePower::render(SDL_Renderer *renderer)
     }
 }
 
-/**
- * @brief Checks for collision between the power and the ball
- *
- * @param ball_type Pointer to the ball object
- * @return true if collision detected, false otherwise
- */
-bool InvisiblePower::check_collision(BallBase *ball_type) const
+
+void InvisiblePower::reset(int screen_width)
 {
-    if (!is_active)
-        return false;
+    int min_x = screen_width * 0.1;
+    int max_x = screen_width * 0.6;
 
-    SDL_Rect star = {
-        static_cast<int>(x),
-        static_cast<int>(y),
-        static_cast<int>(width),
-        static_cast<int>(height)};
+    x = min_x + rand() % (max_x - min_x);
+    y = 0;
 
-    SDL_Rect ball = ball_type->boundaries();
-    return SDL_HasIntersection(&star, &ball);
+    color = {static_cast<Uint8>(rand() % 256), static_cast<Uint8>(rand() % 256), static_cast<Uint8>(rand() % 256), 255};
+    is_active = true;
 }
