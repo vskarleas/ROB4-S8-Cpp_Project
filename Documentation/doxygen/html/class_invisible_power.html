@@ -88,7 +88,6 @@ $(function(){ initResizable(false); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_invisible_power-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">InvisiblePower Class Reference</div></div>
@@ -99,65 +98,84 @@ $(function(){ initResizable(false); });
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="invisible__power_8hpp_source.html">invisible_power.hpp</a>&gt;</code></p>
+<div id="dynsection-0" onclick="return dynsection.toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for InvisiblePower:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+ <div class="center">
+  <img src="class_invisible_power.png" usemap="#InvisiblePower_map" alt=""/>
+  <map id="InvisiblePower_map" name="InvisiblePower_map">
+<area href="class_power.html" title="Class representing power-up items that affect gameplay." alt="Power" shape="rect" coords="0,0,94,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a022dbcac23de506520465bd4d469fa16" id="r_a022dbcac23de506520465bd4d469fa16"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a022dbcac23de506520465bd4d469fa16">check_collision</a> (<a class="el" href="class_ball_base.html">BallBase</a> *ball) const</td></tr>
-<tr class="memdesc:a022dbcac23de506520465bd4d469fa16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for collision between the power and the ball.  <br /></td></tr>
-<tr class="separator:a022dbcac23de506520465bd4d469fa16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5a43ceca6dd5c42d1d6fdeb8db70991" id="r_ab5a43ceca6dd5c42d1d6fdeb8db70991"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5a43ceca6dd5c42d1d6fdeb8db70991">InvisiblePower</a> (int screen_width, int screen_height)</td></tr>
-<tr class="memdesc:ab5a43ceca6dd5c42d1d6fdeb8db70991"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="class_invisible_power.html" title="Power-up that makes the ball temporarily invisible.">InvisiblePower</a> class.  <br /></td></tr>
-<tr class="separator:ab5a43ceca6dd5c42d1d6fdeb8db70991"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05b535e35825b386a6895bdf9c711d5a" id="r_a05b535e35825b386a6895bdf9c711d5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05b535e35825b386a6895bdf9c711d5a">render</a> (SDL_Renderer *renderer)</td></tr>
-<tr class="memdesc:a05b535e35825b386a6895bdf9c711d5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the power as a star on screen.  <br /></td></tr>
-<tr class="separator:a05b535e35825b386a6895bdf9c711d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c25a50e67cd1c604471e2eb2e675bbd" id="r_a6c25a50e67cd1c604471e2eb2e675bbd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c25a50e67cd1c604471e2eb2e675bbd">InvisiblePower</a> (int screen_width, int screen_height)</td></tr>
+<tr class="memdesc:a6c25a50e67cd1c604471e2eb2e675bbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="class_invisible_power.html" title="Power-up that makes the ball temporarily invisible.">InvisiblePower</a> class.  <br /></td></tr>
+<tr class="separator:a6c25a50e67cd1c604471e2eb2e675bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af86b7aaa89725c3fb2f645ca7018d8fe" id="r_af86b7aaa89725c3fb2f645ca7018d8fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af86b7aaa89725c3fb2f645ca7018d8fe">render</a> (SDL_Renderer *renderer) override</td></tr>
+<tr class="memdesc:af86b7aaa89725c3fb2f645ca7018d8fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the power as a star on screen.  <br /></td></tr>
+<tr class="separator:af86b7aaa89725c3fb2f645ca7018d8fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51226a50670bb7acc98b273738c33ec5" id="r_a51226a50670bb7acc98b273738c33ec5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51226a50670bb7acc98b273738c33ec5">reset</a> (int screen_width) override</td></tr>
+<tr class="memdesc:a51226a50670bb7acc98b273738c33ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the power to a new random position.  <br /></td></tr>
+<tr class="separator:a51226a50670bb7acc98b273738c33ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7214249499a037bcfd624c9976447a7d" id="r_a7214249499a037bcfd624c9976447a7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7214249499a037bcfd624c9976447a7d">set_initialisation</a> (bool init)</td></tr>
 <tr class="memdesc:a7214249499a037bcfd624c9976447a7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the initialization flag.  <br /></td></tr>
 <tr class="separator:a7214249499a037bcfd624c9976447a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6c8e0a97acd7d7d5aa72ef6d917e8c6" id="r_aa6c8e0a97acd7d7d5aa72ef6d917e8c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6c8e0a97acd7d7d5aa72ef6d917e8c6">update</a> (float time, <a class="el" href="class_ball_base.html">BallBase</a> *Ball, SDL_Renderer *renderer)</td></tr>
 <tr class="memdesc:aa6c8e0a97acd7d7d5aa72ef6d917e8c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the power's position and the ball's visibility.  <br /></td></tr>
 <tr class="separator:aa6c8e0a97acd7d7d5aa72ef6d917e8c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a7aec8f68842494329eed612d24f32fb3" id="r_a7aec8f68842494329eed612d24f32fb3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7aec8f68842494329eed612d24f32fb3">is_active</a></td></tr>
-<tr class="separator:a7aec8f68842494329eed612d24f32fb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a205bf6a2188422ed7a447b5c7413769a" id="r_a205bf6a2188422ed7a447b5c7413769a"><td class="memItemLeft" align="right" valign="top">SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a205bf6a2188422ed7a447b5c7413769a">previousColor</a></td></tr>
-<tr class="separator:a205bf6a2188422ed7a447b5c7413769a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_power"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_power')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_power.html">Power</a></td></tr>
+<tr class="memitem:ab791b9872c20b5c727fbf48ec7999402 inherit pub_methods_class_power" id="r_ab791b9872c20b5c727fbf48ec7999402"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power.html#ab791b9872c20b5c727fbf48ec7999402">collision</a> (<a class="el" href="class_ball_base.html">BallBase</a> *ball_type) const</td></tr>
+<tr class="memdesc:ab791b9872c20b5c727fbf48ec7999402 inherit pub_methods_class_power"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for collision between the power and the ball.  <br /></td></tr>
+<tr class="separator:ab791b9872c20b5c727fbf48ec7999402 inherit pub_methods_class_power"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28c4172c8249d7b0a098acc355d01965 inherit pub_methods_class_power" id="r_a28c4172c8249d7b0a098acc355d01965"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power.html#a28c4172c8249d7b0a098acc355d01965">Power</a> (int screen_width, int screen_height)</td></tr>
+<tr class="memdesc:a28c4172c8249d7b0a098acc355d01965 inherit pub_methods_class_power"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="class_power.html" title="Class representing power-up items that affect gameplay.">Power</a> class.  <br /></td></tr>
+<tr class="separator:a28c4172c8249d7b0a098acc355d01965 inherit pub_methods_class_power"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2826de81bb9d687daef49ebd8a7e0821 inherit pub_methods_class_power" id="r_a2826de81bb9d687daef49ebd8a7e0821"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power.html#a2826de81bb9d687daef49ebd8a7e0821">update</a> (float time, <a class="el" href="class_paddle.html">Paddle</a> *racket1, <a class="el" href="class_paddle.html">Paddle</a> *racket2, SDL_Renderer *renderer, <a class="el" href="class_ball_base.html">BallBase</a> *ball)</td></tr>
+<tr class="memdesc:a2826de81bb9d687daef49ebd8a7e0821 inherit pub_methods_class_power"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the power's position and effect.  <br /></td></tr>
+<tr class="separator:a2826de81bb9d687daef49ebd8a7e0821 inherit pub_methods_class_power"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a9736c5c22e00f0bcddf640c017b0241f" id="r_a9736c5c22e00f0bcddf640c017b0241f"><td class="memItemLeft" align="right" valign="top">SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9736c5c22e00f0bcddf640c017b0241f">color</a></td></tr>
-<tr class="separator:a9736c5c22e00f0bcddf640c017b0241f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87ec3f842ba38693317097972dcff2ef" id="r_a87ec3f842ba38693317097972dcff2ef"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87ec3f842ba38693317097972dcff2ef">color_change_timer</a> = 0.0f</td></tr>
-<tr class="separator:a87ec3f842ba38693317097972dcff2ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68ab25b588de135608b119c0b0097b54" id="r_a68ab25b588de135608b119c0b0097b54"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68ab25b588de135608b119c0b0097b54">height</a></td></tr>
-<tr class="separator:a68ab25b588de135608b119c0b0097b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84811f12566aeb4cffac940532941b4a" id="r_a84811f12566aeb4cffac940532941b4a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84811f12566aeb4cffac940532941b4a">initialisation</a></td></tr>
 <tr class="separator:a84811f12566aeb4cffac940532941b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02d055b37869e1e9ca9447cfc7fb4ea5" id="r_a02d055b37869e1e9ca9447cfc7fb4ea5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02d055b37869e1e9ca9447cfc7fb4ea5">duration_effect</a> = 0.0f</td></tr>
-<tr class="separator:a02d055b37869e1e9ca9447cfc7fb4ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade696713de373c7f7a99a070eec35848" id="r_ade696713de373c7f7a99a070eec35848"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade696713de373c7f7a99a070eec35848">effect_is_active</a> = false</td></tr>
-<tr class="separator:ade696713de373c7f7a99a070eec35848"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51177d06343d29ea52c62031c5462b4d" id="r_a51177d06343d29ea52c62031c5462b4d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51177d06343d29ea52c62031c5462b4d">play</a></td></tr>
-<tr class="separator:a51177d06343d29ea52c62031c5462b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a307ffd309792236b234411eaff3ceeb9" id="r_a307ffd309792236b234411eaff3ceeb9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a307ffd309792236b234411eaff3ceeb9">repeat</a></td></tr>
 <tr class="separator:a307ffd309792236b234411eaff3ceeb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a75bab8f5b5e43c1bda93421bd232a0" id="r_a0a75bab8f5b5e43c1bda93421bd232a0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a75bab8f5b5e43c1bda93421bd232a0">speed</a></td></tr>
-<tr class="separator:a0a75bab8f5b5e43c1bda93421bd232a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71780b1f69eac889448cdc58b10ba197" id="r_a71780b1f69eac889448cdc58b10ba197"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71780b1f69eac889448cdc58b10ba197">width</a></td></tr>
-<tr class="separator:a71780b1f69eac889448cdc58b10ba197"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c4a0ce8028fe7ce76ab0915c79a2d9f" id="r_a1c4a0ce8028fe7ce76ab0915c79a2d9f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c4a0ce8028fe7ce76ab0915c79a2d9f">x</a> = 0</td></tr>
-<tr class="separator:a1c4a0ce8028fe7ce76ab0915c79a2d9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5a25aba3ec153517b91b6491bb1d5ac" id="r_ab5a25aba3ec153517b91b6491bb1d5ac"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5a25aba3ec153517b91b6491bb1d5ac">y</a> = 0</td></tr>
-<tr class="separator:ab5a25aba3ec153517b91b6491bb1d5ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_attribs_class_power"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_attribs_class_power')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_power.html">Power</a></td></tr>
+<tr class="memitem:ae69eacf26d02cfbd4f42f69756a29980 inherit pub_attribs_class_power" id="r_ae69eacf26d02cfbd4f42f69756a29980"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power.html#ae69eacf26d02cfbd4f42f69756a29980">is_active</a></td></tr>
+<tr class="separator:ae69eacf26d02cfbd4f42f69756a29980 inherit pub_attribs_class_power"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_attribs_class_power"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_power')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_power.html">Power</a></td></tr>
+<tr class="memitem:ab13a3f753ea769a4278699c5272d4f16 inherit pro_attribs_class_power" id="r_ab13a3f753ea769a4278699c5272d4f16"><td class="memItemLeft" align="right" valign="top">SDL_Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power.html#ab13a3f753ea769a4278699c5272d4f16">color</a></td></tr>
+<tr class="separator:ab13a3f753ea769a4278699c5272d4f16 inherit pro_attribs_class_power"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29c7807215ab51efecde6056541a5b77 inherit pro_attribs_class_power" id="r_a29c7807215ab51efecde6056541a5b77"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power.html#a29c7807215ab51efecde6056541a5b77">duration_effect</a> = 0.0f</td></tr>
+<tr class="separator:a29c7807215ab51efecde6056541a5b77 inherit pro_attribs_class_power"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1acb27b2b5928ea9ffdea911ffacf001 inherit pro_attribs_class_power" id="r_a1acb27b2b5928ea9ffdea911ffacf001"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power.html#a1acb27b2b5928ea9ffdea911ffacf001">effect_is_active</a> = false</td></tr>
+<tr class="separator:a1acb27b2b5928ea9ffdea911ffacf001 inherit pro_attribs_class_power"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a075c28a2d2ce07e4ea2a3ccb1f5abbd9 inherit pro_attribs_class_power" id="r_a075c28a2d2ce07e4ea2a3ccb1f5abbd9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power.html#a075c28a2d2ce07e4ea2a3ccb1f5abbd9">height</a></td></tr>
+<tr class="separator:a075c28a2d2ce07e4ea2a3ccb1f5abbd9 inherit pro_attribs_class_power"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f0cdc8f298ad92e219e4cbc11fda378 inherit pro_attribs_class_power" id="r_a5f0cdc8f298ad92e219e4cbc11fda378"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power.html#a5f0cdc8f298ad92e219e4cbc11fda378">play</a> = true</td></tr>
+<tr class="separator:a5f0cdc8f298ad92e219e4cbc11fda378 inherit pro_attribs_class_power"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9493e1d63ea529f7766f1011331b0f8f inherit pro_attribs_class_power" id="r_a9493e1d63ea529f7766f1011331b0f8f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power.html#a9493e1d63ea529f7766f1011331b0f8f">speed</a></td></tr>
+<tr class="separator:a9493e1d63ea529f7766f1011331b0f8f inherit pro_attribs_class_power"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21c6d9fc890e7acdefdaf8ae2c9c487d inherit pro_attribs_class_power" id="r_a21c6d9fc890e7acdefdaf8ae2c9c487d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power.html#a21c6d9fc890e7acdefdaf8ae2c9c487d">width</a></td></tr>
+<tr class="separator:a21c6d9fc890e7acdefdaf8ae2c9c487d inherit pro_attribs_class_power"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1c71405f265d5f0807db1f8f78d2192 inherit pro_attribs_class_power" id="r_aa1c71405f265d5f0807db1f8f78d2192"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power.html#aa1c71405f265d5f0807db1f8f78d2192">x</a> = 0</td></tr>
+<tr class="separator:aa1c71405f265d5f0807db1f8f78d2192 inherit pro_attribs_class_power"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38f9c07a846a716757ba96588babd9b2 inherit pro_attribs_class_power" id="r_a38f9c07a846a716757ba96588babd9b2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_power.html#a38f9c07a846a716757ba96588babd9b2">y</a> = 0</td></tr>
+<tr class="separator:a38f9c07a846a716757ba96588babd9b2 inherit pro_attribs_class_power"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Power-up that makes the ball temporarily invisible. </p>
 <p>This class implements a special star-shaped power-up that, when collected, makes the ball invisible for a period of time. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ab5a43ceca6dd5c42d1d6fdeb8db70991" name="ab5a43ceca6dd5c42d1d6fdeb8db70991"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5a43ceca6dd5c42d1d6fdeb8db70991">&#9670;&#160;</a></span>InvisiblePower()</h2>
+<a id="a6c25a50e67cd1c604471e2eb2e675bbd" name="a6c25a50e67cd1c604471e2eb2e675bbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c25a50e67cd1c604471e2eb2e675bbd">&#9670;&#160;</a></span>InvisiblePower()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -195,44 +213,14 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a022dbcac23de506520465bd4d469fa16" name="a022dbcac23de506520465bd4d469fa16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a022dbcac23de506520465bd4d469fa16">&#9670;&#160;</a></span>check_collision()</h2>
+<a id="af86b7aaa89725c3fb2f645ca7018d8fe" name="af86b7aaa89725c3fb2f645ca7018d8fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af86b7aaa89725c3fb2f645ca7018d8fe">&#9670;&#160;</a></span>render()</h2>
 
 <div class="memitem">
 <div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool InvisiblePower::check_collision </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_ball_base.html">BallBase</a> *</td>          <td class="paramname"><span class="paramname"><em>ball_type</em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Checks for collision between the power and the ball. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ball</td><td>Pointer to the ball object </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if collision detected, false otherwise</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ball_type</td><td>Pointer to the ball object </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if collision detected, false otherwise </dd></dl>
-
-</div>
-</div>
-<a id="a05b535e35825b386a6895bdf9c711d5a" name="a05b535e35825b386a6895bdf9c711d5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05b535e35825b386a6895bdf9c711d5a">&#9670;&#160;</a></span>render()</h2>
-
-<div class="memitem">
-<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void InvisiblePower::render </td>
@@ -241,6 +229,11 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Renders the power as a star on screen. </p>
@@ -258,6 +251,43 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p>Reimplemented from <a class="el" href="class_power.html#a4c1cc0ce69b7a89130245a67f3aecd25">Power</a>.</p>
+
+</div>
+</div>
+<a id="a51226a50670bb7acc98b273738c33ec5" name="a51226a50670bb7acc98b273738c33ec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51226a50670bb7acc98b273738c33ec5">&#9670;&#160;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void InvisiblePower::reset </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>screen_width</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Resets the power to a new random position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">screen_width</td><td>The width of the game screen </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_power.html#a30d8da189bed6e8eb147af829fb9daa6">Power</a>.</p>
 
 </div>
 </div>
@@ -333,74 +363,6 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a9736c5c22e00f0bcddf640c017b0241f" name="a9736c5c22e00f0bcddf640c017b0241f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9736c5c22e00f0bcddf640c017b0241f">&#9670;&#160;</a></span>color</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">SDL_Color InvisiblePower::color</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a87ec3f842ba38693317097972dcff2ef" name="a87ec3f842ba38693317097972dcff2ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87ec3f842ba38693317097972dcff2ef">&#9670;&#160;</a></span>color_change_timer</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float InvisiblePower::color_change_timer = 0.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Timer for color change </p>
-
-</div>
-</div>
-<a id="a68ab25b588de135608b119c0b0097b54" name="a68ab25b588de135608b119c0b0097b54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68ab25b588de135608b119c0b0097b54">&#9670;&#160;</a></span>height</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int InvisiblePower::height</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Height of the power-up </p>
-
-</div>
-</div>
 <a id="a84811f12566aeb4cffac940532941b4a" name="a84811f12566aeb4cffac940532941b4a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a84811f12566aeb4cffac940532941b4a">&#9670;&#160;</a></span>initialisation</h2>
 
@@ -424,105 +386,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a02d055b37869e1e9ca9447cfc7fb4ea5" name="a02d055b37869e1e9ca9447cfc7fb4ea5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02d055b37869e1e9ca9447cfc7fb4ea5">&#9670;&#160;</a></span>duration_effect</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float InvisiblePower::duration_effect = 0.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Time remaining for invisibility effect </p>
-
-</div>
-</div>
-<a id="ade696713de373c7f7a99a070eec35848" name="ade696713de373c7f7a99a070eec35848"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade696713de373c7f7a99a070eec35848">&#9670;&#160;</a></span>effect_is_active</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool InvisiblePower::effect_is_active = false</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Whether the ball is currently invisible </p>
-
-</div>
-</div>
-<a id="a7aec8f68842494329eed612d24f32fb3" name="a7aec8f68842494329eed612d24f32fb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7aec8f68842494329eed612d24f32fb3">&#9670;&#160;</a></span>is_active</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool InvisiblePower::is_active</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Whether the power is currently visible and active </p>
-
-</div>
-</div>
-<a id="a51177d06343d29ea52c62031c5462b4d" name="a51177d06343d29ea52c62031c5462b4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51177d06343d29ea52c62031c5462b4d">&#9670;&#160;</a></span>play</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool InvisiblePower::play</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Flag indicating which player is affected </p>
-
-</div>
-</div>
-<a id="a205bf6a2188422ed7a447b5c7413769a" name="a205bf6a2188422ed7a447b5c7413769a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a205bf6a2188422ed7a447b5c7413769a">&#9670;&#160;</a></span>previousColor</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SDL_Color InvisiblePower::previousColor</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Stores the ball's color before invisibility effect </p>
-
-</div>
-</div>
 <a id="a307ffd309792236b234411eaff3ceeb9" name="a307ffd309792236b234411eaff3ceeb9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a307ffd309792236b234411eaff3ceeb9">&#9670;&#160;</a></span>repeat</h2>
 
@@ -543,98 +406,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Timer for power-up respawn </p>
-
-</div>
-</div>
-<a id="a0a75bab8f5b5e43c1bda93421bd232a0" name="a0a75bab8f5b5e43c1bda93421bd232a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a75bab8f5b5e43c1bda93421bd232a0">&#9670;&#160;</a></span>speed</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float InvisiblePower::speed</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Movement speed </p>
-
-</div>
-</div>
-<a id="a71780b1f69eac889448cdc58b10ba197" name="a71780b1f69eac889448cdc58b10ba197"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71780b1f69eac889448cdc58b10ba197">&#9670;&#160;</a></span>width</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int InvisiblePower::width</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Width of the power-up </p>
-
-</div>
-</div>
-<a id="a1c4a0ce8028fe7ce76ab0915c79a2d9f" name="a1c4a0ce8028fe7ce76ab0915c79a2d9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c4a0ce8028fe7ce76ab0915c79a2d9f">&#9670;&#160;</a></span>x</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float InvisiblePower::x = 0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>X position of the power-up </p>
-
-</div>
-</div>
-<a id="ab5a25aba3ec153517b91b6491bb1d5ac" name="ab5a25aba3ec153517b91b6491bb1d5ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5a25aba3ec153517b91b6491bb1d5ac">&#9670;&#160;</a></span>y</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float InvisiblePower::y = 0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Y position of the power-up </p>
 
 </div>
 </div>

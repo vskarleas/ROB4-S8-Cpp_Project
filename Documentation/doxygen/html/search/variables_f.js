@@ -7,6 +7,6 @@ var searchData=
   ['selected_5fbutton_4',['selected_button',['../classpage__3b.html#aa922aa0d118575c75c7d3c4668b8a01d',1,'page_3b::selected_button'],['../classpage__3b__1t.html#a24a364497442f1fe2bbbb99ac16df317',1,'page_3b_1t::selected_button']]],
   ['send_5fpacket_5',['send_packet',['../class_network_manager.html#ad4fe60c6bf5749162d95272754e0d331',1,'NetworkManager']]],
   ['socket_6',['socket',['../class_network_manager.html#a222482711512104c969451aea73f9462',1,'NetworkManager']]],
-  ['speed_7',['speed',['../class_invisible_power.html#a0a75bab8f5b5e43c1bda93421bd232a0',1,'InvisiblePower::speed'],['../class_letter.html#aad10564083977b22f4bcd0a988c364d9',1,'Letter::speed'],['../class_power.html#a9493e1d63ea529f7766f1011331b0f8f',1,'Power::speed']]],
+  ['speed_7',['speed',['../class_letter.html#aad10564083977b22f4bcd0a988c364d9',1,'Letter::speed'],['../class_power.html#a9493e1d63ea529f7766f1011331b0f8f',1,'Power::speed']]],
   ['start_5fnew_5fgame_8',['start_new_game',['../classpage__3b__0t.html#a73600a83566f916eaa123a3717a82b36',1,'page_3b_0t']]]
 ];

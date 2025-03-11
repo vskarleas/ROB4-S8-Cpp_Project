@@ -4,6 +4,6 @@ var searchData=
   ['init_5fas_5fclient_1',['init_as_client',['../class_network_manager.html#a46dc3073d43e3692b7749a743da6af39',1,'NetworkManager']]],
   ['init_5fas_5fhost_2',['init_as_host',['../class_network_manager.html#a528afcdfea86a488b0f4d98b570345dc',1,'NetworkManager']]],
   ['initialise_3',['initialise',['../class_game.html#a85cc0cbf7372add95aa742fd986220a2',1,'Game']]],
-  ['inversiblepower_4',['InversiblePower',['../class_inversible_power.html#aa89dc7fb07ac8eba73bde53cc3e7a5e9',1,'InversiblePower']]],
-  ['invisiblepower_5',['InvisiblePower',['../class_invisible_power.html#ab5a43ceca6dd5c42d1d6fdeb8db70991',1,'InvisiblePower']]]
+  ['inversiblepower_4',['InversiblePower',['../class_inversible_power.html#ae7102461cee9bfdcd4cec6e04f183959',1,'InversiblePower']]],
+  ['invisiblepower_5',['InvisiblePower',['../class_invisible_power.html#a6c25a50e67cd1c604471e2eb2e675bbd',1,'InvisiblePower']]]
 ];

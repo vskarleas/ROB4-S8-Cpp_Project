@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['macros_20hpp_0',['Pourquoi macros.hpp',['../index.html#autotoc_md30',1,'']]],
+  ['macros_20hpp_0',['Pourquoi macros.hpp',['../index.html#autotoc_md34',1,'']]],
   ['macros_2ehpp_1',['macros.hpp',['../macros_8hpp.html',1,'']]],
   ['mai_2',['mAI',['../class_game.html#a49b2014ece24a38148358dbe5c0d0620',1,'Game']]],
   ['main_3',['main',['../_c_make_c_x_x_compiler_id_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;CMakeCXXCompilerId.cpp'],['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cpp']]],
@@ -25,7 +25,7 @@ var searchData=
   ['mode_22',['mode',['../index.html#autotoc_md10',1,'AI mode'],['../index.html#autotoc_md12',1,'Fun mode'],['../index.html#autotoc_md11',1,'Storytime mode']]],
   ['mode_5fid_23',['mode_id',['../classpage__4b__1t.html#abe6f151a8e3b104f21025c92b4f48191',1,'page_4b_1t']]],
   ['mode_5ftype_24',['mode_type',['../classpage__3b.html#ad208990d0b15bd40b376fa82f0950250',1,'page_3b::mode_type'],['../classpage__3b__1t.html#abe96467732183453e70ad17140d70dec',1,'page_3b_1t::mode_type']]],
-  ['modes_25',['Les differents modes',['../index.html#autotoc_md8',1,'']]],
+  ['modes_25',['Les différents modes',['../index.html#autotoc_md8',1,'']]],
   ['monholdmusic_26',['mOnHoldMusic',['../class_game.html#a14bd27ce1b1c7c55ce1ac915be52fd8e',1,'Game']]],
   ['mpausebuttonrect_27',['mPauseButtonRect',['../class_game.html#a34757962c09c403c5676a9b960d43acb',1,'Game']]],
   ['mpausemenu_28',['mPauseMenu',['../class_game.html#a5019389f4874849a708b75a2a01502b6',1,'Game']]],
@@ -38,7 +38,8 @@ var searchData=
   ['mscoresound_35',['mScoreSound',['../class_game.html#a2963a573540b86a037e7f07927802e28',1,'Game']]],
   ['mtickscount_36',['mTicksCount',['../class_game.html#a63b1531f2d5deedf5c1c1d4517fc3e3e',1,'Game']]],
   ['multijoueur_20en_20c_37',['Projet Multijoueur en C++',['../index.html',1,'']]],
-  ['musique_38',['Changement de la musique',['../index.html#autotoc_md18',1,'']]],
-  ['mwallhitsound_39',['mWallHitSound',['../class_game.html#a9ee9a70a378c8342a8b6a8d6dc68994c',1,'Game']]],
-  ['mwindow_40',['mWindow',['../class_game.html#ad27a2dce7cb5b15de526e0602c368469',1,'Game']]]
+  ['multiplier_38',['multiplier',['../class_paddle.html#aa7d2b2b7d9540f220f8cbeb69097c3bf',1,'Paddle']]],
+  ['musique_39',['Changement de la musique',['../index.html#autotoc_md19',1,'']]],
+  ['mwallhitsound_40',['mWallHitSound',['../class_game.html#a9ee9a70a378c8342a8b6a8d6dc68994c',1,'Game']]],
+  ['mwindow_41',['mWindow',['../class_game.html#ad27a2dce7cb5b15de526e0602c368469',1,'Game']]]
 ];

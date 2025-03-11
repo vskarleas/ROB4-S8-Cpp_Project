@@ -29,6 +29,7 @@ var searchData=
   ['msavebutton_26',['mSaveButton',['../classpage__3b.html#a156d574f84c34ce8409a4ed37bb04f6e',1,'page_3b']]],
   ['mscoresound_27',['mScoreSound',['../class_game.html#a2963a573540b86a037e7f07927802e28',1,'Game']]],
   ['mtickscount_28',['mTicksCount',['../class_game.html#a63b1531f2d5deedf5c1c1d4517fc3e3e',1,'Game']]],
-  ['mwallhitsound_29',['mWallHitSound',['../class_game.html#a9ee9a70a378c8342a8b6a8d6dc68994c',1,'Game']]],
-  ['mwindow_30',['mWindow',['../class_game.html#ad27a2dce7cb5b15de526e0602c368469',1,'Game']]]
+  ['multiplier_29',['multiplier',['../class_paddle.html#aa7d2b2b7d9540f220f8cbeb69097c3bf',1,'Paddle']]],
+  ['mwallhitsound_30',['mWallHitSound',['../class_game.html#a9ee9a70a378c8342a8b6a8d6dc68994c',1,'Game']]],
+  ['mwindow_31',['mWindow',['../class_game.html#ad27a2dce7cb5b15de526e0602c368469',1,'Game']]]
 ];

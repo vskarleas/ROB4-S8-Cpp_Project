@@ -108,26 +108,27 @@ $(function(){ initResizable(false); });
   <img src="class_power.png" usemap="#Power_map" alt=""/>
   <map id="Power_map" name="Power_map">
 <area href="class_inversible_power.html" alt="InversiblePower" shape="rect" coords="0,56,103,80"/>
+<area href="class_invisible_power.html" title="Power-up that makes the ball temporarily invisible." alt="InvisiblePower" shape="rect" coords="113,56,216,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae9fc55e5e43b2871974cfc8c68d8e612" id="r_ae9fc55e5e43b2871974cfc8c68d8e612"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9fc55e5e43b2871974cfc8c68d8e612">collision_check</a> (float ball_pos_x, float ball_pos_y, float ball_radius) const</td></tr>
-<tr class="memdesc:ae9fc55e5e43b2871974cfc8c68d8e612"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the ball has hit this power-up.  <br /></td></tr>
-<tr class="separator:ae9fc55e5e43b2871974cfc8c68d8e612"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af374afbcc6061bd40f167d816d378132" id="r_af374afbcc6061bd40f167d816d378132"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af374afbcc6061bd40f167d816d378132">Power</a> (int screen_width, int screen_height)</td></tr>
-<tr class="memdesc:af374afbcc6061bd40f167d816d378132"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="class_power.html" title="Class representing power-up items that affect gameplay.">Power</a> class.  <br /></td></tr>
-<tr class="separator:af374afbcc6061bd40f167d816d378132"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab791b9872c20b5c727fbf48ec7999402" id="r_ab791b9872c20b5c727fbf48ec7999402"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab791b9872c20b5c727fbf48ec7999402">collision</a> (<a class="el" href="class_ball_base.html">BallBase</a> *ball_type) const</td></tr>
+<tr class="memdesc:ab791b9872c20b5c727fbf48ec7999402"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks for collision between the power and the ball.  <br /></td></tr>
+<tr class="separator:ab791b9872c20b5c727fbf48ec7999402"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28c4172c8249d7b0a098acc355d01965" id="r_a28c4172c8249d7b0a098acc355d01965"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28c4172c8249d7b0a098acc355d01965">Power</a> (int screen_width, int screen_height)</td></tr>
+<tr class="memdesc:a28c4172c8249d7b0a098acc355d01965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the <a class="el" href="class_power.html" title="Class representing power-up items that affect gameplay.">Power</a> class.  <br /></td></tr>
+<tr class="separator:a28c4172c8249d7b0a098acc355d01965"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c1cc0ce69b7a89130245a67f3aecd25" id="r_a4c1cc0ce69b7a89130245a67f3aecd25"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c1cc0ce69b7a89130245a67f3aecd25">render</a> (SDL_Renderer *renderer)</td></tr>
 <tr class="memdesc:a4c1cc0ce69b7a89130245a67f3aecd25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the power on screen.  <br /></td></tr>
 <tr class="separator:a4c1cc0ce69b7a89130245a67f3aecd25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30d8da189bed6e8eb147af829fb9daa6" id="r_a30d8da189bed6e8eb147af829fb9daa6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30d8da189bed6e8eb147af829fb9daa6">reset</a> (int screen_width)</td></tr>
 <tr class="memdesc:a30d8da189bed6e8eb147af829fb9daa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the power-up to a new random position.  <br /></td></tr>
 <tr class="separator:a30d8da189bed6e8eb147af829fb9daa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a07b70efd8a0e444684837d614e6d4aea" id="r_a07b70efd8a0e444684837d614e6d4aea"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07b70efd8a0e444684837d614e6d4aea">update</a> (float time, <a class="el" href="class_paddle.html">Paddle</a> *racket1, <a class="el" href="class_paddle.html">Paddle</a> *racket2, float ball_pos_x, float ball_pos_y, float ball_radius, SDL_Renderer *renderer)</td></tr>
-<tr class="memdesc:a07b70efd8a0e444684837d614e6d4aea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the power's position and effect.  <br /></td></tr>
-<tr class="separator:a07b70efd8a0e444684837d614e6d4aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2826de81bb9d687daef49ebd8a7e0821" id="r_a2826de81bb9d687daef49ebd8a7e0821"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2826de81bb9d687daef49ebd8a7e0821">update</a> (float time, <a class="el" href="class_paddle.html">Paddle</a> *racket1, <a class="el" href="class_paddle.html">Paddle</a> *racket2, SDL_Renderer *renderer, <a class="el" href="class_ball_base.html">BallBase</a> *ball)</td></tr>
+<tr class="memdesc:a2826de81bb9d687daef49ebd8a7e0821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the power's position and effect.  <br /></td></tr>
+<tr class="separator:a2826de81bb9d687daef49ebd8a7e0821"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -144,7 +145,7 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a1acb27b2b5928ea9ffdea911ffacf001"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a075c28a2d2ce07e4ea2a3ccb1f5abbd9" id="r_a075c28a2d2ce07e4ea2a3ccb1f5abbd9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a075c28a2d2ce07e4ea2a3ccb1f5abbd9">height</a></td></tr>
 <tr class="separator:a075c28a2d2ce07e4ea2a3ccb1f5abbd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f0cdc8f298ad92e219e4cbc11fda378" id="r_a5f0cdc8f298ad92e219e4cbc11fda378"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f0cdc8f298ad92e219e4cbc11fda378">play</a></td></tr>
+<tr class="memitem:a5f0cdc8f298ad92e219e4cbc11fda378" id="r_a5f0cdc8f298ad92e219e4cbc11fda378"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f0cdc8f298ad92e219e4cbc11fda378">play</a> = true</td></tr>
 <tr class="separator:a5f0cdc8f298ad92e219e4cbc11fda378"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9493e1d63ea529f7766f1011331b0f8f" id="r_a9493e1d63ea529f7766f1011331b0f8f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9493e1d63ea529f7766f1011331b0f8f">speed</a></td></tr>
 <tr class="separator:a9493e1d63ea529f7766f1011331b0f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,8 +160,8 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p>Class representing power-up items that affect gameplay. </p>
 <p>This class defines powerups that can be collected during gameplay to modify game elements like paddle size. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="af374afbcc6061bd40f167d816d378132" name="af374afbcc6061bd40f167d816d378132"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af374afbcc6061bd40f167d816d378132">&#9670;&#160;</a></span>Power()</h2>
+<a id="a28c4172c8249d7b0a098acc355d01965" name="a28c4172c8249d7b0a098acc355d01965"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28c4172c8249d7b0a098acc355d01965">&#9670;&#160;</a></span>Power()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -198,46 +199,32 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae9fc55e5e43b2871974cfc8c68d8e612" name="ae9fc55e5e43b2871974cfc8c68d8e612"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9fc55e5e43b2871974cfc8c68d8e612">&#9670;&#160;</a></span>collision_check()</h2>
+<a id="ab791b9872c20b5c727fbf48ec7999402" name="ab791b9872c20b5c727fbf48ec7999402"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab791b9872c20b5c727fbf48ec7999402">&#9670;&#160;</a></span>collision()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Power::collision_check </td>
+          <td class="memname">bool Power::collision </td>
           <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ball_pos_x</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ball_pos_y</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ball_radius</em></span>&#160;) const</td>
+          <td class="paramtype"><a class="el" href="class_ball_base.html">BallBase</a> *</td>          <td class="paramname"><span class="paramname"><em>ball_type</em></span></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Checks if the ball has hit this power-up. </p>
+<p>Checks for collision between the power and the ball. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ball_pos_x</td><td>Ball's X position </td></tr>
-    <tr><td class="paramname">ball_pos_y</td><td>Ball's Y position </td></tr>
-    <tr><td class="paramname">ball_radius</td><td>Ball's radius </td></tr>
+    <tr><td class="paramname">ball_type</td><td>The ball object </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if collision detected, false otherwise</dd></dl>
-<p>Uses circle-rectangle collision detection</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ball_pos_x</td><td>Ball's X position </td></tr>
-    <tr><td class="paramname">ball_pos_y</td><td>Ball's Y position </td></tr>
-    <tr><td class="paramname">ball_radius</td><td>Ball's radius </td></tr>
+    <tr><td class="paramname">ball_type</td><td>Pointer to the ball object </td></tr>
   </table>
   </dd>
 </dl>
@@ -283,7 +270,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="class_inversible_power.html#af6dfa02e3288cb0ca01241fee572e16f">InversiblePower</a>.</p>
+<p>Reimplemented in <a class="el" href="class_inversible_power.html#af6dfa02e3288cb0ca01241fee572e16f">InversiblePower</a>, and <a class="el" href="class_invisible_power.html#af86b7aaa89725c3fb2f645ca7018d8fe">InvisiblePower</a>.</p>
 
 </div>
 </div>
@@ -319,12 +306,12 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="class_inversible_power.html#af247eca2f40a6828b2c87b7dde976643">InversiblePower</a>.</p>
+<p>Reimplemented in <a class="el" href="class_inversible_power.html#ad6964565a11f8f018da31a116d5bc6e1">InversiblePower</a>, and <a class="el" href="class_invisible_power.html#a51226a50670bb7acc98b273738c33ec5">InvisiblePower</a>.</p>
 
 </div>
 </div>
-<a id="a07b70efd8a0e444684837d614e6d4aea" name="a07b70efd8a0e444684837d614e6d4aea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07b70efd8a0e444684837d614e6d4aea">&#9670;&#160;</a></span>update()</h2>
+<a id="a2826de81bb9d687daef49ebd8a7e0821" name="a2826de81bb9d687daef49ebd8a7e0821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2826de81bb9d687daef49ebd8a7e0821">&#9670;&#160;</a></span>update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -350,22 +337,12 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ball_pos_x</em></span>, </td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ball_pos_y</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ball_radius</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="class_ball_base.html">BallBase</a> *</td>          <td class="paramname"><span class="paramname"><em>ball</em></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -396,15 +373,13 @@ Protected Attributes</h2></td></tr>
     <tr><td class="paramname">time</td><td>Time delta since last update </td></tr>
     <tr><td class="paramname">racket1</td><td>Pointer to first paddle </td></tr>
     <tr><td class="paramname">racket2</td><td>Pointer to second paddle </td></tr>
-    <tr><td class="paramname">ball_pos_x</td><td>Ball's X position </td></tr>
-    <tr><td class="paramname">ball_pos_y</td><td>Ball's Y position </td></tr>
-    <tr><td class="paramname">ball_radius</td><td>Ball's radius </td></tr>
+    <tr><td class="paramname">ball</td><td>The ball object </td></tr>
     <tr><td class="paramname">renderer</td><td>SDL renderer for drawing </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="class_inversible_power.html#a8cdf158b972b6ced9711ed114ae666d7">InversiblePower</a>.</p>
+<p>Reimplemented in <a class="el" href="class_inversible_power.html#a11eb6ad6f31ac0a447e595467831195d">InversiblePower</a>.</p>
 
 </div>
 </div>
@@ -526,7 +501,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Power::play</td>
+          <td class="memname">bool Power::play = true</td>
         </tr>
       </table>
   </td>
@@ -535,7 +510,7 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Flag to determine which player gets the effect </p>
+<p>Flag to determine which player gets the effect. It is used only on <a class="el" href="power_8cpp.html" title="Implementation of the Power class for special game effects.">power.cpp</a> but not on the herited classes </p>
 
 </div>
 </div>

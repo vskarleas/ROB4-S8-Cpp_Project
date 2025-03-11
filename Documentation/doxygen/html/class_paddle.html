@@ -101,6 +101,8 @@ $(function(){ initResizable(false); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a1dc0532936c828c9a3cf40c7bf91b7db" id="r_a1dc0532936c828c9a3cf40c7bf91b7db"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1dc0532936c828c9a3cf40c7bf91b7db">get_inverse_power_active</a> () const</td></tr>
+<tr class="separator:a1dc0532936c828c9a3cf40c7bf91b7db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30080e248e550d943153d046bea45372" id="r_a30080e248e550d943153d046bea45372"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30080e248e550d943153d046bea45372">get_is_left</a> () const</td></tr>
 <tr class="memdesc:a30080e248e550d943153d046bea45372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if this is the left paddle.  <br /></td></tr>
 <tr class="separator:a30080e248e550d943153d046bea45372"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -128,6 +130,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a56e73de0e9ad05bc6dffcff31e4b6b69" id="r_a56e73de0e9ad05bc6dffcff31e4b6b69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56e73de0e9ad05bc6dffcff31e4b6b69">render_object</a> (SDL_Renderer *renderer)</td></tr>
 <tr class="memdesc:a56e73de0e9ad05bc6dffcff31e4b6b69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the paddle on screen.  <br /></td></tr>
 <tr class="separator:a56e73de0e9ad05bc6dffcff31e4b6b69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6284a91b20e6699af9aba51b89c1f49b" id="r_a6284a91b20e6699af9aba51b89c1f49b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6284a91b20e6699af9aba51b89c1f49b">set_inverse_power_active</a> (bool power_active)</td></tr>
+<tr class="memdesc:a6284a91b20e6699af9aba51b89c1f49b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the inverse_power_active boolean.  <br /></td></tr>
+<tr class="separator:a6284a91b20e6699af9aba51b89c1f49b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58d2734fac63617c018b6f0946bf728a" id="r_a58d2734fac63617c018b6f0946bf728a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58d2734fac63617c018b6f0946bf728a">set_pos_x</a> (float x)</td></tr>
 <tr class="memdesc:a58d2734fac63617c018b6f0946bf728a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the paddle's x-coordinate.  <br /></td></tr>
 <tr class="separator:a58d2734fac63617c018b6f0946bf728a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,17 +142,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a37f09cae59686368f35b9e62f2fb5a46" id="r_a37f09cae59686368f35b9e62f2fb5a46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37f09cae59686368f35b9e62f2fb5a46">set_racket_height</a> (float height)</td></tr>
 <tr class="memdesc:a37f09cae59686368f35b9e62f2fb5a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the paddle's height.  <br /></td></tr>
 <tr class="separator:a37f09cae59686368f35b9e62f2fb5a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3053eef40b08bf961dfcbb3dcc1fd832" id="r_a3053eef40b08bf961dfcbb3dcc1fd832"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3053eef40b08bf961dfcbb3dcc1fd832">set_up</a> (float t)</td></tr>
-<tr class="memdesc:a3053eef40b08bf961dfcbb3dcc1fd832"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the paddle's up direction value.  <br /></td></tr>
-<tr class="separator:a3053eef40b08bf961dfcbb3dcc1fd832"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0327bb8366a37b5cf664d94a3ddcf596" id="r_a0327bb8366a37b5cf664d94a3ddcf596"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0327bb8366a37b5cf664d94a3ddcf596">update</a> (float travel_time)</td></tr>
 <tr class="memdesc:a0327bb8366a37b5cf664d94a3ddcf596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the paddle's position based on keyboard input.  <br /></td></tr>
 <tr class="separator:a0327bb8366a37b5cf664d94a3ddcf596"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a8b34134beb6337e2e6944dc2288f31a7" id="r_a8b34134beb6337e2e6944dc2288f31a7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b34134beb6337e2e6944dc2288f31a7">inverse_power_active</a></td></tr>
+<tr class="separator:a8b34134beb6337e2e6944dc2288f31a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79c7e164476a277c6e9f1d0f47c6dcbc" id="r_a79c7e164476a277c6e9f1d0f47c6dcbc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79c7e164476a277c6e9f1d0f47c6dcbc">is_left</a></td></tr>
 <tr class="separator:a79c7e164476a277c6e9f1d0f47c6dcbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7d2b2b7d9540f220f8cbeb69097c3bf" id="r_aa7d2b2b7d9540f220f8cbeb69097c3bf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7d2b2b7d9540f220f8cbeb69097c3bf">multiplier</a></td></tr>
+<tr class="separator:aa7d2b2b7d9540f220f8cbeb69097c3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac46d62438dcf8fb4d2124ee0c4707643" id="r_ac46d62438dcf8fb4d2124ee0c4707643"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac46d62438dcf8fb4d2124ee0c4707643">pos_x</a></td></tr>
 <tr class="separator:ac46d62438dcf8fb4d2124ee0c4707643"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67b1783d61e223424da82ecebeeb702b" id="r_a67b1783d61e223424da82ecebeeb702b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67b1783d61e223424da82ecebeeb702b">pos_y</a></td></tr>
@@ -158,8 +164,6 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a41f651b19b761f62ba834b98c3fdd1b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8381ad086c48de3f81593d774ce97a29" id="r_a8381ad086c48de3f81593d774ce97a29"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8381ad086c48de3f81593d774ce97a29">racket_width</a></td></tr>
 <tr class="separator:a8381ad086c48de3f81593d774ce97a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a467a1ccc019f932fb984af87e70fde79" id="r_a467a1ccc019f932fb984af87e70fde79"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a467a1ccc019f932fb984af87e70fde79">up</a></td></tr>
-<tr class="separator:a467a1ccc019f932fb984af87e70fde79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a player paddle/racket in the game. </p>
@@ -199,6 +203,23 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1dc0532936c828c9a3cf40c7bf91b7db" name="a1dc0532936c828c9a3cf40c7bf91b7db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1dc0532936c828c9a3cf40c7bf91b7db">&#9670;&#160;</a></span>get_inverse_power_active()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Paddle::get_inverse_power_active </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a30080e248e550d943153d046bea45372" name="a30080e248e550d943153d046bea45372"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a30080e248e550d943153d046bea45372">&#9670;&#160;</a></span>get_is_left()</h2>
 
@@ -366,6 +387,31 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a6284a91b20e6699af9aba51b89c1f49b" name="a6284a91b20e6699af9aba51b89c1f49b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6284a91b20e6699af9aba51b89c1f49b">&#9670;&#160;</a></span>set_inverse_power_active()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Paddle::set_inverse_power_active </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>power_active</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the inverse_power_active boolean. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">power_active</td><td>Declaration of the state for the inverse_power_active boolean </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a58d2734fac63617c018b6f0946bf728a" name="a58d2734fac63617c018b6f0946bf728a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a58d2734fac63617c018b6f0946bf728a">&#9670;&#160;</a></span>set_pos_x()</h2>
 
@@ -441,31 +487,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a3053eef40b08bf961dfcbb3dcc1fd832" name="a3053eef40b08bf961dfcbb3dcc1fd832"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3053eef40b08bf961dfcbb3dcc1fd832">&#9670;&#160;</a></span>set_up()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Paddle::set_up </td>
-          <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>t</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the paddle's up direction value. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">t</td><td>The up direction value </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a0327bb8366a37b5cf664d94a3ddcf596" name="a0327bb8366a37b5cf664d94a3ddcf596"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0327bb8366a37b5cf664d94a3ddcf596">&#9670;&#160;</a></span>update()</h2>
 
@@ -501,6 +522,29 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a8b34134beb6337e2e6944dc2288f31a7" name="a8b34134beb6337e2e6944dc2288f31a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b34134beb6337e2e6944dc2288f31a7">&#9670;&#160;</a></span>inverse_power_active</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Paddle::inverse_power_active</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Whether this paddle is affected by the inverse power-up </p>
+
+</div>
+</div>
 <a id="a79c7e164476a277c6e9f1d0f47c6dcbc" name="a79c7e164476a277c6e9f1d0f47c6dcbc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a79c7e164476a277c6e9f1d0f47c6dcbc">&#9670;&#160;</a></span>is_left</h2>
 
@@ -521,6 +565,29 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Whether this paddle is on the left side </p>
+
+</div>
+</div>
+<a id="aa7d2b2b7d9540f220f8cbeb69097c3bf" name="aa7d2b2b7d9540f220f8cbeb69097c3bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7d2b2b7d9540f220f8cbeb69097c3bf">&#9670;&#160;</a></span>multiplier</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Paddle::multiplier</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>multiplier for the paddle's direction mouvement using the keyboard </p>
 
 </div>
 </div>
@@ -636,29 +703,6 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>The paddle's width (constant) </p>
-
-</div>
-</div>
-<a id="a467a1ccc019f932fb984af87e70fde79" name="a467a1ccc019f932fb984af87e70fde79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a467a1ccc019f932fb984af87e70fde79">&#9670;&#160;</a></span>up</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Paddle::up</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Up direction value for paddle movement </p>
 
 </div>
 </div>
