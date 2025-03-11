@@ -1,5 +1,19 @@
+/**
+ * @file inverse_power.hpp
+ * @brief Implementation of the InversiblePower class
+ * @authors Yanis Sadoun, Vasileios Filippos Skarleas, Dounia Bakalem
+ * @copyright All rights reserved.
+ */
+
 #include "inverse_power.hpp"
 
+/**
+ * @brief Constructs an InversiblePower object
+ * @param screen_width Width of the game screen
+ * @param screen_height Height of the game screen
+ * 
+ * Initializes the power-up and sets it to active state.
+ */
 InversiblePower::InversiblePower(int screen_width, int screen_height)
     : Power(screen_width, screen_height)
 {
@@ -7,68 +21,22 @@ InversiblePower::InversiblePower(int screen_width, int screen_height)
     reset(screen_width);
 }
 
+/**
+ * @brief Updates the power-up's state based on game events
+ * 
+ * Handles the power-up movement, collision detection with the ball,
+ * activation of control inversion effect, and timing for effect duration.
+ * When the ball collides with this power-up, the controls for the player
+ * who last hit the ball are inverted for 3 seconds.
+ * 
+ * @param time Delta time since last frame
+ * @param racket1 First player's paddle
+ * @param racket2 Second player's paddle
+ * @param renderer SDL renderer (unused in this method)
+ * @param ball The game ball for collision detection
+ */
 void InversiblePower::update(float time, Paddle *racket1, Paddle *racket2, SDL_Renderer *renderer, BallBase *ball)
 {
-    // if (is_active)
-    // {
-    //     y += speed * time;
-
-    //     // Check collision with ball
-    //     if (collision(ball))
-    //     {
-    //         if (ball->get_pos_x() < x + width / 2)
-    //         {
-    //             duration_effect = 0.0f;  // Effect lasts 5 seconds
-    //             effect_is_active = true; // Activate effect
-    //             is_active = false;
-    //             racket1->render_object(renderer);
-    //         }
-    //         else
-    //         {
-    //             duration_effect = 0.0f;  // Effect lasts 5 seconds
-    //             effect_is_active = true; // Activate effect
-    //             is_active = false;
-    //             racket2->set_up(-1);
-    //             racket2->render_object(renderer);
-    //             play = false;
-    //         }
-    //     }
-
-    //     // If power goes off screen, reverse direction
-    //     if (y + height >= WINDOW_HEIGHT || y <= 0)
-    //     {
-    //         is_active = true;
-    //         speed = -speed;
-    //     }
-    // }
-    // else
-    // {
-    //     if (effect_is_active)
-    //     {
-    //         duration_effect += time;
-    //         if (duration_effect >= 10.0)
-    //         {
-    //             // Deactivate effect after 10 seconds
-    //             if (play)
-    //             {
-    //                 racket1->set_up(1);
-    //                 effect_is_active = false;
-    //                 racket1->render_object(renderer);
-    //                 is_active = true;
-    //                 reset(WINDOW_HEIGHT);
-    //             }
-    //             else if (!play)
-    //             {
-    //                 racket2->set_up(1);
-    //                 effect_is_active = false;
-    //                 racket2->render_object(renderer);
-    //                 is_active = true;
-    //                 reset(WINDOW_HEIGHT);
-    //             }
-    //         }
-    //     }
-    // }
-
     if (is_active)
     {
         y += speed * time;
@@ -82,7 +50,7 @@ void InversiblePower::update(float time, Paddle *racket1, Paddle *racket2, SDL_R
             duration_effect = 0.0f;
             repeat = 0.0f;
 
-            // Deciding the change for the paddle's control
+            // Deciding which paddle's controls to invert based on ball position
             if (ball->get_pos_x() < x + width / 2)
             {
                 racket1->set_inverse_power_active(true);
@@ -93,7 +61,7 @@ void InversiblePower::update(float time, Paddle *racket1, Paddle *racket2, SDL_R
             }
         }
 
-        if (y + height >= WINDOW_HEIGHT || y <= -40) // Reverse mouvement of the object
+        if (y + height >= WINDOW_HEIGHT || y <= -40) // Reverse movement of the object
         {
             speed = -speed;
         }
@@ -105,24 +73,31 @@ void InversiblePower::update(float time, Paddle *racket1, Paddle *racket2, SDL_R
 
         if (duration_effect >= 3.0)
         {
-            // Return ball to original color after 3 seconds
+            // Return paddles to normal controls after 3 seconds
             racket1->set_inverse_power_active(false);
             racket2->set_inverse_power_active(false);
-            duration_effect = 6.5f;
+            duration_effect = 9.5f;
         }
 
         if (repeat >= 9.0)
         {
-            // Star reappears after 13 seconds
+            // Power-up reappears after 9 seconds
             is_active = true;
             effect_is_active = false;
-            // y = 0; // Reset star position
-
+            
             reset(WINDOW_HEIGHT);
         }
     }
 }
 
+/**
+ * @brief Renders the power-up on screen as an arrow
+ * 
+ * Draws the power-up as a red arrow pointing downward when active.
+ * The arrow indicates that this power-up has a negative effect.
+ * 
+ * @param renderer SDL renderer to draw the power-up
+ */
 void InversiblePower::render(SDL_Renderer *renderer)
 {
     if (!is_active)
@@ -141,7 +116,7 @@ void InversiblePower::render(SDL_Renderer *renderer)
     // Draw arrow outline
     SDL_RenderDrawLines(renderer, arrow, 4);
 
-
+    // Fill in the arrow
     for (int i = 0; i < height / 2; i++)
     {
         SDL_RenderDrawLine(
@@ -151,6 +126,14 @@ void InversiblePower::render(SDL_Renderer *renderer)
     }
 }
 
+/**
+ * @brief Resets the power-up to a new random position
+ * 
+ * Places the power-up at a random horizontal position at the top of the screen
+ * and assigns it a random color.
+ * 
+ * @param screen_width Width of the game screen for positioning
+ */
 void InversiblePower::reset(int screen_width)
 {
     int min_x = screen_width * 0.4;
