@@ -19,10 +19,10 @@
  *
  * @param renderer The SDL renderer to use for drawing
  * @param center_x The x coordinate of the circle's center
- * @param centerY The y coordinate of the circle's center
+ * @param center_y The y coordinate of the circle's center
  * @param radius The radius of the circle
  */
-void DrawFilledCircle(SDL_Renderer *renderer, int32_t center_x, int32_t centerY, int32_t radius)
+void DrawFilledCircle(SDL_Renderer *renderer, int32_t center_x, int32_t center_y, int32_t radius)
 {
     const int32_t diameter = (radius * 2);
     int32_t x = (radius - 1);
@@ -34,10 +34,10 @@ void DrawFilledCircle(SDL_Renderer *renderer, int32_t center_x, int32_t centerY,
     while (x >= y)
     {
         // Draw horizontal lines to fill the circle
-        SDL_RenderDrawLine(renderer, center_x - x, centerY + y, center_x + x, centerY + y);
-        SDL_RenderDrawLine(renderer, center_x - x, centerY - y, center_x + x, centerY - y);
-        SDL_RenderDrawLine(renderer, center_x - y, centerY + x, center_x + y, centerY + x);
-        SDL_RenderDrawLine(renderer, center_x - y, centerY - x, center_x + y, centerY - x);
+        SDL_RenderDrawLine(renderer, center_x - x, center_y + y, center_x + x, center_y + y);
+        SDL_RenderDrawLine(renderer, center_x - x, center_y - y, center_x + x, center_y - y);
+        SDL_RenderDrawLine(renderer, center_x - y, center_y + x, center_x + y, center_y + x);
+        SDL_RenderDrawLine(renderer, center_x - y, center_y - x, center_x + y, center_y - x);
 
         if (error <= 0)
         {

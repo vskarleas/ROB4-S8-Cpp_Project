@@ -9,6 +9,7 @@
 #include "macros.hpp"
 
 #include <SDL.h>
+#include <SDL_image.h>
 
 /**
  * @brief Constructor for the InvisiblePower class
@@ -62,7 +63,7 @@ void InvisiblePower::update(float time, BallBase *ball, SDL_Renderer *renderer)
         {
             is_active = false;
             effect_is_active = true;
-            ball->set_color(black);       // Make ball blend with background
+            ball->set_color(black); // Make ball blend with background
             duration_effect = 0.0f; // Reset timer
             repeat = 0.0f;
         }
@@ -108,43 +109,64 @@ void InvisiblePower::render(SDL_Renderer *renderer)
     if (!is_active)
         return;
 
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-
-    float centerX = x + width / 2.0f;
-    float centerY = y + height / 2.0f;
-    float outerRadius = width / 2.0f;
-    float innerRadius = outerRadius * 0.4f; // Inner radius for star points
-
-    // Create a 5-pointed star (10 points total - alternating outer and inner)
-    SDL_Point points[10];
-    for (int i = 0; i < 10; i++)
+    if (!power_texture)
     {
-        // Rotate 36 degrees (2π/10) for each point
-        float angle = i * 36 * M_PI / 180;
-        // Use outer radius for main points, inner radius for inner points
-        float radius = (i % 2 == 0) ? outerRadius : innerRadius;
+        SDL_Surface *surface = IMG_Load("assets/robot-3.png");
+        if (!surface)
+        {
+            // Fallback to star rendering if image can't be loaded
+            SDL_Log("Failed to load invisible power image: %s", IMG_GetError());
 
-        points[i].x = static_cast<int>(centerX + radius * sin(angle));
-        points[i].y = static_cast<int>(centerY - radius * cos(angle));
+            // Original star rendering code as fallback
+            SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+
+            float center_x = x + width / 2.0f;
+            float center_y = y + height / 2.0f;
+            float outer_radius = width / 2.0f;
+            float inner_radius = outer_radius * 0.4f;
+
+            // Create a 5-pointed star (10 points in total)
+            SDL_Point points[10];
+            for (int i = 0; i < 10; i++)
+            {
+                float angle = i * 36 * M_PI / 180;
+                float radius = (i % 2 == 0) ? outer_radius : inner_radius;
+
+                points[i].x = static_cast<int>(center_x + radius * sin(angle));
+                points[i].y = static_cast<int>(center_y - radius * cos(angle));
+            }
+
+            // Draw star outline
+            for (int i = 0; i < 10; i++)
+            {
+                SDL_RenderDrawLine(renderer,
+                                   points[i].x, points[i].y,
+                                   points[(i + 1) % 10].x, points[(i + 1) % 10].y);
+            }
+
+            for (int i = 0; i < 10; i += 2)
+            {
+                SDL_RenderDrawLine(renderer,
+                                   center_x, center_y,
+                                   points[i].x, points[i].y);
+            }
+            return;
+        }
+
+        power_texture = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_FreeSurface(surface);
+
+        if (!power_texture)
+        {
+            SDL_Log("Failed to create texture: %s", SDL_GetError());
+            return;
+        }
     }
 
-    // Draw the star by connecting points
-    for (int i = 0; i < 10; i++)
-    {
-        SDL_RenderDrawLine(renderer,
-                           points[i].x, points[i].y,
-                           points[(i + 1) % 10].x, points[(i + 1) % 10].y);
-    }
-
-    // Fill the star (optional - makes it more visible)
-    for (int i = 0; i < 10; i += 2)
-    {
-        SDL_RenderDrawLine(renderer,
-                           centerX, centerY,
-                           points[i].x, points[i].y);
-    }
+    // Render the texture
+    SDL_Rect dest = {static_cast<int>(x), static_cast<int>(y), width, height};
+    SDL_RenderCopy(renderer, power_texture, NULL, &dest);
 }
-
 
 void InvisiblePower::reset(int screen_width)
 {

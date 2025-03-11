@@ -56,10 +56,10 @@ private:
      *
      * @param renderer The SDL renderer used for drawing
      * @param center_x The x coordinate of the circle's center
-     * @param centerY The y coordinate of the circle's center
+     * @param center_y The y coordinate of the circle's center
      * @param radius The radius of the circle
      */
-    void DrawFilledCircle(SDL_Renderer *renderer, int32_t center_x, int32_t centerY, int32_t radius) const;
+    void DrawFilledCircle(SDL_Renderer *renderer, int32_t center_x, int32_t center_y, int32_t radius) const;
 };
 
 /**

@@ -8,6 +8,7 @@
 #include "power.hpp"
 
 #include <iostream>
+#include <SDL_image.h>
 
 /**
  * @brief Constructor for the Power class
@@ -24,6 +25,7 @@ Power::Power(int screen_width, int screen_height)
     speed = 50.0f;        // Movement speed of 50 pixels/sec
     srand(time(nullptr)); // Initialize random colors
     reset(screen_width);
+    power_texture = nullptr;
 }
 
 /**
@@ -47,20 +49,18 @@ void Power::update(float time, Paddle *racket1, Paddle *racket2, SDL_Renderer *r
         if (collision(ball))
         {
             bool affects_player_one = (ball->get_pos_x() < x + width / 2);
-            Paddle* affected_paddle = affects_player_one ? racket1 : racket2;
-            
+            Paddle *affected_paddle = affects_player_one ? racket1 : racket2;
 
             // Apply the paddle size effect
             affected_paddle->set_racket_height(affected_paddle->get_racket_height() * 2);
-            
-            
+
             duration_effect = 0.0f; // it is using a time to determine if we need to stop the effect
             effect_is_active = true;
             is_active = false;
-            
+
             // Render the updated paddle
             affected_paddle->render_object(renderer);
-            
+
             // Remember which player was affected
             play = affects_player_one;
         }
@@ -69,31 +69,32 @@ void Power::update(float time, Paddle *racket1, Paddle *racket2, SDL_Renderer *r
         if (y + height >= WINDOW_HEIGHT || y <= 0)
         {
             speed = -speed;
-            
+
             // Ensure power stays on screen
-            if (y <= 0) y = 5;
-            if (y + height >= WINDOW_HEIGHT) y = WINDOW_HEIGHT - height - 5;
+            if (y <= 0)
+                y = 5;
+            if (y + height >= WINDOW_HEIGHT)
+                y = WINDOW_HEIGHT - height - 5;
         }
     }
 
     else if (effect_is_active)
     {
         duration_effect += time;
-        
+
         if (duration_effect >= 10.0)
         {
-            Paddle* affected_paddle = play ? racket1 : racket2;
-            
+            Paddle *affected_paddle = play ? racket1 : racket2;
+
             // Return paddle to normal size
             affected_paddle->set_racket_height(affected_paddle->get_racket_height() / 2);
-            
+
             // Reseting the flags otherwise we are lost on the logic
             effect_is_active = false;
             is_active = true;
-    
 
             affected_paddle->render_object(renderer);
-            
+
             reset(WINDOW_HEIGHT);
         }
     }
@@ -111,9 +112,36 @@ void Power::render(SDL_Renderer *renderer)
     if (!is_active)
         return;
 
-    SDL_Rect rect = {static_cast<int>(x), static_cast<int>(y), width, height};
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 0);
-    SDL_RenderFillRect(renderer, &rect);
+    if (!power_texture)
+    {
+        SDL_Surface *surface = IMG_Load("assets/robot-1.png");
+        if (!surface)
+        {
+            // If image can not be loaded
+            SDL_Log("Failed to load power image: %s", IMG_GetError());
+            SDL_Rect rect = {static_cast<int>(x), static_cast<int>(y), width, height};
+            SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
+            SDL_RenderFillRect(renderer, &rect);
+            return;
+        }
+
+        power_texture = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_FreeSurface(surface);
+
+        if (!power_texture)
+        {
+            // What if image fails ?
+            SDL_Log("Failed to create texture: %s", SDL_GetError());
+            SDL_Rect rect = {static_cast<int>(x), static_cast<int>(y), width, height};
+            SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, 255);
+            SDL_RenderFillRect(renderer, &rect);
+            return;
+        }
+    }
+
+    // Render the power texture
+    SDL_Rect dest = {static_cast<int>(x), static_cast<int>(y), width, height};
+    SDL_RenderCopy(renderer, power_texture, NULL, &dest);
 }
 
 /**

@@ -91,6 +91,7 @@ protected:
     bool effect_is_active = false;/**< Whether the power's effect is currently active */
     SDL_Color color;              /**< Color of the power-up */
     bool is_active = false; /**< Used to determine if the power is currently visible and active */
+    SDL_Texture* power_texture = nullptr; /**< Texture of the power-up as an image */
 };
 
 #endif
