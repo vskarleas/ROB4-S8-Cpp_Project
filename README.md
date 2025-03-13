@@ -4,7 +4,7 @@
 
 ## L'objectif
 
-Puisqu’il n’y a rien de plus amusant pour découvrir un langage que de créer son propre jeu, nous vous présentons **The New Pong** , un jeu multijoueur développé dans le cadre du module de programmation en langage objet pour la spécialité Robotique à Polytech Sorbonne.
+Puisqu’il n’y a rien de plus amusant pour découvrir un langage que de créer son propre jeu, nous vous présentons **The New Pong**, un jeu multijoueur développé dans le cadre du module de programmation en langage objet pour la spécialité Robotique à Polytech Sorbonne.
 
 Dans ce projet, il nous était demandé de choisir un jeu à programmer en C++, afin de mettre en pratique les notions étudiées en cours tels que:
 
@@ -16,7 +16,7 @@ Dans ce projet, il nous était demandé de choisir un jeu à programmer en C++, 
 * CMake
 * Les fonctions virtuelles
 
-Nous avons donc opté pour un grand classique : Pong. Préparez-vous à renvoyer la balle, tout en perfectionnant vos compétences en C++ !
+Nous avons donc opté pour un grand classique: Pong. Préparez-vous à renvoyer la balle, tout en perfectionnant vos compétences en C++ !
 
 ## Le jeu
 
@@ -27,7 +27,7 @@ Afin de revisiter l’expérience Pong, l’un des tout premiers jeux vidéo d�
 3. **Storytime mode**
 4. **Fun mode**
 
-Toutes les instructions relatives à ces modes et leurs spécificités sont détaillées dans la section: **Les différents modes** . Bonne lecture et bon amusement !
+Toutes les instructions relatives à ces modes et leurs spécificités sont détaillées dans la section: **Les différents modes**. Bonne lecture et bon amusement !
 
 ![The NEW Pong Logo](https://i.postimg.cc/PxwwTPMy/Whats-App-Image-2025-03-08-at-20-05-54.jpg)
 
@@ -51,7 +51,7 @@ Pour démarrer le programme en mode automatique, suivez les étapes suivantes :
 
 ## Documentation
 
-Pour plus de détails sur la structure du projet (classes, fonctions, etc.), rendez-vous sur : [https://pong.madebyvasilis.site](https://pong.madebyvasilis.site/)
+Pour plus de détails sur la structure du projet et les commentaires (classes, fonctions, etc.), rendez-vous sur : [https://pong.madebyvasilis.site](https://pong.madebyvasilis.site/)
 
 ## Dépendances
 
@@ -63,7 +63,7 @@ Voici la liste des dépendances indispensables au bon fonctionnement du programm
 * **SDL2_image** : Bibliothèque pour le chargement d’images (formats multiples)
 * **SDL2_net** : Bibliothèque pour les fonctionnalités réseau
 
-*(Assurez-vous que ces bibliothèques sont installées ou que le script les télécharge correctement.)*
+*(Assurez-vous que ces bibliothèques sont installées ou que le script les télécharge correctement)*
 
 ## Les différents modes
 
@@ -84,7 +84,7 @@ Ce mode reprend les règles du  **Classic** , à la différence qu’il ne peut 
 
 ### Storytime mode
 
-Dans ce mode, deux joueurs s’affrontent sur **3 tours.** Le vainqueur est celui qui remporte le plus de tours . Chaque tour se compose de **8 points** , et c’est le premier joueur à atteindre 8  points qui gagne le tour.
+Dans ce mode, deux joueurs s’affrontent sur **3 tours.** Le vainqueur est celui qui remporte le plus de tours . Chaque tour se compose de **8 points**, et c’est le premier joueur à atteindre 8 points qui gagne le tour.
 
 Une nouveauté pimentera votre partie : des lettres tombent depuis le haut de l’écran. En les touchant, vous obtenez un point supplémentaire et vous contribuez à former un mot caché, révélant peu à peu une phrase secrète.
 
@@ -198,7 +198,7 @@ Ce n’est qu’une preuve de concept : rien ne vous empêche d’imaginer et 
 
 ### **Changement de la musique**
 
-Grâce à la bibliothèque SDL Mixer , nous pouvons gérer différents effets sonores et musiques avec des fonctions de fade-in et fade-out . Chaque mode peut ainsi avoir sa propre ambiance sonore, pour rendre l’expérience de jeu encore plus immersive.
+Grâce à la bibliothèque SDL Mixer, nous pouvons gérer différents effets sonores et musiques avec des fonctions de fade-in et fade-out. Chaque mode peut ainsi avoir sa propre ambiance sonore, pour rendre l’expérience de jeu encore plus immersive.
 
 Voici l'implémentation:
 
@@ -217,7 +217,7 @@ void SoundEffects::change_music_track(Mix_Music *music_file,
 
 ## **Chiffrement des données**
 
-La sauvegarde des données utilise un système de chiffrement XOR simple avec une clé rotative :
+La sauvegarde des données utilise un système de chiffrement XOR simple avec une clé rotative:
 
 ```cpp
 class SavingEncryption {
@@ -299,7 +299,7 @@ Ces structures offrent une navigation cohérente, garantissant une meilleure exp
 
 Maintenant que nous avons une vue d’ensemble des différentes pages et des éléments interactifs du jeu, intéressons-nous à la façon dont l’interface graphique est conçue et gérée.
 
-Nous utilisons **SDL** pour afficher et rendre toutes les formes et objets du jeu dans une fenêtre aux dimensions prédéfinies dans le fichier `macros.hpp` (plus de détails dans la section  ***Pourquoi macros.hpp***).
+Nous utilisons **SDL** pour afficher et rendre toutes les formes et objets du jeu dans une fenêtre aux dimensions prédéfinies dans le fichier `macros.hpp` (plus de détails dans la section ***Pourquoi macros.hpp***).
 
 Le programme principal repose sur la classe  `Game` , qui orchestre l’ensemble du jeu à travers trois méthodes clés :
 
@@ -424,18 +424,7 @@ public:
 };
 ```
 
-Un autre exemple d'encapsulation se trouve dans le fichier `game_save.cpp`, où un namespace anonyme est utilisé pour encapsuler les constantes sensibles (comme la clé de chiffrement) et les fonctions utilitaires :
-
-```cpp
-namespace {
-    const unsigned char KEY = 0x83;
-    // ...
-    unsigned char codec_byte(unsigned char byte) { /* ... */ }
-    // ...
-}
-```
-
-Cette approche garantit que ces éléments ne sont accessibles que depuis ce fichier, renforçant ainsi la sécurité du mécanisme de sauvegarde.
+Un autre exemple d'encapsulation se trouve dans le fichier `game_save.cpp`, où un namespace anonyme est utilisé. Tous les détails sont disponibles ci-dessous.
 
 #### Namespace
 
@@ -447,7 +436,7 @@ Ce choix présente plusieurs avantages :
 2. **Prévention des conflits** : réduit les risques de collision de noms avec d'autres parties du code.
 3. **Organisation claire** : regroupe logiquement les éléments qui interagissent ensemble, améliorant ainsi la lisibilité et la maintenabilité du code.
 
-L'utilisation d’un namespace anonyme garantit donc une encapsulation stricte et protège les données critiques du jeu contre toute manipulation involontaire ou non autorisée.
+L'utilisation d’un namespace anonyme garantit donc une encapsulation stricte et protège les données critiques du jeu contre toute manipulation involontaire ou non autorisée. Cette approche garantit que ces éléments ne sont accessibles que depuis ce fichier, renforçant ainsi la sécurité du mécanisme de sauvegarde.
 
 ```cpp
 namespace
@@ -515,14 +504,23 @@ Malgré ces difficultés, nous avons commencé le développement de cette partie
 - Le contrôle des raquettes à distance
 - La réception et la synchronisation des positions des différents éléments (balle, raquettes, etc.)
 
-
-
 ## UML – Modélisation des classes du jeu
 
 Pour mieux structurer notre projet et assurer une architecture claire et maintenable, nous avons modélisé les principales classes du jeu sous forme de diagrammes UML. Ces diagrammes UML permettent de visualiser l’architecture du projet et les interactions entre les classes. Cette structuration facilite la compréhension du code, son évolutivité et sa maintenance.
 
-Avec cette approche, chaque élément du jeu remplit un rôle bien défini et reste modulaire, permettant d’ajouter de nouvelles fonctionnalités (comme le mode réseau) sans perturber l’ensemble du projet.
+| Class        | UML                                                                             |
+| ------------ | ------------------------------------------------------------------------------- |
+| AI           | ![AI](https://cdn.madebyvasilis.site/vscloud-connect/ai-class.png)                |
+| Paddle       | ![Paddle](https://cdn.madebyvasilis.site/vscloud-connect/paddle.png)              |
+| Pages (all)  | ![Pages](https://cdn.madebyvasilis.site/vscloud-connect/page-classes.png)         |
+| Powers (all) | ![Powers](https://cdn.madebyvasilis.site/vscloud-connect/power-classes.png)       |
+| Save         | ![Game Save](https://cdn.madebyvasilis.site/vscloud-connect/game-save-system.png) |
+| Sound        | ![Sound](https://cdn.madebyvasilis.site/vscloud-connect/soundeffects.png)         |
+| User         | ![User](https://cdn.madebyvasilis.site/vscloud-connect/user-class.png)            |
 
+Avec cette approche, chaque élément du jeu remplit un rôle bien défini et reste modulaire, ce qui permet d’ajouter de nouvelles fonctionnalités (comme le mode réseau) sans perturber l’ensemble du projet. Nous avons créé un diagramme UML pour les différentes dépendances entre les classes. De plus, les différentes notions de programmation utilisées dans chaque partie y sont indiquées.
+
+![Dependecnies](https://cdn.madebyvasilis.site/vscloud-connect/game-dependencies.png)  
 
 
 ## Conclusion
@@ -535,10 +533,7 @@ Mais ce projet ne se limite pas à un simple exercice de programmation ! Nous 
 
 Le résultat ? 🎾 Un jeu fun, dynamique et personnalisable, qui vous permet de revivre l’expérience du Pong… mais avec une touche de modernité !
 
-👉 **Prêt à relever le défi et à battre le high score ? Jouez, et montrez-nous qui est le véritable maître du Pong !** 
-
-
-
+👉 **Prêt à relever le défi et à battre le high score ? Jouez, et montrez-nous qui est le véritable maître du Pong !**
 
 ## Versions
 
