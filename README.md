@@ -515,7 +515,30 @@ Malgré ces difficultés, nous avons commencé le développement de cette partie
 - Le contrôle des raquettes à distance
 - La réception et la synchronisation des positions des différents éléments (balle, raquettes, etc.)
 
+
+
+## UML – Modélisation des classes du jeu
+
+Pour mieux structurer notre projet et assurer une architecture claire et maintenable, nous avons modélisé les principales classes du jeu sous forme de diagrammes UML. Ces diagrammes UML permettent de visualiser l’architecture du projet et les interactions entre les classes. Cette structuration facilite la compréhension du code, son évolutivité et sa maintenance.
+
+Avec cette approche, chaque élément du jeu remplit un rôle bien défini et reste modulaire, permettant d’ajouter de nouvelles fonctionnalités (comme le mode réseau) sans perturber l’ensemble du projet.
+
+
+
 ## Conclusion
+
+**Pong, mais en mieux !** Notre projet revisite ce grand classique du jeu vidéo en exploitant pleinement les principes de la programmation orientée objet, nous permettant de créer un code modulaire, extensible et maintenable.
+
+Grâce à l’abstraction et à l’héritage, nous avons structuré notre jeu avec des interfaces claires et des hiérarchies logiques. Le polymorphisme nous a permis de manipuler différents objets de manière uniforme, tandis que l’encapsulation a assuré la protection et l’intégrité des données. Nous avons également tiré parti des foncteurs et des fonctions lambda pour encapsuler des comportements spécifiques, rendant notre implémentation plus souple et efficace.
+
+Mais ce projet ne se limite pas à un simple exercice de programmation ! Nous avons voulu pousser l’expérience plus loin, en intégrant plusieurs modes de jeu inédits, un système de sauvegarde sécurisé, une interface graphique fluide avec SDL, et même une tentative d’implémentation du multijoueur en réseau.
+
+Le résultat ? 🎾 Un jeu fun, dynamique et personnalisable, qui vous permet de revivre l’expérience du Pong… mais avec une touche de modernité !
+
+👉 **Prêt à relever le défi et à battre le high score ? Jouez, et montrez-nous qui est le véritable maître du Pong !** 
+
+
+
 
 ## Versions
 
