@@ -24,8 +24,8 @@ class Letter {
   +next_letter(): void
   +next_word(): void
   +reset_word(n: int): void
-  +getX(): float
-  +getY(): float
+  +get_pos_x(): float
+  +get_pos_y(): float
 }
 
 class User {

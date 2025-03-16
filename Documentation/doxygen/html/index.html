@@ -429,9 +429,10 @@ Héritage</h2>
 <div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_class" href="class_classic_ball.html">ClassicBall</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_ball_base.html">BallBase</a> {</div>
 <div class="line"><span class="keyword">public</span>:</div>
 <div class="line">    <a class="code hl_function" href="class_classic_ball.html#a45bf271d7abeee37a8a729150dc1b41d">ClassicBall</a>() : <a class="code hl_class" href="class_ball_base.html">BallBase</a>(24.0f) {}</div>
-<div class="line">    <span class="keywordtype">void</span> <a class="code hl_function" href="class_classic_ball.html#a6e80547486ec3d868dc577841a768df0">render_object</a>(SDL_Renderer *renderer) <span class="keyword">override</span>;</div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code hl_function" href="class_classic_ball.html#a6e80547486ec3d868dc577841a768df0">render_object</a>(SDL_Renderer *<a class="code hl_variable" href="ball__test_8cpp.html#a966da7a60c4ea3ba301e26ccc5efe452">renderer</a>) <span class="keyword">override</span>;</div>
 <div class="line">    <span class="comment">// ...</span></div>
 <div class="line">};</div>
+<div class="ttc" id="aball__test_8cpp_html_a966da7a60c4ea3ba301e26ccc5efe452"><div class="ttname"><a href="ball__test_8cpp.html#a966da7a60c4ea3ba301e26ccc5efe452">renderer</a></div><div class="ttdeci">SDL_Renderer * renderer</div><div class="ttdef"><b>Definition</b> ball_test.cpp:25</div></div>
 <div class="ttc" id="aclass_ball_base_html"><div class="ttname"><a href="class_ball_base.html">BallBase</a></div><div class="ttdoc">Abstract base class for all ball types in the game.</div><div class="ttdef"><b>Definition</b> ball_base.hpp:23</div></div>
 <div class="ttc" id="aclass_classic_ball_html"><div class="ttname"><a href="class_classic_ball.html">ClassicBall</a></div><div class="ttdoc">Classic circular ball implementation inheriting from BallBase.</div><div class="ttdef"><b>Definition</b> classic_ball.hpp:21</div></div>
 <div class="ttc" id="aclass_classic_ball_html_a45bf271d7abeee37a8a729150dc1b41d"><div class="ttname"><a href="class_classic_ball.html#a45bf271d7abeee37a8a729150dc1b41d">ClassicBall::ClassicBall</a></div><div class="ttdeci">ClassicBall()</div><div class="ttdoc">Constructor for ClassicBall.</div><div class="ttdef"><b>Definition</b> classic_ball.hpp:28</div></div>
@@ -453,7 +454,7 @@ Abstraction</h2>
 <div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_class" href="class_ball_base.html">BallBase</a> {</div>
 <div class="line"><span class="keyword">public</span>:</div>
 <div class="line">    <span class="comment">// ...</span></div>
-<div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_ball_base.html#a08a0f6f379ba1f933272a0745aea72d1">render_object</a>(SDL_Renderer *renderer) = 0;</div>
+<div class="line">    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_ball_base.html#a08a0f6f379ba1f933272a0745aea72d1">render_object</a>(SDL_Renderer *<a class="code hl_variable" href="ball__test_8cpp.html#a966da7a60c4ea3ba301e26ccc5efe452">renderer</a>) = 0;</div>
 <div class="line">    <span class="comment">// ...</span></div>
 <div class="line">};</div>
 <div class="ttc" id="aclass_ball_base_html_a08a0f6f379ba1f933272a0745aea72d1"><div class="ttname"><a href="class_ball_base.html#a08a0f6f379ba1f933272a0745aea72d1">BallBase::render_object</a></div><div class="ttdeci">virtual void render_object(SDL_Renderer *renderer)=0</div><div class="ttdoc">Pure virtual method to render the ball.</div></div>
@@ -559,11 +560,26 @@ Namespace</h3>
 Autres aspects du développement</h1>
 <p>Tout au long du projet, nous avons soigneusement choisi les niveaux de visibilité des variables dans nos classes, en décidant de les déclarer <code>private</code> ou <code>public</code>en fonction de leur usage. De plus, nous avons veillé à utiliser de manière appropriée les mots-clés <code>static</code>et <code>virtual</code>, garantissant ainsi une encapsulation efficace et une meilleure organisation du code.</p>
 <h1><a class="anchor" id="autotoc_md33"></a>
+Les tests</h1>
+<p>En cours, nous avons vu le principe d’utiliser CTest pour organiser la vérification des tests unitaires. Dans ce cadre-là, et vue que nous avons déjà intégré un fichier <code>CMakeLists.txt</code>, nous avons décidé de procéder avec cette méthode pour tester les fonctionnalités et les méthodes crées pour les différentes classes dans notre projet.</p>
+<p>Vous allez trouver un répertoire nommé <code>tests</code>. Il a son propre <code>CMakeLists.txt</code> qui permet de créer les exécutables de nos programmes tests qui vérifient la bonne fonctionnalité de nos méthodes. Chaque ficher *_test.cpp de base est un programme individuel qui peut se comporter comme un programme main Independent qui va retourner la valeur 0 lorsque le test est effectué avec succès et renvoie une autre information dans le cas contraire.</p>
+<p>La realisation des tests unitaires participe d’une démarche d’intégration continue et permet de valider la non régression du code au cours du development de notre jeu. Voici les differents choses que nous avons testé:</p>
+<ul>
+<li><b>balls_test :</b> Toutes les fonctionnalités de la classe abstraite <a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a> et ses classes hérités <a class="el" href="class_square_ball.html" title="Square shaped ball implementation inheriting from BallBase.">SquareBall</a>, <a class="el" href="class_triangle_ball.html" title="Triangle shaped ball implementation inheriting from BallBase.">TriangleBall</a> et <a class="el" href="class_classic_ball.html" title="Classic circular ball implementation inheriting from BallBase.">ClassicBall</a> inclus les constructeurs, les setters et getters ainsi que les méthodes responsables pour le rendering sur SDL.</li>
+<li><b>user_test :</b> Les méthodes de création et mise à jour d’un joueur d’User class</li>
+<li><b>paddle_test :</b> On est également la création de nos deux rackets (paddles) pour le jeu. On vérifie s’ils ont bien une distinction de positionnement (gauche ou droit). En plus, on vérifie la mise à jour de leurs tailles par les méthodes spécifiques, le rendering de ces objets ainsi que le control/communication de positionnement</li>
+<li><b><a class="el" href="letter__test_8cpp.html" title="Test suite for the Letter class functionality.">letter_test.cpp</a> :</b> Pour le Storytime mode, qu’on utilise particulièrement la classe <a class="el" href="class_letter.html" title="Represents a letter in the storytime game mode.">Letter</a>, on test la bonne création via ses constructeurs. On vérifie le comportement des méthodes responsables de détecter des collisions entre la balle et les lettres, ainsi que la validation des méthodes pour mettre le score des joueurs.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md34"></a>
+Comment on test ?</h2>
+<p>Pour produire un résultat de test, nous utilisons les méthodes statiques de la classe Assert pour tester les résultats réels par rapport aux résultats attendus. Si besoin par la classe qu’on test, on commence par l'initialisation de l'environnement SDL nécessaire au rendu graphique des éléments de jeu, même si cette visualisation reste invisible durant l'exécution des tests.</p>
+<p>Chaque appel à <code>assert</code> évalue une expression booléenne qui représente une condition que le programme doit satisfaire pour être considéré comme correct. Si cette condition est vraie, l'exécution du programme se poursuit normalement, permettant ainsi de vérifier des conditions supplémentaires. En revanche, si l'expression s'avère fausse, le programme s'interrompt immédiatement avec un message d'erreur précisant le fichier source. Au final, si jamais notre main d’un test retourne 0, alors le test est bien terminé sans des erreurs.</p>
+<h1><a class="anchor" id="autotoc_md35"></a>
 Pourquoi macros.hpp</h1>
 <p>Le fichier <a class="el" href="macros_8hpp.html" title="Defines macros and constants used throughout the project.">macros.hpp</a> joue un rôle central dans notre projet en servant de référentiel unique pour toutes les constantes globales du jeu. Il permet de centraliser et de faciliter la gestion des paramètres essentiels, tels que :</p>
 <p>Les dimensions de la fenêtre du jeu Les identifiants des modes de jeu (ex. : mode IA, mode 2 joueurs) Les constantes associées à la navigation dans les menus Les niveaux de difficulté</p>
 <p>Grâce à ce fichier, nous avons assuré une meilleure lisibilité et une maintenance simplifiée, en évitant la dispersion des constantes dans l’ensemble du code.</p>
-<h1><a class="anchor" id="autotoc_md34"></a>
+<h1><a class="anchor" id="autotoc_md36"></a>
 Pour aller plus loin</h1>
 <p>Initialement, nous avons tenté d'implémenter un mode multijoueur en réseau via TCP avec une architecture client-serveur. Cependant, nous nous sommes rapidement heurtés à la complexité de cette intégration.</p>
 <p>En effet, cette fonctionnalité aurait dû être pensée dès le début du projet afin d’être intégrée naturellement dans l’architecture existante. L’ajout tardif d’un mode réseau implique de lourdes modifications sur la structure actuelle du code, ce qui s’avère être un défi technique conséquent.</p>
@@ -572,7 +588,7 @@ Pour aller plus loin</h1>
 <li>Le contrôle des raquettes à distance</li>
 <li>La réception et la synchronisation des positions des différents éléments (balle, raquettes, etc.)</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md35"></a>
+<h1><a class="anchor" id="autotoc_md37"></a>
 UML – Modélisation des classes du jeu</h1>
 <p>Pour mieux structurer notre projet et assurer une architecture claire et maintenable, nous avons modélisé les principales classes du jeu sous forme de diagrammes UML. Ces diagrammes UML permettent de visualiser l’architecture du projet et les interactions entre les classes. Cette structuration facilite la compréhension du code, son évolutivité et sa maintenance.</p>
 <table class="markdownTable">
@@ -594,16 +610,15 @@ UML – Modélisation des classes du jeu</h1>
 <td class="markdownTableBodyNone"><a class="el" href="class_user.html" title="Represents a player in the game with name and score tracking.">User</a>   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/user-class.png" alt="User" class="inline"/>   </td></tr>
 </table>
 <p>Avec cette approche, chaque élément du jeu remplit un rôle bien défini et reste modulaire, ce qui permet d’ajouter de nouvelles fonctionnalités (comme le mode réseau) sans perturber l’ensemble du projet. Nous avons créé un diagramme UML pour les différentes dépendances entre les classes. De plus, les différentes notions de programmation utilisées dans chaque partie y sont indiquées.</p>
-<p><img src="https://cdn.madebyvasilis.site/vscloud-connect/game-dependencies.png" alt="Dependecnies" class="inline"/> <br  />
-</p>
-<h1><a class="anchor" id="autotoc_md36"></a>
+<p><img src="https://cdn.madebyvasilis.site/vscloud-connect/game-dependencies.png" alt="Dependecnies" class="inline"/></p>
+<h1><a class="anchor" id="autotoc_md38"></a>
 Conclusion</h1>
 <p><b>Pong, mais en mieux !</b> Notre projet revisite ce grand classique du jeu vidéo en exploitant pleinement les principes de la programmation orientée objet, nous permettant de créer un code modulaire, extensible et maintenable.</p>
 <p>Grâce à l’abstraction et à l’héritage, nous avons structuré notre jeu avec des interfaces claires et des hiérarchies logiques. Le polymorphisme nous a permis de manipuler différents objets de manière uniforme, tandis que l’encapsulation a assuré la protection et l’intégrité des données. Nous avons également tiré parti des foncteurs et des fonctions lambda pour encapsuler des comportements spécifiques, rendant notre implémentation plus souple et efficace.</p>
 <p>Mais ce projet ne se limite pas à un simple exercice de programmation ! Nous avons voulu pousser l’expérience plus loin, en intégrant plusieurs modes de jeu inédits, un système de sauvegarde sécurisé, une interface graphique fluide avec SDL, et même une tentative d’implémentation du multijoueur en réseau.</p>
 <p>Le résultat ? 🎾 Un jeu fun, dynamique et personnalisable, qui vous permet de revivre l’expérience du Pong… mais avec une touche de modernité !</p>
 <p>👉 <b>Prêt à relever le défi et à battre le high score ? Jouez, et montrez-nous qui est le véritable maître du Pong !</b></p>
-<h1><a class="anchor" id="autotoc_md37"></a>
+<h1><a class="anchor" id="autotoc_md39"></a>
 Versions</h1>
 <p>Le versioning est un élément clé en programmation, assurant la cohérence des modifications et facilitant la collaboration. Il est aussi primordial pour la récupération de données en cas de perte ou corruption. Au fil du projet, nous avons créé différentes versions de notre code, chacune marquant une étape importante de son évolution. Cela nous a permis de suivre les progrès, d'intégrer de nouvelles fonctionnalités et d'effectuer des corrections de manière structurée.</p>
 <ul>

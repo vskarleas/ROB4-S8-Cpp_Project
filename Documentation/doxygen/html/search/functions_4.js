@@ -16,8 +16,8 @@ var searchData=
   ['get_5fmode_5ftype_13',['get_mode_type',['../classpage__3b.html#ab1b96dbc630bb43021054d9179317d7a',1,'page_3b::get_mode_type()'],['../classpage__3b__1t.html#a4ce4c47f79386f27a633108ee73b8b97',1,'page_3b_1t::get_mode_type()']]],
   ['get_5fnext_5fview_14',['get_next_view',['../classpage__2b__1t.html#ae0bca0e4227da177c85c41ae36c1bb51',1,'page_2b_1t']]],
   ['get_5fnotice_5fid_15',['get_notice_id',['../classpage__2b__1t.html#a396b940646d9cae8fb4345ffde8c6742',1,'page_2b_1t']]],
-  ['get_5fpos_5fx_16',['get_pos_x',['../class_ball_base.html#afb1e0d37b45485d975501c7e677468ed',1,'BallBase::get_pos_x()'],['../class_paddle.html#a913da9919a9bfbbf2ee015306c906409',1,'Paddle::get_pos_x()']]],
-  ['get_5fpos_5fy_17',['get_pos_y',['../class_ball_base.html#a1246b7be2fb9e4786c1525b50b3445ea',1,'BallBase::get_pos_y()'],['../class_paddle.html#a17a8548d4833c7ed1294a80686d006ab',1,'Paddle::get_pos_y() const']]],
+  ['get_5fpos_5fx_16',['get_pos_x',['../class_ball_base.html#afb1e0d37b45485d975501c7e677468ed',1,'BallBase::get_pos_x()'],['../class_letter.html#a165abebc47347c140b762e4ff1e863d6',1,'Letter::get_pos_x()'],['../class_paddle.html#a913da9919a9bfbbf2ee015306c906409',1,'Paddle::get_pos_x()']]],
+  ['get_5fpos_5fy_17',['get_pos_y',['../class_ball_base.html#a1246b7be2fb9e4786c1525b50b3445ea',1,'BallBase::get_pos_y()'],['../class_letter.html#a10c833d42394000f0d2257c2f37e2103',1,'Letter::get_pos_y()'],['../class_paddle.html#a17a8548d4833c7ed1294a80686d006ab',1,'Paddle::get_pos_y() const']]],
   ['get_5fracket_5fheight_18',['get_racket_height',['../class_paddle.html#aee3cc09372185d3c93f9e409d26cc222',1,'Paddle']]],
   ['get_5fracket_5fspeed_19',['get_racket_speed',['../class_paddle.html#a43a98d29451c0022ba40aeaa77e75997',1,'Paddle']]],
   ['get_5fracket_5fwidth_20',['get_racket_width',['../class_paddle.html#acd89b313f2e83836526dbed3cc60819e',1,'Paddle']]],
@@ -28,7 +28,5 @@ var searchData=
   ['get_5fuser_5fname_25',['get_user_name',['../class_user.html#a1e8d94f4edcbbf3675aabbdaa708ea35',1,'User']]],
   ['get_5fuser_5fscore_26',['get_user_score',['../class_user.html#a03c7ab35e1e4ba092cbc155bd37eb218',1,'User']]],
   ['get_5fvel_5fx_27',['get_vel_x',['../class_ball_base.html#a05d73d008f12204c777f91c19f6d5931',1,'BallBase']]],
-  ['get_5fvel_5fy_28',['get_vel_y',['../class_ball_base.html#aa4afbd5f1b284ecb846a8c8fc987e832',1,'BallBase']]],
-  ['getx_29',['getX',['../class_letter.html#af9ba49b97b4d97d62507a2ab860fb262',1,'Letter']]],
-  ['gety_30',['getY',['../class_letter.html#ae5d9555f02d4ce60b07999dd4335f5f4',1,'Letter']]]
+  ['get_5fvel_5fy_28',['get_vel_y',['../class_ball_base.html#aa4afbd5f1b284ecb846a8c8fc987e832',1,'BallBase']]]
 ];

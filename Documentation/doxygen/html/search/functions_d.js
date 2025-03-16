@@ -23,7 +23,9 @@ var searchData=
   ['set_5fuser_5fscore_20',['set_user_score',['../class_user.html#aa73c294b3cdf8ea34d0ebac4a22e83c3',1,'User']]],
   ['set_5fvelocity_21',['set_velocity',['../class_ball_base.html#ac49745d3f9c66acdc568f55180769bfa',1,'BallBase']]],
   ['set_5fwinner_22',['set_winner',['../class_game_over.html#a80c588d50e08a6d641b80b158ae4a640',1,'GameOver']]],
-  ['shouldresume_23',['ShouldResume',['../classpage__3b.html#a86e13ce068a806196b89deed21d1df14',1,'page_3b']]],
-  ['shouldsave_24',['ShouldSave',['../classpage__3b.html#acea12939cb180aaf9334749fa170b1d0',1,'page_3b']]],
-  ['squareball_25',['SquareBall',['../class_square_ball.html#a2da9a6b0b5e013427ab926236a657ac6',1,'SquareBall']]]
+  ['setup_5fsdl_23',['setup_sdl',['../ball__test_8cpp.html#aeb1c3c3229e2531f84f1bb5135fbac90',1,'setup_sdl():&#160;ball_test.cpp'],['../paddle__test_8cpp.html#aeb1c3c3229e2531f84f1bb5135fbac90',1,'setup_sdl():&#160;paddle_test.cpp']]],
+  ['setup_5fsdl_5fttf_24',['setup_sdl_ttf',['../letter__test_8cpp.html#a3d57193f53e862201612401983588306',1,'letter_test.cpp']]],
+  ['shouldresume_25',['ShouldResume',['../classpage__3b.html#a86e13ce068a806196b89deed21d1df14',1,'page_3b']]],
+  ['shouldsave_26',['ShouldSave',['../classpage__3b.html#acea12939cb180aaf9334749fa170b1d0',1,'page_3b']]],
+  ['squareball_27',['SquareBall',['../class_square_ball.html#a2da9a6b0b5e013427ab926236a657ac6',1,'SquareBall']]]
 ];

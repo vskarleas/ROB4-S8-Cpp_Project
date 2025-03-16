@@ -482,6 +482,25 @@ Cette organisation du code illustre parfaitement le principe d’encapsulation, 
 
 Tout au long du projet, nous avons soigneusement choisi les niveaux de visibilité des variables dans nos classes, en décidant de les déclarer `private` ou `public `en fonction de leur usage. De plus, nous avons veillé à utiliser de manière appropriée les mots-clés `static `et `virtual`, garantissant ainsi une encapsulation efficace et une meilleure organisation du code.
 
+## Les tests
+
+En cours, nous avons vu le principe d’utiliser CTest pour organiser la vérification des tests unitaires. Dans ce cadre-là, et vue que nous avons déjà intégré un fichier `CMakeLists.txt`, nous avons décidé de procéder avec cette méthode pour tester les fonctionnalités et les méthodes crées pour les différentes classes dans notre projet.
+
+Vous allez trouver un répertoire nommé `tests`. Il a son propre `CMakeLists.txt` qui permet de créer les exécutables de nos programmes tests qui vérifient la bonne fonctionnalité de nos méthodes. Chaque ficher *_test.cpp de base est un programme individuel qui peut se comporter comme un programme main Independent qui va retourner la valeur 0 lorsque le test est effectué avec succès et renvoie une autre information dans le cas contraire.
+
+La realisation des tests unitaires participe d’une démarche d’intégration continue et permet de valider la non régression du code au cours du development de notre jeu. Voici les differents choses que nous avons testé:
+
+- **balls_test :** Toutes les fonctionnalités de la classe abstraite BallBase et ses classes hérités SquareBall, TriangleBall et ClassicBall inclus les constructeurs, les setters et getters ainsi que les méthodes responsables pour le rendering sur SDL.
+- **user_test :** Les méthodes de création et mise à jour d’un joueur d’User class
+- **paddle_test :** On est également la création de nos deux rackets (paddles) pour le jeu. On vérifie s’ils ont bien une distinction de positionnement (gauche ou droit). En plus, on vérifie la mise à jour de leurs tailles par les méthodes spécifiques, le rendering de ces objets ainsi que le control/communication de positionnement
+- **letter_test.cpp :** Pour le Storytime mode, qu’on utilise particulièrement la classe Letter, on test la bonne création via ses constructeurs. On vérifie le comportement des méthodes responsables de détecter des collisions entre la balle et les lettres, ainsi que la validation des méthodes pour mettre le score des joueurs.
+
+### Comment on test ?
+
+Pour produire un résultat de test, nous utilisons les méthodes statiques de la classe Assert pour tester les résultats réels par rapport aux résultats attendus. Si besoin par la classe qu’on test, on commence par l'initialisation de l'environnement SDL nécessaire au rendu graphique des éléments de jeu, même si cette visualisation reste invisible durant l'exécution des tests.
+
+Chaque appel à `assert` évalue une expression booléenne qui représente une condition que le programme doit satisfaire pour être considéré comme correct. Si cette condition est vraie, l'exécution du programme se poursuit normalement, permettant ainsi de vérifier des conditions supplémentaires. En revanche, si l'expression s'avère fausse, le programme s'interrompt immédiatement avec un message d'erreur précisant le fichier source. Au final, si jamais notre main d’un test retourne 0, alors le test est bien terminé sans des erreurs.
+
 ## Pourquoi macros.hpp
 
 Le fichier macros.hpp joue un rôle central dans notre projet en servant de référentiel unique pour toutes les constantes globales du jeu. Il permet de centraliser et de faciliter la gestion des paramètres essentiels, tels que :
@@ -520,8 +539,7 @@ Pour mieux structurer notre projet et assurer une architecture claire et mainten
 
 Avec cette approche, chaque élément du jeu remplit un rôle bien défini et reste modulaire, ce qui permet d’ajouter de nouvelles fonctionnalités (comme le mode réseau) sans perturber l’ensemble du projet. Nous avons créé un diagramme UML pour les différentes dépendances entre les classes. De plus, les différentes notions de programmation utilisées dans chaque partie y sont indiquées.
 
-![Dependecnies](https://cdn.madebyvasilis.site/vscloud-connect/game-dependencies.png)  
-
+![Dependecnies](https://cdn.madebyvasilis.site/vscloud-connect/game-dependencies.png)
 
 ## Conclusion
 
@@ -567,5 +585,6 @@ Le versioning est un élément clé en programmation, assurant la cohérence des
 * V11.0.2: Added more comments and included inverse mode there is a segmentation fault issue
 * V11.1.2: Resolved segmentation fault issue. Corrected some logic bugs and updated the documentation
 * V12.0.1: Game has been completed. Some comments are missing on the inversible power file
+* V13.1.5: Tests correction in oder to use CTest functionality. Documentation updated and added more details regarding the tests on the compte rendu (README). Also fixed some bugs on the letter class methodes.
 
 ---

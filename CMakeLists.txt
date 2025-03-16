@@ -112,3 +112,9 @@ add_custom_target(copy_assets
     ${CMAKE_BINARY_DIR}/assets
 )
 add_dependencies(${PROJECT_NAME} copy_assets)
+
+# Enabling testing
+enable_testing()
+
+# Create test directory
+add_subdirectory(tests)

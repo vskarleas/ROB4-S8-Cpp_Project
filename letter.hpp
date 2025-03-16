@@ -104,13 +104,13 @@ public:
      * @brief Gets the X position of the letter
      * @return Current X coordinate
      */
-    float getX() const { return x; }
+    float get_pos_x() const { return x; }
     
     /**
      * @brief Gets the Y position of the letter
      * @return Current Y coordinate
      */
-    float getY() const { return y; }
+    float get_pos_y() const { return y; }
 };
 
 #endif
