@@ -875,6 +875,8 @@ void Game::game_logic()
                             // Reset game state
                             player1->reset_score();
                             player2->reset_score();
+                            player1->set_round(0); //otherwise we are stuck on the Game Over page even if we start a new game
+                            player2->set_round(0);
 
                             // Reset paddle positions
                             racket1->set_pos_y(WINDOW_HEIGHT / 2.0f);

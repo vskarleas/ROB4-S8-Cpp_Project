@@ -586,5 +586,6 @@ Le versioning est un élément clé en programmation, assurant la cohérence des
 * V11.1.2: Resolved segmentation fault issue. Corrected some logic bugs and updated the documentation
 * V12.0.1: Game has been completed. Some comments are missing on the inversible power file
 * V13.1.5: Tests correction in oder to use CTest functionality. Documentation updated and added more details regarding the tests on the compte rendu (README). Also fixed some bugs on the letter class methodes.
+* V13.2.1: Fixed a logic issue when we were starting a new game on fun mode or storytime mode after it was completed due to victory conditions. Foudn out that the rounds counter were not reinitialised and was redirecting the users directly to the Game Over page evene after the creation of a new game.
 
 ---

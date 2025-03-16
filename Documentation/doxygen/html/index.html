@@ -412,8 +412,8 @@ Storytime mode</h2>
 <div class="ttc" id="aclass_game_html_a2eb4260096c6438208a539063506af92"><div class="ttname"><a href="class_game.html#a2eb4260096c6438208a539063506af92">Game::mIsRunning</a></div><div class="ttdeci">bool mIsRunning</div><div class="ttdef"><b>Definition</b> game.hpp:77</div></div>
 <div class="ttc" id="aclass_game_html_a7ad92b77b596d7882a7ae76eb18b5e6c"><div class="ttname"><a href="class_game.html#a7ad92b77b596d7882a7ae76eb18b5e6c">Game::loop</a></div><div class="ttdeci">void loop()</div><div class="ttdef"><b>Definition</b> game.cpp:435</div></div>
 <div class="ttc" id="aclass_game_html_a8beca5e773f8b5ca761122a187945654"><div class="ttname"><a href="class_game.html#a8beca5e773f8b5ca761122a187945654">Game::game_logic</a></div><div class="ttdeci">void game_logic()</div><div class="ttdef"><b>Definition</b> game.cpp:445</div></div>
-<div class="ttc" id="aclass_game_html_ac09ebf3830ea755d3e931eefe7e3d846"><div class="ttname"><a href="class_game.html#ac09ebf3830ea755d3e931eefe7e3d846">Game::output</a></div><div class="ttdeci">void output()</div><div class="ttdef"><b>Definition</b> game.cpp:1195</div></div>
-<div class="ttc" id="aclass_game_html_acf184c63253cc802dad8d2b1e06b636c"><div class="ttname"><a href="class_game.html#acf184c63253cc802dad8d2b1e06b636c">Game::game</a></div><div class="ttdeci">void game()</div><div class="ttdef"><b>Definition</b> game.cpp:973</div></div>
+<div class="ttc" id="aclass_game_html_ac09ebf3830ea755d3e931eefe7e3d846"><div class="ttname"><a href="class_game.html#ac09ebf3830ea755d3e931eefe7e3d846">Game::output</a></div><div class="ttdeci">void output()</div><div class="ttdef"><b>Definition</b> game.cpp:1197</div></div>
+<div class="ttc" id="aclass_game_html_acf184c63253cc802dad8d2b1e06b636c"><div class="ttname"><a href="class_game.html#acf184c63253cc802dad8d2b1e06b636c">Game::game</a></div><div class="ttdeci">void game()</div><div class="ttdef"><b>Definition</b> game.cpp:975</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
 Loop</h2>
 <p>Dans cette boucle, trois fonctions essentielles assurent le bon déroulement du jeu :</p>
@@ -651,6 +651,7 @@ Versions</h1>
 <li>V11.1.2: Resolved segmentation fault issue. Corrected some logic bugs and updated the documentation</li>
 <li>V12.0.1: <a class="el" href="class_game.html">Game</a> has been completed. Some comments are missing on the inversible power file</li>
 <li>V13.1.5: Tests correction in oder to use CTest functionality. Documentation updated and added more details regarding the tests on the compte rendu (README). Also fixed some bugs on the letter class methodes.</li>
+<li>V13.2.1: Fixed a logic issue when we were starting a new game on fun mode or storytime mode after it was completed due to victory conditions. Foudn out that the rounds counter were not reinitialised and was redirecting the users directly to the <a class="el" href="class_game.html">Game</a> Over page evene after the creation of a new game.</li>
 </ul>
 <hr  />
  </div></div><!-- PageDoc -->
