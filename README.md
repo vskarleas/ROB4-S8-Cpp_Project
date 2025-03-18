@@ -484,22 +484,54 @@ Tout au long du projet, nous avons soigneusement choisi les niveaux de visibilit
 
 ## Les tests
 
-En cours, nous avons vu le principe d’utiliser CTest pour organiser la vérification des tests unitaires. Dans ce cadre-là, et vue que nous avons déjà intégré un fichier `CMakeLists.txt`, nous avons décidé de procéder avec cette méthode pour tester les fonctionnalités et les méthodes crées pour les différentes classes dans notre projet.
+Lors de nos cours, nous avons étudié l’utilisation de CTest pour organiser et automatiser les tests unitaires. Étant donné que nous avons déjà intégré un fichier CMakeLists.txt dans notre projet, nous avons choisi d’utiliser cette approche pour tester nos fonctionnalités et les méthodes implémentées dans nos différentes classes.
 
-Vous allez trouver un répertoire nommé `tests`. Il a son propre `CMakeLists.txt` qui permet de créer les exécutables de nos programmes tests qui vérifient la bonne fonctionnalité de nos méthodes. Chaque ficher *_test.cpp de base est un programme individuel qui peut se comporter comme un programme main Independent qui va retourner la valeur 0 lorsque le test est effectué avec succès et renvoie une autre information dans le cas contraire.
+### Organisation des tests  
 
-La realisation des tests unitaires participe d’une démarche d’intégration continue et permet de valider la non régression du code au cours du development de notre jeu. Voici les differents choses que nous avons testé:
+Le répertoire **`tests`** contient son propre fichier **`CMakeLists.txt`**, permettant de générer les exécutables de tests. Chaque fichier **`*_test.cpp`** est un programme autonome pouvant être exécuté indépendamment :  
 
-- **balls_test :** Toutes les fonctionnalités de la classe abstraite BallBase et ses classes hérités SquareBall, TriangleBall et ClassicBall inclus les constructeurs, les setters et getters ainsi que les méthodes responsables pour le rendering sur SDL.
-- **user_test :** Les méthodes de création et mise à jour d’un joueur d’User class
-- **paddle_test :** On est également la création de nos deux rackets (paddles) pour le jeu. On vérifie s’ils ont bien une distinction de positionnement (gauche ou droit). En plus, on vérifie la mise à jour de leurs tailles par les méthodes spécifiques, le rendering de ces objets ainsi que le control/communication de positionnement
-- **letter_test.cpp :** Pour le Storytime mode, qu’on utilise particulièrement la classe Letter, on test la bonne création via ses constructeurs. On vérifie le comportement des méthodes responsables de détecter des collisions entre la balle et les lettres, ainsi que la validation des méthodes pour mettre le score des joueurs.
+- ✅ **Si le test est réussi**, il retourne `0`.  
+- ❌ **En cas d’échec**, il renvoie un code d’erreur avec des informations précises sur la source du problème.  
 
-### Comment on test ?
+La mise en place de ces tests s'inscrit dans une **démarche d'intégration continue**, garantissant **la stabilité et l’évolutivité du code** tout en évitant les **régressions** au fil du développement du jeu.  
 
-Pour produire un résultat de test, nous utilisons les méthodes statiques de la classe Assert pour tester les résultats réels par rapport aux résultats attendus. Si besoin par la classe qu’on test, on commence par l'initialisation de l'environnement SDL nécessaire au rendu graphique des éléments de jeu, même si cette visualisation reste invisible durant l'exécution des tests.
 
-Chaque appel à `assert` évalue une expression booléenne qui représente une condition que le programme doit satisfaire pour être considéré comme correct. Si cette condition est vraie, l'exécution du programme se poursuit normalement, permettant ainsi de vérifier des conditions supplémentaires. En revanche, si l'expression s'avère fausse, le programme s'interrompt immédiatement avec un message d'erreur précisant le fichier source. Au final, si jamais notre main d’un test retourne 0, alors le test est bien terminé sans des erreurs.
+### 🔍 Fonctionnalités testées  
+
+Nous avons testé plusieurs éléments clés du projet, regroupés dans différents fichiers de test :  
+
+- **`balls_test.cpp`**  
+  - Vérification de la classe **abstraite** `BallBase` et de ses classes dérivées (`SquareBall`, `TriangleBall`, `ClassicBall`).  
+  - Validation des **constructeurs, setters et getters**.  
+  - Test des méthodes de **rendu graphique sous SDL**.  
+
+- **`user_test.cpp`**  
+  - Vérification des **méthodes de création et de mise à jour** d’un joueur (`User` class).  
+
+- **`paddle_test.cpp`**  
+  - Création et distinction des **deux raquettes** (paddle gauche et paddle droit).  
+  - Vérification de la **mise à jour dynamique de la taille** des raquettes.  
+  - Validation des **méthodes de rendu graphique** et des **contrôles de positionnement et de communication**.  
+
+- **`letter_test.cpp`** *(mode Storytime)*  
+  - Vérification de la bonne création des **lettres** via leurs **constructeurs**.  
+  - Test des méthodes permettant de **détecter les collisions** entre la balle et les lettres.  
+  - Validation du **système de score** en fonction des interactions avec les lettres.  
+
+---
+
+###  Comment testons-nous ?  
+
+Nous utilisons les méthodes statiques de la classe `Assert` pour comparer les  résultats obtenus avec les résultats attendus.  
+
+Si une classe nécessite l'initialisation de **l’environnement SDL** (pour le rendu graphique), celui-ci est chargé avant l’exécution des tests, même si l’affichage reste invisible.  
+
+**Chaque appel à `assert` vérifie une condition** :  
+- ✅ **Si la condition est remplie**, le programme poursuit son exécution et peut tester d'autres éléments.  
+- ❌ **Si la condition échoue**, le programme s'interrompt immédiatement avec un message d'erreur précisant le fichier source concerné.  
+
+À la fin de l’exécution, si la fonction `main()` d’un test retourne `0`, cela signifie que toutes les validations ont été effectuées avec succès.  
+
 
 ## Pourquoi macros.hpp
 
