@@ -488,49 +488,49 @@ Lors de nos cours, nous avons étudié l’utilisation de CTest pour organiser e
 
 ### Organisation des tests  
 
-Le répertoire **`tests`** contient son propre fichier **`CMakeLists.txt`**, permettant de générer les exécutables de tests. Chaque fichier **`*_test.cpp`** est un programme autonome pouvant être exécuté indépendamment :  
+Le répertoire **`tests`** contient son propre fichier **`CMakeLists.txt`**, qui permet de créer les exécutables de nos programmes de test afin de vérifier le bon fonctionnement de nos méthodes.  
 
-- ✅ **Si le test est réussi**, il retourne `0`.  
-- ❌ **En cas d’échec**, il renvoie un code d’erreur avec des informations précises sur la source du problème.  
+Chaque fichier **`*_test.cpp`** est un programme autonome pouvant être exécuté indépendamment :  
 
-La mise en place de ces tests s'inscrit dans une **démarche d'intégration continue**, garantissant **la stabilité et l’évolutivité du code** tout en évitant les **régressions** au fil du développement du jeu.  
+-  **Si le test est réussi**, il retourne `0`.  
+-  **En cas d’échec**, il renvoie une autre valeur avec des informations détaillées sur le problème rencontré.  
 
+La réalisation des tests unitaires s’inscrit dans une **démarche d’intégration continue**, permettant de valider la **non-régression du code** tout au long du développement de notre jeu.  
 
 ### 🔍 Fonctionnalités testées  
 
-Nous avons testé plusieurs éléments clés du projet, regroupés dans différents fichiers de test :  
+Voici les différentes fonctionnalités que nous avons testées :  
 
 - **`balls_test.cpp`**  
-  - Vérification de la classe **abstraite** `BallBase` et de ses classes dérivées (`SquareBall`, `TriangleBall`, `ClassicBall`).  
-  - Validation des **constructeurs, setters et getters**.  
-  - Test des méthodes de **rendu graphique sous SDL**.  
+  - Toutes les fonctionnalités de la classe **abstraite** `BallBase` et de ses classes dérivées (`SquareBall`, `TriangleBall`, `ClassicBall`).  
+  - Vérification des **constructeurs, setters et getters**.  
+  - Test des méthodes responsables du **rendu graphique sous SDL**.  
 
 - **`user_test.cpp`**  
   - Vérification des **méthodes de création et de mise à jour** d’un joueur (`User` class).  
 
 - **`paddle_test.cpp`**  
-  - Création et distinction des **deux raquettes** (paddle gauche et paddle droit).  
-  - Vérification de la **mise à jour dynamique de la taille** des raquettes.  
-  - Validation des **méthodes de rendu graphique** et des **contrôles de positionnement et de communication**.  
+  - Vérification de la création des **deux raquettes** (paddles) du jeu et de leur distinction en termes de positionnement (**gauche** ou **droite**).  
+  - Test de la **mise à jour dynamique de la taille** des raquettes via des méthodes spécifiques.  
+  - Vérification du **rendu graphique** ainsi que du **contrôle et de la gestion du positionnement**.  
 
 - **`letter_test.cpp`** *(mode Storytime)*  
   - Vérification de la bonne création des **lettres** via leurs **constructeurs**.  
   - Test des méthodes permettant de **détecter les collisions** entre la balle et les lettres.  
-  - Validation du **système de score** en fonction des interactions avec les lettres.  
-
----
+  - Validation des méthodes de mise à jour du **score des joueurs** en fonction des interactions avec les lettres.  
 
 ###  Comment testons-nous ?  
 
 Nous utilisons les méthodes statiques de la classe `Assert` pour comparer les  résultats obtenus avec les résultats attendus.  
+Pour produire un résultat de test, nous utilisons les **méthodes statiques de la classe `Assert`**, qui permettent de comparer les **résultats obtenus** avec les **résultats attendus**.  
 
-Si une classe nécessite l'initialisation de **l’environnement SDL** (pour le rendu graphique), celui-ci est chargé avant l’exécution des tests, même si l’affichage reste invisible.  
+Si la classe testée nécessite une initialisation de **l’environnement SDL** (pour le rendu graphique), celui-ci est chargé avant l’exécution des tests, même si l’affichage reste invisible.  
 
 **Chaque appel à `assert` vérifie une condition** :  
-- ✅ **Si la condition est remplie**, le programme poursuit son exécution et peut tester d'autres éléments.  
-- ❌ **Si la condition échoue**, le programme s'interrompt immédiatement avec un message d'erreur précisant le fichier source concerné.  
+- **Si la condition est remplie**, le programme poursuit son exécution et peut tester d'autres éléments.  
+- **Si la condition échoue**, le programme s'interrompt immédiatement avec un **message d'erreur** précisant le fichier source concerné.  
 
-À la fin de l’exécution, si la fonction `main()` d’un test retourne `0`, cela signifie que toutes les validations ont été effectuées avec succès.  
+À la fin de l’exécution, **si la fonction `main()` d’un test retourne `0`**, cela signifie que **toutes les validations ont été effectuées avec succès et sans erreur**.  
 
 
 ## Pourquoi macros.hpp
