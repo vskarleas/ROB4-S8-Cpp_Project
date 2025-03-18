@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['macros_20hpp_0',['Pourquoi macros.hpp',['../index.html#autotoc_md35',1,'']]],
+  ['macros_20hpp_0',['Pourquoi macros.hpp',['../index.html#autotoc_md37',1,'']]],
   ['macros_2ehpp_1',['macros.hpp',['../macros_8hpp.html',1,'']]],
   ['mai_2',['mAI',['../class_game.html#a49b2014ece24a38148358dbe5c0d0620',1,'Game']]],
   ['main_3',['main',['../_c_make_c_x_x_compiler_id_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;CMakeCXXCompilerId.cpp'],['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cpp'],['../ball__test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;ball_test.cpp'],['../letter__test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;letter_test.cpp'],['../paddle__test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;paddle_test.cpp'],['../user__test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;user_test.cpp']]],
@@ -22,7 +22,7 @@ var searchData=
   ['mmodemenu_19',['mModeMenu',['../class_game.html#aa99a03ff834746bd0ab66d72b568ac92',1,'Game']]],
   ['mnewroundsound_20',['mNewRoundSound',['../class_game.html#a46b7d7dd6af2b8a0c4d87be84f0c4ac6',1,'Game']]],
   ['mnoticemenu_21',['mNoticeMenu',['../class_game.html#aec3cf9150ce416364b7a6ceb1e9e2804',1,'Game']]],
-  ['modélisation_20des_20classes_20du_20jeu_22',['UML – Modélisation des classes du jeu',['../index.html#autotoc_md37',1,'']]],
+  ['modélisation_20des_20classes_20du_20jeu_22',['UML – Modélisation des classes du jeu',['../index.html#autotoc_md39',1,'']]],
   ['mode_23',['mode',['../index.html#autotoc_md10',1,'AI mode'],['../index.html#autotoc_md11',1,'Storytime mode']]],
   ['mode_20strong_24',['&lt;strong&gt;Fun mode&lt;/strong&gt;',['../index.html#autotoc_md12',1,'']]],
   ['mode_5fid_25',['mode_id',['../classpage__4b__1t.html#abe6f151a8e3b104f21025c92b4f48191',1,'page_4b_1t']]],

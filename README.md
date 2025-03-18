@@ -35,19 +35,22 @@ Toutes les instructions relatives à ces modes et leurs spécificités sont dét
 
 Nous avons intégré un fichier **CMakeLists.txt** afin de faciliter la compilation du projet sur les principaux systèmes d’exploitation tels que macOS et Linux. Toutefois, l’interface graphique nécessite plusieurs dépendances spécifiques.
 
-Pour simplifier cette étape, nous avons également créé un script Bash qui vérifie automatiquement si toutes les dépendances sont installées. Si ce n’est pas le cas, il se charge de télécharger et d’installer ce qui manque. Vous trouverez la liste exhaustive de ces dépendances dans la section **Dépendances** .
+Pour simplifier cette étape, nous avons également créé un script Bash qui vérifie automatiquement si toutes les dépendances sont installées. Si ce n’est pas le cas, il se chargera de télécharger et d’installer ce qu'il manque. Vous trouverez la liste exhaustive de ces dépendances dans la section **Dépendances** .
+
+### Nota bene
+
+> Sur Linux, le script télécharge et installe automatiquement les bibliothèques SDL nécessaires. Toutefois, si l’une d’entre elles requiert une autre dépendance spécifique, vous devrez l’installer manuellement. Une fois la dépendance installée, relancez simplement le script avec la commande `bash play.sh`.
+>
+> Pour aller plus loin: d'abord, la commande `mkdir -p build` crée un répertoire isolé pour les fichiers générés pendant la compilation si il n'existe déjà, puis `cd build` nous positionne dans ce dossier, suivie de `cmake ..` qui analyse le fichier CMakeLists.txt du projet pour configurer l'environnement et détecter les bibliothèques nécessaires. Enfin `cmake --build .` lance la compilation effective du code source.
 
 ### Instructions de lancement
 
 Pour démarrer le programme en mode automatique, suivez les étapes suivantes :
 
-1. Faire un clone du projet
-2. Ouvrez un terminal
-3. Saisissez `chmod 777 play.sh` dans le terminal, puis lancez le script avec `bash play.sh`.
-
-### Notes
-
-> Sur Linux, le script télécharge et installe automatiquement les bibliothèques SDL nécessaires. Toutefois, si l’une d’entre elles requiert une autre dépendance spécifique, vous devrez l’installer manuellement. Une fois la dépendance installée, relancez simplement le script avec la commande `bash play.sh`.
+1. Ouvrez un terminal et se rediriger vers un repertoire souhaité (par exemple `cd ~/Downloads`)
+2. Faire un clone du projet via la commande : `git clone https://github.com/vskarleas/The-New-Pong`
+3. Acceder au projet cloné via la commande : `cd The-New-Pong`
+4. Saisissez `chmod 777 play.sh` dans le terminal, puis lancez le script avec `bash play.sh`.
 
 ## Documentation
 
@@ -69,11 +72,10 @@ Voici la liste des dépendances indispensables au bon fonctionnement du programm
 
 ### Classic
 
-Le concept originel de Pong s’apparente à un simulateur de ping-pong minimaliste : une balle se déplace de part et d’autre de l’écran en rebondissant sur les bords supérieur et inférieur. Chaque joueur contrôle une raquette coulissant verticalement le long du bord de l’écran. La balle rebondit différemment selon la partie de la raquette qu’elle touche.
+Le concept originel de Pong s’apparente à un simulateur de ping-pong minimaliste : une balle se déplace de part et d’autre de l’écran en rebondissant sur les bords supérieur et inférieur. Chaque joueur contrôle une raquette coulissant verticalement le long du bord de l’écran. La balle rebondit différemment selon la partie de la raquette qu’elle touche. Voici les fonctionnalités incluses :
 
-* **Fonctionnalités incluses** :
-  * **High Score**
-  * **Game Save**
+* High Score
+* Game Save
 
 Dans notre version, il n’y a pas de score maximum prédéfini ; les joueurs peuvent simplement s’entendre oralement sur un objectif à atteindre. Lorsqu’ils souhaitent arrêter, il suffit de choisir « End the game ». Ici, la motivation ultime est : ***qui fera exploser le compteur du high score et revendiquera le titre de meilleur pongiste ?***
 
@@ -90,7 +92,7 @@ Une nouveauté pimentera votre partie : des lettres tombent depuis le haut de l�
 
 ### **Fun mode**
 
-Ce mode s’inspire des règles du **Storytime Mode** , avec un format de **3 parties** où l’objectif est d’atteindre 5 points pour remporter chaque partie. Toutefois, nous y avons glissé plusieurs surprises et easter eggs destinés à dynamiser la compétition.
+Ce mode s’inspire des règles du **Storytime Mode** , avec un format de 3 parties où l’objectif est d’atteindre 5 points pour remporter chaque partie. Toutefois, nous y avons glissé plusieurs surprises et easter eggs destinés à dynamiser la compétition.
 
 Puisque nous sommes de futurs roboticiens, nous ne pouvions pas résister à ajouter une petite touche de robotique : vous verrez ainsi de mystérieux robots apparaître au cours de la partie. En les touchant, vous déclencherez des effets inédits :
 
@@ -299,15 +301,15 @@ Ces structures offrent une navigation cohérente, garantissant une meilleure exp
 
 Maintenant que nous avons une vue d’ensemble des différentes pages et des éléments interactifs du jeu, intéressons-nous à la façon dont l’interface graphique est conçue et gérée.
 
-Nous utilisons **SDL** pour afficher et rendre toutes les formes et objets du jeu dans une fenêtre aux dimensions prédéfinies dans le fichier `macros.hpp` (plus de détails dans la section ***Pourquoi macros.hpp***).
+Nous utilisons SDL pour afficher et rendre toutes les formes et objets du jeu dans une fenêtre aux dimensions prédéfinies dans le fichier `macros.hpp` (plus de détails dans la section ***Pourquoi macros.hpp***).
 
 Le programme principal repose sur la classe  `Game` , qui orchestre l’ensemble du jeu à travers trois méthodes clés :
 
-1. **`initialise()`** – Initialise tous les paramètres et variables nécessaires au jeu.
-2. **`loop()`** – Gère la boucle principale du jeu.
-3. **`close()`** – Libère les ressources et termine proprement l’exécution.
+1. `initialise()` – Initialise tous les paramètres et variables nécessaires au jeu.
+2. `loop()`– Gère la boucle principale du jeu.
+3. `close()`– Libère les ressources et termine proprement l’exécution.
 
-La méthode  `loop()` constitue le cœur du jeu : il s’agit d’une boucle while qui tourne en continu tant que le jeu est actif. Cette boucle s’arrête uniquement si la variable booléenne `mIsRunning` est définie sur `false`, soit lorsque le joueur ferme la fenêtre SDL, soit lorsqu'il sélectionne "**Exit Game**"
+La méthode  `loop()` constitue le cœur du jeu : il s’agit d’une boucle while qui tourne en continu tant que le jeu est actif. Cette boucle s’arrête uniquement si la variable booléenne `mIsRunning` est définie sur `false`, soit lorsque le joueur ferme la fenêtre SDL, soit lorsqu'il sélectionne "Exit Game".
 
 ```cpp
 void Game::loop()
@@ -486,61 +488,37 @@ Tout au long du projet, nous avons soigneusement choisi les niveaux de visibilit
 
 Lors de nos cours, nous avons étudié l’utilisation de CTest pour organiser et automatiser les tests unitaires. Étant donné que nous avons déjà intégré un fichier CMakeLists.txt dans notre projet, nous avons choisi d’utiliser cette approche pour tester nos fonctionnalités et les méthodes implémentées dans nos différentes classes.
 
-### Organisation des tests  
+### Organisation des tests
 
-Le répertoire **`tests`** contient son propre fichier **`CMakeLists.txt`**, qui permet de créer les exécutables de nos programmes de test afin de vérifier le bon fonctionnement de nos méthodes.  
+Le répertoire `b` contient son propre fichier `b`, qui permet de créer les exécutables de nos programmes de test afin de vérifier le bon fonctionnement de nos méthodes.
 
-Chaque fichier **`*_test.cpp`** est un programme autonome pouvant être exécuté indépendamment :  
+Chaque fichier `b` est un programme autonome pouvant être exécuté indépendamment. Si le test est réussi, il retourne 0. Cependant en cas d’échec, il renvoie une autre valeur avec des informations détaillées sur le problème rencontré.
 
--  **Si le test est réussi**, il retourne `0`.  
--  **En cas d’échec**, il renvoie une autre valeur avec des informations détaillées sur le problème rencontré.  
+La réalisation des tests unitaires s’inscrit dans une démarche d’intégration continue, permettant de valider la non-régression du code tout au long du développement de notre jeu.
 
-La réalisation des tests unitaires s’inscrit dans une **démarche d’intégration continue**, permettant de valider la **non-régression du code** tout au long du développement de notre jeu.  
+### Fonctionnalités testées
 
-### 🔍 Fonctionnalités testées  
+Voici les différentes fonctionnalités que nous avons testées :
 
-Voici les différentes fonctionnalités que nous avons testées :  
+- **balls_test** **:** Toutes les fonctionnalités de la classe abstraite `BallBase` et de ses classes dérivées (SquareBall, TriangleBall, ClassicBall), la vérification des constructeurs, setters et getters de la classe en question, ainsi que les méthodes responsables du rendu graphique sous SDL.
+- **user_test :** Les méthodes de création et de mise à jou**r** d’un joueur
+- **paddle_test :** On teste également la création de nos deux rackets (paddles) pour le jeu. On vérifie s’ils ont bien une distinction de positionnement (gauche ou droite). Par ailleurs, on vérifie la mise à jour de leur taille (grâce aux méthodes spécifiques), le rendering de ces objets ainsi que le controle du positionnement.
+- **letter_test (mode Storytime) :** Vérification de la bonne création des lettres via leurs constructeurs. On teste aussi la détection de collisions entre la balle et les lettres. Enfin, on cherche à tester si la mise à jour du score est bien faite.
 
-- **`balls_test.cpp`**  
-  - Toutes les fonctionnalités de la classe **abstraite** `BallBase` et de ses classes dérivées (`SquareBall`, `TriangleBall`, `ClassicBall`).  
-  - Vérification des **constructeurs, setters et getters**.  
-  - Test des méthodes responsables du **rendu graphique sous SDL**.  
+### Comment testons-nous ?
 
-- **`user_test.cpp`**  
-  - Vérification des **méthodes de création et de mise à jour** d’un joueur (`User` class).  
+Nous utilisons les méthodes statiques de la classe `Assert` pour comparer les  résultats obtenus avec les résultats attendus. Si la classe testée nécessite une initialisation de l’environnement SDL (pour le rendu graphique), celui-ci est chargé avant l’exécution des tests, même si l’affichage reste invisible.
 
-- **`paddle_test.cpp`**  
-  - Vérification de la création des **deux raquettes** (paddles) du jeu et de leur distinction en termes de positionnement (**gauche** ou **droite**).  
-  - Test de la **mise à jour dynamique de la taille** des raquettes via des méthodes spécifiques.  
-  - Vérification du **rendu graphique** ainsi que du **contrôle et de la gestion du positionnement**.  
-
-- **`letter_test.cpp`** *(mode Storytime)*  
-  - Vérification de la bonne création des **lettres** via leurs **constructeurs**.  
-  - Test des méthodes permettant de **détecter les collisions** entre la balle et les lettres.  
-  - Validation des méthodes de mise à jour du **score des joueurs** en fonction des interactions avec les lettres.  
-
-###  Comment testons-nous ?  
-
-Nous utilisons les méthodes statiques de la classe `Assert` pour comparer les  résultats obtenus avec les résultats attendus.  
-Pour produire un résultat de test, nous utilisons les **méthodes statiques de la classe `Assert`**, qui permettent de comparer les **résultats obtenus** avec les **résultats attendus**.  
-
-Si la classe testée nécessite une initialisation de **l’environnement SDL** (pour le rendu graphique), celui-ci est chargé avant l’exécution des tests, même si l’affichage reste invisible.  
-
-**Chaque appel à `assert` vérifie une condition** :  
-- **Si la condition est remplie**, le programme poursuit son exécution et peut tester d'autres éléments.  
-- **Si la condition échoue**, le programme s'interrompt immédiatement avec un **message d'erreur** précisant le fichier source concerné.  
-
-À la fin de l’exécution, **si la fonction `main()` d’un test retourne `0`**, cela signifie que **toutes les validations ont été effectuées avec succès et sans erreur**.  
-
+ Chaque appel à `assert` évalue une expression booléenne qui représente une condition que le programme doit satisfaire pour être considéré comme correct. Si cette condition est vraie, l'exécution du programme se poursuit normalement, permettant ainsi de vérifier des conditions supplémentaires. En revanche, si l'expression s'avère fausse, le programme s'interrompt immédiatement avec un message d'erreur précisant le fichier source. Au final, si jamais notre main d’un test retourne 0, alors le test est bien terminé sans des erreurs.
 
 ## Pourquoi macros.hpp
 
 Le fichier macros.hpp joue un rôle central dans notre projet en servant de référentiel unique pour toutes les constantes globales du jeu. Il permet de centraliser et de faciliter la gestion des paramètres essentiels, tels que :
 
-Les dimensions de la fenêtre du jeu
-Les identifiants des modes de jeu (ex. : mode IA, mode 2 joueurs)
-Les constantes associées à la navigation dans les menus
-Les niveaux de difficulté
+* Les dimensions de la fenêtre du jeu
+* Les identifiants des modes de jeu (ex. : mode IA, mode 2 joueurs)
+* Les constantes associées à la navigation dans les menus
+* Les niveaux de difficulté
 
 Grâce à ce fichier, nous avons assuré une meilleure lisibilité et une maintenance simplifiée, en évitant la dispersion des constantes dans l’ensemble du code.
 
@@ -550,7 +528,7 @@ Initialement, nous avons tenté d'implémenter un mode multijoueur en réseau vi
 
 En effet, cette fonctionnalité aurait dû être pensée dès le début du projet afin d’être intégrée naturellement dans l’architecture existante. L’ajout tardif d’un mode réseau implique de lourdes modifications sur la structure actuelle du code, ce qui s’avère être un défi technique conséquent.
 
-Malgré ces difficultés, nous avons commencé le développement de cette partie dans les fichiers `network.cpp `et `network.hpp`, en nous concentrant sur les aspects suivants :
+Malgré ces difficultés, nous avons commencé le développement de cette partie dans les fichiers `network.cpp` et `network.hpp`, en nous concentrant sur les aspects suivants :
 
 - Le contrôle des raquettes à distance
 - La réception et la synchronisation des positions des différents éléments (balle, raquettes, etc.)

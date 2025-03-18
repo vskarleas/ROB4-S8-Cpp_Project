@@ -6,7 +6,7 @@ var searchData=
   ['la_20logique_20du_20jeu_20strong_3',['&lt;strong&gt;La logique du jeu&lt;/strong&gt;',['../index.html#autotoc_md23',1,'']]],
   ['la_20musique_20strong_4',['&lt;strong&gt;Changement de la musique&lt;/strong&gt;',['../index.html#autotoc_md18',1,'']]],
   ['lambda_5',['Fonctions lambda',['../index.html#autotoc_md29',1,'']]],
-  ['lancement_6',['Instructions de lancement',['../index.html#autotoc_md4',1,'']]],
+  ['lancement_6',['Instructions de lancement',['../index.html#autotoc_md5',1,'']]],
   ['last_5fhighscore_7',['last_highscore',['../class_game.html#a39428b5c8de846dbdd5efb1be52c9066',1,'Game']]],
   ['last_5fhighscore_5fname_8',['last_highscore_name',['../class_game.html#aeedf815028a7cfc54159f05ee2de7ec4',1,'Game']]],
   ['le_20jeu_9',['Le jeu',['../index.html#autotoc_md2',1,'']]],
@@ -25,7 +25,7 @@ var searchData=
   ['load_5fhighscore_22',['load_highscore',['../class_saving.html#aca0f68abac367530e21ec0140ed50cb8',1,'Saving']]],
   ['logic_20strong_23',['logic strong',['../index.html#autotoc_md16',1,'&lt;strong&gt;Game retrieve logic&lt;/strong&gt;'],['../index.html#autotoc_md15',1,'&lt;strong&gt;Game save logic&lt;/strong&gt;']]],
   ['logique_20du_20jeu_20strong_24',['&lt;strong&gt;La logique du jeu&lt;/strong&gt;',['../index.html#autotoc_md23',1,'']]],
-  ['loin_25',['Pour aller plus loin',['../index.html#autotoc_md36',1,'']]],
+  ['loin_25',['Pour aller plus loin',['../index.html#autotoc_md38',1,'']]],
   ['loop_26',['Loop',['../index.html#autotoc_md25',1,'']]],
   ['loop_27',['loop',['../class_game.html#a7ad92b77b596d7882a7ae76eb18b5e6c',1,'Game']]]
 ];

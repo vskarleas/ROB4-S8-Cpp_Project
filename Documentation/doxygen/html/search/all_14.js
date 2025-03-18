@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['uml_20–_20modélisation_20des_20classes_20du_20jeu_0',['UML – Modélisation des classes du jeu',['../index.html#autotoc_md37',1,'']]],
+  ['uml_20–_20modélisation_20des_20classes_20du_20jeu_0',['UML – Modélisation des classes du jeu',['../index.html#autotoc_md39',1,'']]],
   ['up_5fpressed_1',['up_pressed',['../struct_paddle_state.html#a4d236de8926d445edc03595cf1e657cf',1,'PaddleState']]],
   ['update_2',['update',['../class_ball_base.html#aa8edf6194d74142acc1a45d917deeadc',1,'BallBase::update()'],['../class_inversible_power.html#a11eb6ad6f31ac0a447e595467831195d',1,'InversiblePower::update()'],['../class_invisible_power.html#aa6c8e0a97acd7d7d5aa72ef6d917e8c6',1,'InvisiblePower::update()'],['../class_paddle.html#a0327bb8366a37b5cf664d94a3ddcf596',1,'Paddle::update()'],['../class_power.html#a2826de81bb9d687daef49ebd8a7e0821',1,'Power::update()']]],
   ['update_5fbackground_5fcolor_3',['update_background_color',['../class_game.html#ab610203d28cbd65ef4cc12d72bba28f9',1,'Game']]],

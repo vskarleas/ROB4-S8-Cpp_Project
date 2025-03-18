@@ -6,5 +6,5 @@ var searchData=
   ['high_20score_20strong_3',['&lt;strong&gt;High Score&lt;/strong&gt;',['../index.html#autotoc_md13',1,'']]],
   ['highscore_4',['HighScore',['../struct_high_score.html',1,'']]],
   ['highscore_5fexists_5',['highscore_exists',['../class_saving.html#a99b8ad85d1a67a445bde372b3ccf6b2b',1,'Saving']]],
-  ['hpp_6',['Pourquoi macros.hpp',['../index.html#autotoc_md35',1,'']]]
+  ['hpp_6',['Pourquoi macros.hpp',['../index.html#autotoc_md37',1,'']]]
 ];

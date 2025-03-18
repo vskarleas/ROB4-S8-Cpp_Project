@@ -10,7 +10,8 @@ var searchData=
   ['next_5fletter_7',['next_letter',['../class_letter.html#a14aa1a20cb7103df9b60484a8eac75da',1,'Letter']]],
   ['next_5fview_8',['next_view',['../classpage__2b__1t.html#afa44912a2b27a5a36c2fd56c0637c6f9',1,'page_2b_1t']]],
   ['next_5fword_9',['next_word',['../class_letter.html#a90732499d71570f1897eb71e53a0294a',1,'Letter']]],
-  ['notes_10',['Notes',['../index.html#autotoc_md5',1,'']]],
+  ['nota_20bene_10',['Nota bene',['../index.html#autotoc_md4',1,'']]],
   ['notice_5fid_11',['notice_id',['../classpage__2b__1t.html#ab1a3404c978f028876c34083f1c578ca',1,'page_2b_1t']]],
-  ['notice_5fmenu_12',['Notice_Menu',['../game_8hpp.html#ad0ed1832dd134806ad335cdcc1a59ad2a7ea2df55cbeda29f707c509629f5e71d',1,'game.hpp']]]
+  ['notice_5fmenu_12',['Notice_Menu',['../game_8hpp.html#ad0ed1832dd134806ad335cdcc1a59ad2a7ea2df55cbeda29f707c509629f5e71d',1,'game.hpp']]],
+  ['nous_13',['Comment testons-nous ?',['../index.html#autotoc_md36',1,'']]]
 ];
