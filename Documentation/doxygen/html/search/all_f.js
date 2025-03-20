@@ -1,9 +1,12 @@
 var searchData=
 [
-  ['objectif_0',['L&apos;objectif',['../index.html#autotoc_md1',1,'']]],
-  ['objets_20strong_1',['&lt;strong&gt;Les objets&lt;/strong&gt;',['../index.html#autotoc_md20',1,'']]],
-  ['operator_28_29_2',['operator()',['../structcircle__renderer.html#a42ebdf024a6aa18c249b1eae76653d48',1,'circle_renderer::operator()()'],['../structsquare__renderer.html#aabeb1016fe14a2b9dab78f099a0c51c6',1,'square_renderer::operator()()'],['../structtriangle__renderer.html#ad3b7b75085376fd18a3e7ff70f4d20c6',1,'triangle_renderer::operator()()']]],
-  ['orange_3',['orange',['../macros_8hpp.html#a6667d35607b0b26d6bfede6a33c9b2dd',1,'macros.hpp']]],
-  ['organisation_20des_20tests_4',['Organisation des tests',['../index.html#autotoc_md34',1,'']]],
-  ['output_5',['output',['../class_game.html#ac09ebf3830ea755d3e931eefe7e3d846',1,'Game']]]
+  ['effect_5fis_5factive_0',['effect_is_active',['../class_power.html#a1acb27b2b5928ea9ffdea911ffacf001',1,'Power']]],
+  ['en_20c_20_3a_20the_20new_20pong_1',['en C : The New Pong',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html',1,'Projet Multijoueur en C++ : The New Pong'],['../index.html',1,'Projet Multijoueur en C++ : The New Pong']]],
+  ['en_20relaite_20def_20suffit_20pas_20dounia_2',['Fonctions lambda + Explication c&apos;est quoi en relaite (def suffit pas) [Dounia]',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md71',1,'']]],
+  ['encapsulation_3',['Encapsulation',['../index.html#autotoc_md30',1,'']]],
+  ['encapsulation_20def_20vasilis_4',['Encapsulation + Def [Vasilis]',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md72',1,'']]],
+  ['est_20quoi_20en_20relaite_20def_20suffit_20pas_20dounia_5',['Fonctions lambda + Explication c&apos;est quoi en relaite (def suffit pas) [Dounia]',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md71',1,'']]],
+  ['exit_5fgame_6',['exit_game',['../classpage__4b__1t.html#a533f8e2ece042474f10865d4b45db319',1,'page_4b_1t']]],
+  ['exit_5fmode_7',['exit_mode',['../classpage__3b__0t.html#aca257c270f13bf1f9b3360de4c54220b',1,'page_3b_0t']]],
+  ['explication_20c_20est_20quoi_20en_20relaite_20def_20suffit_20pas_20dounia_8',['Fonctions lambda + Explication c&apos;est quoi en relaite (def suffit pas) [Dounia]',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md71',1,'']]]
 ];

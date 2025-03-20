@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['–_20modélisation_20des_20classes_20du_20jeu_0',['UML – Modélisation des classes du jeu',['../index.html#autotoc_md39',1,'']]]
+  ['quoi_20en_20relaite_20def_20suffit_20pas_20dounia_0',['Fonctions lambda + Explication c&apos;est quoi en relaite (def suffit pas) [Dounia]',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md71',1,'']]]
 ];

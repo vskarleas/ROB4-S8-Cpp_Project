@@ -57,8 +57,6 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="doc-content">
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function(){ initResizable(false); });
@@ -85,28 +83,21 @@ $(function(){ initResizable(false); });
 </div>
 </div>
 
+</div><!-- top -->
+<div id="doc-content">
 <div><div class="header">
-  <div class="headertitle"><div class="title">Projet Multijoueur en C++ : The New Pong </div></div>
+  <div class="headertitle"><div class="title">Projet Multijoueur en C++ : The New Pong</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md__r_e_a_d_m_e"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md43"></a></p>
 <h5>Auteurs: Dounia Bakalem, Yanis Sadoun, Vasileios Filippos Skarleas</h5>
-<h1><a class="anchor" id="autotoc_md1"></a>
-L'objectif</h1>
+<h1><a class="anchor" id="autotoc_md44"></a>
+L'objectif [Yanis] - Diapo 1 (logo)</h1>
 <p>Puisqu’il n’y a rien de plus amusant pour découvrir un langage que de créer son propre jeu, nous vous présentons <b>The New Pong</b>, un jeu multijoueur développé dans le cadre du module de programmation en langage objet pour la spécialité Robotique à Polytech Sorbonne.</p>
-<p>Dans ce projet, il nous était demandé de choisir un jeu à programmer en C++, afin de mettre en pratique les notions étudiées en cours tels que:</p>
-<ul>
-<li>L’héritage</li>
-<li>Le polymorphisme</li>
-<li>L’abstraction</li>
-<li>Les foncteurs</li>
-<li>Les fonctions lambdas</li>
-<li>CMake</li>
-<li>Les fonctions virtuelles</li>
-</ul>
 <p>Nous avons donc opté pour un grand classique: Pong. Préparez-vous à renvoyer la balle, tout en perfectionnant vos compétences en C++ !</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Le jeu</h1>
+<hr  />
+<h1><a class="anchor" id="autotoc_md46"></a>
+Le jeu [Yanis] - Diapo 2 (Un jue, lequel)</h1>
 <p>Afin de revisiter l’expérience Pong, l’un des tout premiers jeux vidéo d’arcade et pionnier des jeux de sport, nous avons décidé d’en développer notre propre version. Au-delà d’un simple hommage, nous y avons ajouté de nouvelles fonctionnalités pour rendre ce Pong encore plus captivant que l’original. Pour cela, quatre modes de jeu distincts ont été introduits :</p>
 <ol type="1">
 <li><b><a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a> mode</b></li>
@@ -115,59 +106,26 @@ Le jeu</h1>
 <li><b>Fun mode</b></li>
 </ol>
 <p>Toutes les instructions relatives à ces modes et leurs spécificités sont détaillées dans la section: <b>Les différents modes</b>. Bonne lecture et bon amusement !</p>
-<p><img src="https://i.postimg.cc/PxwwTPMy/Whats-App-Image-2025-03-08-at-20-05-54.jpg" alt="The NEW Pong Logo" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md3"></a>
-Compilation</h1>
-<p>Nous avons intégré un fichier <b>CMakeLists.txt</b> afin de faciliter la compilation du projet sur les principaux systèmes d’exploitation tels que macOS et Linux. Toutefois, l’interface graphique nécessite plusieurs dépendances spécifiques.</p>
-<p>Pour simplifier cette étape, nous avons également créé un script Bash qui vérifie automatiquement si toutes les dépendances sont installées. Si ce n’est pas le cas, il se chargera de télécharger et d’installer ce qu'il manque. Vous trouverez la liste exhaustive de ces dépendances dans la section <b>Dépendances</b> .</p>
-<h2><a class="anchor" id="autotoc_md4"></a>
-Nota bene</h2>
-<blockquote class="doxtable">
-<p>&zwj;Sur Linux, le script télécharge et installe automatiquement les bibliothèques SDL nécessaires. Toutefois, si l’une d’entre elles requiert une autre dépendance spécifique, vous devrez l’installer manuellement. Une fois la dépendance installée, relancez simplement le script avec la commande <code>bash play.sh</code>.</p>
-<p>Pour aller plus loin: d'abord, la commande <code>mkdir -p build</code> crée un répertoire isolé pour les fichiers générés pendant la compilation si il n'existe déjà, puis <code>cd build</code> nous positionne dans ce dossier, suivie de <code>cmake ..</code> qui analyse le fichier CMakeLists.txt du projet pour configurer l'environnement et détecter les bibliothèques nécessaires. Enfin <code>cmake --build .</code> lance la compilation effective du code source. </p>
-</blockquote>
-<h2><a class="anchor" id="autotoc_md5"></a>
-Instructions de lancement</h2>
-<p>Pour démarrer le programme en mode automatique, suivez les étapes suivantes :</p>
-<ol type="1">
-<li>Ouvrez un terminal et se rediriger vers un repertoire souhaité (par exemple <code>cd ~/Downloads</code>)</li>
-<li>Faire un clone du projet via la commande : <code>git clone <a href="https://github.com/vskarleas/The-New-Pong">https://github.com/vskarleas/The-New-Pong</a></code></li>
-<li>Acceder au projet cloné via la commande : <code>cd The-New-Pong</code></li>
-<li>Saisissez <code>chmod 777 play.sh</code> dans le terminal, puis lancez le script avec <code>bash play.sh</code>.</li>
-</ol>
-<h1><a class="anchor" id="autotoc_md6"></a>
-Documentation</h1>
-<p>Pour plus de détails sur la structure du projet et les commentaires (classes, fonctions, etc.), rendez-vous sur : <a href="https://pong.madebyvasilis.site/">https://pong.madebyvasilis.site</a></p>
-<h1><a class="anchor" id="autotoc_md7"></a>
-Dépendances</h1>
-<p>Voici la liste des dépendances indispensables au bon fonctionnement du programme :</p>
-<ul>
-<li><b>SDL2</b> : Bibliothèque principale pour la gestion de la fenêtre et des événements</li>
-<li><b>SDL2_ttf</b> : Bibliothèque pour le rendu du texte (polices TrueType)</li>
-<li><b>SDL2_mixer</b> : Bibliothèque pour la gestion du son et de la musique</li>
-<li><b>SDL2_image</b> : Bibliothèque pour le chargement d’images (formats multiples)</li>
-<li><b>SDL2_net</b> : Bibliothèque pour les fonctionnalités réseau</li>
-</ul>
-<p><em>(Assurez-vous que ces bibliothèques sont installées ou que le script les télécharge correctement)</em></p>
-<h1><a class="anchor" id="autotoc_md8"></a>
-Les différents modes</h1>
-<h2><a class="anchor" id="autotoc_md9"></a>
-Classic</h2>
+<hr  />
+<h1><a class="anchor" id="autotoc_md48"></a>
+Les différents modes - Diapo 3 ou +++</h1>
+<h2><a class="anchor" id="autotoc_md49"></a>
+Classic [Yanis]</h2>
 <p>Le concept originel de Pong s’apparente à un simulateur de ping-pong minimaliste : une balle se déplace de part et d’autre de l’écran en rebondissant sur les bords supérieur et inférieur. Chaque joueur contrôle une raquette coulissant verticalement le long du bord de l’écran. La balle rebondit différemment selon la partie de la raquette qu’elle touche. Voici les fonctionnalités incluses :</p>
 <ul>
 <li>High Score</li>
 <li><a class="el" href="class_game.html">Game</a> Save</li>
 </ul>
 <p>Dans notre version, il n’y a pas de score maximum prédéfini ; les joueurs peuvent simplement s’entendre oralement sur un objectif à atteindre. Lorsqu’ils souhaitent arrêter, il suffit de choisir « End the game ». Ici, la motivation ultime est : <em><b>qui fera exploser le compteur du high score et revendiquera le titre de meilleur pongiste ?</b></em></p>
-<h2><a class="anchor" id="autotoc_md10"></a>
-AI mode</h2>
+<h2><a class="anchor" id="autotoc_md50"></a>
+AI mode [Yanis]</h2>
 <p>Ce mode reprend les règles du <b>Classic</b> , à la différence qu’il ne peut être joué que par un seul joueur : la raquette adverse est contrôlée par l’ordinateur. <b>Préparez-vous à affronter une IA tenace.</b> <b>Arriverez-vous à la battre, ou rejoindrez-vous la longue liste de ses victimes ?</b></p>
-<h2><a class="anchor" id="autotoc_md11"></a>
-Storytime mode</h2>
+<h2><a class="anchor" id="autotoc_md51"></a>
+Storytime mode [Dounia]</h2>
 <p>Dans ce mode, deux joueurs s’affrontent sur <b>3 tours.</b> Le vainqueur est celui qui remporte le plus de tours . Chaque tour se compose de <b>8 points</b>, et c’est le premier joueur à atteindre 8 points qui gagne le tour.</p>
 <p>Une nouveauté pimentera votre partie : des lettres tombent depuis le haut de l’écran. En les touchant, vous obtenez un point supplémentaire et vous contribuez à former un mot caché, révélant peu à peu une phrase secrète.</p>
-<h2><a class="anchor" id="autotoc_md12"></a>
-<b>Fun mode</b></h2>
+<h2><a class="anchor" id="autotoc_md52"></a>
+<b>Fun mode [Dounia]</b></h2>
 <p>Ce mode s’inspire des règles du <b>Storytime Mode</b> , avec un format de 3 parties où l’objectif est d’atteindre 5 points pour remporter chaque partie. Toutefois, nous y avons glissé plusieurs surprises et easter eggs destinés à dynamiser la compétition.</p>
 <p>Puisque nous sommes de futurs roboticiens, nous ne pouvions pas résister à ajouter une petite touche de robotique : vous verrez ainsi de mystérieux robots apparaître au cours de la partie. En les touchant, vous déclencherez des effets inédits :</p>
 <ul>
@@ -176,8 +134,11 @@ Storytime mode</h2>
 <li>Contrôles inversés : les touches de votre adversaire se retrouvent soudainement inversées.</li>
 </ul>
 <p><b>Saurez-vous exploiter ces bonus (et pièges) pour devenir le champion incontesté du Fun Mode ?</b></p>
-<h2><a class="anchor" id="autotoc_md13"></a>
-<b>High Score</b></h2>
+<hr  />
+<h1><a class="anchor" id="autotoc_md54"></a>
+Fonctionalites (Les petits plus) - Diapo 4</h1>
+<h2><a class="anchor" id="autotoc_md55"></a>
+<b>High Score [Vasilis]</b></h2>
 <p>Cette fonctionnalité est disponible uniquement en mode Classic . Le jeu vérifie en permanence si un joueur atteint un score supérieur au record actuel. Lorsque c’est le cas, le record est immédiatement mis à jour.</p>
 <p>La sauvegarde est effectuée dans un fichier nommé <code>game_pong-highscore_849216.txt</code>, dont le contenu est chiffré afin de garantir l'intégrité des données et d'empêcher toute modification non autorisée. Ce fichier contient uniquement le dernier high score ainsi que le nom du joueur correspondant.</p>
 <p>Voici l'algorithme qui détermine si quelqu'un a fait un nouveau highscore:</p>
@@ -189,10 +150,10 @@ Storytime mode</h2>
 <div class="line">            strncpy(last_highscore_name, ((player1-&gt;get_user_score() &gt;= player2-&gt;get_user_score()) ? player1-&gt;get_user_name() : player2-&gt;get_user_name()).c_str(), 19);</div>
 <div class="line">            last_highscore_name[19] = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line">        }</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
-<b>Game Save</b></h2>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md56"></a>
+<b>Game Save [Vasilis]</b></h2>
 <p>Envie de faire une pause et de retenter de battre le record un peu plus tard ? Avec la fonctionnalité de <a class="el" href="class_game.html">Game</a> Save , vous pouvez sauvegarder l’état de votre partie et la reprendre quand vous le souhaitez. Là encore, le chiffrement est appliqué pour garantir l’intégrité des données.</p>
-<h3><a class="anchor" id="autotoc_md15"></a>
+<h3><a class="anchor" id="autotoc_md57"></a>
 <b>Game save logic</b></h3>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="struct_save_state.html">SaveState</a> saveState;</div>
 <div class="line">saveState.<a class="code hl_variable" href="struct_save_state.html#a18a1f7e9ebf0510f78a43fce96d7baa5">score1</a> = player1-&gt;get_user_score();</div>
@@ -240,7 +201,7 @@ Storytime mode</h2>
 </div><!-- fragment --><blockquote class="doxtable">
 <p>&zwj;La sauvegarde du jeu est réalisée dans un fichier nommé <code>game_pong-save_849374.txt</code>. Ce fichier reste disponible jusqu’à ce que le joueur reprenne la partie sauvegardée ou choisisse de démarrer une nouvelle partie, auquel cas il sera automatiquement supprimé. Ainsi, votre progression est préservée même après avoir quitté le jeu. </p>
 </blockquote>
-<h3><a class="anchor" id="autotoc_md16"></a>
+<h3><a class="anchor" id="autotoc_md58"></a>
 <b>Game retrieve logic</b></h3>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="struct_save_state.html">SaveState</a> savedState;</div>
 <div class="line"><span class="keywordflow">if</span> (<a class="code hl_function" href="class_saving.html#ab71b9324583e823beda155c1f84ff95d">Saving::load_game</a>(savedState))</div>
@@ -268,8 +229,8 @@ Storytime mode</h2>
 <div class="ttc" id="aclass_saving_html_ab71b9324583e823beda155c1f84ff95d"><div class="ttname"><a href="class_saving.html#ab71b9324583e823beda155c1f84ff95d">Saving::load_game</a></div><div class="ttdeci">static bool load_game(SaveState &amp;state)</div><div class="ttdoc">Loads a game state from file.</div><div class="ttdef"><b>Definition</b> game_save.cpp:179</div></div>
 <div class="ttc" id="aclass_sound_effects_html_ad94ae51e4e6ffb41b3e718a2a16107a3"><div class="ttname"><a href="class_sound_effects.html#ad94ae51e4e6ffb41b3e718a2a16107a3">SoundEffects::change_music_track</a></div><div class="ttdeci">static void change_music_track(Mix_Music *music_file, int fade_out_duration=500, int fade_in_duration=500, int volume=MIX_MAX_VOLUME/3)</div><div class="ttdoc">Changes background music with fade effect.</div><div class="ttdef"><b>Definition</b> sound_effects.cpp:24</div></div>
 <div class="ttc" id="agame_8hpp_html_ad0ed1832dd134806ad335cdcc1a59ad2ac9dbb2b7c84159b632d71e512eba8428"><div class="ttname"><a href="game_8hpp.html#ad0ed1832dd134806ad335cdcc1a59ad2ac9dbb2b7c84159b632d71e512eba8428">game_state::Playing</a></div><div class="ttdeci">@ Playing</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
-<b>Choisir le type de la balle</b></h2>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md59"></a>
+<b>Choisir le type de la balle [Dounia]</b></h2>
 <p>Par défaut, la balle du Pong est de forme circulaire, mais pourquoi ne pas la personnaliser ? À chaque début de partie, vous pouvez sélectionner l’une des 3 formes proposées :</p>
 <ol type="1">
 <li>Cercle : avec une image graphique pour la détection de collision [SDL forme utilisée pour détecter les collisions].</li>
@@ -277,8 +238,8 @@ Storytime mode</h2>
 <li>Carré</li>
 </ol>
 <p>Ce n’est qu’une preuve de concept : rien ne vous empêche d’imaginer et d’intégrer des formes plus originales dans l’interface graphique.</p>
-<h2><a class="anchor" id="autotoc_md18"></a>
-<b>Changement de la musique</b></h2>
+<h2><a class="anchor" id="autotoc_md60"></a>
+<b>Changement de la musique [Yanis]</b></h2>
 <p>Grâce à la bibliothèque SDL Mixer, nous pouvons gérer différents effets sonores et musiques avec des fonctions de fade-in et fade-out. Chaque mode peut ainsi avoir sa propre ambiance sonore, pour rendre l’expérience de jeu encore plus immersive.</p>
 <p>Voici l'implémentation:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="class_sound_effects.html#ad94ae51e4e6ffb41b3e718a2a16107a3">SoundEffects::change_music_track</a>(Mix_Music *music_file,</div>
@@ -291,8 +252,8 @@ Storytime mode</h2>
 <div class="line">    Mix_FadeInMusic(music_file, -1, fade_in_duration);</div>
 <div class="line">    Mix_VolumeMusic(volume);</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md19"></a>
-<b>Chiffrement des données</b></h1>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md61"></a>
+<b>Chiffrement des données [Vasilis]</b></h1>
 <p>La sauvegarde des données utilise un système de chiffrement XOR simple avec une clé rotative:</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span>SavingEncryption {</div>
 <div class="line"><span class="keyword">private</span>:</div>
@@ -308,88 +269,72 @@ Storytime mode</h2>
 <blockquote class="doxtable">
 <p>&zwj;Inspiré de <a href="https://www.101computing.net/xor-encryption-algorithm/">https://www.101computing.net/xor-encryption-algorithm/</a> L'utilisation de XOR permet à la même opération de chiffrer et de déchiffrer </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md20"></a>
-<b>Les objets</b></h1>
+<h1><a class="anchor" id="autotoc_md62"></a>
+</h1>
+<h1><a class="anchor" id="autotoc_md63"></a>
+<b>Les objets [1. Yanis, 2. Dounia, 3. Vasilis ] - Diapo 5</b></h1>
 <p>Dans ce projet, toutes les fonctionnalités ont été implémentées sous la forme d’objets, garantissant ainsi la modularité, la flexibilité et une organisation claire du code. Chaque élément du jeu Pong est représenté par une classe spécifique, ce qui permet une maintenance aisée et une évolutivité simplifiée du programme.</p>
-<p>Voici les différentes classes que nous avons définies :</p>
+<p>Voici les classes essentiels que nous avons définies :</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Class   </th><th class="markdownTableHeadNone">Description   </th><th class="markdownTableHeadNone">Fichier    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a>   </td><td class="markdownTableBodyNone">Intelligence artificielle pour contrôler une raquette automatiquement   </td><td class="markdownTableBodyNone"><a class="el" href="ai_8cpp.html" title="Implementation of the AI class for computer-controlled paddle.">ai.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a>   </td><td class="markdownTableBodyNone">Intelligence artificielle pour contrôler une raquette automatiquement   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a>   </td><td class="markdownTableBodyNone">Classe de base abstraite pour tous les types de balles dans le jeu car nous proposons différents types de balles à choisir avant de lancer le jeu   </td><td class="markdownTableBodyNone">ball_base.pp    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a>   </td><td class="markdownTableBodyNone">Classe de base abstraite pour tous les types de balles dans le jeu car nous proposons différents types de balles à choisir avant de lancer le jeu   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="class_classic_ball.html" title="Classic circular ball implementation inheriting from BallBase.">ClassicBall</a>   </td><td class="markdownTableBodyNone">Implémentation classique de balle circulaire héritant de <a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a>   </td><td class="markdownTableBodyNone"><a class="el" href="classic__ball_8cpp.html" title="Implementation of the classic circular ball ClassicBall class.">classic_ball.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_classic_ball.html" title="Classic circular ball implementation inheriting from BallBase.">ClassicBall</a>   </td><td class="markdownTableBodyNone">Implémentation classique de balle circulaire héritant de <a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a>   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="class_game.html">Game</a>   </td><td class="markdownTableBodyNone">Contient tous les paramètres principaux, surtout les références de tous les autres objets mentionnés dans cette liste   </td><td class="markdownTableBodyNone"><a class="el" href="game_8cpp.html">game.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_square_ball.html" title="Square shaped ball implementation inheriting from BallBase.">SquareBall</a>   </td><td class="markdownTableBodyNone">Implémentation de la balle en forme de carré héritant de <a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a>   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="class_game_over.html">GameOver</a>   </td><td class="markdownTableBodyNone">Gère l'écran de fin de partie lorsqu'une partie est terminée ou si on choisit de terminer manuellement une partie   </td><td class="markdownTableBodyNone"><a class="el" href="game__over_8cpp.html" title="Implementation of the game_over screen class.">game_over.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_triangle_ball.html" title="Triangle shaped ball implementation inheriting from BallBase.">TriangleBall</a>   </td><td class="markdownTableBodyNone">Implémentation de la balle en forme de triangle héritant de <a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a>   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="class_g_u_i.html" title="Utility class providing user interface functionality.">GUI</a>   </td><td class="markdownTableBodyNone">Classe utilitaire fournissant des fonctionnalités d'interface utilisateur (donner notre prénom via SDL))   </td><td class="markdownTableBodyNone"><a class="el" href="gui_8cpp.html" title="Implementation of the GUI class for game interface.">gui.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="struct_high_score.html" title="Structure representing a high score record.">HighScore</a> [structure]   </td><td class="markdownTableBodyNone">Structure représentant un record de score . Il gère la sauvegarde de ces données spécifiques   </td><td class="markdownTableBodyNone"><a class="el" href="game__save_8cpp.html" title="Implementation of save game functionality for Saving class.">game_save.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_invisible_power.html" title="Power-up that makes the ball temporarily invisible.">InvisiblePower</a>   </td><td class="markdownTableBodyNone">Rend la balle temporairement invisible. Il hérite de la classe <a class="el" href="class_power.html" title="Class representing power-up items that affect gameplay.">Power</a>   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="class_invisible_power.html" title="Power-up that makes the ball temporarily invisible.">InvisiblePower</a>   </td><td class="markdownTableBodyNone">Rend la balle temporairement invisible. Il hérite de la classe <a class="el" href="class_power.html" title="Class representing power-up items that affect gameplay.">Power</a>   </td><td class="markdownTableBodyNone"><a class="el" href="invisible__power_8cpp.html" title="Implementation of the InvisiblePower class.">invisible_power.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_power.html" title="Class representing power-up items that affect gameplay.">Power</a>   </td><td class="markdownTableBodyNone">Représente les éléments de power-up qui affectent le gameplay comme le changement de la taille de la raquette, ou rendre la balle invisible   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="class_power.html" title="Class representing power-up items that affect gameplay.">Power</a>   </td><td class="markdownTableBodyNone">Représente les éléments de power-up qui affectent le gameplay comme le changement de la taille de la raquette, ou rendre la balle invisible   </td><td class="markdownTableBodyNone"><a class="el" href="power_8cpp.html" title="Implementation of the Power class for special game effects.">power.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_letter.html" title="Represents a letter in the storytime game mode.">Letter</a>   </td><td class="markdownTableBodyNone">Représente une lettre dans le mode de jeu Storytime. Contient toute la fonctionnalité pour gérer les mots dans ce mode Storytime   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="class_letter.html" title="Represents a letter in the storytime game mode.">Letter</a>   </td><td class="markdownTableBodyNone">Représente une lettre dans le mode de jeu Storytime. Contient toute la fonctionnalité pour gérer les mots dans ce mode Storytime   </td><td class="markdownTableBodyNone"><a class="el" href="letter_8cpp.html" title="Implementation of the Letter class.">letter.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="class_paddle.html" title="Represents a player paddle/racket in the game.">Paddle</a>   </td><td class="markdownTableBodyNone">Représente une raquette (paddle) de joueur   </td><td class="markdownTableBodyNone"><a class="el" href="paddle_8cpp.html" title="Implementation of the Paddle class for the game.">paddle.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_game.html">Game</a>   </td><td class="markdownTableBodyNone">Contient tous les paramètres principaux, surtout les références de tous les autres objets mentionnés dans cette liste   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="struct_save_state.html" title="Structure representing the complete game state for saving/loading.">SaveState</a> [structure]   </td><td class="markdownTableBodyNone">Structure représentant l'état complet du jeu pour la sauvegarde/le chargement   </td><td class="markdownTableBodyNone"><a class="el" href="game__save_8cpp.html" title="Implementation of save game functionality for Saving class.">game_save.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_paddle.html" title="Represents a player paddle/racket in the game.">Paddle</a>   </td><td class="markdownTableBodyNone">Représente une raquette (paddle) de joueur   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="class_saving.html" title="Utility class for managing save game and high score functionality.">Saving</a>   </td><td class="markdownTableBodyNone">Classe utilitaire de sauvegarde pour gérer la sauvegarde de la partie et la fonctionnalité de score élevé   </td><td class="markdownTableBodyNone"><a class="el" href="game__save_8cpp.html" title="Implementation of save game functionality for Saving class.">game_save.cpp</a>    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="class_sound_effects.html" title="Utility class for handling sound effects and music in the game.">SoundEffects</a>   </td><td class="markdownTableBodyNone">Classe pour gérer les effets sonores et la musique dans le jeu   </td><td class="markdownTableBodyNone"><a class="el" href="sound__effects_8cpp.html" title="Implementation of the SoundEffects utility class.">sound_effects.cpp</a>    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="class_square_ball.html" title="Square shaped ball implementation inheriting from BallBase.">SquareBall</a>   </td><td class="markdownTableBodyNone">Implémentation de la balle en forme de carré héritant de <a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a>   </td><td class="markdownTableBodyNone"><a class="el" href="square__ball_8cpp.html" title="Implementation of the SquareBall class.">square_ball.cpp</a>    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="class_triangle_ball.html" title="Triangle shaped ball implementation inheriting from BallBase.">TriangleBall</a>   </td><td class="markdownTableBodyNone">Implémentation de la balle en forme de triangle héritant de <a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a>   </td><td class="markdownTableBodyNone"><a class="el" href="triangle__ball_8cpp.html" title="Implementation of the TriangleBall class.">triangle_ball.cpp</a>    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="class_user.html" title="Represents a player in the game with name and score tracking.">User</a>   </td><td class="markdownTableBodyNone">Représente un joueur dans le jeu avec son nom et le suivi du score   </td><td class="markdownTableBodyNone"><a class="el" href="user_8cpp.html" title="Implementation of the User class for player management.">user.cpp</a>    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="classpage__2b__1t.html" title="Notice screen with 2 buttons and 1 title.">page_2b_1t</a>   </td><td class="markdownTableBodyNone">Écran d'avis avec 2 boutons et 1 titre   </td><td class="markdownTableBodyNone"><a class="el" href="page__2b__1t_8cpp.html" title="Implementation of the notice screen page_2b_1t class.">page_2b_1t.cpp</a>    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="classpage__3b.html" title="Pause menu with 3 buttons.">page_3b</a>   </td><td class="markdownTableBodyNone">Menu de pause avec 3 boutons   </td><td class="markdownTableBodyNone"><a class="el" href="page__3b_8cpp.html" title="Implementation of the pause menu page_3b class.">page_3b.cpp</a>    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="classpage__3b__0t.html" title="Main menu class with 3 buttons and no title.">page_3b_0t</a>   </td><td class="markdownTableBodyNone">Classe de menu principal avec 3 boutons et aucun titre   </td><td class="markdownTableBodyNone"><a class="el" href="page__3b__0t_8cpp.html" title="Implementation of the main menu page_3b_0t class.">page_3b_0t.cpp</a>    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="classpage__3b__1t.html" title="Middle menu class with 3 buttons and 1 title.">page_3b_1t</a>   </td><td class="markdownTableBodyNone">Classe de menu intermédiaire avec 3 boutons et 1 titre   </td><td class="markdownTableBodyNone"><a class="el" href="page__3b__1t_8cpp.html" title="Implementation of the middle menu page_3b_1t class.">page_3b_1t.cpp</a>    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="classpage__4b__1t.html" title="Defines the mode selection menu with 4 buttons and 1 title.">page_4b_1t</a>   </td><td class="markdownTableBodyNone">Définit le menu de sélection de mode avec 4 boutons et 1 titre   </td><td class="markdownTableBodyNone"><a class="el" href="page__4b__1t_8cpp.html" title="Implementation of the mode selection menu page_4b_1t class.">page_4b_1t.cpp</a>   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_user.html" title="Represents a player in the game with name and score tracking.">User</a>   </td><td class="markdownTableBodyNone">Représente un joueur dans le jeu avec son nom et le suivi du score   </td><td class="markdownTableBodyNone"></td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md21"></a>
-<b>Les foncteurs</b></h1>
+<p><b>Les graphes UML pour les utiliser dans les diapos:</b></p>
+<p>Pour mieux structurer notre projet et assurer une architecture claire et maintenable, nous avons modélisé les principales classes du jeu sous forme de diagrammes UML. Ces diagrammes UML permettent de visualiser l’architecture du projet et les interactions entre les classes. Cette structuration facilite la compréhension du code, son évolutivité et sa maintenance.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Foncteur   </th><th class="markdownTableHeadNone">Descriptions   </th><th class="markdownTableHeadNone">Fichier    </th></tr>
+<th class="markdownTableHeadNone">Class   </th><th class="markdownTableHeadNone">UML    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="structtriangle__renderer.html" title="Functor for rendering triangle shapes.">triangle_renderer</a>   </td><td class="markdownTableBodyNone">Foncteur pour le rendu des formes triangulaires   </td><td class="markdownTableBodyNone"><a class="el" href="renderers_8cpp.html" title="Implementation of rendering functions for various game shapes.">renderers.cpp</a>    </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a>   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/ai-class.png" alt="AI" class="inline"/>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="structsquare__renderer.html" title="Functor for rendering square shapes.">square_renderer</a>   </td><td class="markdownTableBodyNone">Foncteur de rendu de formes carrées   </td><td class="markdownTableBodyNone"><a class="el" href="renderers_8cpp.html" title="Implementation of rendering functions for various game shapes.">renderers.cpp</a>   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="class_paddle.html" title="Represents a player paddle/racket in the game.">Paddle</a>   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/paddle.png" alt="Paddle" class="inline"/>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Pages (all)   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/page-classes.png" alt="Pages" class="inline"/>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Powers (all)   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/power-classes.png" alt="Powers" class="inline"/>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Save   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/game-save-system.png" alt="Game Save" class="inline"/>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Sound   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/soundeffects.png" alt="Sound" class="inline"/>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="class_user.html" title="Represents a player in the game with name and score tracking.">User</a>   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/user-class.png" alt="User" class="inline"/>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="class_letter.html" title="Represents a letter in the storytime game mode.">Letter</a>   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/group/Letter-Class.png" alt="Letter" class="inline"/>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Balls   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/group/Ball-Hierarchy.png" alt="Balls" class="inline"/>   </td></tr>
 </table>
-<p>L'utilisation de foncteurs nous permet d'ajouter facilement de nouveaux types de formes et de les tester individuellement.</p>
-<blockquote class="doxtable">
-<p>&zwj;Cette approche nous a permis d'accélérer le développement en permettant des tests isolés des différents SDL renderers. </p>
-</blockquote>
-<h1><a class="anchor" id="autotoc_md22"></a>
-<b>Structure des pages</b></h1>
-<p>Afin de garantir une interface utilisateur claire, fluide et facilement adaptable, nous avons défini plusieurs structures prédéfinies pour l’affichage des différentes pages du jeu. Chaque modèle est conçu pour répondre à des besoins spécifiques et assurer une navigation intuitive.</p>
-<p>Voici les spécifications précises de chaque modèle :</p>
-<ul>
-<li><code><a class="el" href="classpage__3b__1t.html" title="Middle menu class with 3 buttons and 1 title.">page_3b_1t</a></code> : Trois boutons centrés verticalement, accompagnés d’un titre en gras en haut de la page (utilisé pour les menus principaux).</li>
-<li><code><a class="el" href="classpage__2b__1t.html" title="Notice screen with 2 buttons and 1 title.">page_2b_1t</a></code> : Deux boutons et une large section dédiée à un texte explicatif (idéal pour l’affichage d’avis ou d’instructions détaillées).</li>
-<li><code><a class="el" href="classpage__4b__1t.html" title="Defines the mode selection menu with 4 buttons and 1 title.">page_4b_1t</a></code> : Quatre boutons répartis sur la page, avec un titre en gras en haut (utilisé pour la sélection des modes de jeu).</li>
-<li><code><a class="el" href="classpage__3b__0t.html" title="Main menu class with 3 buttons and no title.">page_3b_0t</a></code> : Trois boutons répartis de manière spécifique : deux placés en haut et un troisième positionné vers le bas de la page (permettant de mettre en avant une option particulière).</li>
-<li><code><a class="el" href="classpage__3b.html" title="Pause menu with 3 buttons.">page_3b</a></code> : Trois boutons alignés verticalement et centrés au milieu de l’écran (structure utilisée pour le menu pause).</li>
-</ul>
-<p>Ces structures offrent une navigation cohérente, garantissant une meilleure expérience utilisateur tout au long du jeu.</p>
-<h1><a class="anchor" id="autotoc_md23"></a>
-<b>La logique du jeu</b></h1>
-<h2><a class="anchor" id="autotoc_md24"></a>
-<b>L'interface graphique</b></h2>
+<p>Avec cette approche, chaque élément du jeu remplit un rôle bien défini et reste modulaire, ce qui permet d’ajouter de nouvelles fonctionnalités (comme le mode réseau) sans perturber l’ensemble du projet. Nous avons créé un diagramme UML pour les différentes dépendances entre les classes. De plus, les différentes notions de programmation utilisées dans chaque partie y sont indiquées.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md65"></a>
+<b>Les concepts clés - Diapo 6</b></h1>
+<h2><a class="anchor" id="autotoc_md66"></a>
+<b>L'interface graphique [Yanis]</b></h2>
 <p>Maintenant que nous avons une vue d’ensemble des différentes pages et des éléments interactifs du jeu, intéressons-nous à la façon dont l’interface graphique est conçue et gérée.</p>
 <p>Nous utilisons SDL pour afficher et rendre toutes les formes et objets du jeu dans une fenêtre aux dimensions prédéfinies dans le fichier <code><a class="el" href="macros_8hpp.html" title="Defines macros and constants used throughout the project.">macros.hpp</a></code> (plus de détails dans la section <em><b>Pourquoi <a class="el" href="macros_8hpp.html" title="Defines macros and constants used throughout the project.">macros.hpp</a></b></em>).</p>
 <p>Le programme principal repose sur la classe <code><a class="el" href="class_game.html">Game</a></code> , qui orchestre l’ensemble du jeu à travers trois méthodes clés :</p>
@@ -413,8 +358,8 @@ Storytime mode</h2>
 <div class="ttc" id="aclass_game_html_a8beca5e773f8b5ca761122a187945654"><div class="ttname"><a href="class_game.html#a8beca5e773f8b5ca761122a187945654">Game::game_logic</a></div><div class="ttdeci">void game_logic()</div><div class="ttdef"><b>Definition</b> game.cpp:445</div></div>
 <div class="ttc" id="aclass_game_html_ac09ebf3830ea755d3e931eefe7e3d846"><div class="ttname"><a href="class_game.html#ac09ebf3830ea755d3e931eefe7e3d846">Game::output</a></div><div class="ttdeci">void output()</div><div class="ttdef"><b>Definition</b> game.cpp:1197</div></div>
 <div class="ttc" id="aclass_game_html_acf184c63253cc802dad8d2b1e06b636c"><div class="ttname"><a href="class_game.html#acf184c63253cc802dad8d2b1e06b636c">Game::game</a></div><div class="ttdeci">void game()</div><div class="ttdef"><b>Definition</b> game.cpp:975</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
-Loop</h2>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md67"></a>
+Loop</h3>
 <p>Dans cette boucle, trois fonctions essentielles assurent le bon déroulement du jeu :</p>
 <ul>
 <li><code>game_logic()</code> : Gère la logique principale et décide des transitions entre les pages, menus et événements du jeu.</li>
@@ -422,8 +367,8 @@ Loop</h2>
 <li><code>output()</code> : Génère et affiche les éléments visuels sur l’interface SDL en fonction des paramètres définis par la logique du jeu.</li>
 </ul>
 <p>Ces trois fonctions fonctionnent en synergie pour offrir une expérience fluide et dynamique, assurant que le jeu réagit de manière cohérente aux interactions du joueur.</p>
-<h2><a class="anchor" id="autotoc_md26"></a>
-Héritage</h2>
+<h2><a class="anchor" id="autotoc_md68"></a>
+Héritage + Def [Vasilis]</h2>
 <p>L'héritage est largement utilisé pour étendre la fonctionnalité des classes de base. Les trois types de balles (<code><a class="el" href="class_classic_ball.html" title="Classic circular ball implementation inheriting from BallBase.">ClassicBall</a></code>, <code><a class="el" href="class_square_ball.html" title="Square shaped ball implementation inheriting from BallBase.">SquareBall</a></code> et <code><a class="el" href="class_triangle_ball.html" title="Triangle shaped ball implementation inheriting from BallBase.">TriangleBall</a></code>) héritent tous de la classe abstraite <code><a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a></code>. Par exemple, dans <code><a class="el" href="classic__ball_8hpp.html" title="Header defining the classic circular ball ClassicBall class.">classic_ball.hpp</a></code>, nous voyons :</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_class" href="class_classic_ball.html">ClassicBall</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_ball_base.html">BallBase</a> {</div>
 <div class="line"><span class="keyword">public</span>:</div>
@@ -437,8 +382,8 @@ Héritage</h2>
 <div class="ttc" id="aclass_classic_ball_html_a45bf271d7abeee37a8a729150dc1b41d"><div class="ttname"><a href="class_classic_ball.html#a45bf271d7abeee37a8a729150dc1b41d">ClassicBall::ClassicBall</a></div><div class="ttdeci">ClassicBall()</div><div class="ttdoc">Constructor for ClassicBall.</div><div class="ttdef"><b>Definition</b> classic_ball.hpp:28</div></div>
 <div class="ttc" id="aclass_classic_ball_html_a6e80547486ec3d868dc577841a768df0"><div class="ttname"><a href="class_classic_ball.html#a6e80547486ec3d868dc577841a768df0">ClassicBall::render_object</a></div><div class="ttdeci">void render_object(SDL_Renderer *renderer) override</div><div class="ttdoc">Renders the classic ball on screen.</div><div class="ttdef"><b>Definition</b> classic_ball.cpp:71</div></div>
 </div><!-- fragment --><p>Dans le domaine des power-ups, nous avons également une hiérarchie d'héritage. Les classes <code><a class="el" href="class_invisible_power.html" title="Power-up that makes the ball temporarily invisible.">InvisiblePower</a></code> et <code>InversePower</code> héritent de la classe <code><a class="el" href="class_power.html" title="Class representing power-up items that affect gameplay.">Power</a></code>, comme on peut le voir dans <code><a class="el" href="invisible__power_8hpp.html" title="Header defining the InvisiblePower class for ball visibility effects.">invisible_power.hpp</a></code> et <code><a class="el" href="inverse__power_8hpp.html" title="Implementation of the InversiblePower class.">inverse_power.hpp</a></code>. Cela permet de partager le comportement commun tout en spécialisant certaines fonctionnalités</p>
-<h2><a class="anchor" id="autotoc_md27"></a>
-Polymorphisme</h2>
+<h2><a class="anchor" id="autotoc_md69"></a>
+Polymorphisme + Def [Yanis]</h2>
 <p>Le polymorphisme est implémenté à travers l'utilisation de méthodes virtuelles et leur redéfinition dans les classes dérivées. Un exemple clair se trouve dans la hiérarchie des balles, où la méthode <code>render_object()</code> est définie différemment dans chaque type de balle :</p>
 <ul>
 <li>Dans <code><a class="el" href="classic__ball_8cpp.html" title="Implementation of the classic circular ball ClassicBall class.">classic_ball.cpp</a></code>, elle dessine un cercle.</li>
@@ -447,8 +392,8 @@ Polymorphisme</h2>
 </ul>
 <p>Le jeu peut manipuler n'importe quel objet dérivé de <code><a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a></code> de manière uniforme, en appelant <code>mBall-&gt;render_object(renderer)</code> dans <code><a class="el" href="game_8cpp.html">game.cpp</a></code>, sans se soucier du type spécifique de balle utilisé.</p>
 <p>De même, les power-ups démontrent le polymorphisme avec leurs méthodes <code>update()</code> et <code>render()</code> qui sont appelées de manière générique mais exécutent un comportement spécifique à chaque type de power-up.</p>
-<h2><a class="anchor" id="autotoc_md28"></a>
-Abstraction</h2>
+<h2><a class="anchor" id="autotoc_md70"></a>
+Abstraction + Def [Dounia]</h2>
 <p>L'abstraction est implémentée principalement à travers les classes abstraites du projet. La classe <code><a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a></code> est un excellent exemple d'abstraction. Dans le fichier <code><a class="el" href="ball__base_8hpp.html" title="Base class for all ball types in the game.">ball_base.hpp</a></code>, nous définissons une interface commune pour tous les types de balles avec des méthodes abstraites comme <code>render_object()</code>. Cette méthode est déclarée virtuelle pure (<code>= 0</code>), obligeant toutes les classes dérivées à fournir leur propre implémentation.</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_class" href="class_ball_base.html">BallBase</a> {</div>
 <div class="line"><span class="keyword">public</span>:</div>
@@ -458,8 +403,8 @@ Abstraction</h2>
 <div class="line">};</div>
 <div class="ttc" id="aclass_ball_base_html_a08a0f6f379ba1f933272a0745aea72d1"><div class="ttname"><a href="class_ball_base.html#a08a0f6f379ba1f933272a0745aea72d1">BallBase::render_object</a></div><div class="ttdeci">virtual void render_object(SDL_Renderer *renderer)=0</div><div class="ttdoc">Pure virtual method to render the ball.</div></div>
 </div><!-- fragment --><p>De même, la classe <code><a class="el" href="class_power.html" title="Class representing power-up items that affect gameplay.">Power</a></code> dans <code><a class="el" href="power_8hpp.html" title="Header defining the Power class for special game effects.">power.hpp</a></code> fournit une abstraction pour les différents types de power-ups du jeu, avec des méthodes virtuelles qui peuvent être redéfinies par les classes dérivées comme <code><a class="el" href="class_invisible_power.html" title="Power-up that makes the ball temporarily invisible.">InvisiblePower</a></code> et <code>InversePower</code>.</p>
-<h2><a class="anchor" id="autotoc_md29"></a>
-Fonctions lambda</h2>
+<h2><a class="anchor" id="autotoc_md71"></a>
+Fonctions lambda + Explication c'est quoi en relaite (def suffit pas) [Dounia]</h2>
 <p>Nous utilisons des fonctions lambda pour contrôler les limites physiques de la raquette (paddle). Cette approche nous permet d'obtenir un code modulaire, facilitant la mise à jour des fonctionnalités liées au déplacement et aux contraintes de position de la raquette.</p>
 <p>Les lambdas sont particulièrement adaptées à notre cas, car elles nous permettent de définir des fonctions anonymes tout en bénéficiant d’un typage automatique, simplifiant ainsi l'écriture du code.</p>
 <p>Les deux fonctions lambda utilisées sont:</p>
@@ -484,8 +429,8 @@ Fonctions lambda</h2>
 <div class="line">            this-&gt;set_pos_y(600.0f - this-&gt;get_racket_height() / 2.0f);</div>
 <div class="line">        }</div>
 <div class="line">    };</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md30"></a>
-Encapsulation</h2>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md72"></a>
+Encapsulation + Def [Vasilis]</h2>
 <p>L'encapsulation est présente dans presque toutes les classes du projet, avec une distinction claire entre les interfaces publiques et les détails d'implémentation privés. Par exemple, la classe <code><a class="el" href="class_user.html" title="Represents a player in the game with name and score tracking.">User</a></code> dans <code><a class="el" href="user_8hpp.html" title="Header defining the User class for player management.">user.hpp</a></code> encapsule les données relatives au joueur :</p>
 <div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_class" href="class_user.html">User</a> {</div>
 <div class="line"><span class="keyword">private</span>:</div>
@@ -508,7 +453,7 @@ Encapsulation</h2>
 <div class="ttc" id="aclass_user_html_acec41fe4a1d3445c65b5105043dca336"><div class="ttname"><a href="class_user.html#acec41fe4a1d3445c65b5105043dca336">User::increment_score</a></div><div class="ttdeci">void increment_score()</div><div class="ttdoc">Increments the user's score by 1.</div><div class="ttdef"><b>Definition</b> user.cpp:24</div></div>
 <div class="ttc" id="aclass_user_html_afebfb582737ff29fb227da39f74f6c9a"><div class="ttname"><a href="class_user.html#afebfb582737ff29fb227da39f74f6c9a">User::reset_score</a></div><div class="ttdeci">void reset_score()</div><div class="ttdoc">Resets the user's score to 0.</div><div class="ttdef"><b>Definition</b> user.cpp:34</div></div>
 </div><!-- fragment --><p>Un autre exemple d'encapsulation se trouve dans le fichier <code><a class="el" href="game__save_8cpp.html" title="Implementation of save game functionality for Saving class.">game_save.cpp</a></code>, où un namespace anonyme est utilisé. Tous les détails sont disponibles ci-dessous.</p>
-<h3><a class="anchor" id="autotoc_md31"></a>
+<h3><a class="anchor" id="autotoc_md73"></a>
 Namespace</h3>
 <p>Dans le fichier <a class="el" href="game__save_8cpp.html" title="Implementation of save game functionality for Saving class.">game_save.cpp</a>, nous utilisons un namespace anonyme afin d'encapsuler les constantes sensibles (comme la clé de chiffrement XOR) ainsi que les fonctions utilitaires dédiées au codage et au décodage des données de sauvegarde.</p>
 <p>Ce choix présente plusieurs avantages :</p>
@@ -555,42 +500,35 @@ Namespace</h3>
 <blockquote class="doxtable">
 <p>&zwj;Afin de réduire la longueur du rapport, nous avons retiré les commentaires détaillés des différentes fonctions. Pour une explication complète et une vue d’ensemble du code, vous pouvez consulter directement <a class="el" href="game__save_8cpp.html" title="Implementation of save game functionality for Saving class.">game_save.cpp</a>. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md32"></a>
-Autres aspects du développement</h1>
-<p>Tout au long du projet, nous avons soigneusement choisi les niveaux de visibilité des variables dans nos classes, en décidant de les déclarer <code>private</code> ou <code>public</code>en fonction de leur usage. De plus, nous avons veillé à utiliser de manière appropriée les mots-clés <code>static</code>et <code>virtual</code>, garantissant ainsi une encapsulation efficace et une meilleure organisation du code.</p>
-<h1><a class="anchor" id="autotoc_md33"></a>
-Les tests</h1>
-<p>Lors de nos cours, nous avons étudié l’utilisation de CTest pour organiser et automatiser les tests unitaires. Étant donné que nous avons déjà intégré un fichier CMakeLists.txt dans notre projet, nous avons choisi d’utiliser cette approche pour tester nos fonctionnalités et les méthodes implémentées dans nos différentes classes.</p>
-<h2><a class="anchor" id="autotoc_md34"></a>
-Organisation des tests</h2>
-<p>Le répertoire <code>b</code> contient son propre fichier <code>b</code>, qui permet de créer les exécutables de nos programmes de test afin de vérifier le bon fonctionnement de nos méthodes.</p>
-<p>Chaque fichier <code>b</code> est un programme autonome pouvant être exécuté indépendamment. Si le test est réussi, il retourne 0. Cependant en cas d’échec, il renvoie une autre valeur avec des informations détaillées sur le problème rencontré.</p>
-<p>La réalisation des tests unitaires s’inscrit dans une démarche d’intégration continue, permettant de valider la non-régression du code tout au long du développement de notre jeu.</p>
-<h2><a class="anchor" id="autotoc_md35"></a>
-Fonctionnalités testées</h2>
-<p>Voici les différentes fonctionnalités que nous avons testées :</p>
+<h2><a class="anchor" id="autotoc_md74"></a>
+<b>Les foncteurs [Vasilis]</b></h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Foncteur   </th><th class="markdownTableHeadNone">Descriptions   </th><th class="markdownTableHeadNone">Fichier    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="structtriangle__renderer.html" title="Functor for rendering triangle shapes.">triangle_renderer</a>   </td><td class="markdownTableBodyNone">Foncteur pour le rendu des formes triangulaires   </td><td class="markdownTableBodyNone"><a class="el" href="renderers_8cpp.html" title="Implementation of rendering functions for various game shapes.">renderers.cpp</a>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="structsquare__renderer.html" title="Functor for rendering square shapes.">square_renderer</a>   </td><td class="markdownTableBodyNone">Foncteur de rendu de formes carrées   </td><td class="markdownTableBodyNone"><a class="el" href="renderers_8cpp.html" title="Implementation of rendering functions for various game shapes.">renderers.cpp</a>   </td></tr>
+</table>
+<p>L'utilisation de foncteurs nous permet d'ajouter facilement de nouveaux types de formes et de les tester individuellement.</p>
+<blockquote class="doxtable">
+<p>&zwj;Cette approche nous a permis d'accélérer le développement en permettant des tests isolés des différents SDL renderers. </p>
+</blockquote>
+<hr  />
+<h1><a class="anchor" id="autotoc_md76"></a>
+Problemes recnontres [Dounia] - Diapo 7</h1>
+<p>Voici les differents problemes / chalenges reconnus:</p>
 <ul>
-<li><b>balls_test</b> <b>:</b> Toutes les fonctionnalités de la classe abstraite <code><a class="el" href="class_ball_base.html" title="Abstract base class for all ball types in the game.">BallBase</a></code> et de ses classes dérivées (<a class="el" href="class_square_ball.html" title="Square shaped ball implementation inheriting from BallBase.">SquareBall</a>, <a class="el" href="class_triangle_ball.html" title="Triangle shaped ball implementation inheriting from BallBase.">TriangleBall</a>, <a class="el" href="class_classic_ball.html" title="Classic circular ball implementation inheriting from BallBase.">ClassicBall</a>), la vérification des constructeurs, setters et getters de la classe en question, ainsi que les méthodes responsables du rendu graphique sous SDL.</li>
-<li><b>user_test :</b> Les méthodes de création et de mise à jou**r** d’un joueur</li>
-<li><b>paddle_test :</b> On teste également la création de nos deux rackets (paddles) pour le jeu. On vérifie s’ils ont bien une distinction de positionnement (gauche ou droite). Par ailleurs, on vérifie la mise à jour de leur taille (grâce aux méthodes spécifiques), le rendering de ces objets ainsi que le controle du positionnement.</li>
-<li><b>letter_test (mode Storytime) :</b> Vérification de la bonne création des lettres via leurs constructeurs. On teste aussi la détection de collisions entre la balle et les lettres. Enfin, on cherche à tester si la mise à jour du score est bien faite.</li>
+<li>segmentation fault when we declated the “new <a class="el" href="class_power.html" title="Class representing power-up items that affect gameplay.">Power</a>(…” due to an issue on the constructror =&gt; pas d’allocation memoire pour l’objet en question, donc tous les operations tels que power.update(… n’etait pas succesives.</li>
+<li>⁠Pendant le development de la fonctionalite <a class="el" href="struct_high_score.html" title="Structure representing a high score record.">HighScore</a>, au debut nous avons pensé que pour etre capable de trouer le highscore entre differents sessions du jeu, il faudrait sauvegarder tous les meilleurs scores de chaque jeu. En fait ca suffit, d’avoir seulemnt l’information du derniere highscore. Comme ca nous evirons de chercher sur un fichier qui augment de plus en plus</li>
+<li>⁠Pendant le development de notre fonctionalite pour la sauvegarde, il faudrait trouver une maniere que le fichier de la sauvegarde soit etre lu et dedruit en “bonnes endroits”. En mode, la structure la plus optimale est la suivnate: si jamais un fichier de la sauvegarde existe, alors l’utilisateut peut chosir de continuer par ce fichier. S’il chosiit cette option, on va recuperer les donnes et on va supprimer le fichier directement et le jeu va se lancer. L’autre scenario est que l’utilisateur va choisir de commencer un nouveau jeu. Dans ce cas là, si il existe un fichier de sauvegarder, et on va lancer le nouveau jeu. - On prefere de faire ca, que de ecrire en desus deu fichier existant pour eviter des erreurs des informations qui restent dans le fichier qui chifré</li>
+<li>⁠Quand on etait en mode storytime ou fun, nous avons constaté que à la fin de chaque jeu avec de tours, si on voudrais recomemncer un jeu de ces deux modes, on ete rediregie directement sur page game over parce que la logique de tous n’etait complet. Effectiveemnt au debut de chaque jeu, on reinitialise les indicateurs iimportante stels que: type de balle, infos des joueurs, et le type du jeu, mais nous avons oublié de reinitialiser les informations concernant les tours.</li>
+<li>⁠Pour detcter les collisions entre la balle et les differents composantes tels que les robots ou les lettres, au debut on etait basé sur la detection de la supperposition des differrentes pixels entre les differents objets, donc il faudrait declarer differents fonctions pour les differentes types de balles, tandis que tout ca est observable via SDL rendering. SDL viens avec une fonction integré SDL_HasIntersection</li>
+<li>⁠Nous avons commencé le projet avec un Makefile, sauf que pas tout le monde a le memem ordinateur et le meme liens symboliques pour acceder auxx bilbiotheques de dependance de base. Donc, quand on essaye de tounrer le jeu sur un linux, il faudrait modifier tous les differents chemins. Le CMake nous aidé pour resoudre ce soucis. Nous avons declaré les chemins pur les differents architectures dans un fichier CmakeLists.txt. En combinant notre script d’installation de base, nous avons une integration parfait qui permet d’installer tous les librairies et les verfier avant creer le makefile via Cmake et toutner le logiciel</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md36"></a>
-Comment testons-nous ?</h2>
-<p>Nous utilisons les méthodes statiques de la classe <code>Assert</code> pour comparer les résultats obtenus avec les résultats attendus. Si la classe testée nécessite une initialisation de l’environnement SDL (pour le rendu graphique), celui-ci est chargé avant l’exécution des tests, même si l’affichage reste invisible.</p>
-<p>Chaque appel à <code>assert</code> évalue une expression booléenne qui représente une condition que le programme doit satisfaire pour être considéré comme correct. Si cette condition est vraie, l'exécution du programme se poursuit normalement, permettant ainsi de vérifier des conditions supplémentaires. En revanche, si l'expression s'avère fausse, le programme s'interrompt immédiatement avec un message d'erreur précisant le fichier source. Au final, si jamais notre main d’un test retourne 0, alors le test est bien terminé sans des erreurs.</p>
-<h1><a class="anchor" id="autotoc_md37"></a>
-Pourquoi macros.hpp</h1>
-<p>Le fichier <a class="el" href="macros_8hpp.html" title="Defines macros and constants used throughout the project.">macros.hpp</a> joue un rôle central dans notre projet en servant de référentiel unique pour toutes les constantes globales du jeu. Il permet de centraliser et de faciliter la gestion des paramètres essentiels, tels que :</p>
-<ul>
-<li>Les dimensions de la fenêtre du jeu</li>
-<li>Les identifiants des modes de jeu (ex. : mode IA, mode 2 joueurs)</li>
-<li>Les constantes associées à la navigation dans les menus</li>
-<li>Les niveaux de difficulté</li>
-</ul>
-<p>Grâce à ce fichier, nous avons assuré une meilleure lisibilité et une maintenance simplifiée, en évitant la dispersion des constantes dans l’ensemble du code.</p>
-<h1><a class="anchor" id="autotoc_md38"></a>
-Pour aller plus loin</h1>
+<hr  />
+<h1><a class="anchor" id="autotoc_md78"></a>
+Pour aller plus loin [Vasilis] - Diapo 8</h1>
 <p>Initialement, nous avons tenté d'implémenter un mode multijoueur en réseau via TCP avec une architecture client-serveur. Cependant, nous nous sommes rapidement heurtés à la complexité de cette intégration.</p>
 <p>En effet, cette fonctionnalité aurait dû être pensée dès le début du projet afin d’être intégrée naturellement dans l’architecture existante. L’ajout tardif d’un mode réseau implique de lourdes modifications sur la structure actuelle du code, ce qui s’avère être un défi technique conséquent.</p>
 <p>Malgré ces difficultés, nous avons commencé le développement de cette partie dans les fichiers <code><a class="el" href="network_8cpp.html">network.cpp</a></code> et <code><a class="el" href="network_8hpp.html">network.hpp</a></code>, en nous concentrant sur les aspects suivants :</p>
@@ -598,79 +536,59 @@ Pour aller plus loin</h1>
 <li>Le contrôle des raquettes à distance</li>
 <li>La réception et la synchronisation des positions des différents éléments (balle, raquettes, etc.)</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md39"></a>
-UML – Modélisation des classes du jeu</h1>
-<p>Pour mieux structurer notre projet et assurer une architecture claire et maintenable, nous avons modélisé les principales classes du jeu sous forme de diagrammes UML. Ces diagrammes UML permettent de visualiser l’architecture du projet et les interactions entre les classes. Cette structuration facilite la compréhension du code, son évolutivité et sa maintenance.</p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Class   </th><th class="markdownTableHeadNone">UML    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a>   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/ai-class.png" alt="AI" class="inline"/>    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="class_paddle.html" title="Represents a player paddle/racket in the game.">Paddle</a>   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/paddle.png" alt="Paddle" class="inline"/>    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Pages (all)   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/page-classes.png" alt="Pages" class="inline"/>    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Powers (all)   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/power-classes.png" alt="Powers" class="inline"/>    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Save   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/game-save-system.png" alt="Game Save" class="inline"/>    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Sound   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/soundeffects.png" alt="Sound" class="inline"/>    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><a class="el" href="class_user.html" title="Represents a player in the game with name and score tracking.">User</a>   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/vscloud-connect/user-class.png" alt="User" class="inline"/>    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="class_letter.html" title="Represents a letter in the storytime game mode.">Letter</a>   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/group/Letter-Class.png" alt="Letter" class="inline"/>    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Balls   </td><td class="markdownTableBodyNone"><img src="https://cdn.madebyvasilis.site/group/Ball-Hierarchy.png" alt="Balls" class="inline"/>   </td></tr>
-</table>
-<p>Avec cette approche, chaque élément du jeu remplit un rôle bien défini et reste modulaire, ce qui permet d’ajouter de nouvelles fonctionnalités (comme le mode réseau) sans perturber l’ensemble du projet. Nous avons créé un diagramme UML pour les différentes dépendances entre les classes. De plus, les différentes notions de programmation utilisées dans chaque partie y sont indiquées.</p>
-<p><img src="https://cdn.madebyvasilis.site/vscloud-connect/game-dependencies.png" alt="Dependecnies" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md40"></a>
-Conclusion</h1>
+<hr  />
+<h1><a class="anchor" id="autotoc_md80"></a>
+Conclusion [Yanis] - Diapo 9</h1>
 <p><b>Pong, mais en mieux !</b> Notre projet revisite ce grand classique du jeu vidéo en exploitant pleinement les principes de la programmation orientée objet, nous permettant de créer un code modulaire, extensible et maintenable.</p>
 <p>Grâce à l’abstraction et à l’héritage, nous avons structuré notre jeu avec des interfaces claires et des hiérarchies logiques. Le polymorphisme nous a permis de manipuler différents objets de manière uniforme, tandis que l’encapsulation a assuré la protection et l’intégrité des données. Nous avons également tiré parti des foncteurs et des fonctions lambda pour encapsuler des comportements spécifiques, rendant notre implémentation plus souple et efficace.</p>
 <p>Mais ce projet ne se limite pas à un simple exercice de programmation ! Nous avons voulu pousser l’expérience plus loin, en intégrant plusieurs modes de jeu inédits, un système de sauvegarde sécurisé, une interface graphique fluide avec SDL, et même une tentative d’implémentation du multijoueur en réseau.</p>
 <p>Le résultat ? 🎾 Un jeu fun, dynamique et personnalisable, qui vous permet de revivre l’expérience du Pong… mais avec une touche de modernité !</p>
 <p>👉 <b>Prêt à relever le défi et à battre le high score ? Jouez, et montrez-nous qui est le véritable maître du Pong !</b></p>
-<h1><a class="anchor" id="autotoc_md41"></a>
-Versions</h1>
-<p>Le versioning est un élément clé en programmation, assurant la cohérence des modifications et facilitant la collaboration. Il est aussi primordial pour la récupération de données en cas de perte ou corruption. Au fil du projet, nous avons créé différentes versions de notre code, chacune marquant une étape importante de son évolution. Cela nous a permis de suivre les progrès, d'intégrer de nouvelles fonctionnalités et d'effectuer des corrections de manière structurée.</p>
-<ul>
-<li>V4.2.2 <a class="el" href="class_saving.html" title="Utility class for managing save game and high score functionality.">Saving</a> the demi correct views</li>
-<li>V4.2.3 The views logic has been completed</li>
-<li>V5.0.1: <b>Added lambda functions</b> on the <a class="el" href="paddle_8cpp.html" title="Implementation of the Paddle class for the game.">paddle.cpp</a>. The reason why we do this is found on the <a class="el" href="paddle_8cpp.html" title="Implementation of the Paddle class for the game.">paddle.cpp</a> file and added multiple notices support</li>
-<li>V5.1.1: <b>Functors added for the different ball shaped renders on the <a class="el" href="renderers_8cpp.html" title="Implementation of rendering functions for various game shapes.">renderers.cpp</a> file</b> (it includes also the explanation why we use functors [purposes])</li>
-<li>V5.1.2: Added getter and setter for the notices (it will be needed on the game's main logic to showcase the correct notices) + on Makefile added the mode_menu implementation</li>
-<li>V5.1.3: Prepared notices so that we can return back to the mode menu</li>
-<li>V5.1.4: Added logic for showing the pause button or not on the game</li>
-<li>V6.0.1: We added the change views functionality successfully</li>
-<li>V6.1.0: Added updates pages structures and logic for correct <a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a> and balls selection to their respective modes</li>
-<li>V6.1.1: Changes GameState to game_state for normalisation reasons</li>
-<li>V6.1.2: Renamed files according to the pages structure below for clarity reasons. The classes on those files has not been updated yet</li>
-<li>V6.1.3: Updates class names according to the pages structures below and <a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a> logic has been implemented. Needs to be added on the game's global logic</li>
-<li>V7.0.1: Added the <a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a> on the global game's logic</li>
-<li>V7.1.2: Added game over page and Cmake structure. Changed some function names on the <a class="el" href="game_8cpp.html">game.cpp</a> and we added an automatic installer and handler of packages.</li>
-<li>V8.1.0: Added user class, started network codebase, added special effects support for game's actions and buttons click actions, updated saving state to include players names and updated the game's logic to support the definition of the player's names.</li>
-<li>V8.1.1: Added support for showing player's names when we play</li>
-<li>V9.0.1: Added high score functionality on two players mode. The game now ends when the users ask for it, so this is what makes a high score. Also added support to add user names on SDL interface</li>
-<li>V9.1.0: Updated the <a class="el" href="gui_8cpp.html" title="Implementation of the GUI class for game interface.">gui.cpp</a> for better results and cohesion</li>
-<li>V9.2.0: Storymode added. We need to update the instructions</li>
-<li>V9.2.1: Removed setup.cpp and setup.hpp dependencies</li>
-<li>V9.2.2: Removed final dependencies of setup.cpp</li>
-<li>V10.8.23 : Implemented fun mode with rackets size changing and ball invisibility. Macros were extended, updated games logic to respond to the new criteria and fixed some bugs on the source code (+ 8.5 hours for it to work after the modifications of Dounia and Yanis)</li>
-<li>V10.8.24: Old makefile removed and gitignore updated. You will avoir à performer le cmake to compile. You can use directly the play.sh script</li>
-<li>V10.9.1: play.sh installer was updated</li>
-<li>V11.0.1: Added documentation structure. Fixed some issues on the fun mode. We need to reset the paddle height at the end of the fun mode manually if the button end game is tapped otherwise we risk to have different size paddles on other game modes</li>
-<li>V11.0.2: Added more comments and included inverse mode there is a segmentation fault issue</li>
-<li>V11.1.2: Resolved segmentation fault issue. Corrected some logic bugs and updated the documentation</li>
-<li>V12.0.1: <a class="el" href="class_game.html">Game</a> has been completed. Some comments are missing on the inversible power file</li>
-<li>V13.1.5: Tests correction in oder to use CTest functionality. Documentation updated and added more details regarding the tests on the compte rendu (README). Also fixed some bugs on the letter class methodes.</li>
-<li>V13.2.1: Fixed a logic issue when we were starting a new game on fun mode or storytime mode after it was completed due to victory conditions. Foudn out that the rounds counter were not reinitialised and was redirecting the users directly to the <a class="el" href="class_game.html">Game</a> Over page evene after the creation of a new game.</li>
-</ul>
 <hr  />
- </div></div><!-- PageDoc -->
-<a href="doxygen_crawl.html"></a>
-</div><!-- contents -->
+<hr  />
+<h1><a class="anchor" id="autotoc_md83"></a>
+PENDANT LA DEMO</h1>
+<h2><a class="anchor" id="autotoc_md84"></a>
+Compilation [pendant la demo : Vasilis]</h2>
+<p>Nous avons intégré un fichier <b>CMakeLists.txt</b> afin de faciliter la compilation du projet sur les principaux systèmes d’exploitation tels que macOS et Linux. Toutefois, l’interface graphique nécessite plusieurs dépendances spécifiques.</p>
+<p>Pour simplifier cette étape, nous avons également créé un script Bash qui vérifie automatiquement si toutes les dépendances sont installées. Si ce n’est pas le cas, il se chargera de télécharger et d’installer ce qu'il manque. Vous trouverez la liste exhaustive de ces dépendances dans la section <b>Dépendances</b> .</p>
+<h3><a class="anchor" id="autotoc_md85"></a>
+Nota bene</h3>
+<blockquote class="doxtable">
+<p>&zwj;Sur Linux, le script télécharge et installe automatiquement les bibliothèques SDL nécessaires. Toutefois, si l’une d’entre elles requiert une autre dépendance spécifique, vous devrez l’installer manuellement. Une fois la dépendance installée, relancez simplement le script avec la commande <code>bash play.sh</code>.</p>
+<p>Pour aller plus loin: d'abord, la commande <code>mkdir -p build</code> crée un répertoire isolé pour les fichiers générés pendant la compilation si il n'existe déjà, puis <code>cd build</code> nous positionne dans ce dossier, suivie de <code>cmake ..</code> qui analyse le fichier CMakeLists.txt du projet pour configurer l'environnement et détecter les bibliothèques nécessaires. Enfin <code>cmake --build .</code> lance la compilation effective du code source. </p>
+</blockquote>
+<h3><a class="anchor" id="autotoc_md86"></a>
+Instructions de lancement</h3>
+<p>Pour démarrer le programme en mode automatique, suivez les étapes suivantes :</p>
+<ol type="1">
+<li>Ouvrez un terminal et se rediriger vers un repertoire souhaité (par exemple <code>cd ~/Downloads</code>)</li>
+<li>Faire un clone du projet via la commande : <code>git clone <a href="https://github.com/vskarleas/The-New-Pong">https://github.com/vskarleas/The-New-Pong</a></code></li>
+<li>Acceder au projet cloné via la commande : <code>cd The-New-Pong</code></li>
+<li>Saisissez <code>chmod 777 play.sh</code> dans le terminal, puis lancez le script avec <code>bash play.sh</code>.</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md87"></a>
+Dépendances</h2>
+<p>Voici la liste des dépendances indispensables au bon fonctionnement du programme :</p>
+<ul>
+<li><b>SDL2</b> : Bibliothèque principale pour la gestion de la fenêtre et des événements</li>
+<li><b>SDL2_ttf</b> : Bibliothèque pour le rendu du texte (polices TrueType)</li>
+<li><b>SDL2_mixer</b> : Bibliothèque pour la gestion du son et de la musique</li>
+<li><b>SDL2_image</b> : Bibliothèque pour le chargement d’images (formats multiples)</li>
+<li><b>SDL2_net</b> : Bibliothèque pour les fonctionnalités réseau</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md88"></a>
+Pourquoi macros.hpp</h2>
+<p>Le fichier <a class="el" href="macros_8hpp.html" title="Defines macros and constants used throughout the project.">macros.hpp</a> joue un rôle central dans notre projet en servant de référentiel unique pour toutes les constantes globales du jeu. Il permet de centraliser et de faciliter la gestion des paramètres essentiels, tels que :</p>
+<ul>
+<li>Les dimensions de la fenêtre du jeu</li>
+<li>Les identifiants des modes de jeu (ex. : mode IA, mode 2 joueurs)</li>
+<li>Les constantes associées à la navigation dans les menus</li>
+<li>Les niveaux de difficulté</li>
+</ul>
+<p>Grâce à ce fichier, nous avons assuré une meilleure lisibilité et une maintenance simplifiée, en évitant la dispersion des constantes dans l’ensemble du code. </p>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 
 <hr class="footer" />
 <address class="footer">
