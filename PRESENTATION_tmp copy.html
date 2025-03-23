@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PRESENTATION.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="projet-multijoueur-en-c--the-new-pong">Projet Multijoueur en C++ : The New Pong</h1>
+<h6 id="auteurs-dounia-bakalem-yanis-sadoun-vasileios-filippos-skarleas">Auteurs: Dounia Bakalem, Yanis Sadoun, Vasileios Filippos Skarleas</h6>
+<h2 id="lobjectif-yanis---diapo-1-logo">L'objectif [Yanis] - Diapo 1 (logo)</h2>
+<p>Puisqu’il n’y a rien de plus amusant pour découvrir un langage que de créer son propre jeu, nous vous présentons <strong>The New Pong</strong>, un jeu multijoueur développé dans le cadre du module de programmation en langage objet pour la spécialité Robotique à Polytech Sorbonne.</p>
+<p>Nous avons donc opté pour un grand classique: Pong. Préparez-vous à renvoyer la balle, tout en perfectionnant vos compétences en C++ !</p>
+<hr>
+<h2 id="le-jeu-yanis---diapo-2-un-jue-lequel">Le jeu [Yanis] - Diapo 2 (Un jue, lequel)</h2>
+<p>Afin de revisiter l’expérience Pong, l’un des tout premiers jeux vidéo d’arcade et pionnier des jeux de sport, nous avons décidé d’en développer notre propre version. Au-delà d’un simple hommage, nous y avons ajouté de nouvelles fonctionnalités pour rendre ce Pong encore plus captivant que l’original. Pour cela, quatre modes de jeu distincts ont été introduits :</p>
+<ol>
+<li><strong>AI mode</strong></li>
+<li><strong>Classic</strong></li>
+<li><strong>Storytime mode</strong></li>
+<li><strong>Fun mode</strong></li>
+</ol>
+<p>Toutes les instructions relatives à ces modes et leurs spécificités sont détaillées dans la section: <strong>Les différents modes</strong>. Bonne lecture et bon amusement !</p>
+<hr>
+<h2 id="les-diff%C3%A9rents-modes---diapo-3-ou">Les différents modes - Diapo 3 ou +++</h2>
+<h3 id="classic-yanis">Classic [Yanis]</h3>
+<p>Le concept originel de Pong s’apparente à un simulateur de ping-pong minimaliste : une balle se déplace de part et d’autre de l’écran en rebondissant sur les bords supérieur et inférieur. Chaque joueur contrôle une raquette coulissant verticalement le long du bord de l’écran. La balle rebondit différemment selon la partie de la raquette qu’elle touche. Voici les fonctionnalités incluses :</p>
+<ul>
+<li>High Score</li>
+<li>Game Save</li>
+</ul>
+<p>Dans notre version, il n’y a pas de score maximum prédéfini ; les joueurs peuvent simplement s’entendre oralement sur un objectif à atteindre. Lorsqu’ils souhaitent arrêter, il suffit de choisir « End the game ». Ici, la motivation ultime est : <em><strong>qui fera exploser le compteur du high score et revendiquera le titre de meilleur pongiste ?</strong></em></p>
+<h3 id="ai-mode-yanis">AI mode [Yanis]</h3>
+<p>Ce mode reprend les règles du  <strong>Classic</strong> , à la différence qu’il ne peut être joué que par un seul joueur : la raquette adverse est contrôlée par l’ordinateur.
+<strong>Préparez-vous à affronter une IA tenace.</strong> <strong>Arriverez-vous à la battre, ou rejoindrez-vous la longue liste de ses victimes ?</strong></p>
+<h3 id="storytime-mode-dounia">Storytime mode [Dounia]</h3>
+<p>Dans ce mode, deux joueurs s’affrontent sur <strong>3 tours.</strong> Le vainqueur est celui qui remporte le plus de tours . Chaque tour se compose de <strong>8 points</strong>, et c’est le premier joueur à atteindre 8 points qui gagne le tour.</p>
+<p>Une nouveauté pimentera votre partie : des lettres tombent depuis le haut de l’écran. En les touchant, vous obtenez un point supplémentaire et vous contribuez à former un mot caché, révélant peu à peu une phrase secrète.</p>
+<h3 id="fun-mode-dounia"><strong>Fun mode [Dounia]</strong></h3>
+<p>Ce mode s’inspire des règles du <strong>Storytime Mode</strong> , avec un format de 3 parties où l’objectif est d’atteindre 5 points pour remporter chaque partie. Toutefois, nous y avons glissé plusieurs surprises et easter eggs destinés à dynamiser la compétition.</p>
+<p>Puisque nous sommes de futurs roboticiens, nous ne pouvions pas résister à ajouter une petite touche de robotique : vous verrez ainsi de mystérieux robots apparaître au cours de la partie. En les touchant, vous déclencherez des effets inédits :</p>
+<ul>
+<li>Raquette géante : votre raquette gagne temporairement en taille.</li>
+<li>Balle invisible : la balle disparaît momentanément, rendant la partie plus chaotique.</li>
+<li>Contrôles inversés : les touches de votre adversaire se retrouvent soudainement inversées.</li>
+</ul>
+<p><strong>Saurez-vous exploiter ces bonus (et pièges) pour devenir le champion incontesté du Fun Mode ?</strong></p>
+<hr>
+<h2 id="fonctionalites-les-petits-plus---diapo-4">Fonctionalites (Les petits plus) - Diapo 4</h2>
+<h3 id="high-score-vasilis"><strong>High Score [Vasilis]</strong></h3>
+<p>Cette fonctionnalité est disponible uniquement en mode Classic . Le jeu vérifie en permanence si un joueur atteint un score supérieur au record actuel. Lorsque c’est le cas, le record est immédiatement mis à jour.</p>
+<p>La sauvegarde est effectuée dans un fichier nommé <code>game_pong-highscore_849216.txt</code>, dont le contenu est chiffré afin de garantir l'intégrité des données et d'empêcher toute modification non autorisée. Ce fichier contient uniquement le dernier high score ainsi que le nom du joueur correspondant.</p>
+<p>Voici l'algorithme qui détermine si quelqu'un a fait un nouveau highscore:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// High score logic</span>
+<span class="hljs-keyword">if</span> (player1-&gt;get_user_score() &gt;= last_highscore || player2-&gt;get_user_score() &gt;= last_highscore)
+        {
+            last_highscore = (player1-&gt;get_user_score() &gt;= player2-&gt;get_user_score()) ? player1-&gt;get_user_score() : player2-&gt;get_user_score();
+
+            <span class="hljs-built_in">strncpy</span>(last_highscore_name, ((player1-&gt;get_user_score() &gt;= player2-&gt;get_user_score()) ? player1-&gt;get_user_name() : player2-&gt;get_user_name()).c_str(), <span class="hljs-number">19</span>);
+            last_highscore_name[<span class="hljs-number">19</span>] = <span class="hljs-string">'\0'</span>;
+        }
+</div></code></pre>
+<h3 id="game-save-vasilis"><strong>Game Save [Vasilis]</strong></h3>
+<p>Envie de faire une pause et de retenter de battre le record un peu plus tard ?
+Avec la fonctionnalité de Game Save , vous pouvez sauvegarder l’état de votre partie et la reprendre quand vous le souhaitez. Là encore, le  chiffrement est appliqué pour garantir l’intégrité des données.</p>
+<h4 id="game-save-logic"><strong>Game save logic</strong></h4>
+<pre class="hljs"><code><div>SaveState saveState;
+saveState.score1 = player1-&gt;get_user_score();
+saveState.score2 = player2-&gt;get_user_score();
+saveState.paddle1_y = racket1-&gt;get_pos_y();
+saveState.paddle2_y = racket2-&gt;get_pos_y();
+saveState.ball_x = mBall-&gt;get_pos_x();
+saveState.ball_y = mBall-&gt;get_pos_y();
+saveState.ball_vel_x = mBall-&gt;get_vel_x();
+saveState.ball_vel_y = mBall-&gt;get_vel_y();
+saveState.ball_type = mMiddleMenu-&gt;get_selected_option();
+
+<span class="hljs-built_in">strncpy</span>(saveState.player1_name, player1-&gt;get_user_name().c_str(), <span class="hljs-number">19</span>);
+saveState.player1_name[<span class="hljs-number">19</span>] = <span class="hljs-string">'\0'</span>; <span class="hljs-comment">// Ensuring that the name ends to \0 that is standar for string types</span>
+<span class="hljs-built_in">strncpy</span>(saveState.player2_name, player2-&gt;get_user_name().c_str(), <span class="hljs-number">19</span>);
+saveState.player2_name[<span class="hljs-number">19</span>] = <span class="hljs-string">'\0'</span>;
+
+<span class="hljs-keyword">if</span> (Saving::save_game(saveState))
+{
+  SDL_Log(<span class="hljs-string">"Game saved successfully"</span>);
+  mMenu-&gt;set_saved_file_exists();
+  mNoticeMenu-&gt;set_notice_id(GAME_SAVED);
+  mGameState = game_state::Notice_Menu; <span class="hljs-comment">// We go back to the main menu</span>
+}
+<span class="hljs-keyword">else</span>
+{
+   SDL_Log(<span class="hljs-string">"Failed to save game"</span>);
+   mIsRunning = <span class="hljs-literal">false</span>;
+}
+</div></code></pre>
+<blockquote>
+<p>La sauvegarde du jeu est réalisée dans un fichier nommé <code>game_pong-save_849374.txt</code>. Ce fichier reste disponible jusqu’à ce que le joueur reprenne la partie sauvegardée ou choisisse de démarrer une nouvelle partie, auquel cas il sera automatiquement supprimé. Ainsi, votre progression est préservée même après avoir quitté le jeu.</p>
+</blockquote>
+<h4 id="game-retrieve-logic"><strong>Game retrieve logic</strong></h4>
+<pre class="hljs"><code><div>SaveState savedState;
+<span class="hljs-keyword">if</span> (Saving::load_game(savedState))
+{
+    player1-&gt;set_user_score(savedState.score1);
+    player2-&gt;set_user_score(savedState.score2);
+
+    player1-&gt;set_user_name(savedState.player1_name);
+    player2-&gt;set_user_name(savedState.player2_name);
+
+    racket1-&gt;set_pos_y(savedState.paddle1_y);
+    racket2-&gt;set_pos_y(savedState.paddle2_y);
+    ball_creation(savedState.ball_type);
+    mBall-&gt;set_position(savedState.ball_x, savedState.ball_y);
+    mBall-&gt;set_velocity(savedState.ball_vel_x, savedState.ball_vel_y);
+    update_background_color();
+
+    Saving::delete_save(); <span class="hljs-comment">// Delete the saved game file once we have loaded the game state</span>
+
+    mGameState = game_state::Playing;
+
+    SoundEffects::change_music_track(mBackgroundMusic);
+}
+</div></code></pre>
+<h3 id="choisir-le-type-de-la-balle-dounia"><strong>Choisir le type de la balle [Dounia]</strong></h3>
+<p>Par défaut, la balle du Pong est de forme circulaire, mais pourquoi ne pas la personnaliser ? À chaque début de partie, vous pouvez sélectionner l’une des 3 formes proposées :</p>
+<ol>
+<li>Cercle : avec une image graphique pour la détection de collision [SDL forme utilisée pour détecter les collisions].</li>
+<li>Triangle</li>
+<li>Carré</li>
+</ol>
+<p>Ce n’est qu’une preuve de concept : rien ne vous empêche d’imaginer et d’intégrer des formes plus originales dans l’interface graphique.</p>
+<h3 id="changement-de-la-musique-yanis"><strong>Changement de la musique [Yanis]</strong></h3>
+<p>Grâce à la bibliothèque SDL Mixer, nous pouvons gérer différents effets sonores et musiques avec des fonctions de fade-in et fade-out. Chaque mode peut ainsi avoir sa propre ambiance sonore, pour rendre l’expérience de jeu encore plus immersive.</p>
+<p>Voici l'implémentation:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SoundEffects::change_music_track</span><span class="hljs-params">(Mix_Music *music_file,
+                                      <span class="hljs-keyword">int</span> fade_out_duration,
+                                      <span class="hljs-keyword">int</span> fade_in_duration,
+                                      <span class="hljs-keyword">int</span> volume)</span>
+</span>{
+    Mix_FadeOutMusic(fade_out_duration);
+    <span class="hljs-comment">// SDL_Delay(5);</span>
+    Mix_FadeInMusic(music_file, <span class="hljs-number">-1</span>, fade_in_duration);
+    Mix_VolumeMusic(volume);
+}
+</div></code></pre>
+<h2 id="chiffrement-des-donn%C3%A9es-vasilis"><strong>Chiffrement des données [Vasilis]</strong></h2>
+<p>La sauvegarde des données utilise un système de chiffrement XOR simple avec une clé rotative:</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SavingEncryption</span> {</span>
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">uint8_t</span>&gt; KEY;
+  
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">encryptData</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">uint8_t</span>&gt;&amp; data)</span> </span>{
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; data.size(); ++i) {
+            data[i] ^= KEY[i % KEY.size()];
+        }
+    }
+};
+</div></code></pre>
+<p>Les données sont chiffrées avant l'écriture sur le disque et déchiffrées lors de la lecture, assurant une protection basique des sauvegardes.</p>
+<blockquote>
+<p>Inspiré de <a href="https://www.101computing.net/xor-encryption-algorithm/">https://www.101computing.net/xor-encryption-algorithm/</a>
+L'utilisation de XOR permet à la même opération de chiffrer et de déchiffrer</p>
+</blockquote>
+<hr>
+<h2 id="les-objets-1-yanis-2-dounia-3-vasilis----diapo-5"><strong>Les objets [1. Yanis, 2. Dounia, 3. Vasilis ] - Diapo 5</strong></h2>
+<p>Dans ce projet, toutes les fonctionnalités ont été implémentées sous la forme d’objets, garantissant ainsi la modularité, la flexibilité et une organisation claire du code. Chaque élément du jeu Pong est représenté par une classe spécifique, ce qui permet une maintenance aisée et une évolutivité simplifiée du programme.</p>
+<p>Voici les classes essentiels que nous avons définies :</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+<th>Fichier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI</td>
+<td>Intelligence artificielle pour contrôler une raquette automatiquement</td>
+<td></td>
+</tr>
+<tr>
+<td>BallBase</td>
+<td>Classe de base abstraite pour tous les types de balles dans le jeu car nous proposons différents types de balles à choisir avant de lancer le jeu</td>
+<td></td>
+</tr>
+<tr>
+<td>ClassicBall</td>
+<td>Implémentation classique de balle circulaire héritant de BallBase</td>
+<td></td>
+</tr>
+<tr>
+<td>SquareBall</td>
+<td>Implémentation de la balle en forme de carré héritant de BallBase</td>
+<td></td>
+</tr>
+<tr>
+<td>TriangleBall</td>
+<td>Implémentation de la balle en forme de triangle héritant de BallBase</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>InvisiblePower</td>
+<td>Rend la balle temporairement invisible. Il hérite de la classe Power</td>
+<td></td>
+</tr>
+<tr>
+<td>Power</td>
+<td>Représente les éléments de power-up qui affectent le gameplay comme le changement de la taille de la raquette, ou rendre la balle invisible</td>
+<td></td>
+</tr>
+<tr>
+<td>Letter</td>
+<td>Représente une lettre dans le mode de jeu Storytime. Contient toute la fonctionnalité pour gérer les mots dans ce mode Storytime</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Game</td>
+<td>Contient tous les paramètres principaux, surtout les références de tous les autres objets mentionnés dans cette liste</td>
+<td></td>
+</tr>
+<tr>
+<td>Paddle</td>
+<td>Représente une raquette (paddle) de joueur</td>
+<td></td>
+</tr>
+<tr>
+<td>User</td>
+<td>Représente un joueur dans le jeu avec son nom et le suivi du score</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Les graphes UML pour les utiliser dans les diapos:</strong></p>
+<p>Pour mieux structurer notre projet et assurer une architecture claire et maintenable, nous avons modélisé les principales classes du jeu sous forme de diagrammes UML. Ces diagrammes UML permettent de visualiser l’architecture du projet et les interactions entre les classes. Cette structuration facilite la compréhension du code, son évolutivité et sa maintenance.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>UML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI</td>
+<td><img src="https://cdn.madebyvasilis.site/vscloud-connect/ai-class.png" alt="AI"></td>
+</tr>
+<tr>
+<td>Paddle</td>
+<td><img src="https://cdn.madebyvasilis.site/vscloud-connect/paddle.png" alt="Paddle"></td>
+</tr>
+<tr>
+<td>Pages (all)</td>
+<td><img src="https://cdn.madebyvasilis.site/vscloud-connect/page-classes.png" alt="Pages"></td>
+</tr>
+<tr>
+<td>Powers (all)</td>
+<td><img src="https://cdn.madebyvasilis.site/vscloud-connect/power-classes.png" alt="Powers"></td>
+</tr>
+<tr>
+<td>Save</td>
+<td><img src="https://cdn.madebyvasilis.site/vscloud-connect/game-save-system.png" alt="Game Save"></td>
+</tr>
+<tr>
+<td>Sound</td>
+<td><img src="https://cdn.madebyvasilis.site/vscloud-connect/soundeffects.png" alt="Sound"></td>
+</tr>
+<tr>
+<td>User</td>
+<td><img src="https://cdn.madebyvasilis.site/vscloud-connect/user-class.png" alt="User"></td>
+</tr>
+<tr>
+<td>Letter</td>
+<td><img src="https://cdn.madebyvasilis.site/group/Letter-Class.png" alt="Letter"></td>
+</tr>
+<tr>
+<td>Balls</td>
+<td><img src="https://cdn.madebyvasilis.site/group/Ball-Hierarchy.png" alt="Balls"></td>
+</tr>
+</tbody>
+</table>
+<p>Avec cette approche, chaque élément du jeu remplit un rôle bien défini et reste modulaire, ce qui permet d’ajouter de nouvelles fonctionnalités (comme le mode réseau) sans perturber l’ensemble du projet. Nous avons créé un diagramme UML pour les différentes dépendances entre les classes. De plus, les différentes notions de programmation utilisées dans chaque partie y sont indiquées.</p>
+<hr>
+<h2 id="les-concepts-cl%C3%A9s---diapo-6"><strong>Les concepts clés - Diapo 6</strong></h2>
+<h3 id="linterface-graphique-yanis"><strong>L'interface graphique [Yanis]</strong></h3>
+<p>Maintenant que nous avons une vue d’ensemble des différentes pages et des éléments interactifs du jeu, intéressons-nous à la façon dont l’interface graphique est conçue et gérée.</p>
+<p>Nous utilisons SDL pour afficher et rendre toutes les formes et objets du jeu dans une fenêtre aux dimensions prédéfinies dans le fichier <code>macros.hpp</code> (plus de détails dans la section <em><strong>Pourquoi macros.hpp</strong></em>).</p>
+<p>Le programme principal repose sur la classe  <code>Game</code> , qui orchestre l’ensemble du jeu à travers trois méthodes clés :</p>
+<ol>
+<li><code>initialise()</code> – Initialise tous les paramètres et variables nécessaires au jeu.</li>
+<li><code>loop()</code>– Gère la boucle principale du jeu.</li>
+<li><code>close()</code>– Libère les ressources et termine proprement l’exécution.</li>
+</ol>
+<p>La méthode  <code>loop()</code> constitue le cœur du jeu : il s’agit d’une boucle while qui tourne en continu tant que le jeu est actif. Cette boucle s’arrête uniquement si la variable booléenne <code>mIsRunning</code> est définie sur <code>false</code>, soit lorsque le joueur ferme la fenêtre SDL, soit lorsqu'il sélectionne &quot;Exit Game&quot;.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Game::loop</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">while</span> (mIsRunning) <span class="hljs-comment">// set to false when we either tap on the X to close the SDL window or when we tap on the Exit game button</span>
+    {
+        game_logic();
+        game();
+        output();
+    }
+}
+</div></code></pre>
+<h4 id="loop">Loop</h4>
+<p>Dans cette boucle, trois fonctions essentielles assurent le bon déroulement du jeu :</p>
+<ul>
+<li><code>game_logic()</code> : Gère la logique principale et décide des transitions entre les pages, menus et événements du jeu.</li>
+<li><code>game()</code> : Met à jour l’état du jeu en fonction des actions du joueur, détermine si une partie est terminée et applique les règles.</li>
+<li><code>output()</code> : Génère et affiche les éléments visuels sur l’interface SDL en fonction des paramètres définis par la logique du jeu.</li>
+</ul>
+<p>Ces trois fonctions fonctionnent en synergie pour offrir une expérience fluide et dynamique, assurant que le jeu réagit de manière cohérente aux interactions du joueur.</p>
+<h3 id="h%C3%A9ritage--def-vasilis">Héritage + Def [Vasilis]</h3>
+<p>L'héritage est largement utilisé pour étendre la fonctionnalité des classes de base. Les trois types de balles (<code>ClassicBall</code>, <code>SquareBall</code> et <code>TriangleBall</code>) héritent tous de la classe abstraite <code>BallBase</code>. Par exemple, dans <code>classic_ball.hpp</code>, nous voyons :</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassicBall</span> :</span> <span class="hljs-keyword">public</span> BallBase {
+<span class="hljs-keyword">public</span>:
+    ClassicBall() : BallBase(<span class="hljs-number">24.0f</span>) {}
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">render_object</span><span class="hljs-params">(SDL_Renderer *renderer)</span> <span class="hljs-keyword">override</span></span>;
+    <span class="hljs-comment">// ...</span>
+};
+</div></code></pre>
+<p>Dans le domaine des power-ups, nous avons également une hiérarchie d'héritage. Les classes <code>InvisiblePower</code> et <code>InversePower</code> héritent de la classe <code>Power</code>, comme on peut le voir dans <code>invisible_power.hpp</code> et <code>inverse_power.hpp</code>. Cela permet de partager le comportement commun tout en spécialisant certaines fonctionnalités</p>
+<h3 id="polymorphisme--def-yanis">Polymorphisme + Def [Yanis]</h3>
+<p>Le polymorphisme est implémenté à travers l'utilisation de méthodes virtuelles et leur redéfinition dans les classes dérivées. Un exemple clair se trouve dans la hiérarchie des balles, où la méthode <code>render_object()</code> est définie différemment dans chaque type de balle :</p>
+<ul>
+<li>Dans <code>classic_ball.cpp</code>, elle dessine un cercle.</li>
+<li>Dans <code>square_ball.cpp</code>, elle dessine un carré.</li>
+<li>Dans <code>triangle_ball.cpp</code>, elle dessine un triangle.</li>
+</ul>
+<p>Le jeu peut manipuler n'importe quel objet dérivé de <code>BallBase</code> de manière uniforme, en appelant <code>mBall-&gt;render_object(renderer)</code> dans <code>game.cpp</code>, sans se soucier du type spécifique de balle utilisé.</p>
+<p>De même, les power-ups démontrent le polymorphisme avec leurs méthodes <code>update()</code> et <code>render()</code> qui sont appelées de manière générique mais exécutent un comportement spécifique à chaque type de power-up.</p>
+<h3 id="abstraction--def-dounia">Abstraction + Def [Dounia]</h3>
+<p>L'abstraction est implémentée principalement à travers les classes abstraites du projet. La classe <code>BallBase</code> est un excellent exemple d'abstraction. Dans le fichier <code>ball_base.hpp</code>, nous définissons une interface commune pour tous les types de balles avec des méthodes abstraites comme <code>render_object()</code>. Cette méthode est déclarée virtuelle pure (<code>= 0</code>), obligeant toutes les classes dérivées à fournir leur propre implémentation.</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BallBase</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">render_object</span><span class="hljs-params">(SDL_Renderer *renderer)</span> </span>= <span class="hljs-number">0</span>;
+    <span class="hljs-comment">// ...</span>
+};
+</div></code></pre>
+<p>De même, la classe <code>Power</code> dans <code>power.hpp</code> fournit une abstraction pour les différents types de power-ups du jeu, avec des méthodes virtuelles qui peuvent être redéfinies par les classes dérivées comme <code>InvisiblePower</code> et <code>InversePower</code>.</p>
+<h3 id="fonctions-lambda--explication-cest-quoi-en-relaite-def-suffit-pas-dounia">Fonctions lambda + Explication c'est quoi en relaite (def suffit pas) [Dounia]</h3>
+<p>Nous utilisons des fonctions lambda pour contrôler les limites physiques de la raquette (paddle). Cette approche nous permet d'obtenir un code modulaire, facilitant la mise à jour des fonctionnalités liées au déplacement et aux contraintes de position de la raquette.</p>
+<p>Les lambdas sont particulièrement adaptées à notre cas, car elles nous permettent de définir des fonctions anonymes tout en bénéficiant d’un typage automatique, simplifiant ainsi l'écriture du code.</p>
+<p>Les deux fonctions lambda utilisées sont:</p>
+<ul>
+<li><code>auto move_paddle = [this](float delta, float time)</code> utiliser pour bouger l'objet paddle (la raquette)</li>
+<li><code>auto adjust_boundaries = [this]()</code> responsable de vérifier et ajuster les limites de la raquette</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-keyword">auto</span> move_paddle = [<span class="hljs-keyword">this</span>](<span class="hljs-keyword">float</span> delta, <span class="hljs-keyword">float</span> time)
+    {
+        <span class="hljs-keyword">this</span>-&gt;set_pos_y(<span class="hljs-keyword">this</span>-&gt;get_pos_y() + delta * <span class="hljs-keyword">this</span>-&gt;get_racket_speed() * time);
+    };
+
+  
+<span class="hljs-keyword">auto</span> adjust_boundaries = [<span class="hljs-keyword">this</span>]()
+    {
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>-&gt;get_pos_y() &lt; <span class="hljs-keyword">this</span>-&gt;get_racket_height() / <span class="hljs-number">2.0f</span>)
+        {
+            <span class="hljs-keyword">this</span>-&gt;set_pos_y(<span class="hljs-keyword">this</span>-&gt;get_racket_height() / <span class="hljs-number">2.0f</span>);
+        }
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>-&gt;get_pos_y() &gt; <span class="hljs-number">600.0f</span> - <span class="hljs-keyword">this</span>-&gt;get_racket_height() / <span class="hljs-number">2.0f</span>)
+        {
+            <span class="hljs-keyword">this</span>-&gt;set_pos_y(<span class="hljs-number">600.0f</span> - <span class="hljs-keyword">this</span>-&gt;get_racket_height() / <span class="hljs-number">2.0f</span>);
+        }
+    };
+</div></code></pre>
+<h3 id="encapsulation--def-vasilis">Encapsulation + Def [Vasilis]</h3>
+<p>L'encapsulation est présente dans presque toutes les classes du projet, avec une distinction claire entre les interfaces publiques et les détails d'implémentation privés. Par exemple, la classe <code>User</code> dans <code>user.hpp</code> encapsule les données relatives au joueur :</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> {</span>
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> name;  <span class="hljs-comment">// Le nom de l'utilisateur</span>
+    <span class="hljs-keyword">int</span> score;         <span class="hljs-comment">// Le score actuel de l'utilisateur</span>
+    <span class="hljs-keyword">int</span> round;         <span class="hljs-comment">// Le numéro de round actuel</span>
+
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">// Méthodes pour interagir avec les données encapsulées</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">increment_score</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">reset_score</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get_user_score</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+    <span class="hljs-comment">// ...</span>
+};
+</div></code></pre>
+<p>Un autre exemple d'encapsulation se trouve dans le fichier <code>game_save.cpp</code>, où un namespace anonyme est utilisé. Tous les détails sont disponibles ci-dessous.</p>
+<h4 id="namespace">Namespace</h4>
+<p>Dans le fichier game_save.cpp, nous utilisons un namespace anonyme afin d'encapsuler les constantes sensibles (comme la clé de chiffrement XOR) ainsi que les fonctions utilitaires dédiées au codage et au décodage des données de sauvegarde.</p>
+<p>Ce choix présente plusieurs avantages :</p>
+<ol>
+<li><strong>Sécurité renforcée</strong> : empêche tout accès externe aux mécanismes internes du système de sauvegarde.</li>
+<li><strong>Prévention des conflits</strong> : réduit les risques de collision de noms avec d'autres parties du code.</li>
+<li><strong>Organisation claire</strong> : regroupe logiquement les éléments qui interagissent ensemble, améliorant ainsi la lisibilité et la maintenabilité du code.</li>
+</ol>
+<p>L'utilisation d’un namespace anonyme garantit donc une encapsulation stricte et protège les données critiques du jeu contre toute manipulation involontaire ou non autorisée. Cette approche garantit que ces éléments ne sont accessibles que depuis ce fichier, renforçant ainsi la sécurité du mécanisme de sauvegarde.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">namespace</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> <span class="hljs-title">codec_byte</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> byte)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> byte ^ KEY; <span class="hljs-comment">// XOR operation</span>
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">codec_float</span><span class="hljs-params">(<span class="hljs-keyword">float</span> &amp;value)</span>
+    </span>{
+        <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *bytes = <span class="hljs-keyword">reinterpret_cast</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *&gt;(&amp;value); <span class="hljs-comment">// casting to return a float value to byte representation</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">float</span>); ++i)
+        {
+            bytes[i] = codec_byte(bytes[i]);
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">codec_int</span><span class="hljs-params">(<span class="hljs-keyword">int</span> &amp;value)</span>
+    </span>{
+        <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *bytes = <span class="hljs-keyword">reinterpret_cast</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *&gt;(&amp;value);
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>); ++i)
+        {
+            bytes[i] = codec_byte(bytes[i]);
+        }
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">codec_string</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *str, <span class="hljs-keyword">size_t</span> length)</span>
+    </span>{
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; length; ++i)
+        {
+            str[i] = codec_byte(str[i]);
+        }
+    }
+}
+</div></code></pre>
+<p>Cette organisation du code illustre parfaitement le principe d’encapsulation, un pilier fondamental de la programmation orientée objet. En limitant l’accès aux éléments internes du système de sauvegarde, nous renforçons la sécurité, l’isolation et la robustesse globale du jeu.</p>
+<blockquote>
+<p>Afin de réduire la longueur du rapport, nous avons retiré les commentaires détaillés des différentes fonctions. Pour une explication complète et une vue d’ensemble du code, vous pouvez consulter directement game_save.cpp.</p>
+</blockquote>
+<h3 id="les-foncteurs-vasilis"><strong>Les foncteurs [Vasilis]</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Foncteur</th>
+<th>Descriptions</th>
+<th>Fichier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>triangle_renderer</td>
+<td>Foncteur pour le rendu des formes triangulaires</td>
+<td>renderers.cpp</td>
+</tr>
+<tr>
+<td>square_renderer</td>
+<td>Foncteur de rendu de formes carrées</td>
+<td>renderers.cpp</td>
+</tr>
+</tbody>
+</table>
+<p>L'utilisation de foncteurs nous permet d'ajouter facilement de nouveaux types de formes et de les tester individuellement.</p>
+<blockquote>
+<p>Cette approche nous a permis d'accélérer le développement en permettant des tests isolés des différents SDL renderers.</p>
+</blockquote>
+<hr>
+<h2 id="problemes-recnontres-dounia---diapo-7">Problemes recnontres [Dounia] - Diapo 7</h2>
+<p>Voici les differents problemes / chalenges reconnus:</p>
+<ul>
+<li>segmentation fault when we declated the “new Power(…” due to an issue on the constructror =&gt; pas d’allocation memoire pour l’objet en question, donc tous les operations tels que power.update(… n’etait pas succesives.</li>
+<li>⁠Pendant le development de la fonctionalite HighScore, au debut nous avons pensé que pour etre capable de trouer le highscore entre differents sessions du jeu, il faudrait sauvegarder tous les meilleurs scores de chaque jeu. En fait ca suffit, d’avoir seulemnt l’information du derniere highscore. Comme ca nous evirons de chercher sur un fichier qui augment de plus en plus</li>
+<li>⁠Pendant  le development de notre fonctionalite pour la sauvegarde, il faudrait trouver une maniere que le fichier de la sauvegarde soit etre lu et dedruit en “bonnes endroits”. En mode, la structure la plus optimale est la suivnate: si jamais un fichier de la sauvegarde existe,  alors l’utilisateut peut chosir de continuer par ce fichier. S’il chosiit cette option, on va recuperer les donnes et on va supprimer le fichier directement et le jeu va se lancer. L’autre scenario est que l’utilisateur va choisir de commencer un nouveau jeu. Dans ce cas là, si il existe un fichier de sauvegarder, et on va lancer le nouveau jeu. - On prefere de faire ca, que de ecrire en desus deu fichier existant pour eviter des erreurs des informations qui restent dans le fichier qui chifré</li>
+<li>⁠Quand on etait en mode storytime ou fun, nous avons constaté que à la fin de chaque jeu avec de tours, si on voudrais recomemncer un jeu de ces deux modes, on ete rediregie directement sur page game over parce que la logique de tous n’etait complet. Effectiveemnt au debut de chaque jeu, on reinitialise les indicateurs iimportante stels que: type de balle, infos des joueurs, et le type du jeu, mais nous avons oublié de reinitialiser les informations concernant les tours.</li>
+<li>⁠Pour detcter les collisions entre la balle et les differents composantes tels que les robots ou les lettres, au debut on etait basé sur la detection de la supperposition des differrentes pixels entre les differents objets, donc il faudrait declarer differents fonctions pour les differentes types de balles, tandis que tout ca est observable via SDL rendering. SDL viens avec une fonction integré SDL_HasIntersection</li>
+<li>⁠Nous avons commencé le projet avec un Makefile, sauf que pas tout le monde a le memem ordinateur et le meme liens symboliques pour acceder auxx bilbiotheques de dependance de base. Donc, quand on essaye de tounrer le jeu sur un linux, il faudrait modifier tous les differents chemins. Le CMake nous aidé pour resoudre ce soucis. Nous avons declaré les chemins pur les differents architectures dans un fichier CmakeLists.txt. En combinant notre script d’installation de base, nous avons une integration parfait qui permet d’installer tous les librairies et les verfier avant creer le makefile via Cmake et toutner le logiciel</li>
+</ul>
+<hr>
+<h2 id="pour-aller-plus-loin-vasilis---diapo-8">Pour aller plus loin [Vasilis] - Diapo 8</h2>
+<p>Initialement, nous avons tenté d'implémenter un mode multijoueur en réseau via TCP avec une architecture client-serveur. Cependant, nous nous sommes rapidement heurtés à la complexité de cette intégration.</p>
+<p>En effet, cette fonctionnalité aurait dû être pensée dès le début du projet afin d’être intégrée naturellement dans l’architecture existante. L’ajout tardif d’un mode réseau implique de lourdes modifications sur la structure actuelle du code, ce qui s’avère être un défi technique conséquent.</p>
+<p>Malgré ces difficultés, nous avons commencé le développement de cette partie dans les fichiers <code>network.cpp</code> et <code>network.hpp</code>, en nous concentrant sur les aspects suivants :</p>
+<ul>
+<li>Le contrôle des raquettes à distance</li>
+<li>La réception et la synchronisation des positions des différents éléments (balle, raquettes, etc.)</li>
+</ul>
+<hr>
+<h2 id="conclusion-yanis---diapo-9">Conclusion [Yanis] - Diapo 9</h2>
+<p><strong>Pong, mais en mieux !</strong> Notre projet revisite ce grand classique du jeu vidéo en exploitant pleinement les principes de la programmation orientée objet, nous permettant de créer un code modulaire, extensible et maintenable.</p>
+<p>Grâce à l’abstraction et à l’héritage, nous avons structuré notre jeu avec des interfaces claires et des hiérarchies logiques. Le polymorphisme nous a permis de manipuler différents objets de manière uniforme, tandis que l’encapsulation a assuré la protection et l’intégrité des données. Nous avons également tiré parti des foncteurs et des fonctions lambda pour encapsuler des comportements spécifiques, rendant notre implémentation plus souple et efficace.</p>
+<p>Mais ce projet ne se limite pas à un simple exercice de programmation ! Nous avons voulu pousser l’expérience plus loin, en intégrant plusieurs modes de jeu inédits, un système de sauvegarde sécurisé, une interface graphique fluide avec SDL, et même une tentative d’implémentation du multijoueur en réseau.</p>
+<p>Le résultat ? 🎾 Un jeu fun, dynamique et personnalisable, qui vous permet de revivre l’expérience du Pong… mais avec une touche de modernité !</p>
+<p>👉 <strong>Prêt à relever le défi et à battre le high score ? Jouez, et montrez-nous qui est le véritable maître du Pong !</strong></p>
+<hr>
+<hr>
+<h1 id="pendant-la-demo">PENDANT LA DEMO</h1>
+<h2 id="compilation-pendant-la-demo--vasilis">Compilation [pendant la demo : Vasilis]</h2>
+<p>Nous avons intégré un fichier <strong>CMakeLists.txt</strong> afin de faciliter la compilation du projet sur les principaux systèmes d’exploitation tels que macOS et Linux. Toutefois, l’interface graphique nécessite plusieurs dépendances spécifiques.</p>
+<p>Pour simplifier cette étape, nous avons également créé un script Bash qui vérifie automatiquement si toutes les dépendances sont installées. Si ce n’est pas le cas, il se chargera de télécharger et d’installer ce qu'il manque. Vous trouverez la liste exhaustive de ces dépendances dans la section <strong>Dépendances</strong> .</p>
+<h3 id="nota-bene">Nota bene</h3>
+<blockquote>
+<p>Sur Linux, le script télécharge et installe automatiquement les bibliothèques SDL nécessaires. Toutefois, si l’une d’entre elles requiert une autre dépendance spécifique, vous devrez l’installer manuellement. Une fois la dépendance installée, relancez simplement le script avec la commande <code>bash play.sh</code>.</p>
+<p>Pour aller plus loin: d'abord, la commande <code>mkdir -p build</code> crée un répertoire isolé pour les fichiers générés pendant la compilation si il n'existe déjà, puis <code>cd build</code> nous positionne dans ce dossier, suivie de <code>cmake ..</code> qui analyse le fichier CMakeLists.txt du projet pour configurer l'environnement et détecter les bibliothèques nécessaires. Enfin <code>cmake --build .</code> lance la compilation effective du code source.</p>
+</blockquote>
+<h3 id="instructions-de-lancement">Instructions de lancement</h3>
+<p>Pour démarrer le programme en mode automatique, suivez les étapes suivantes :</p>
+<ol>
+<li>Ouvrez un terminal et se rediriger vers un repertoire souhaité (par exemple <code>cd ~/Downloads</code>)</li>
+<li>Faire un clone du projet via la commande : <code>git clone https://github.com/vskarleas/The-New-Pong</code></li>
+<li>Acceder au projet cloné via la commande : <code>cd The-New-Pong</code></li>
+<li>Saisissez <code>chmod 777 play.sh</code> dans le terminal, puis lancez le script avec <code>bash play.sh</code>.</li>
+</ol>
+<h2 id="d%C3%A9pendances">Dépendances</h2>
+<p>Voici la liste des dépendances indispensables au bon fonctionnement du programme :</p>
+<ul>
+<li><strong>SDL2</strong> : Bibliothèque principale pour la gestion de la fenêtre et des événements</li>
+<li><strong>SDL2_ttf</strong> : Bibliothèque pour le rendu du texte (polices TrueType)</li>
+<li><strong>SDL2_mixer</strong> : Bibliothèque pour la gestion du son et de la musique</li>
+<li><strong>SDL2_image</strong> : Bibliothèque pour le chargement d’images (formats multiples)</li>
+<li><strong>SDL2_net</strong> : Bibliothèque pour les fonctionnalités réseau</li>
+</ul>
+<h2 id="pourquoi-macroshpp">Pourquoi macros.hpp</h2>
+<p>Le fichier macros.hpp joue un rôle central dans notre projet en servant de référentiel unique pour toutes les constantes globales du jeu. Il permet de centraliser et de faciliter la gestion des paramètres essentiels, tels que :</p>
+<ul>
+<li>Les dimensions de la fenêtre du jeu</li>
+<li>Les identifiants des modes de jeu (ex. : mode IA, mode 2 joueurs)</li>
+<li>Les constantes associées à la navigation dans les menus</li>
+<li>Les niveaux de difficulté</li>
+</ul>
+<p>Grâce à ce fichier, nous avons assuré une meilleure lisibilité et une maintenance simplifiée, en évitant la dispersion des constantes dans l’ensemble du code.</p>
+
+</body>
+</html>

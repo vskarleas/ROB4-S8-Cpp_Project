@@ -69,9 +69,13 @@ La sauvegarde est effectuée dans un fichier nommé `game_pong-highscore_849216.
 
 Voici l'algorithme qui détermine si quelqu'un a fait un nouveau highscore:
 
+
+
+
+
 ```cpp
 // High score logic
-        if (player1->get_user_score() >= last_highscore || player2->get_user_score() >= last_highscore)
+if (player1->get_user_score() >= last_highscore || player2->get_user_score() >= last_highscore)
         {
             last_highscore = (player1->get_user_score() >= player2->get_user_score()) ? player1->get_user_score() : player2->get_user_score();
 
@@ -438,8 +442,6 @@ L'utilisation de foncteurs nous permet d'ajouter facilement de nouveaux types de
 
 > Cette approche nous a permis d'accélérer le développement en permettant des tests isolés des différents SDL renderers.
 
-
-
 ---
 
 ## Problemes recnontres [Dounia] - Diapo 7
@@ -482,11 +484,7 @@ Le résultat ? 🎾 Un jeu fun, dynamique et personnalisable, qui vous permet de
 
 ---
 
-
-
 ---
-
-
 
 # PENDANT LA DEMO
 
@@ -531,3 +529,7 @@ Le fichier macros.hpp joue un rôle central dans notre projet en servant de réf
 * Les niveaux de difficulté
 
 Grâce à ce fichier, nous avons assuré une meilleure lisibilité et une maintenance simplifiée, en évitant la dispersion des constantes dans l’ensemble du code.
+
+---
+
+Montrer le fichier chiffré
