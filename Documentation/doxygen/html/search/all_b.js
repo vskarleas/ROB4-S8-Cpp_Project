@@ -1,11 +1,11 @@
 var searchData=
 [
   ['abstraction_0',['Abstraction',['../index.html#autotoc_md28',1,'']]],
-  ['abstraction_20def_20dounia_1',['Abstraction + Def [Dounia]',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md70',1,'']]],
+  ['abstraction_20def_20dounia_1',['Abstraction + Def [Dounia]',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md71',1,'']]],
   ['action_5fhandler_2',['action_handler',['../class_game_over.html#affe41bb0ea57be03224081cfb396addb',1,'GameOver::action_handler()'],['../classpage__2b__1t.html#a590d4047fe300ee7cfb3bd46db76783d',1,'page_2b_1t::action_handler()'],['../classpage__3b.html#a95cf3ea630b89a71e421a592fcbba2cc',1,'page_3b::action_handler()'],['../classpage__3b__0t.html#ae458a6016640457c1ef00d38c9c3941e',1,'page_3b_0t::action_handler()'],['../classpage__3b__1t.html#a1191bdbbaa0a744a43ea97c31abfb23e',1,'page_3b_1t::action_handler()'],['../classpage__4b__1t.html#a0371f7120e929633af52f0a3389fcfa1',1,'page_4b_1t::action_handler()']]],
   ['ai_3',['AI',['../class_a_i.html',1,'AI'],['../class_a_i.html#ac1c8df027057bd227541342ddc4728fc',1,'AI::AI()']]],
   ['ai_20mode_4',['AI mode',['../index.html#autotoc_md10',1,'']]],
-  ['ai_20mode_20yanis_5',['AI mode [Yanis]',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md50',1,'']]],
+  ['ai_20mode_20yanis_5',['AI mode [Yanis]',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md51',1,'']]],
   ['ai_2ecpp_6',['ai.cpp',['../ai_8cpp.html',1,'']]],
   ['ai_2ehpp_7',['ai.hpp',['../ai_8hpp.html',1,'']]],
   ['ai_5fdifficulty_8',['ai_difficulty',['../class_a_i.html#ad17965c15000eb1e632f48dcdbf614e5',1,'AI']]],
@@ -16,7 +16,7 @@ var searchData=
   ['ai_5fmode_5fselection_13',['AI_MODE_SELECTION',['../macros_8hpp.html#aadcbd04c3198bce906f7ce0bea080828',1,'macros.hpp']]],
   ['ai_5fplaying_14',['AI_playing',['../game_8hpp.html#ad0ed1832dd134806ad335cdcc1a59ad2aebdce9fa082b4a3b44c8d08ae9f41f18',1,'game.hpp']]],
   ['aller_20plus_20loin_15',['Pour aller plus loin',['../index.html#autotoc_md38',1,'']]],
-  ['aller_20plus_20loin_20vasilis_20diapo_208_16',['Pour aller plus loin [Vasilis] - Diapo 8',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md78',1,'']]],
+  ['aller_20plus_20loin_20vasilis_20diapo_208_16',['Pour aller plus loin [Vasilis] - Diapo 8',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md79',1,'']]],
   ['architecture_5fid_17',['ARCHITECTURE_ID',['../_c_make_c_x_x_compiler_id_8cpp.html#aba35d0d200deaeb06aee95ca297acb28',1,'CMakeCXXCompilerId.cpp']]],
   ['aspects_20du_20développement_18',['Autres aspects du développement',['../index.html#autotoc_md32',1,'']]],
   ['autres_20aspects_20du_20développement_19',['Autres aspects du développement',['../index.html#autotoc_md32',1,'']]]

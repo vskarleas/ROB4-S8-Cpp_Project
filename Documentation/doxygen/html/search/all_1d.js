@@ -36,6 +36,6 @@ var searchData=
   ['triangle_5frenderer_33',['triangle_renderer',['../structtriangle__renderer.html',1,'']]],
   ['triangleball_34',['TriangleBall',['../class_triangle_ball.html',1,'TriangleBall'],['../class_triangle_ball.html#abef469255e4d5a89751474c8d20e90f7',1,'TriangleBall::TriangleBall()']]],
   ['two_5fplayers_5fmode_35',['TWO_PLAYERS_MODE',['../macros_8hpp.html#ad357507707aab0566697634a64542f48',1,'macros.hpp']]],
-  ['type_20de_20la_20balle_20dounia_20strong_36',['&lt;strong&gt;Choisir le type de la balle [Dounia]&lt;/strong&gt;',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md59',1,'']]],
+  ['type_20de_20la_20balle_20dounia_20strong_36',['&lt;strong&gt;Choisir le type de la balle [Dounia]&lt;/strong&gt;',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md60',1,'']]],
   ['type_20de_20la_20balle_20strong_37',['&lt;strong&gt;Choisir le type de la balle&lt;/strong&gt;',['../index.html#autotoc_md17',1,'']]]
 ];

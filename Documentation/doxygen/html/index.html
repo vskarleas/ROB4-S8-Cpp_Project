@@ -279,7 +279,7 @@ Storytime mode</h2>
 <p>Ce n’est qu’une preuve de concept : rien ne vous empêche d’imaginer et d’intégrer des formes plus originales dans l’interface graphique.</p>
 <h2><a class="anchor" id="autotoc_md18"></a>
 <b>Changement de la musique</b></h2>
-<p>Grâce à la bibliothèque SDL Mixer, nous pouvons gérer différents effets sonores et musiques avec des fonctions de fade-in et fade-out. Chaque mode peut ainsi avoir sa propre ambiance sonore, pour rendre l’expérience de jeu encore plus immersive.</p>
+<p>Grâce à la bibliothèque SDL Mixer, nous pouvons gérer différents effets sonores et musiques avec des fonctions de fade-in et fade-out.</p>
 <p>Voici l'implémentation:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="class_sound_effects.html#ad94ae51e4e6ffb41b3e718a2a16107a3">SoundEffects::change_music_track</a>(Mix_Music *music_file,</div>
 <div class="line">                                      <span class="keywordtype">int</span> fade_out_duration,</div>
@@ -314,7 +314,7 @@ Storytime mode</h2>
 <p>Voici les différentes classes que nous avons définies :</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Class   </th><th class="markdownTableHeadNone">Description   </th><th class="markdownTableHeadNone">Fichier    </th></tr>
+<th class="markdownTableHeadNone">Classes   </th><th class="markdownTableHeadNone">Description   </th><th class="markdownTableHeadNone">Fichier    </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><a class="el" href="class_a_i.html" title="Artificial Intelligence for controlling a paddle.">AI</a>   </td><td class="markdownTableBodyNone">Intelligence artificielle pour contrôler une raquette automatiquement   </td><td class="markdownTableBodyNone"><a class="el" href="ai_8cpp.html" title="Implementation of the AI class for computer-controlled paddle.">ai.cpp</a>    </td></tr>
 <tr class="markdownTableRowEven">
@@ -563,8 +563,8 @@ Les tests</h1>
 <p>Lors de nos cours, nous avons étudié l’utilisation de CTest pour organiser et automatiser les tests unitaires. Étant donné que nous avons déjà intégré un fichier CMakeLists.txt dans notre projet, nous avons choisi d’utiliser cette approche pour tester nos fonctionnalités et les méthodes implémentées dans nos différentes classes.</p>
 <h2><a class="anchor" id="autotoc_md34"></a>
 Organisation des tests</h2>
-<p>Le répertoire <code>b</code> contient son propre fichier <code>b</code>, qui permet de créer les exécutables de nos programmes de test afin de vérifier le bon fonctionnement de nos méthodes.</p>
-<p>Chaque fichier <code>b</code> est un programme autonome pouvant être exécuté indépendamment. Si le test est réussi, il retourne 0. Cependant en cas d’échec, il renvoie une autre valeur avec des informations détaillées sur le problème rencontré.</p>
+<p>Le répertoire <code>tests</code> contient son propre fichier <code>CmakeLists.txt</code>, qui permet de créer les exécutables de nos programmes de tests afin de vérifier le bon fonctionnement de nos méthodes.</p>
+<p>Chaque fichier <code>*_test.cpp</code> est un programme autonome pouvant être exécuté indépendamment. Si le test est réussi, il retourne 0. Cependant en cas d’échec, il renvoie une autre valeur avec des informations détaillées sur le problème rencontré.</p>
 <p>La réalisation des tests unitaires s’inscrit dans une démarche d’intégration continue, permettant de valider la non-régression du code tout au long du développement de notre jeu.</p>
 <h2><a class="anchor" id="autotoc_md35"></a>
 Fonctionnalités testées</h2>
@@ -626,13 +626,16 @@ UML – Modélisation des classes du jeu</h1>
 <p>Avec cette approche, chaque élément du jeu remplit un rôle bien défini et reste modulaire, ce qui permet d’ajouter de nouvelles fonctionnalités (comme le mode réseau) sans perturber l’ensemble du projet. Nous avons créé un diagramme UML pour les différentes dépendances entre les classes. De plus, les différentes notions de programmation utilisées dans chaque partie y sont indiquées.</p>
 <p><img src="https://cdn.madebyvasilis.site/vscloud-connect/game-dependencies.png" alt="Dependecnies" class="inline"/></p>
 <h1><a class="anchor" id="autotoc_md40"></a>
+Remarques</h1>
+<p>L'architecture ARM ne permet pas d'utiliser</p>
+<h1><a class="anchor" id="autotoc_md41"></a>
 Conclusion</h1>
 <p><b>Pong, mais en mieux !</b> Notre projet revisite ce grand classique du jeu vidéo en exploitant pleinement les principes de la programmation orientée objet, nous permettant de créer un code modulaire, extensible et maintenable.</p>
 <p>Grâce à l’abstraction et à l’héritage, nous avons structuré notre jeu avec des interfaces claires et des hiérarchies logiques. Le polymorphisme nous a permis de manipuler différents objets de manière uniforme, tandis que l’encapsulation a assuré la protection et l’intégrité des données. Nous avons également tiré parti des foncteurs et des fonctions lambda pour encapsuler des comportements spécifiques, rendant notre implémentation plus souple et efficace.</p>
 <p>Mais ce projet ne se limite pas à un simple exercice de programmation ! Nous avons voulu pousser l’expérience plus loin, en intégrant plusieurs modes de jeu inédits, un système de sauvegarde sécurisé, une interface graphique fluide avec SDL, et même une tentative d’implémentation du multijoueur en réseau.</p>
 <p>Le résultat ? 🎾 Un jeu fun, dynamique et personnalisable, qui vous permet de revivre l’expérience du Pong… mais avec une touche de modernité !</p>
 <p>👉 <b>Prêt à relever le défi et à battre le high score ? Jouez, et montrez-nous qui est le véritable maître du Pong !</b></p>
-<h1><a class="anchor" id="autotoc_md41"></a>
+<h1><a class="anchor" id="autotoc_md42"></a>
 Versions</h1>
 <p>Le versioning est un élément clé en programmation, assurant la cohérence des modifications et facilitant la collaboration. Il est aussi primordial pour la récupération de données en cas de perte ou corruption. Au fil du projet, nous avons créé différentes versions de notre code, chacune marquant une étape importante de son évolution. Cela nous a permis de suivre les progrès, d'intégrer de nouvelles fonctionnalités et d'effectuer des corrections de manière structurée.</p>
 <ul>

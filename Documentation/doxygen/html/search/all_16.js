@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['macros_20hpp_0',['macros hpp',['../index.html#autotoc_md37',1,'Pourquoi macros.hpp'],['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md88',1,'Pourquoi macros.hpp']]],
+  ['macros_20hpp_0',['macros hpp',['../index.html#autotoc_md37',1,'Pourquoi macros.hpp'],['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md89',1,'Pourquoi macros.hpp']]],
   ['macros_2ehpp_1',['macros.hpp',['../macros_8hpp.html',1,'']]],
   ['mai_2',['mAI',['../class_game.html#a49b2014ece24a38148358dbe5c0d0620',1,'Game']]],
   ['main_3',['main',['../_c_make_c_x_x_compiler_id_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;CMakeCXXCompilerId.cpp'],['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cpp'],['../ball__test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;ball_test.cpp'],['../letter__test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;letter_test.cpp'],['../paddle__test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;paddle_test.cpp'],['../user__test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;user_test.cpp']]],
@@ -24,14 +24,14 @@ var searchData=
   ['mnoticemenu_21',['mNoticeMenu',['../class_game.html#aec3cf9150ce416364b7a6ceb1e9e2804',1,'Game']]],
   ['modélisation_20des_20classes_20du_20jeu_22',['UML – Modélisation des classes du jeu',['../index.html#autotoc_md39',1,'']]],
   ['mode_23',['mode',['../index.html#autotoc_md10',1,'AI mode'],['../index.html#autotoc_md11',1,'Storytime mode']]],
-  ['mode_20dounia_24',['Storytime mode [Dounia]',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md51',1,'']]],
-  ['mode_20dounia_20strong_25',['&lt;strong&gt;Fun mode [Dounia]&lt;/strong&gt;',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md52',1,'']]],
+  ['mode_20dounia_24',['Storytime mode [Dounia]',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md52',1,'']]],
+  ['mode_20dounia_20strong_25',['&lt;strong&gt;Fun mode [Dounia]&lt;/strong&gt;',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md53',1,'']]],
   ['mode_20strong_26',['&lt;strong&gt;Fun mode&lt;/strong&gt;',['../index.html#autotoc_md12',1,'']]],
-  ['mode_20yanis_27',['AI mode [Yanis]',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md50',1,'']]],
+  ['mode_20yanis_27',['AI mode [Yanis]',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md51',1,'']]],
   ['mode_5fid_28',['mode_id',['../classpage__4b__1t.html#abe6f151a8e3b104f21025c92b4f48191',1,'page_4b_1t']]],
   ['mode_5ftype_29',['mode_type',['../classpage__3b.html#ad208990d0b15bd40b376fa82f0950250',1,'page_3b::mode_type'],['../classpage__3b__1t.html#abe96467732183453e70ad17140d70dec',1,'page_3b_1t::mode_type']]],
   ['modes_30',['Les différents modes',['../index.html#autotoc_md8',1,'']]],
-  ['modes_20diapo_203_20ou_31',['Les différents modes - Diapo 3 ou +++',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md48',1,'']]],
+  ['modes_20diapo_203_20ou_31',['Les différents modes - Diapo 3 ou +++',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md49',1,'']]],
   ['monholdmusic_32',['mOnHoldMusic',['../class_game.html#a14bd27ce1b1c7c55ce1ac915be52fd8e',1,'Game']]],
   ['mpausebuttonrect_33',['mPauseButtonRect',['../class_game.html#a34757962c09c403c5676a9b960d43acb',1,'Game']]],
   ['mpausemenu_34',['mPauseMenu',['../class_game.html#a5019389f4874849a708b75a2a01502b6',1,'Game']]],
@@ -46,7 +46,7 @@ var searchData=
   ['multijoueur_20en_20c_20_3a_20the_20new_20pong_43',['Multijoueur en C : The New Pong',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html',1,'Projet Multijoueur en C++ : The New Pong'],['../index.html',1,'Projet Multijoueur en C++ : The New Pong']]],
   ['multiplier_44',['multiplier',['../class_paddle.html#aa7d2b2b7d9540f220f8cbeb69097c3bf',1,'Paddle']]],
   ['musique_20strong_45',['&lt;strong&gt;Changement de la musique&lt;/strong&gt;',['../index.html#autotoc_md18',1,'']]],
-  ['musique_20yanis_20strong_46',['&lt;strong&gt;Changement de la musique [Yanis]&lt;/strong&gt;',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md60',1,'']]],
+  ['musique_20yanis_20strong_46',['&lt;strong&gt;Changement de la musique [Yanis]&lt;/strong&gt;',['../md__p_r_e_s_e_n_t_a_t_i_o_n.html#autotoc_md61',1,'']]],
   ['mwallhitsound_47',['mWallHitSound',['../class_game.html#a9ee9a70a378c8342a8b6a8d6dc68994c',1,'Game']]],
   ['mwindow_48',['mWindow',['../class_game.html#ad27a2dce7cb5b15de526e0602c368469',1,'Game']]]
 ];
