@@ -69,10 +69,6 @@ La sauvegarde est effectuée dans un fichier nommé `game_pong-highscore_849216.
 
 Voici l'algorithme qui détermine si quelqu'un a fait un nouveau highscore:
 
-
-
-
-
 ```cpp
 // High score logic
 if (player1->get_user_score() >= last_highscore || player2->get_user_score() >= last_highscore)
@@ -248,43 +244,7 @@ Avec cette approche, chaque élément du jeu remplit un rôle bien défini et re
 
 ## **Les concepts clés - Diapo 6**
 
-### **L'interface graphique [Yanis]**
-
-Maintenant que nous avons une vue d’ensemble des différentes pages et des éléments interactifs du jeu, intéressons-nous à la façon dont l’interface graphique est conçue et gérée.
-
-Nous utilisons SDL pour afficher et rendre toutes les formes et objets du jeu dans une fenêtre aux dimensions prédéfinies dans le fichier `macros.hpp` (plus de détails dans la section ***Pourquoi macros.hpp***).
-
-Le programme principal repose sur la classe  `Game` , qui orchestre l’ensemble du jeu à travers trois méthodes clés :
-
-1. `initialise()` – Initialise tous les paramètres et variables nécessaires au jeu.
-2. `loop()`– Gère la boucle principale du jeu.
-3. `close()`– Libère les ressources et termine proprement l’exécution.
-
-La méthode  `loop()` constitue le cœur du jeu : il s’agit d’une boucle while qui tourne en continu tant que le jeu est actif. Cette boucle s’arrête uniquement si la variable booléenne `mIsRunning` est définie sur `false`, soit lorsque le joueur ferme la fenêtre SDL, soit lorsqu'il sélectionne "Exit Game".
-
-```cpp
-void Game::loop()
-{
-    while (mIsRunning) // set to false when we either tap on the X to close the SDL window or when we tap on the Exit game button
-    {
-        game_logic();
-        game();
-        output();
-    }
-}
-```
-
-#### Loop
-
-Dans cette boucle, trois fonctions essentielles assurent le bon déroulement du jeu :
-
-* `game_logic()` : Gère la logique principale et décide des transitions entre les pages, menus et événements du jeu.
-* `game()` : Met à jour l’état du jeu en fonction des actions du joueur, détermine si une partie est terminée et applique les règles.
-* `output()` : Génère et affiche les éléments visuels sur l’interface SDL en fonction des paramètres définis par la logique du jeu.
-
-Ces trois fonctions fonctionnent en synergie pour offrir une expérience fluide et dynamique, assurant que le jeu réagit de manière cohérente aux interactions du joueur.
-
-### Héritage + Def [Vasilis]
+### Héritage + Def [Yanis]
 
 L'héritage est largement utilisé pour étendre la fonctionnalité des classes de base. Les trois types de balles (`ClassicBall`, `SquareBall` et `TriangleBall`) héritent tous de la classe abstraite `BallBase`. Par exemple, dans `classic_ball.hpp`, nous voyons :
 
@@ -309,7 +269,7 @@ Le polymorphisme est implémenté à travers l'utilisation de méthodes virtuell
 
 Le jeu peut manipuler n'importe quel objet dérivé de `BallBase` de manière uniforme, en appelant `mBall->render_object(renderer)` dans `game.cpp`, sans se soucier du type spécifique de balle utilisé.
 
-De même, les power-ups démontrent le polymorphisme avec leurs méthodes `update()` et `render()` qui sont appelées de manière générique mais exécutent un comportement spécifique à chaque type de power-up.
+De même, les power-ups démontrent le polymorphisme avec leurs méthodes `update()` et `render()` qui sont appelées de manière générique mais exécutent un comportement spécifique à chaque type dPong réinventé : 4 e power-up.
 
 ### Abstraction + Def [Dounia]
 
